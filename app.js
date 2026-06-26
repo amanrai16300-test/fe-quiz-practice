@@ -33,6 +33,7 @@ const els = {
   explanationBody: document.getElementById("explanationBody"),
   submitBtn: document.getElementById("submitBtn"),
   nextBtn: document.getElementById("nextBtn"),
+  themeToggle: document.getElementById("themeToggle"),
 };
 
 const state = {
@@ -309,3 +310,13 @@ EXAM_SETS.forEach((paper) => {
 });
 
 els.backBtn.addEventListener("click", showHome);
+
+// Light/dark theme toggle. In-memory only — refresh resets to light (default).
+// ponytail: flip one data-attr on <html>; CSS tokens do the rest. No persistence yet.
+els.themeToggle.addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+  els.themeToggle.setAttribute("aria-pressed", String(!dark));
+  els.themeToggle.querySelector(".theme-toggle-text").textContent = dark ? "Dark" : "Light";
+  els.themeToggle.querySelector("[aria-hidden]").textContent = dark ? "🌙" : "☀️";
+});

@@ -110,3 +110,36 @@ Complete for all 20 questions. Every explanation:
 
 > The in-memory answer store is a plain serializable object by design, so persistence
 > and sync layers can be added later without reworking the quiz logic.
+
+## Latest Checkpoint
+
+Current repo state:
+- GitHub repository has been created.
+- `README.md` has been created.
+- `docs/SUPABASE_PLAN.md` has been created (backend-first sync planning doc).
+- `supabase/schema.sql` has been created as a **draft schema only** (not run).
+- `docs/SEED_DATA_PLAN.md` has been created (questions.js → Supabase seed plan).
+- No Supabase app wiring added yet.
+- No auth code added yet.
+- No migrations run yet.
+
+Seed-data warnings to carry forward:
+- **questions.js has two shapes.** The authored shape and a runtime/post-processed
+  shape (a `forEach` flattens `options` to jp strings and moves the structured data
+  to `optionTranslations`). Future seed scripts MUST read the **authored**
+  `options[].{jp, romaji, en}` data, not the flattened runtime shape.
+- **correctAnswer is an index (0–3)** in questions.js. The database `correct_answer`
+  should be converted to the option label/text (ア/イ/ウ/エ) per the schema plan.
+- **Paper ID `fe-2025-a-public`** currently lives in planning/context docs only,
+  not inside `questions.js`.
+
+## Latest UI Checkpoint
+
+- Responsive light/dark theme toggle added.
+- Toggle is fixed top-right and works on both the Home and Quiz screens.
+- Theme is controlled by `data-theme="dark"` on the `<html>` element.
+- Dark mode uses CSS token overrides (same `:root` token names, dark values).
+- Theme is memory-only for now; refresh resets to light (default).
+- No localStorage, Supabase, auth, or PWA was added.
+- App behavior, answer checking, progress state, `questions.js`, explanations,
+  translations, `correctAnswer`, and image paths were not changed.

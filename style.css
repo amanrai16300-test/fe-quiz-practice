@@ -489,6 +489,66 @@ html, body {
   .trans-tag { flex-basis: auto; }
 }
 
+/* ---- Dark mode ---- */
+/* Same token names, dark values — every component re-themes with no per-rule edits.
+   Comfortable for long reading: warm near-black paper, soft off-white ink, muted accent. */
+:root[data-theme="dark"] {
+  --paper: #1b1a18;
+  --card: #242220;
+  --ink: #ece7dd;
+  --ink-soft: #c0b9ac;
+  --ink-faint: #8c8579;
+  --line: #3a3733;
+  --accent: #5fae98;
+  --accent-soft: #283731;
+  --accent-ink: #8fd3bd;
+  --correct: #5cae78;
+  --correct-soft: #233326;
+  --wrong: #d68273;
+  --wrong-soft: #3a2724;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+/* Borders inside the translation panel use hardcoded teal rgba; soften for dark. */
+:root[data-theme="dark"] .trans-row + .trans-row,
+:root[data-theme="dark"] .trans-section + .trans-section { border-color: rgba(143, 211, 189, 0.18); }
+:root[data-theme="dark"] .opt-trans { border-color: rgba(143, 211, 189, 0.22); }
+/* Question-figure backdrop is white for diagrams; keep readable but not glaring. */
+:root[data-theme="dark"] .q-figure img { background: #f2efe9; }
+/* Sticky footer fade uses a literal paper rgba; match dark paper. */
+:root[data-theme="dark"] .actions {
+  background: linear-gradient(to top, var(--paper) 70%, rgba(27, 26, 24, 0));
+}
+
+/* ---- Theme toggle button ---- */
+.theme-toggle {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 10px);
+  right: calc(env(safe-area-inset-right) + 12px);
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 6px 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease), color 0.18s var(--ease), transform 0.08s var(--ease);
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--ink); }
+.theme-toggle:active { transform: scale(0.96); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* iPhone width: icon only, drop the label to stay small and clear of content. */
+@media (max-width: 420px) {
+  .theme-toggle-text { display: none; }
+  .theme-toggle { padding: 7px 9px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, .card, .translation { animation: none !important; transition: none !important; }
 }
