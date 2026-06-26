@@ -143,3 +143,56 @@ Seed-data warnings to carry forward:
 - No localStorage, Supabase, auth, or PWA was added.
 - App behavior, answer checking, progress state, `questions.js`, explanations,
   translations, `correctAnswer`, and image paths were not changed.
+
+## Latest Backend Direction Checkpoint
+
+- **Supabase project creation was blocked** — free project limit reached.
+- **Oracle backend option is now planned** as the Supabase replacement.
+- `docs/ORACLE_BACKEND_PLAN.md` has been created.
+- **Recommended backend direction: Oracle VM + FastAPI + PostgreSQL.**
+- This is a **hosting/backend swap, not a redesign** — the data model and sync
+  rules from the Supabase plan stay; only the access/hosting layer changes.
+
+Existing Supabase concepts that still carry over (unchanged):
+- `exam_sets`
+- `questions`
+- `question_progress`
+- `quiz_sessions`
+- Per-user / per-paper / per-question progress scoping.
+- `furthest_question_index` no-regress (monotonic high-water mark) rule.
+
+Main changes from Supabase:
+- Add a local `users` table instead of relying on `auth.users`.
+- Remove RLS.
+- Enforce user ownership inside FastAPI queries (`WHERE user_id = …` from the
+  auth token, never the request body).
+- Use `fetch()` API calls instead of the Supabase client.
+
+Not done yet:
+- No Oracle backend code has been created.
+- No PostgreSQL schema for Oracle has been created.
+- No app code has been connected to a backend.
+
+## Latest Oracle Schema Checkpoint
+
+- `oracle/schema.sql` has been created.
+- Defines the Oracle/PostgreSQL backend schema for:
+  - `users`
+  - `exam_sets`
+  - `questions`
+  - `question_progress`
+  - `quiz_sessions`
+- Replaces Supabase `auth.users` with a **local `users` table** (FKs point at
+  `public.users`, never `auth.users`).
+- Does **not** use Supabase RLS.
+- Keeps the `updated_at` triggers (`set_updated_at`).
+- Keeps the `furthest_question_index` no-regress trigger (`guard_furthest_index`).
+- **FastAPI must enforce user ownership in queries** (`WHERE user_id = …`) —
+  there is no RLS to do it at the DB layer.
+- `user_id` must come from the **authenticated server-side context/token**,
+  never from the request body.
+
+Not done yet:
+- No backend code has been created.
+- No Oracle database migration has been run.
+- No app code has been connected to the backend.
