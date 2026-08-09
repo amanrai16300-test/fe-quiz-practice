@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f7f5f0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <title>FE 科目A 演習 — 令和7年度</title>
+  <title>FE Study Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet" />
@@ -18,18 +18,44 @@
     <span aria-hidden="true">🌙</span><span class="theme-toggle-text">Dark</span>
   </button>
 
-  <!-- Home / paper selection -->
-  <div class="home" id="home">
+  <!-- Study Hub -->
+  <main class="study-hub" id="studyHub">
     <header class="home-header">
-      <h1 class="home-title">FE Quiz Practice</h1>
-      <p class="home-sub">Choose a question set</p>
+      <p class="screen-kicker">FE Study Platform</p>
+      <h1 class="home-title">FE Study</h1>
+      <p class="home-sub">Choose a study source.</p>
+    </header>
+    <ul class="study-source-list" id="studySourceList" aria-label="Study categories"></ul>
+
+    <!-- Sync code — type the same code on another device to share progress. -->
+    <section class="card sync-card">
+      <label class="sync-label" for="syncCode">Sync code</label>
+      <p class="sync-hint">Type the same code on your other device to share progress.</p>
+      <div class="sync-row">
+        <input class="sync-input" id="syncCode" type="text" inputmode="latin"
+          autocomplete="off" autocapitalize="off" spellcheck="false"
+          placeholder="e.g. aman2026" maxlength="40" />
+        <button class="btn btn-primary sync-save" id="syncSave" type="button">Apply</button>
+      </div>
+      <p class="sync-status" id="syncCodeStatus" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <!-- Past Exam browser: existing year and paper selection lives here. -->
+  <main class="past-exams" id="pastExams" hidden>
+    <header class="home-header">
+      <button class="back-btn" id="studyHubBackBtn" type="button">← Study Hub</button>
+      <p class="screen-kicker">FE Study</p>
+      <h1 class="home-title">Past Exam Questions</h1>
+      <p class="home-sub">過去問題</p>
+      <p class="home-status" id="sourceStatus" aria-live="polite"></p>
     </header>
     <ul class="paper-list" id="paperList"></ul>
-  </div>
+  </main>
 
   <div class="app" id="quizApp" hidden>
     <header class="app-header">
-      <button class="back-btn" id="backBtn" type="button">← 問題集に戻る</button>
+      <button class="back-btn" id="backBtn" type="button">← 過去問題 / Past Exams</button>
       <p class="exam-set" id="examSet"></p>
       <h1 class="exam-title" id="examTitle"></h1>
     </header>
@@ -43,6 +69,7 @@
           <span class="summary-item">回答 <b id="sumAnswered">0</b> / <b id="sumTotal">0</b></span>
           <span class="summary-item is-correct">正解 <b id="sumCorrect">0</b></span>
           <span class="summary-item is-wrong">不正解 <b id="sumWrong">0</b></span>
+          <span class="summary-item sync-status" id="syncStatus" aria-live="polite"></span>
         </div>
         <nav class="qnav" id="qNav" aria-label="問へ移動"></nav>
       </div>
@@ -51,9 +78,8 @@
       <section class="card question-card">
         <p class="q-number" id="qNumber"></p>
         <p class="q-text" id="qText"></p>
-        <figure class="q-figure" id="qFigure" hidden>
-          <img id="qImage" alt="" />
-        </figure>
+        <div class="q-images" id="qImages" hidden></div>
+        <div class="q-supplemental" id="qSupplemental" hidden></div>
 
         <button class="translate-btn" id="translateBtn" type="button" aria-expanded="false">
           🌐 翻訳を表示 / Show Translation
@@ -72,6 +98,7 @@
           </div>
         </div>
 
+        <p class="answer-prompt" id="answerPrompt" hidden>Select your answer</p>
         <ul class="options" id="options" role="listbox" aria-label="選択肢"></ul>
       </section>
 

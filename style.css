@@ -15,6 +15,12 @@
   --correct-soft: #e7f4ec;
   --wrong: #b54a3c;
   --wrong-soft: #f8e9e6;
+  --source-exam: oklch(47% 0.075 170);
+  --source-exam-soft: oklch(95% 0.025 170);
+  --source-book-one: oklch(53% 0.07 75);
+  --source-book-one-soft: oklch(96% 0.025 75);
+  --source-book-two: oklch(50% 0.055 255);
+  --source-book-two-soft: oklch(95% 0.02 255);
   --radius: 16px;
   --radius-sm: 12px;
   --shadow: 0 1px 2px rgba(40, 35, 25, 0.04), 0 6px 20px rgba(40, 35, 25, 0.06);
@@ -35,6 +41,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
 .app {
@@ -50,8 +57,9 @@ html, body {
     calc(env(safe-area-inset-left) + 18px);
 }
 
-/* ---- Home / paper selection ---- */
-.home {
+/* ---- Study Hub / Past Exam browser ---- */
+.study-hub,
+.past-exams {
   max-width: 720px;
   margin: 0 auto;
   min-height: 100vh;
@@ -61,7 +69,16 @@ html, body {
     calc(env(safe-area-inset-bottom) + 24px)
     calc(env(safe-area-inset-left) + 18px);
 }
+.study-hub { max-width: 1040px; }
 .home-header { margin-bottom: 22px; }
+.screen-kicker {
+  margin: 0 0 4px;
+  color: var(--accent-ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .home-title {
   margin: 0;
   font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
@@ -74,7 +91,132 @@ html, body {
   font-size: 0.9rem;
   color: var(--ink-faint);
 }
+/* Tiny non-intrusive source status (e.g. "Offline / local question set"). Empty = no space. */
+.home-status {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  opacity: 0.8;
+}
+.home-status:empty { display: none; }
 .paper-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+
+/* Three top-level study sources. Cards share one component vocabulary; source
+   markers provide restrained identity without turning them into separate themes. */
+.study-source-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.study-source-item { min-width: 0; }
+.source-card {
+  --source-tone: var(--accent);
+  --source-soft: var(--accent-soft);
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  padding: 22px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.source-exam {
+  --source-tone: var(--source-exam);
+  --source-soft: var(--source-exam-soft);
+  border-color: var(--source-tone);
+}
+.source-book-one {
+  --source-tone: var(--source-book-one);
+  --source-soft: var(--source-book-one-soft);
+}
+.source-book-two {
+  --source-tone: var(--source-book-two);
+  --source-soft: var(--source-book-two-soft);
+}
+.source-card.is-coming-soon {
+  background: color-mix(in oklch, var(--card) 90%, var(--source-soft));
+}
+.source-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.source-marker {
+  display: inline-flex;
+  min-width: 46px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  color: var(--source-tone);
+  background: var(--source-soft);
+  border-radius: 9px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.source-availability {
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.source-exam .source-availability { color: var(--source-tone); }
+.source-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.source-title-ja {
+  margin: 3px 0 12px;
+  color: var(--source-tone);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.source-description {
+  margin: 0 0 20px;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.source-action { margin-top: auto; }
+.btn-secondary {
+  color: var(--ink-faint);
+  background: var(--source-soft);
+  border: 1px solid color-mix(in oklch, var(--source-tone) 30%, var(--line));
+}
+.btn-secondary:disabled { cursor: not-allowed; }
+.study-hub .sync-card {
+  max-width: 520px;
+  margin-top: 20px;
+}
+
+/* Sync code card — small, sits under the paper list on the home screen. */
+.sync-card { margin-top: 14px; }
+.sync-label { display: block; font-weight: 700; font-size: 0.95rem; color: var(--ink); }
+.sync-hint { margin: 4px 0 10px; font-size: 0.8rem; color: var(--ink-soft); }
+.sync-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.sync-input {
+  flex: 1 1 160px;
+  min-width: 0;
+  padding: 10px 12px;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.sync-save { flex: 0 0 auto; }
+.sync-status { margin: 8px 0 0; font-size: 0.8rem; color: var(--ink-soft); }
+.sync-status:empty { display: none; }
 .paper-title {
   margin: 0 0 6px;
   font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
@@ -96,6 +238,44 @@ html, body {
 }
 .paper-start { width: 100%; }
 
+/* Year selector → section (科目A / 科目B) cards */
+.year-label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.year-select {
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 11px 12px;
+  font: inherit;
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.year-select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.section-list { display: grid; gap: 12px; }
+.section-card {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.section-card.is-disabled {
+  opacity: 0.6;
+}
+.section-card.is-disabled .paper-start {
+  cursor: not-allowed;
+}
+.section-card .paper-meta { margin-bottom: 12px; }
+
 /* Back to papers */
 .back-btn {
   font: inherit;
@@ -109,6 +289,11 @@ html, body {
   cursor: pointer;
 }
 .back-btn:hover { text-decoration: underline; }
+.back-btn:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
 /* ---- Header ---- */
 .app-header { margin-bottom: 22px; }
@@ -152,6 +337,8 @@ html, body {
 .summary-item b { font-weight: 700; color: var(--ink); }
 .summary-item.is-correct b { color: var(--correct); }
 .summary-item.is-wrong b { color: var(--wrong); }
+/* Tiny, muted progress-sync note. Empty by default = takes no space. */
+.summary-item.sync-status { margin-left: auto; opacity: 0.6; font-size: 0.85em; }
 
 /* Question jump navigator — wrapped chips, no horizontal page scroll */
 .qnav {
@@ -237,16 +424,55 @@ html, body {
   color: var(--ink);
 }
 
-.q-figure {
+.q-images {
   margin: 0 0 18px;
-  text-align: center;
+  display: grid;
+  gap: 12px;
 }
-.q-figure img {
+.q-source-figure { margin: 0; text-align: center; min-width: 0; }
+.q-source-image {
+  display: block;
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  background: #fff;
+  background: oklch(98.5% 0.006 85);
+}
+.q-source-figure figcaption { margin-top: 6px; color: var(--ink-faint); font-size: 0.84rem; }
+
+/* Exam-style table + SQL block (Q6, Q19) */
+.q-supplemental {
+  margin: 0 0 18px;
+  overflow-x: auto;
+}
+
+.exam-table {
+  border-collapse: collapse;
+  margin: 0 auto 12px;
+  font-size: 0.95rem;
+  background: var(--paper);
+}
+.exam-table th,
+.exam-table td {
+  border: 1px solid var(--ink);
+  padding: 6px 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+.exam-table th { font-weight: 700; }
+.exam-table td:first-child { text-align: left; }
+.exam-label { margin: 12px 0 6px; font-weight: 700; }
+.exam-sql {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--code-bg, rgba(0, 0, 0, 0.04));
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* Translation toggle */
@@ -342,6 +568,12 @@ html, body {
 
 /* Options */
 .options { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.answer-prompt {
+  margin: 2px 0 10px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
 .option {
   display: flex;
   align-items: flex-start;
@@ -361,6 +593,7 @@ html, body {
 .option:hover:not(:disabled) { border-color: var(--accent); }
 .option:active:not(:disabled) { transform: scale(0.99); }
 .option:disabled { cursor: default; }
+.option:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 .option-label {
   flex: 0 0 auto;
@@ -378,6 +611,33 @@ html, body {
   transition: inherit;
 }
 .option-text { flex: 1; font-size: 0.98rem; padding-top: 2px; }
+
+/* Image-contained answers use the same semantic buttons and verdict states, but
+   omit duplicated wording. Four columns stay substantial; 5–10 wrap naturally. */
+.options.is-labels-only { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.options.is-labels-only .option {
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  text-align: center;
+}
+.options.is-labels-only .option-label {
+  width: auto;
+  min-width: 32px;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 1.12rem;
+}
+.options.is-labels-only .option.selected .option-label,
+.options.is-labels-only .option.correct .option-label,
+.options.is-labels-only .option.incorrect .option-label {
+  background: transparent;
+  border-color: transparent;
+  color: inherit;
+}
 
 .option.selected {
   border-color: var(--accent);
@@ -425,26 +685,66 @@ html, body {
   color: var(--ink-soft);
   font-weight: 500;
 }
+/* Reads like an article: full card width, generous size + leading. */
 .explanation-body {
   margin: 0;
-  max-width: 62ch;
-  font-size: 0.97rem;
-  line-height: 1.85;
+  max-width: none;
+  font-size: 1.04rem;
+  line-height: 1.9;
   color: var(--ink-soft);
-  white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-/* Section headings (ELI5 / Technical breakdown / etc.) stand out from body. */
-.exp-h {
-  display: block;
-  margin: 1.1em 0 0.25em;
-  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--accent-ink);
+/* One paragraph block. Each source line is its own .exp-p now, so spacing comes
+   from this margin (not blank lines / pre-wrap). overflow-wrap handles long runs. */
+.exp-p {
+  margin: 0 0 1.05em;
+  overflow-wrap: anywhere;
 }
-.exp-h:first-child { margin-top: 0; }
+.exp-p:last-child { margin-bottom: 0; }
+
+/* Each explanation section is its own soft panel, mirroring the translation
+   panel idiom (--accent-soft fill, rounded, badge title). A left accent bar +
+   per-kind tint make ELI5 / breakdown / wrong-analysis / answer scannable. */
+.exp-section {
+  position: relative;
+  margin: 16px 0 0;
+  padding: 16px 18px 16px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+}
+.exp-section:first-child { margin-top: 0; }
+/* Badge title — same pill/uppercase language as .trans-heading / chips. */
+.exp-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+}
+.exp-section-body { color: var(--ink-soft); }
+.exp-section-body .exp-p:last-child { margin-bottom: 0; }
+
+/* Per-kind accent: tints the bar + badge so each section reads at a glance. */
+.exp-tech { border-left-color: var(--ink-faint); }
+.exp-tech .exp-badge { background: var(--ink-soft); }
+.exp-wrong { border-left-color: var(--wrong); background: var(--wrong-soft); }
+.exp-wrong .exp-badge { background: var(--wrong); }
+.exp-answer { border-left-color: var(--correct); background: var(--correct-soft); }
+.exp-answer .exp-badge { background: var(--correct); }
+/* The final answer reads big and confident — it's the payoff line. */
+.exp-answer .exp-section-body {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
 
 /* ---- Actions / footer ---- */
 .actions {
@@ -474,17 +774,39 @@ html, body {
   color: var(--ink-faint);
   cursor: not-allowed;
 }
+/* Secondary, low-emphasis reset action under Start/Resume. */
+.btn-reset {
+  margin-top: 10px;
+  background: transparent;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  font-size: 0.9rem;
+  padding: 10px 16px;
+}
+.btn-reset:hover { color: var(--ink); border-color: var(--ink-faint); }
+.btn-reset:active { transform: scale(0.985); }
+.paper-reset { width: 100%; }
 
 /* ---- Desktop ---- */
 @media (min-width: 640px) {
   .card { padding: 28px 30px; }
   .q-text { font-size: 1.12rem; }
   .btn { font-size: 1.05rem; }
+  .explanation-body { font-size: 1.09rem; line-height: 1.95; }
+  .exp-section { padding: 18px 22px 18px 24px; }
+  .exp-answer .exp-section-body { font-size: 1.16rem; }
+}
+
+@media (min-width: 760px) {
+  .study-source-list { grid-template-columns: 1.12fr 1fr 1fr; }
+  .source-card { padding: 26px 24px; }
 }
 
 /* ---- Small phones: stack translation tags above text ---- */
 @media (max-width: 380px) {
-  .app { padding-left: calc(env(safe-area-inset-left) + 14px); padding-right: calc(env(safe-area-inset-right) + 14px); }
+  .app,
+  .study-hub,
+  .past-exams { padding-left: calc(env(safe-area-inset-left) + 14px); padding-right: calc(env(safe-area-inset-right) + 14px); }
   .trans-row { flex-direction: column; gap: 4px; }
   .trans-tag { flex-basis: auto; }
 }
@@ -506,6 +828,12 @@ html, body {
   --correct-soft: #233326;
   --wrong: #d68273;
   --wrong-soft: #3a2724;
+  --source-exam: oklch(76% 0.075 170);
+  --source-exam-soft: oklch(29% 0.025 170);
+  --source-book-one: oklch(76% 0.065 75);
+  --source-book-one-soft: oklch(29% 0.025 75);
+  --source-book-two: oklch(77% 0.055 255);
+  --source-book-two-soft: oklch(29% 0.02 255);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 /* Borders inside the translation panel use hardcoded teal rgba; soften for dark. */
@@ -513,7 +841,7 @@ html, body {
 :root[data-theme="dark"] .trans-section + .trans-section { border-color: rgba(143, 211, 189, 0.18); }
 :root[data-theme="dark"] .opt-trans { border-color: rgba(143, 211, 189, 0.22); }
 /* Question-figure backdrop is white for diagrams; keep readable but not glaring. */
-:root[data-theme="dark"] .q-figure img { background: #f2efe9; }
+:root[data-theme="dark"] .q-source-image { background: oklch(95% 0.01 85); }
 /* Sticky footer fade uses a literal paper rgba; match dark paper. */
 :root[data-theme="dark"] .actions {
   background: linear-gradient(to top, var(--paper) 70%, rgba(27, 26, 24, 0));
@@ -547,6 +875,7 @@ html, body {
 @media (max-width: 420px) {
   .theme-toggle-text { display: none; }
   .theme-toggle { padding: 7px 9px; }
+  .options.is-labels-only { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

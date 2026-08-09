@@ -90,7 +90,7 @@ Correct answer: イ`,
       { jp: "g < f < c < e < d < b < a", romaji: "g < f < c < e < d < b < a", en: "g < f < c < e < d < b < a" },
     ],
     correctAnswer: 1, // イ
-    imagePath: "public/questions/fe-2025-a/q03.png",
+    imagePath: "public/questions/fe-2025-a-public/q03.png",
     explanation: `ELI5:
 A binary search tree has one strict rule: for any node, every value in its left subtree is smaller than it, and every value in its right subtree is larger than it. This rule applies to every single node in the tree, not just the root.
 Look at the tree. Node a is the root. Node b is to the left of a, so b is smaller than a. Node c is to the right of a, so c is larger than a. Node d is to the left of b, so d is smaller than b. Node e is to the right of b, so e is larger than b but still smaller than a because e is in the left subtree of a. Node f is to the left of c, so f is larger than a but smaller than c. Node g is to the right of c, so g is larger than c.
@@ -204,9 +204,23 @@ Correct answer: ア`,
   {
     id: 6,
     number: "問6",
-    jp: "“商品”表に対するSQL文「SELECT * FROM 商品 WHERE 仕入先ID IN ('M002', 'M004')」と同じ結果が得られるSELECT文はどれか。",
-    romaji: "“Shouhin” hyou ni taisuru SQL bun “SELECT * FROM 商品 WHERE 仕入先ID IN ('M002', 'M004')” to onaji kekka ga erareru SELECT bun wa dore ka.",
-    en: "For the '商品' (Product) table, which SELECT statement gives the same result as: SELECT * FROM Product WHERE SupplierID IN ('M002', 'M004')?",
+    jp: "“商品”表に対するSQL文と同じ結果が得られるSELECT文はどれか。",
+    romaji: "“Shouhin” hyou ni taisuru SQL bun to onaji kekka ga erareru SELECT bun wa dore ka.",
+    en: "For the '商品' (Product) table, which SELECT statement gives the same result as the SQL statement below?",
+    supplementalHtml: `
+      <table class="exam-table">
+        <thead><tr><th>商品ID</th><th>商品名称</th><th>仕入先ID</th><th>単価</th></tr></thead>
+        <tbody>
+          <tr><td>S001</td><td>冷蔵庫</td><td>M001</td><td>155,000</td></tr>
+          <tr><td>S002</td><td>食器洗い機</td><td>M002</td><td>85,000</td></tr>
+          <tr><td>S003</td><td>電子レンジ</td><td>M003</td><td>78,000</td></tr>
+          <tr><td>S004</td><td>炊飯器</td><td>M003</td><td>32,000</td></tr>
+          <tr><td>S005</td><td>コーヒーメーカー</td><td>M004</td><td>15,000</td></tr>
+          <tr><td>S006</td><td>ホットプレート</td><td>M004</td><td>12,000</td></tr>
+        </tbody>
+      </table>
+      <p class="exam-label">〔SQL文〕</p>
+      <pre class="exam-sql">SELECT * FROM 商品 WHERE 仕入先ID IN ('M002', 'M004')</pre>`,
     options: [
       { jp: "SELECT * FROM 商品 WHERE 仕入先ID = 'M002' AND 仕入先ID = 'M004'", romaji: "SELECT * FROM 商品 WHERE 仕入先ID = 'M002' AND 仕入先ID = 'M004'", en: "SELECT * FROM Product WHERE SupplierID = 'M002' AND SupplierID = 'M004'" },
       { jp: "SELECT * FROM 商品 WHERE 仕入先ID = 'M002' INTERSECT SELECT * FROM 商品 WHERE 仕入先ID = 'M004'", romaji: "SELECT * FROM 商品 WHERE 仕入先ID = 'M002' INTERSECT SELECT * FROM 商品 WHERE 仕入先ID = 'M004'", en: "SELECT * FROM Product WHERE SupplierID = 'M002' INTERSECT SELECT * FROM Product WHERE SupplierID = 'M004'" },
@@ -560,7 +574,7 @@ Correct answer: エ`,
       { jp: "31", romaji: "31", en: "31" },
     ],
     correctAnswer: 3, // エ
-    imagePath: "public/questions/fe-2025-a/q14.png",
+    imagePath: "public/questions/fe-2025-a-public/q14.png",
     explanation: `ELI5:
 Imagine you are planning a road trip with several stops and some stops can only be visited after completing a previous one. The critical path is the longest chain of dependent stops. No matter how fast you drive between other stops, the total trip cannot be shorter than the time it takes to complete that longest chain. In project management the same logic applies. The shortest possible project duration is determined by the longest path through the network of dependent tasks, not by adding up all tasks or by finding the shortest route.
 Now look at the structure of this network. Some tasks can run in parallel. The key is to trace every possible path from start to finish, calculate the total duration of each path, and the longest one is the critical path. The project cannot finish any faster than that.
@@ -798,9 +812,19 @@ Correct answer: エ`,
   {
     id: 19,
     number: "問19",
-    jp: "表の条件で喫茶店を開業したい。月10万円の利益を出すためには，1客席当たり1日平均何人の客が必要か。条件：客1人当たりの売上高500円，変動費100円，固定費300,000円／月，営業日数20日，客席数10席。",
-    romaji: "Hyou no jouken de kissaten o kaigyou shitai. Tsuki juu-man en no rieki o dasu tame ni wa, ichi kyakuseki atari ichinichi heikin nan-nin no kyaku ga hitsuyou ka. Jouken: kyaku hitori atari no uriagedaka 500-en, hendouhi 100-en, koteihi 300,000-en / tsuki, eigyou nissuu 20-nichi, kyakuseki suu 10-seki.",
-    en: "You want to open a cafe under the conditions in the table. To make a profit of 100,000 yen per month, how many customers per seat per day on average are needed? Conditions: sales per customer 500 yen, variable cost 100 yen, fixed cost 300,000 yen/month, 20 business days, 10 seats.",
+    jp: "表の条件で喫茶店を開業したい。月10万円の利益を出すためには，1客席当たり1日平均何人の客が必要か。",
+    romaji: "Hyou no jouken de kissaten o kaigyou shitai. Tsuki juu-man en no rieki o dasu tame ni wa, ichi kyakuseki atari ichinichi heikin nan-nin no kyaku ga hitsuyou ka.",
+    en: "You want to open a cafe under the conditions in the table. To make a profit of 100,000 yen per month, how many customers per seat per day on average are needed?",
+    supplementalHtml: `
+      <table class="exam-table">
+        <tbody>
+          <tr><td>客1人当たりの売上高</td><td>500円</td></tr>
+          <tr><td>客1人当たりの変動費</td><td>100円</td></tr>
+          <tr><td>固定費</td><td>300,000円／月</td></tr>
+          <tr><td>1か月の営業日数</td><td>20日</td></tr>
+          <tr><td>客席数</td><td>10席</td></tr>
+        </tbody>
+      </table>`,
     options: [
       { jp: "3.75", romaji: "3.75", en: "3.75" },
       { jp: "4", romaji: "4", en: "4" },

@@ -1,0 +1,20 @@
+# FE Quiz API — Nginx location block (ADD-ONLY).
+#
+# Paste this single location block INTO the existing server { } block that already
+# serves your site. Do NOT create a new server block. Do NOT replace the config.
+#
+# Routes only /api/fe/ to the local FastAPI backend on 127.0.0.1:8010.
+# The trailing slash on both location and proxy_pass keeps the /api/fe/ prefix:
+#   request /api/fe/health  ->  http://127.0.0.1:8010/api/fe/health
+#
+# This must NOT collide with the existing downloader /api/ route. Because this
+# location is more specific (/api/fe/ vs /api/), Nginx prefix-matches it first.
+# Verify the existing downloader uses /api/ (not a regex) before relying on that.
+
+location /api/fe/ {
+    proxy_pass http://127.0.0.1:8010/api/fe/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
