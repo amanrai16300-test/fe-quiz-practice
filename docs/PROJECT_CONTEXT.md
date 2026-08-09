@@ -925,3 +925,63 @@ Verification:
 
 Next planned scope is **Textbook Practice — Book 1 / Phase 3**. Phase 2B does not
 add textbook content, navigation, progress, or APIs.
+
+## Phase 3A Textbook Book 1 Chapter 1 Practice Set 1 Checkpoint
+
+Phase 3A adds the first real textbook vertical slice without creating another quiz
+controller, route family, progress system, or relational catalog.
+
+Catalog and navigation:
+- **Textbook Practice — Book 1** is enabled on the Study Hub; Book 2 remains visible
+  and unavailable.
+- Book 1 opens a declarative catalog screen with overall progress and **Chapter 1**.
+- Chapter 1 contains available **Practice Set 1** and unavailable **Practice Set 2 / Coming Soon**.
+- Navigation is Study Hub → Book 1 → Chapter 1 → Practice Set 1 → shared quiz, and
+  the configured Back destinations reverse that path.
+- Only available descendant sets contribute to totals. Book, chapter, and action
+  states are derived from submitted question progress: 0 = Start, 1–5 = Continue,
+  and 6 = Review. No duplicate progress counters are stored.
+
+Question set and presentation:
+- Generic internal ID: `book1-ch01-set01`.
+- Seed: `seed/book1-ch01-set01.json`, using the existing A/B envelope and importer.
+- Six contiguous internal numbers use generic optional display numbers `1-1` through
+  `1-6`; the question header and navigator render those identities. Past Exam display
+  numbering is unchanged.
+- All six questions are image-first, explicitly `labels-only`, with explicit labels
+  `ア`, `イ`, `ウ`, `エ`. Source paths are
+  `public/questions/book1/ch01/set01/q01.png` through `q06.png` in printed order.
+- Japanese transcriptions remain structured data. Default question/option Japanese
+  wording is not duplicated below the image; collapsed Language Help shows Romaji
+  and English by explicit label when opened.
+- Verified answer key: `1-1 エ`, `1-2 ア`, `1-3 イ`, `1-4 ウ`, `1-5 ア`, `1-6 ア`.
+- Every explanation contains ELI5, technical breakdown, analysis for every wrong
+  label, and the correct answer. Shared textbook policy expands explanations after
+  both correct and wrong submissions. Past Exam correct/wrong defaults are unchanged.
+
+Import/API/storage:
+- The generic importer validates optional unique display numbers, non-empty real
+  explanations, source paths beneath `public/questions`, and referenced file
+  existence. Existing A/B seeds remain valid.
+- Optional `displayNumber` is stored additively in the existing `questions.body`
+  JSONB and flattened additively by the existing questions endpoint.
+- The PostgreSQL schema is unchanged. Progress remains isolated by `exam_set_id`,
+  selections remain Japanese labels, and the existing GET/POST/DELETE, resume,
+  reset, and sync paths are reused.
+
+Verification:
+- JavaScript syntax, Python compile, Book 1/A/B seed validation, content-contract
+  assertions, source-file checks, and whitespace checks passed locally.
+- Headless Chrome fixture checks passed for catalog/reverse navigation, all six
+  display numbers and images, labels-only duplication removal, Language Help label
+  mapping, textbook correct/wrong explanation expansion, resume, Start/Continue/Review,
+  book/chapter rollups, reset isolation, Past Exam explanation policy, 科目B 4/6/7/10
+  option support, lightbox Escape, dark-mode image non-inversion, 320/390/desktop
+  overflow, and zero runtime errors.
+- No live API, database import, deployment, Nginx, systemd, or production check was performed.
+
+Deployment requires copying the frontend changes and six PNG assets, deploying the
+additive FastAPI adapter, copying/importing `seed/book1-ch01-set01.json` with the
+existing importer, and restarting the API service. No migration is required.
+
+Next recommended work: **Chapter 1 Practice Set 2 / Phase 3B**.

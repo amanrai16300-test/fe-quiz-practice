@@ -59,7 +59,8 @@ html, body {
 
 /* ---- Study Hub / Past Exam browser ---- */
 .study-hub,
-.past-exams {
+.past-exams,
+.catalog-browser {
   max-width: 720px;
   margin: 0 auto;
   min-height: 100vh;
@@ -100,6 +101,36 @@ html, body {
 }
 .home-status:empty { display: none; }
 .paper-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.catalog-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.catalog-progress {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+.catalog-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.catalog-card.is-disabled { opacity: 0.62; }
+.catalog-card-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.catalog-card-title { margin: 0; font-size: 1.08rem; }
+.catalog-card-status {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.catalog-card-meta { margin: 8px 0 14px; color: var(--muted); }
+.catalog-card .btn { width: 100%; }
+.catalog-card .catalog-reset { margin-top: 8px; }
 
 /* Three top-level study sources. Cards share one component vocabulary; source
    markers provide restrained identity without turning them into separate themes. */
@@ -962,7 +993,8 @@ body.lightbox-open { overflow: hidden; }
 @media (max-width: 380px) {
   .app,
   .study-hub,
-  .past-exams { padding-left: calc(env(safe-area-inset-left) + 14px); padding-right: calc(env(safe-area-inset-right) + 14px); }
+  .past-exams,
+  .catalog-browser { padding-left: calc(env(safe-area-inset-left) + 14px); padding-right: calc(env(safe-area-inset-right) + 14px); }
   .trans-row { flex-direction: column; gap: 4px; }
   .trans-tag { flex-basis: auto; }
 }

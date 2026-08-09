@@ -53,9 +53,21 @@
     <ul class="paper-list" id="paperList"></ul>
   </main>
 
+  <!-- Generic catalog browser: reused for books, chapters, and later catalog nodes. -->
+  <main class="catalog-browser" id="catalogBrowser" hidden>
+    <header class="home-header">
+      <button class="back-btn" id="catalogBackBtn" type="button">← Study Hub</button>
+      <p class="screen-kicker" id="catalogKicker">FE Study</p>
+      <h1 class="home-title" id="catalogTitle"></h1>
+      <p class="home-sub" id="catalogSubtitle"></p>
+      <p class="catalog-progress" id="catalogProgress" aria-live="polite"></p>
+    </header>
+    <ul class="catalog-list" id="catalogList"></ul>
+  </main>
+
   <div class="app" id="quizApp" hidden>
     <header class="app-header">
-      <button class="back-btn" id="backBtn" type="button">← 過去問題 / Past Exams</button>
+      <button class="back-btn" id="backBtn" type="button">← Back</button>
       <p class="exam-set" id="examSet"></p>
       <h1 class="exam-title" id="examTitle"></h1>
     </header>

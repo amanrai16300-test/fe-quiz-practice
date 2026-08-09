@@ -8,6 +8,13 @@ const els = {
   pastExams: document.getElementById("pastExams"),
   studyHubBackBtn: document.getElementById("studyHubBackBtn"),
   paperList: document.getElementById("paperList"),
+  catalogBrowser: document.getElementById("catalogBrowser"),
+  catalogBackBtn: document.getElementById("catalogBackBtn"),
+  catalogKicker: document.getElementById("catalogKicker"),
+  catalogTitle: document.getElementById("catalogTitle"),
+  catalogSubtitle: document.getElementById("catalogSubtitle"),
+  catalogProgress: document.getElementById("catalogProgress"),
+  catalogList: document.getElementById("catalogList"),
   quizApp: document.getElementById("quizApp"),
   backBtn: document.getElementById("backBtn"),
   examSet: document.getElementById("examSet"),
@@ -61,9 +68,14 @@ let warnedAboutLegacyLabels = false;
 
 function normalizeQuestion(raw, { sourceName = "question source", supplementalHtml } = {}) {
   const numberValue = raw.number ?? raw.id;
-  const displayNumber = typeof numberValue === "string" && numberValue.startsWith("問")
-    ? numberValue
-    : `問${numberValue}`;
+  const authoredDisplayNumber = typeof raw.displayNumber === "string"
+    ? raw.displayNumber.trim()
+    : "";
+  const displayNumber = authoredDisplayNumber || (
+    typeof numberValue === "string" && numberValue.startsWith("問")
+      ? numberValue
+      : `問${numberValue}`
+  );
 
   const sourceImageValues = Array.isArray(raw.sourceImages)
     ? raw.sourceImages
@@ -155,7 +167,8 @@ function normalizeQuestion(raw, { sourceName = "question source", supplementalHt
 
   return {
     id: raw.id ?? numberValue,
-    number: displayNumber,
+    number: numberValue,
+    displayNumber,
     sourceImages,
     optionDisplayMode,
     optionLabels,
@@ -201,6 +214,7 @@ const QUIZ_CONTEXT_POLICIES = Object.freeze({
 let activeQuizContext = {
   ...QUIZ_CONTEXT_POLICIES.pastExam,
   imageContainsQuestionText: false,
+  parentView: "past-exams",
 };
 
 const state = {
@@ -315,7 +329,7 @@ function renderSourceImages(question) {
     enlarge.textContent = "⤢ Enlarge image";
     enlarge.setAttribute(
       "aria-label",
-      `Enlarge ${question.number} image ${index + 1} of ${question.sourceImages.length}`
+      `Enlarge ${question.displayNumber} image ${index + 1} of ${question.sourceImages.length}`
     );
     enlarge.hidden = true;
     enlarge.addEventListener("click", () =>
@@ -383,8 +397,8 @@ function render() {
   localStorage.setItem(ACTIVE_INDEX_STORAGE, String(state.index));
 
   // Header.
-  els.examSet.textContent = QUIZ.examSet;
-  els.examTitle.textContent = QUIZ.year;
+  els.examSet.textContent = activeQuizContext.breadcrumb || QUIZ.examSet;
+  els.examTitle.textContent = activeQuizContext.title || QUIZ.year;
 
   // Progress.
   const total = QUIZ.questions.length;
@@ -400,7 +414,7 @@ function render() {
   });
 
   // Question.
-  els.qNumber.textContent = q.number;
+  els.qNumber.textContent = q.displayNumber;
   const isImageFirstLabels = q.optionDisplayMode === "labels-only" && q.sourceImages.length > 0;
   els.qText.textContent = q.questionTranslation.japanese;
   els.qText.hidden = isImageFirstLabels || !q.questionTranslation.japanese;
@@ -520,7 +534,7 @@ function selectOption(label) {
   if (state.submitted) return;
   const q = currentQuestion();
   if (!q.optionLabels.includes(label)) {
-    console.error(`${q.number}: ignored unknown option label "${label}"`);
+    console.error(`${q.displayNumber}: ignored unknown option label "${label}"`);
     return;
   }
   state.selected = label;
@@ -592,6 +606,10 @@ function submit() {
     isCorrect: isRight,
   };
   state.furthest = Math.max(state.furthest, state.index);
+  catalogProgressCache.set(
+    state.paperId,
+    Object.values(paperStore()).filter((answer) => answer.submitted).length
+  );
   updateSummary();
   saveProgress(); // fire-and-forget backend sync
 }
@@ -690,7 +708,7 @@ function buildQNav() {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "qnav-chip";
-    btn.textContent = q.number;
+    btn.textContent = q.displayNumber;
     btn.addEventListener("click", () => {
       state.index = i;
       render();
@@ -711,8 +729,8 @@ els.explanationToggle.addEventListener("click", () => {
 els.submitBtn.addEventListener("click", submit);
 els.nextBtn.addEventListener("click", next);
 
-// Phase 1 study-source catalog. Only Past Exams opens real content; textbook
-// sources establish the product hierarchy without inventing chapters/questions.
+// Top-level source catalog. Each enabled source declares a destination; source
+// cards do not contain quiz-controller behavior.
 const STUDY_SOURCES = [
   {
     id: "past-exams",
@@ -722,6 +740,8 @@ const STUDY_SOURCES = [
     japaneseTitle: "過去問題",
     description: "Practice official FE questions by year and exam section.",
     available: true,
+    view: "past-exams",
+    actionLabel: "Open Past Exams",
   },
   {
     id: "textbook-1",
@@ -729,8 +749,10 @@ const STUDY_SOURCES = [
     tone: "book-one",
     title: "Textbook Practice — Book 1",
     japaneseTitle: "テキスト演習 1",
-    description: "Textbook practice content is being prepared.",
-    available: false,
+    description: "Practice Book 1 by chapter and practice set.",
+    available: true,
+    view: "textbook-1",
+    actionLabel: "Open Book 1",
   },
   {
     id: "textbook-2",
@@ -758,6 +780,10 @@ const EXAM_SETS = [
     quiz: LOCAL_QUIZ_FALLBACK, // immutable normalized questions.js fallback
     contextPolicy: "pastExam",
     imageContainsQuestionText: false,
+    breadcrumb: "Past Exam Questions › 2025 › 科目A",
+    quizTitle: EXAM_YEAR,
+    parentView: "past-exams",
+    backLabel: "← 過去問題 / Past Exams",
     available: true,
   },
   {
@@ -769,9 +795,71 @@ const EXAM_SETS = [
     quiz: null,          // API-only: no questions.js fallback. Must load from Oracle.
     contextPolicy: "pastExam",
     imageContainsQuestionText: true,
+    breadcrumb: "Past Exam Questions › 2025 › 科目B",
+    quizTitle: EXAM_YEAR,
+    parentView: "past-exams",
+    backLabel: "← 過去問題 / Past Exams",
     available: true,
   },
 ];
+
+// Generic catalog tree. Collection nodes aggregate only available descendant
+// question sets; unavailable nodes contribute zero questions and no progress.
+const CATALOG_NODES = [
+  {
+    id: "textbook-1",
+    kind: "collection",
+    kicker: "FE Study",
+    title: "Textbook Practice — Book 1",
+    subtitle: "Choose a chapter.",
+    progressLabel: "Overall progress",
+    parentView: "hub",
+    children: ["book1-ch01"],
+  },
+  {
+    id: "book1-ch01",
+    kind: "collection",
+    kicker: "Textbook Practice — Book 1",
+    title: "Chapter 1",
+    subtitle: "Choose a practice set.",
+    progressLabel: "Progress",
+    parentView: "textbook-1",
+    children: ["book1-ch01-set01", "book1-ch01-set02"],
+  },
+  {
+    id: "book1-ch01-set01",
+    kind: "set",
+    title: "Practice Set 1",
+    description: "6 questions",
+    parentView: "book1-ch01",
+    set: {
+      id: "book1-ch01-set01",
+      section: "Practice Set 1",
+      desc: "Textbook Practice — Book 1, Chapter 1, Practice Set 1",
+      questionCount: 6,
+      quiz: null,
+      contextPolicy: "textbook",
+      imageContainsQuestionText: true,
+      breadcrumb: "Textbook Practice — Book 1 › Chapter 1 › Practice Set 1",
+      quizTitle: "Practice Set 1",
+      parentView: "book1-ch01",
+      backLabel: "← Chapter 1",
+      available: true,
+    },
+  },
+  {
+    id: "book1-ch01-set02",
+    kind: "unavailable",
+    title: "Practice Set 2",
+    description: "Coming Soon",
+    parentView: "book1-ch01",
+  },
+];
+const CATALOG_NODE_BY_ID = new Map(CATALOG_NODES.map((node) => [node.id, node]));
+const TEXTBOOK_SETS = CATALOG_NODES.filter((node) => node.kind === "set").map((node) => node.set);
+const ALL_QUESTION_SETS = [...EXAM_SETS, ...TEXTBOOK_SETS];
+const catalogProgressCache = new Map();
+let currentCatalogNodeId = null;
 
 // Minimal reload view-state: which paper is open in practice mode, if any.
 // Set on Start Practice, cleared on Back to home. Read on init to reopen.
@@ -791,6 +879,7 @@ function showStudyHub() {
   clearActiveQuizViewState();
   els.quizApp.hidden = true;
   els.pastExams.hidden = true;
+  els.catalogBrowser.hidden = true;
   els.studyHub.hidden = false;
   window.scrollTo({ top: 0 });
 }
@@ -800,8 +889,135 @@ function showPastExams({ preserveStatus = false } = {}) {
   if (!preserveStatus) setSourceStatus("");
   els.quizApp.hidden = true;
   els.studyHub.hidden = true;
+  els.catalogBrowser.hidden = true;
   els.pastExams.hidden = false;
   window.scrollTo({ top: 0 });
+}
+
+function descendantSets(node) {
+  if (!node) return [];
+  if (node.kind === "set" && node.set.available) return [node.set];
+  const found = (node.children || []).flatMap((id) => descendantSets(CATALOG_NODE_BY_ID.get(id)));
+  return [...new Map(found.map((set) => [set.id, set])).values()];
+}
+
+function localSubmittedCount(setId) {
+  if (!Object.prototype.hasOwnProperty.call(answers, setId)) return null;
+  return Object.values(answers[setId]).filter((answer) => answer.submitted).length;
+}
+
+async function submittedCount(set) {
+  const localCount = localSubmittedCount(set.id);
+  if (localCount !== null) {
+    catalogProgressCache.set(set.id, localCount);
+    return localCount;
+  }
+  if (catalogProgressCache.has(set.id)) return catalogProgressCache.get(set.id);
+  try {
+    const res = await fetch(progressUrl(set.id), {
+      headers: { Accept: "application/json", "X-FE-User-Key": getUserKey() },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const count = (data.items || []).filter((item) => item.submitted || item.selected_answer).length;
+    catalogProgressCache.set(set.id, count);
+    return count;
+  } catch {
+    return 0;
+  }
+}
+
+async function nodeProgress(node) {
+  const sets = descendantSets(node);
+  const counts = await Promise.all(sets.map((set) => submittedCount(set)));
+  return {
+    submitted: counts.reduce((sum, count) => sum + count, 0),
+    total: sets.reduce((sum, set) => sum + set.questionCount, 0),
+  };
+}
+
+function progressAction({ submitted, total }) {
+  if (total > 0 && submitted >= total) return "Review";
+  if (submitted > 0) return "Continue";
+  return "Start";
+}
+
+async function buildCatalogCard(node) {
+  const item = document.createElement("li");
+  const card = document.createElement("article");
+  const unavailable = node.kind === "unavailable";
+  card.className = `catalog-card${unavailable ? " is-disabled" : ""}`;
+
+  const header = document.createElement("div");
+  header.className = "catalog-card-head";
+  const title = document.createElement("h2");
+  title.className = "catalog-card-title";
+  title.textContent = node.title;
+  const status = document.createElement("span");
+  status.className = "catalog-card-status";
+  status.textContent = unavailable ? "Coming Soon" : "Available";
+  header.append(title, status);
+
+  const meta = document.createElement("p");
+  meta.className = "catalog-card-meta";
+  const action = document.createElement("button");
+  action.type = "button";
+  action.className = `btn ${unavailable ? "btn-secondary" : "btn-primary"}`;
+
+  if (unavailable) {
+    meta.textContent = node.description;
+    action.textContent = "Coming Soon";
+    action.disabled = true;
+  } else {
+    const progress = await nodeProgress(node);
+    const questionText = `${progress.total} questions`;
+    meta.textContent = `${questionText} · Progress: ${progress.submitted} / ${progress.total}`;
+    action.textContent = progressAction(progress);
+    if (node.kind === "set") action.addEventListener("click", () => startPaper(node.set));
+    else action.addEventListener("click", () => showCatalogNode(node.id));
+  }
+
+  card.append(header, meta, action);
+  if (node.kind === "set") {
+    const reset = document.createElement("button");
+    reset.type = "button";
+    reset.className = "btn btn-reset catalog-reset";
+    reset.textContent = "Reset progress";
+    reset.addEventListener("click", () => resetProgress(node.set.id));
+    card.appendChild(reset);
+  }
+  item.appendChild(card);
+  return item;
+}
+
+async function showCatalogNode(nodeId) {
+  const node = CATALOG_NODE_BY_ID.get(nodeId);
+  if (!node || node.kind !== "collection") return showStudyHub();
+  currentCatalogNodeId = nodeId;
+  clearActiveQuizViewState();
+  els.quizApp.hidden = true;
+  els.studyHub.hidden = true;
+  els.pastExams.hidden = true;
+  els.catalogBrowser.hidden = false;
+  els.catalogKicker.textContent = node.kicker;
+  els.catalogTitle.textContent = node.title;
+  els.catalogSubtitle.textContent = node.subtitle;
+  els.catalogBackBtn.textContent = node.parentView === "hub" ? "← Study Hub" : "← Back";
+  els.catalogBackBtn.onclick = () => navigateTo(node.parentView);
+  els.catalogProgress.textContent = "Loading progress…";
+  els.catalogList.innerHTML = "";
+
+  const progress = await nodeProgress(node);
+  els.catalogProgress.textContent = `${node.progressLabel}: ${progress.submitted} / ${progress.total}`;
+  const cards = await Promise.all((node.children || []).map((id) => buildCatalogCard(CATALOG_NODE_BY_ID.get(id))));
+  els.catalogList.replaceChildren(...cards);
+  window.scrollTo({ top: 0 });
+}
+
+function navigateTo(viewId, options = {}) {
+  if (viewId === "hub") return showStudyHub();
+  if (viewId === "past-exams") return showPastExams(options);
+  return showCatalogNode(viewId);
 }
 
 async function startPaper(paper, { reopen = false } = {}) {
@@ -810,7 +1026,11 @@ async function startPaper(paper, { reopen = false } = {}) {
   activeQuizContext = {
     ...(QUIZ_CONTEXT_POLICIES[paper.contextPolicy] || QUIZ_CONTEXT_POLICIES.pastExam),
     imageContainsQuestionText: !!paper.imageContainsQuestionText,
+    breadcrumb: paper.breadcrumb || "",
+    title: paper.quizTitle || paper.section,
+    parentView: paper.parentView || "past-exams",
   };
+  els.backBtn.textContent = paper.backLabel || "← Back";
 
   localStorage.setItem(ACTIVE_PAPER_STORAGE, paper.id);
 
@@ -823,8 +1043,10 @@ async function startPaper(paper, { reopen = false } = {}) {
     // through to another paper's data — return to Past Exams with a clear message.
     localStorage.removeItem(ACTIVE_PAPER_STORAGE);
     localStorage.removeItem(ACTIVE_INDEX_STORAGE);
-    setSourceStatus(`${paper.section} を読み込めませんでした。あとでもう一度お試しください。/ Could not load questions; please try again later.`);
-    showPastExams({ preserveStatus: true });
+    const message = `${paper.section} を読み込めませんでした。あとでもう一度お試しください。/ Could not load questions; please try again later.`;
+    setSourceStatus(message);
+    await navigateTo(paper.parentView || "past-exams", { preserveStatus: true });
+    if (!els.catalogBrowser.hidden) els.catalogProgress.textContent = message;
     return;
   }
   const backendHasIndex = await loadProgress(paper.id);
@@ -851,6 +1073,7 @@ async function startPaper(paper, { reopen = false } = {}) {
 
   els.studyHub.hidden = true;
   els.pastExams.hidden = true;
+  els.catalogBrowser.hidden = true;
   els.quizApp.hidden = false;
   render();
   window.scrollTo({ top: 0 });
@@ -899,8 +1122,8 @@ function buildStudyHub() {
     action.type = "button";
     action.className = `btn source-action${source.available ? " btn-primary" : " btn-secondary"}`;
     if (source.available) {
-      action.textContent = "Open Past Exams";
-      action.addEventListener("click", showPastExams);
+      action.textContent = source.actionLabel;
+      action.addEventListener("click", () => navigateTo(source.view));
     } else {
       action.textContent = "Coming soon";
       action.disabled = true;
@@ -1006,7 +1229,7 @@ function buildSectionCard(paper) {
 }
 
 els.studyHubBackBtn.addEventListener("click", showStudyHub);
-els.backBtn.addEventListener("click", showPastExams);
+els.backBtn.addEventListener("click", () => navigateTo(activeQuizContext.parentView));
 
 // Light/dark theme — flip one data-attr on <html>; CSS tokens do the rest.
 // Persisted in localStorage so reload keeps the choice (home and practice screens).
@@ -1128,6 +1351,7 @@ async function applySyncCode() {
   els.syncCodeStatus.textContent = "Loading…";
   // Drop any progress from the previous identity, then reload for this code.
   for (const k of Object.keys(answers)) delete answers[k];
+  catalogProgressCache.clear();
   state.index = 0;
   state.furthest = 0;
   // Reload progress for whichever paper is currently open (if any).
@@ -1177,6 +1401,10 @@ async function loadProgress(examSetId) {
     });
     state.index = Math.min(data.current_question_index ?? 0, QUIZ.questions.length - 1);
     state.furthest = Math.max(state.furthest, data.furthest_question_index ?? 0);
+    catalogProgressCache.set(
+      examSetId,
+      Object.values(store).filter((answer) => answer.submitted).length
+    );
     setSyncStatus("Synced");
     // Backend is the source of truth for the current question when reachable.
     return data.current_question_index != null;
@@ -1235,6 +1463,7 @@ async function resetProgress(examSetId) {
   // Local: clear in-memory answers for THIS paper only.
   delete answers[examSetId];
   delete explanationStates[examSetId];
+  catalogProgressCache.delete(examSetId);
 
   // Local: clear viewed/active state only if this is the paper currently open.
   if (localStorage.getItem(ACTIVE_PAPER_STORAGE) === examSetId) {
@@ -1244,6 +1473,9 @@ async function resetProgress(examSetId) {
     state.index = 0;
     state.furthest = 0;
     if (!els.quizApp.hidden) render(); // open paper → redraw fresh at 問1
+  }
+  if (!els.catalogBrowser.hidden && currentCatalogNodeId) {
+    await showCatalogNode(currentCatalogNodeId);
   }
 }
 
@@ -1265,7 +1497,7 @@ async function init() {
   // startPaper() handles loading questions/progress and resolving the viewed index
   // (local mirror → backend → Q1). Disabled/unknown saved ids are ignored.
   const activeId = localStorage.getItem(ACTIVE_PAPER_STORAGE);
-  const paper = activeId && EXAM_SETS.find((p) => p.id === activeId && p.available);
+  const paper = activeId && ALL_QUESTION_SETS.find((p) => p.id === activeId && p.available);
   if (paper) {
     await startPaper(paper, { reopen: true });
   } else {

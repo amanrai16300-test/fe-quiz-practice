@@ -53,10 +53,19 @@ function validate(seed) {
   const PLACEHOLDER =
     "TODO: Add manual explanation in this format:\nELI5:\nTechnical breakdown:\nWrong answer analysis:\nCorrect answer: ___";
   const OPTION_MODES = new Set(["labels-only", "structured-text"]);
+  const displayNumbers = new Set();
+  const questionsRoot = path.resolve(ROOT, "public", "questions");
 
   qs.forEach((q, i) => {
     const tag = `Q${q.number}`;
     if (q.number !== i + 1) fail(`${tag}: numbers must be 1-${expected} in order (got ${q.number} at slot ${i})`);
+    if (q.displayNumber != null) {
+      if (typeof q.displayNumber !== "string" || !q.displayNumber.trim()) {
+        fail(`${tag}: displayNumber must be a non-empty string`);
+      }
+      if (displayNumbers.has(q.displayNumber.trim())) fail(`${tag}: displayNumber must be unique`);
+      displayNumbers.add(q.displayNumber.trim());
+    }
     if (!Array.isArray(q.options) || q.options.length < 1) fail(`${tag}: must have at least 1 option`);
     const labels = q.options.map((option) =>
       typeof option.label === "string" ? option.label.trim() : ""
@@ -67,11 +76,25 @@ function validate(seed) {
     if (q.optionMode != null && !OPTION_MODES.has(q.optionMode)) {
       fail(`${tag}: optionMode must be labels-only or structured-text`);
     }
-    const hasSourceImage = !!q.imagePath || (Array.isArray(q.imagePaths) && q.imagePaths.length > 0);
+    const sourcePaths = [q.imagePath, ...(Array.isArray(q.imagePaths) ? q.imagePaths : [])].filter(Boolean);
+    const hasSourceImage = sourcePaths.length > 0;
     if (q.optionMode === "labels-only" && !hasSourceImage) {
       fail(`${tag}: labels-only requires imagePath or imagePaths`);
     }
-    if (typeof q.explanation !== "string") fail(`${tag}: explanation missing`);
+    sourcePaths.forEach((sourcePath) => {
+      if (typeof sourcePath !== "string" || !sourcePath.trim()) fail(`${tag}: image path must be non-empty`);
+      const resolved = path.resolve(ROOT, sourcePath);
+      if (!resolved.startsWith(`${questionsRoot}${path.sep}`)) {
+        fail(`${tag}: image path must stay under public/questions`);
+      }
+      if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
+        fail(`${tag}: image file not found: ${sourcePath}`);
+      }
+    });
+    if (typeof q.explanation !== "string" || !q.explanation.trim()) fail(`${tag}: explanation missing`);
+    if (q.explanation === PLACEHOLDER && seed.exam_set.id !== "fe-2025-b-public") {
+      fail(`${tag}: placeholder explanation is not allowed`);
+    }
     // Strict: reject stray TODO, except the exact intentional placeholder.
     if (q.explanation !== PLACEHOLDER && /TODO/.test(q.explanation)) fail(`${tag}: explanation contains TODO`);
     // TODO must never leak into any other field (text/options/answer/html/images).
@@ -121,6 +144,7 @@ async function main() {
     for (const q of questions) {
       const body = { jp: q.jp, romaji: q.romaji, en: q.en };
       if (q.optionMode) body.optionMode = q.optionMode;
+      if (q.displayNumber) body.displayNumber = q.displayNumber;
       // supplementalHtml (科目B program blocks / tables) only when present.
       if (q.supplementalHtml) body.supplementalHtml = q.supplementalHtml;
       // imagePaths (科目B original exam crops) only when present.

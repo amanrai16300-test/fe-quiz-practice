@@ -1,0 +1,118 @@
+{
+  "exam_set": {
+    "id": "book1-ch01-set01",
+    "title": "Book 1 — Chapter 1 — Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 1, Practice Set 1",
+    "question_count": 6
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "1-1",
+      "optionMode": "labels-only",
+      "jp": "32ビットで表現できるビットパターンの個数は、24ビットで表現できる個数の何倍か。",
+      "romaji": "32-bitto de hyougen dekiru bitto pataan no kosuu wa, 24-bitto de hyougen dekiru kosuu no nanbai ka.",
+      "en": "How many times as many bit patterns can be represented with 32 bits as with 24 bits?",
+      "options": [
+        { "label": "ア", "jp": "8", "romaji": "8", "en": "8" },
+        { "label": "イ", "jp": "16", "romaji": "16", "en": "16" },
+        { "label": "ウ", "jp": "128", "romaji": "128", "en": "128" },
+        { "label": "エ", "jp": "256", "romaji": "256", "en": "256" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nEach extra bit doubles the number of patterns. Moving from 24 bits to 32 bits adds eight doubling steps, so the larger space has 256 times as many patterns.\nTechnical breakdown:\nAn n-bit value has 2^n possible bit patterns. The ratio is 2^32 / 2^24 = 2^(32-24) = 2^8 = 256.\nWrong answer analysis:\nア — 8 is the number of extra bits, but each extra bit doubles the count; the ratio is not the bit difference itself.\nイ — 16 equals 2^4, so it accounts for only four of the eight extra bits.\nウ — 128 equals 2^7, which is one doubling short.\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch01/set01/q01.png"],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "1-2",
+      "optionMode": "labels-only",
+      "jp": "次の10進小数のうち、2進数で表すと無限小数になるものはどれか。",
+      "romaji": "Tsugi no juu-shin shousuu no uchi, ni-shinsuu de arawasu to mugen shousuu ni naru mono wa dore ka.",
+      "en": "Which of the following decimal fractions becomes non-terminating when represented in binary?",
+      "options": [
+        { "label": "ア", "jp": "0.05", "romaji": "0.05", "en": "0.05" },
+        { "label": "イ", "jp": "0.125", "romaji": "0.125", "en": "0.125" },
+        { "label": "ウ", "jp": "0.375", "romaji": "0.375", "en": "0.375" },
+        { "label": "エ", "jp": "0.5", "romaji": "0.5", "en": "0.5" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nBinary can finish cleanly only when a fraction can be built from halves, quarters, eighths, and other powers of two. The fraction 0.05 needs a factor of five, so its binary digits repeat forever.\nTechnical breakdown:\nIn lowest terms, a rational number terminates in base 2 only when its denominator is a power of 2. Here 0.05 = 1/20 and 20 = 2^2 × 5, so the factor 5 makes the binary expansion non-terminating.\nWrong answer analysis:\nイ — 0.125 = 1/8 = 1/2^3, so it terminates in binary.\nウ — 0.375 = 3/8, whose reduced denominator is 2^3, so it terminates in binary.\nエ — 0.5 = 1/2, so its binary form is exactly 0.1.\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch01/set01/q02.png"],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "1-3",
+      "optionMode": "labels-only",
+      "jp": "16進小数3A.5Cを10進数の分数で表したものはどれか。",
+      "romaji": "Juuroku-shin shousuu 3A.5C o juu-shinsuu no bunsuu de arawashita mono wa dore ka.",
+      "en": "Which of the following expresses the hexadecimal fraction 3A.5C as a base-10 fraction?",
+      "options": [
+        { "label": "ア", "jp": "939/16", "romaji": "939/16", "en": "939/16" },
+        { "label": "イ", "jp": "3735/64", "romaji": "3735/64", "en": "3735/64" },
+        { "label": "ウ", "jp": "14939/256", "romaji": "14939/256", "en": "14939/256" },
+        { "label": "エ", "jp": "14941/256", "romaji": "14941/256", "en": "14941/256" }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nHexadecimal places use powers of 16. Convert each place, add the values, then reduce the resulting fraction.\nTechnical breakdown:\n3A.5C(hex) = 3×16 + 10 + 5/16 + 12/256 = 58 + 92/256 = 14940/256. Dividing numerator and denominator by 4 gives 3735/64.\nWrong answer analysis:\nア — 939/16 equals 58.6875, but 3A.5C equals 58.359375; the fractional hexadecimal places were combined incorrectly.\nウ — 14939/256 is one numerator unit below the unreduced value 14940/256.\nエ — 14941/256 is one numerator unit above the unreduced value 14940/256.\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch01/set01/q03.png"],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "1-4",
+      "optionMode": "labels-only",
+      "jp": "次の10進小数のうち、8進数に変換したときに有限小数になるものはどれか。",
+      "romaji": "Tsugi no juu-shin shousuu no uchi, hachi-shinsuu ni henkan shita toki ni yuugen shousuu ni naru mono wa dore ka.",
+      "en": "Which of the following decimal fractions becomes a terminating fraction when converted to octal?",
+      "options": [
+        { "label": "ア", "jp": "0.3", "romaji": "0.3", "en": "0.3" },
+        { "label": "イ", "jp": "0.4", "romaji": "0.4", "en": "0.4" },
+        { "label": "ウ", "jp": "0.5", "romaji": "0.5", "en": "0.5" },
+        { "label": "エ", "jp": "0.8", "romaji": "0.8", "en": "0.8" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nOctal is built from powers of two because 8 = 2^3. Fractions made only from halves can end cleanly in octal; 0.5 is exactly one half.\nTechnical breakdown:\nA reduced fraction terminates in base 8 only when its denominator has no prime factors outside those of 8, so only factor 2 is allowed. 0.5 = 1/2 and therefore terminates.\nWrong answer analysis:\nア — 0.3 = 3/10, and denominator 10 contains factor 5, so its octal expansion repeats.\nイ — 0.4 = 2/5, whose denominator contains factor 5, so it does not terminate in octal.\nエ — 0.8 = 4/5, whose denominator contains factor 5, so it does not terminate in octal.\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch01/set01/q04.png"],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "1-5",
+      "optionMode": "labels-only",
+      "jp": "基数変換に関する記述のうち、適切なものはどれか。",
+      "romaji": "Kisuu henkan ni kansuru kijutsu no uchi, tekisetsu na mono wa dore ka.",
+      "en": "Which statement about radix/base conversion is correct?",
+      "options": [
+        { "label": "ア", "jp": "2進数の有限小数は、10進数にしても必ず有限小数になる。", "romaji": "Ni-shinsuu no yuugen shousuu wa, juu-shinsuu ni shite mo kanarazu yuugen shousuu ni naru.", "en": "A terminating binary fraction always remains terminating when converted to decimal." },
+        { "label": "イ", "jp": "8進数の有限小数は、2進数にすると有限小数にならないこともある。", "romaji": "Hachi-shinsuu no yuugen shousuu wa, ni-shinsuu ni suru to yuugen shousuu ni naranai koto mo aru.", "en": "A terminating octal fraction may become non-terminating when converted to binary." },
+        { "label": "ウ", "jp": "8進数の有限小数は、10進数にすると有限小数にならないこともある。", "romaji": "Hachi-shinsuu no yuugen shousuu wa, juu-shinsuu ni suru to yuugen shousuu ni naranai koto mo aru.", "en": "A terminating octal fraction may become non-terminating when converted to decimal." },
+        { "label": "エ", "jp": "10進数の有限小数は、8進数にしても必ず有限小数になる。", "romaji": "Juu-shinsuu no yuugen shousuu wa, hachi-shinsuu ni shite mo kanarazu yuugen shousuu ni naru.", "en": "A terminating decimal fraction always remains terminating when converted to octal." }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA finite binary fraction is assembled from halves. Decimal notation can always write halves exactly, so a terminating binary fraction also terminates in decimal.\nTechnical breakdown:\nA terminating binary fraction has a reduced denominator 2^n. Because 10^n = 2^n×5^n, multiplying by a suitable power of 5 expresses that value with a denominator that is a power of 10. Therefore its decimal expansion terminates.\nWrong answer analysis:\nイ — One octal digit maps to exactly three binary digits, so every terminating octal fraction terminates in binary.\nウ — A terminating octal denominator is 8^n = 2^(3n); powers of two also produce terminating decimals.\nエ — A terminating decimal may have factor 5 in its reduced denominator, as 0.1 = 1/10 does; base 8 has no factor 5, so such a value repeats in octal.\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch01/set01/q05.png"],
+      "imagePath": null
+    },
+    {
+      "number": 6,
+      "displayNumber": "1-6",
+      "optionMode": "labels-only",
+      "jp": "16進小数2A.4Cと等しいものはどれか。",
+      "romaji": "Juuroku-shin shousuu 2A.4C to hitoshii mono wa dore ka.",
+      "en": "Which of the following is equal to the hexadecimal fraction 2A.4C?",
+      "options": [
+        { "label": "ア", "jp": "2^5 + 2^3 + 2^1 + 2^-2 + 2^-5 + 2^-6", "romaji": "2^5 + 2^3 + 2^1 + 2^-2 + 2^-5 + 2^-6", "en": "2^5 + 2^3 + 2^1 + 2^-2 + 2^-5 + 2^-6" },
+        { "label": "イ", "jp": "2^5 + 2^3 + 2^1 + 2^-1 + 2^-4 + 2^-5", "romaji": "2^5 + 2^3 + 2^1 + 2^-1 + 2^-4 + 2^-5", "en": "2^5 + 2^3 + 2^1 + 2^-1 + 2^-4 + 2^-5" },
+        { "label": "ウ", "jp": "2^6 + 2^4 + 2^2 + 2^-2 + 2^-5 + 2^-6", "romaji": "2^6 + 2^4 + 2^2 + 2^-2 + 2^-5 + 2^-6", "en": "2^6 + 2^4 + 2^2 + 2^-2 + 2^-5 + 2^-6" },
+        { "label": "エ", "jp": "2^6 + 2^4 + 2^2 + 2^-1 + 2^-4 + 2^-5", "romaji": "2^6 + 2^4 + 2^2 + 2^-1 + 2^-4 + 2^-5", "en": "2^6 + 2^4 + 2^2 + 2^-1 + 2^-4 + 2^-5" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nTurn each hexadecimal digit into four binary bits. The 1 bits tell us exactly which powers of two must be added.\nTechnical breakdown:\n2A.4C(hex) = 0010 1010.0100 1100(binary). Left of the point, the set bits are at 2^5, 2^3, and 2^1. Right of the point, they are at 2^-2, 2^-5, and 2^-6.\nWrong answer analysis:\nイ — Its fractional powers match binary .100110 rather than the required .01001100 positions; it incorrectly includes 2^-1, 2^-4, and 2^-5.\nウ — Its integer powers 2^6 + 2^4 + 2^2 describe hexadecimal 54 rather than 2A, although its fractional powers are correct.\nエ — Both parts are wrong: the integer powers describe 54 and the fractional powers use the incorrect positions from option イ.\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch01/set01/q06.png"],
+      "imagePath": null
+    }
+  ]
+}

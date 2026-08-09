@@ -105,6 +105,7 @@ def get_questions(exam_set_id: str):
                 "romaji": body.get("romaji"),
                 "en": body.get("en"),
                 "optionMode": body.get("optionMode"),
+                "displayNumber": body.get("displayNumber"),
                 # 科目B program blocks / tables; absent (None) for 科目A.
                 "supplementalHtml": body.get("supplementalHtml"),
                 # 科目B original exam crop images (list); absent (None) for 科目A.
