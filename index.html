@@ -81,19 +81,20 @@
         <div class="q-images" id="qImages" hidden></div>
         <div class="q-supplemental" id="qSupplemental" hidden></div>
 
-        <button class="translate-btn" id="translateBtn" type="button" aria-expanded="false">
-          🌐 翻訳を表示 / Show Translation
+        <button class="translate-btn" id="translateBtn" type="button" aria-expanded="false" aria-controls="translation">
+          <span>🌐 Language Help</span>
+          <span class="disclosure-icon" aria-hidden="true">⌄</span>
         </button>
 
-        <div class="translation" id="translation" hidden>
+        <div class="translation" id="translation" role="region" aria-labelledby="translateBtn" hidden>
           <div class="trans-section">
-            <p class="trans-heading">問題文 / Question</p>
-            <div class="trans-row"><span class="trans-tag">日本語</span><p id="transJa"></p></div>
+            <h3 class="trans-heading">Question</h3>
+            <div class="trans-row trans-japanese" id="transJaRow"><span class="trans-tag">Japanese</span><p id="transJa"></p></div>
             <div class="trans-row"><span class="trans-tag">Romaji</span><p id="transRomaji"></p></div>
             <div class="trans-row"><span class="trans-tag">English</span><p id="transEn"></p></div>
           </div>
           <div class="trans-section">
-            <p class="trans-heading">選択肢 / Options</p>
+            <h3 class="trans-heading">Options</h3>
             <div class="opt-trans-list" id="optionTrans"></div>
           </div>
         </div>
@@ -104,9 +105,13 @@
 
       <!-- Explanation (after submit) -->
       <section class="card explanation-card" id="explanationCard" hidden>
-        <p class="explanation-verdict" id="verdict"></p>
+        <p class="explanation-verdict" id="verdict" aria-live="polite"></p>
         <p class="explanation-answer" id="answerLine"></p>
-        <p class="explanation-body" id="explanationBody"></p>
+        <button class="explanation-toggle" id="explanationToggle" type="button" aria-expanded="false" aria-controls="explanationBody">
+          <span id="explanationToggleText">Review explanation</span>
+          <span class="disclosure-icon" aria-hidden="true">⌄</span>
+        </button>
+        <div class="explanation-body" id="explanationBody" tabindex="-1" hidden></div>
       </section>
     </main>
 
@@ -114,6 +119,21 @@
       <button class="btn btn-primary" id="submitBtn" type="button" disabled>解答する</button>
       <button class="btn btn-primary" id="nextBtn" type="button" hidden>次の問題 →</button>
     </footer>
+  </div>
+
+  <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" aria-describedby="lightboxPosition" hidden>
+    <div class="lightbox-dialog">
+      <header class="lightbox-header">
+        <div>
+          <h2 id="lightboxTitle">Question image</h2>
+          <p id="lightboxPosition"></p>
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button">Close</button>
+      </header>
+      <div class="lightbox-viewport" id="lightboxViewport" tabindex="0">
+        <img id="lightboxImage" alt="" />
+      </div>
+    </div>
   </div>
 
   <script src="questions.js"></script>

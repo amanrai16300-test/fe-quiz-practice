@@ -862,3 +862,66 @@ Phase 2B remains separate:
 - Refine Language Help UX and accessibility after real image assets with complete
   embedded answer groups are prepared and individually re-audited for
   `labels-only` eligibility.
+
+## Latest Image Viewer + Language Help + Explanation Phase 2B Checkpoint
+
+Phase 2B of `docs/STUDY_ARCHITECTURE_PRD.md` is implemented as a frontend-only
+presentation change. The Phase 2A normalized contract, answer identity, progress
+payloads, reset behavior, sync/auth boundary, backend, schema, seeds, and importer
+remain unchanged.
+
+Source-image presentation:
+- Every normalized `sourceImages[]` entry renders independently and in authored
+  order, with a stable loading panel while its image decodes.
+- The first image is eager/high-priority; later images retain browser-native lazy
+  loading. Successful images expose a native **Enlarge image** button.
+- A failed image shows a friendly inline message and **Retry** action. Failure never
+  hides or disables answer controls.
+- The presentation uses a neutral image canvas in light and dark themes. Source
+  pixels are not inverted, filtered, recolored, or upscaled in the question card.
+
+Accessible image viewer:
+- Enlarge opens a modal dialog with a restrained backdrop, source alt text, image
+  position, and a persistent **Close** button.
+- Close button, Escape, and backdrop activation close the viewer. Opening moves
+  focus into the dialog; Tab is trapped; closing returns focus to the exact opener.
+- Background scrolling is locked while open. The image viewport supports natural
+  two-axis scrolling and touch pan/pinch behavior, including narrow screens.
+- Multi-image questions keep independent openers and announce `Image N of M`.
+
+Language Help:
+- The secondary disclosure is named **🌐 Language Help**, starts collapsed on each
+  render, and exposes correct `aria-expanded` / `aria-controls` relationships.
+- Content is grouped under **Question** and **Options**, with explicit Japanese
+  option labels driving each option's Romaji and English help.
+- Japanese source data remains in the normalized model. Its large duplicate help
+  rows are visually omitted only when the selected paper declares that its source
+  image is the primary Japanese question text (currently 科目B). 科目A diagram-only
+  images keep the Japanese help row.
+
+Explanation disclosure policy:
+- The existing safe `renderExplanation()` content and section panels are reused.
+- Past-exam correct answers show **Review explanation** collapsed by default.
+- Past-exam wrong answers show **Understand why** expanded by default.
+- A separate UI-only disclosure store remembers the learner's choice when moving
+  away from and back to a submitted question. It does not alter answer/progress
+  state or wire payloads.
+- The declarative context policy includes an expanded-by-default textbook behavior
+  for future textbook sets without branching the explanation renderer by source ID.
+
+Verification:
+- `node --check app.js`, DOM-ID reference validation, and `git diff --check` passed.
+- Headless Edge interaction checks passed for 科目A and 科目B, including all eight
+  current source images, light/dark non-inversion, modal open/close paths, Escape,
+  focus trap/return, scroll lock, Language Help labeling/mapping, and correct/wrong
+  explanation defaults.
+- A controlled two-image fixture passed independent opening and source order.
+- A controlled missing-image fixture passed loading, friendly error, Retry, and
+  answer-control availability.
+- 320 px and 390 px embedded viewport runs reported no page-level horizontal
+  overflow, and a desktop lightbox screenshot received a visual QA pass.
+- No unexpected application runtime errors were reported. No live API, deployment,
+  Nginx, systemd, or production check was performed.
+
+Next planned scope is **Textbook Practice — Book 1 / Phase 3**. Phase 2B does not
+add textbook content, navigation, progress, or APIs.

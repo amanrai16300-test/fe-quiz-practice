@@ -25,6 +25,7 @@ const els = {
   qSupplemental: document.getElementById("qSupplemental"),
   translateBtn: document.getElementById("translateBtn"),
   translation: document.getElementById("translation"),
+  transJaRow: document.getElementById("transJaRow"),
   transJa: document.getElementById("transJa"),
   transRomaji: document.getElementById("transRomaji"),
   transEn: document.getElementById("transEn"),
@@ -34,7 +35,14 @@ const els = {
   explanationCard: document.getElementById("explanationCard"),
   verdict: document.getElementById("verdict"),
   answerLine: document.getElementById("answerLine"),
+  explanationToggle: document.getElementById("explanationToggle"),
+  explanationToggleText: document.getElementById("explanationToggleText"),
   explanationBody: document.getElementById("explanationBody"),
+  imageLightbox: document.getElementById("imageLightbox"),
+  lightboxPosition: document.getElementById("lightboxPosition"),
+  lightboxViewport: document.getElementById("lightboxViewport"),
+  lightboxImage: document.getElementById("lightboxImage"),
+  lightboxClose: document.getElementById("lightboxClose"),
   submitBtn: document.getElementById("submitBtn"),
   nextBtn: document.getElementById("nextBtn"),
   themeToggle: document.getElementById("themeToggle"),
@@ -170,6 +178,31 @@ const LOCAL_QUIZ_FALLBACK = {
   ),
 };
 
+// Shared presentation policy. Future textbook sets can select `textbook`
+// without adding a second explanation renderer or source-ID branches.
+const QUIZ_CONTEXT_POLICIES = Object.freeze({
+  pastExam: Object.freeze({
+    explanation: Object.freeze({
+      correctExpanded: false,
+      correctAction: "Review explanation",
+      wrongExpanded: true,
+      wrongAction: "Understand why",
+    }),
+  }),
+  textbook: Object.freeze({
+    explanation: Object.freeze({
+      correctExpanded: true,
+      correctAction: "Review explanation",
+      wrongExpanded: true,
+      wrongAction: "Understand why",
+    }),
+  }),
+});
+let activeQuizContext = {
+  ...QUIZ_CONTEXT_POLICIES.pastExam,
+  imageContainsQuestionText: false,
+};
+
 const state = {
   index: 0,
   selected: null, // canonical option label, or null
@@ -182,8 +215,13 @@ const state = {
 // Shape: answers[paperId][index] = { selected: label|null, submitted, isCorrect }.
 // ponytail: plain object, no persistence — sync layer can serialize this later.
 const answers = {};
+const explanationStates = {};
 function paperStore() {
   return (answers[state.paperId] ??= {});
+}
+
+function explanationStore() {
+  return (explanationStates[state.paperId] ??= {});
 }
 
 function currentQuestion() {
@@ -200,7 +238,142 @@ function updateSummary() {
   els.sumWrong.textContent = submitted.length - correct;
 }
 
+let lightboxOpener = null;
+
+function closeImageLightbox({ restoreFocus = true } = {}) {
+  if (els.imageLightbox.hidden) return;
+  els.imageLightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  els.lightboxImage.removeAttribute("src");
+  if (restoreFocus && lightboxOpener?.isConnected) lightboxOpener.focus();
+  lightboxOpener = null;
+}
+
+function openImageLightbox(sourceImage, index, total, opener) {
+  lightboxOpener = opener;
+  els.lightboxImage.src = sourceImage.path;
+  els.lightboxImage.alt = sourceImage.alt;
+  els.lightboxPosition.textContent = total > 1 ? `Image ${index + 1} of ${total}` : "Image 1 of 1";
+  els.imageLightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+  els.lightboxViewport.scrollTo({ top: 0, left: 0 });
+  els.lightboxClose.focus();
+}
+
+function lightboxFocusableElements() {
+  return [...els.imageLightbox.querySelectorAll(
+    'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+  )].filter((element) => !element.hidden);
+}
+
+els.lightboxClose.addEventListener("click", () => closeImageLightbox());
+els.imageLightbox.addEventListener("click", (event) => {
+  if (event.target === els.imageLightbox) closeImageLightbox();
+});
+document.addEventListener("keydown", (event) => {
+  if (els.imageLightbox.hidden) return;
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeImageLightbox();
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const focusable = lightboxFocusableElements();
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && (document.activeElement === first || !els.imageLightbox.contains(document.activeElement))) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && (document.activeElement === last || !els.imageLightbox.contains(document.activeElement))) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
+function renderSourceImages(question) {
+  els.qImages.innerHTML = "";
+  question.sourceImages.forEach((sourceImage, index) => {
+    const figure = document.createElement("figure");
+    figure.className = "q-source-figure is-loading";
+
+    const frame = document.createElement("div");
+    frame.className = "q-source-frame";
+    const status = document.createElement("div");
+    status.className = "q-image-status";
+    status.setAttribute("aria-live", "polite");
+    const image = document.createElement("img");
+    image.className = "q-source-image";
+    image.alt = sourceImage.alt;
+    image.decoding = "async";
+    image.loading = index === 0 ? "eager" : "lazy";
+    if (index === 0) image.fetchPriority = "high";
+
+    const enlarge = document.createElement("button");
+    enlarge.type = "button";
+    enlarge.className = "q-image-enlarge";
+    enlarge.textContent = "⤢ Enlarge image";
+    enlarge.setAttribute(
+      "aria-label",
+      `Enlarge ${question.number} image ${index + 1} of ${question.sourceImages.length}`
+    );
+    enlarge.hidden = true;
+    enlarge.addEventListener("click", () =>
+      openImageLightbox(sourceImage, index, question.sourceImages.length, enlarge)
+    );
+
+    const showLoading = () => {
+      figure.classList.remove("is-loaded", "is-error");
+      figure.classList.add("is-loading");
+      image.hidden = false;
+      enlarge.hidden = true;
+      status.hidden = false;
+      status.className = "q-image-status";
+      status.replaceChildren(document.createTextNode("Loading question image…"));
+    };
+    const loadImage = () => {
+      showLoading();
+      image.removeAttribute("src");
+      requestAnimationFrame(() => image.setAttribute("src", sourceImage.path));
+    };
+    image.addEventListener("load", () => {
+      figure.classList.remove("is-loading", "is-error");
+      figure.classList.add("is-loaded");
+      status.hidden = true;
+      enlarge.hidden = false;
+    });
+    image.addEventListener("error", () => {
+      figure.classList.remove("is-loading", "is-loaded");
+      figure.classList.add("is-error");
+      image.hidden = true;
+      enlarge.hidden = true;
+      status.hidden = false;
+      status.className = "q-image-status is-error";
+      const message = document.createElement("p");
+      message.textContent = "The question image could not be loaded.";
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "q-image-retry";
+      retry.textContent = "Retry";
+      retry.addEventListener("click", loadImage);
+      status.replaceChildren(message, retry);
+    });
+
+    frame.append(status, image);
+    figure.append(frame, enlarge);
+    if (sourceImage.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = sourceImage.caption;
+      figure.appendChild(caption);
+    }
+    els.qImages.appendChild(figure);
+    loadImage();
+  });
+  els.qImages.hidden = question.sourceImages.length === 0;
+}
+
 function render() {
+  closeImageLightbox({ restoreFocus: false });
   const q = currentQuestion();
   state.selected = null;
   state.submitted = false;
@@ -232,25 +405,7 @@ function render() {
   els.qText.textContent = q.questionTranslation.japanese;
   els.qText.hidden = isImageFirstLabels || !q.questionTranslation.japanese;
 
-  // All source shapes become one ordered image sequence at normalization time.
-  els.qImages.innerHTML = "";
-  q.sourceImages.forEach((sourceImage) => {
-    const figure = document.createElement("figure");
-    figure.className = "q-source-figure";
-    const image = document.createElement("img");
-    image.className = "q-source-image";
-    image.src = sourceImage.path;
-    image.alt = sourceImage.alt;
-    image.loading = "lazy";
-    figure.appendChild(image);
-    if (sourceImage.caption) {
-      const caption = document.createElement("figcaption");
-      caption.textContent = sourceImage.caption;
-      figure.appendChild(caption);
-    }
-    els.qImages.appendChild(figure);
-  });
-  els.qImages.hidden = q.sourceImages.length === 0;
+  renderSourceImages(q);
 
   // Supplemental HTML remains a trusted legacy fallback. Source images retain
   // their established priority so B does not render its recreated HTML twice.
@@ -262,28 +417,43 @@ function render() {
     els.qSupplemental.hidden = true;
   }
 
-  // Translation panel — reset to collapsed each question.
+  // Language Help stays secondary to the source. Japanese transcription remains
+  // in the model, but is visually omitted when the image is the primary source.
+  const imageJapaneseIsPrimary = q.sourceImages.length > 0 && (
+    q.optionDisplayMode === "labels-only" || activeQuizContext.imageContainsQuestionText
+  );
   els.transJa.textContent = q.questionTranslation.japanese;
   els.transRomaji.textContent = q.questionTranslation.romaji;
   els.transEn.textContent = q.questionTranslation.english;
+  els.transJaRow.hidden = imageJapaneseIsPrimary;
 
   // Translation identity follows the same explicit labels as answer controls.
   els.optionTrans.innerHTML = "";
   q.optionLabels.forEach((label) => {
     const option = q.optionTranslationsByLabel[label];
-    const card = document.createElement("div");
+    const card = document.createElement("article");
     card.className = "opt-trans";
-    card.innerHTML = `
-      <span class="opt-trans-label"></span>
-      <div class="opt-trans-lines">
-        <p class="opt-trans-jp"></p>
-        <p class="opt-trans-romaji"></p>
-        <p class="opt-trans-en"></p>
-      </div>`;
-    card.querySelector(".opt-trans-label").textContent = label;
-    card.querySelector(".opt-trans-jp").textContent = option.japanese;
-    card.querySelector(".opt-trans-romaji").textContent = option.romaji;
-    card.querySelector(".opt-trans-en").textContent = option.english;
+    const optionLabel = document.createElement("h4");
+    optionLabel.className = "opt-trans-label";
+    optionLabel.textContent = label;
+    const lines = document.createElement("div");
+    lines.className = "opt-trans-lines";
+    const addHelpLine = (term, value, className) => {
+      const row = document.createElement("div");
+      row.className = "opt-trans-row";
+      const key = document.createElement("span");
+      key.className = "opt-trans-term";
+      key.textContent = term;
+      const text = document.createElement("p");
+      text.className = className;
+      text.textContent = value || "Translation not available";
+      row.append(key, text);
+      lines.appendChild(row);
+    };
+    if (!imageJapaneseIsPrimary) addHelpLine("Japanese", option.japanese, "opt-trans-jp");
+    addHelpLine("Romaji", option.romaji, "opt-trans-romaji");
+    addHelpLine("English", option.english, "opt-trans-en");
+    card.append(optionLabel, lines);
     els.optionTrans.appendChild(card);
   });
 
@@ -319,6 +489,8 @@ function render() {
 
   // Explanation hidden until submit (never reveal correctAnswer early).
   els.explanationCard.hidden = true;
+  els.explanationBody.hidden = true;
+  els.explanationToggle.setAttribute("aria-expanded", "false");
 
   // Buttons.
   els.submitBtn.hidden = false;
@@ -362,6 +534,19 @@ function selectOption(label) {
   paperStore()[state.index] = { selected: label, submitted: false, isCorrect: null };
 }
 
+function setExplanationExpanded(expanded, { remember = true } = {}) {
+  els.explanationBody.hidden = !expanded;
+  els.explanationToggle.setAttribute("aria-expanded", String(expanded));
+  if (remember) explanationStore()[state.index] = expanded;
+}
+
+function explanationPresentation(isRight) {
+  const policy = activeQuizContext.explanation || QUIZ_CONTEXT_POLICIES.pastExam.explanation;
+  return isRight
+    ? { expanded: policy.correctExpanded, action: policy.correctAction }
+    : { expanded: policy.wrongExpanded, action: policy.wrongAction };
+}
+
 // Lock options, show verdict + explanation, swap to Next. Used by submit() and by
 // render() when replaying a previously submitted answer.
 function applyVerdictUI(q) {
@@ -380,6 +565,13 @@ function applyVerdictUI(q) {
   els.answerLine.textContent = `正解: ${correct}`;
   els.explanationBody.innerHTML = renderExplanation(q.explanation);
   els.explanationCard.hidden = false;
+  const presentation = explanationPresentation(isRight);
+  els.explanationToggleText.textContent = presentation.action;
+  const remembered = explanationStore()[state.index];
+  setExplanationExpanded(
+    typeof remembered === "boolean" ? remembered : presentation.expanded,
+    { remember: false }
+  );
 
   els.submitBtn.hidden = true;
   els.nextBtn.hidden = false;
@@ -513,6 +705,9 @@ els.translateBtn.addEventListener("click", () => {
   els.translation.hidden = !open;
   els.translateBtn.setAttribute("aria-expanded", String(open));
 });
+els.explanationToggle.addEventListener("click", () => {
+  setExplanationExpanded(els.explanationBody.hidden);
+});
 els.submitBtn.addEventListener("click", submit);
 els.nextBtn.addEventListener("click", next);
 
@@ -561,6 +756,8 @@ const EXAM_SETS = [
     desc: "Japanese questions with romaji, English translation, and explanations.",
     questionCount: 20,
     quiz: LOCAL_QUIZ_FALLBACK, // immutable normalized questions.js fallback
+    contextPolicy: "pastExam",
+    imageContainsQuestionText: false,
     available: true,
   },
   {
@@ -570,6 +767,8 @@ const EXAM_SETS = [
     desc: "Algorithm & programming questions (問1〜問6), loaded from the backend.",
     questionCount: 6,
     quiz: null,          // API-only: no questions.js fallback. Must load from Oracle.
+    contextPolicy: "pastExam",
+    imageContainsQuestionText: true,
     available: true,
   },
 ];
@@ -583,6 +782,7 @@ const ACTIVE_PAPER_STORAGE = "fe-quiz-active-paper";
 const ACTIVE_INDEX_STORAGE = "fe-quiz-active-index";
 
 function clearActiveQuizViewState() {
+  closeImageLightbox({ restoreFocus: false });
   localStorage.removeItem(ACTIVE_PAPER_STORAGE);
   localStorage.removeItem(ACTIVE_INDEX_STORAGE);
 }
@@ -606,6 +806,11 @@ function showPastExams({ preserveStatus = false } = {}) {
 
 async function startPaper(paper, { reopen = false } = {}) {
   if (!paper.available) return; // future disabled paper — never starts
+
+  activeQuizContext = {
+    ...(QUIZ_CONTEXT_POLICIES[paper.contextPolicy] || QUIZ_CONTEXT_POLICIES.pastExam),
+    imageContainsQuestionText: !!paper.imageContainsQuestionText,
+  };
 
   localStorage.setItem(ACTIVE_PAPER_STORAGE, paper.id);
 
@@ -1029,6 +1234,7 @@ async function resetProgress(examSetId) {
 
   // Local: clear in-memory answers for THIS paper only.
   delete answers[examSetId];
+  delete explanationStates[examSetId];
 
   // Local: clear viewed/active state only if this is the paper currently open.
   if (localStorage.getItem(ACTIVE_PAPER_STORAGE) === examSetId) {
