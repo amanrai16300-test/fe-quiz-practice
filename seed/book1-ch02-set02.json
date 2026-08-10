@@ -1,0 +1,90 @@
+{
+  "exam_set": {
+    "id": "book1-ch02-set02",
+    "title": "Book 1 — Chapter 2 — Practice Set 2",
+    "description": "Textbook Practice — Book 1, Chapter 2, Practice Set 2",
+    "question_count": 4
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "2-4",
+      "optionMode": "labels-only",
+      "jp": "図に示す，1桁の2進数xとyを加算して，z（和の1桁目）及びc（桁上げ）を出力する半加算器において，AとBの素子の組合せとして，適切なものはどれか。",
+      "romaji": "Zu ni shimesu, hitoketa no 2-shinsu x to y o kasan shite, z (wa no hitoketame) oyobi c (ketaage) o shutsuryoku suru hankasanki ni oite, A to B no soshi no kumiawase to shite, tekisetsu na mono wa dore ka.",
+      "en": "In the half adder shown, one-bit binary values x and y are added and outputs z (the sum bit) and c (the carry) are produced. Which combination of elements A and B is appropriate?",
+      "options": [
+        { "label": "ア", "jp": "A：排他的論理和，B：論理積", "romaji": "A: haitateki ronriwa, B: ronriseki", "en": "A: exclusive OR (XOR); B: logical AND" },
+        { "label": "イ", "jp": "A：否定論理積，B：否定論理和", "romaji": "A: hitei ronriseki, B: hitei ronriwa", "en": "A: NAND; B: NOR" },
+        { "label": "ウ", "jp": "A：否定論理和，B：排他的論理和", "romaji": "A: hitei ronriwa, B: haitateki ronriwa", "en": "A: NOR; B: exclusive OR (XOR)" },
+        { "label": "エ", "jp": "A：論理積，B：論理和", "romaji": "A: ronriseki, B: ronriwa", "en": "A: logical AND; B: logical OR" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA half adder adds two one-bit values. The sum light turns on when exactly one input is 1, while the carry light turns on only when both inputs are 1. Exactly one input is XOR; both inputs are AND.\n\nTechnical breakdown:\nThe half-adder truth table is:\n\n0 + 0 → sum 0, carry 0\n0 + 1 → sum 1, carry 0\n1 + 0 → sum 1, carry 0\n1 + 1 → sum 0, carry 1\n\nTherefore z = x XOR y and c = x AND y. In the diagram, A produces z, so A must be XOR. B produces c, so B must be AND.\n\nJapanese keywords to remember:\n半加算器 = hankasanki = half adder\n加算 = kasan = addition\n和 = wa = sum\n桁上げ = ketaage = carry\n排他的論理和 = haitateki ronriwa = XOR\n論理積 = ronriseki = AND\n\nWhy the best solution works:\nOption ア assigns XOR to A and AND to B. XOR matches the sum bit for every input pair, and AND matches the carry bit for every input pair.\n\nWrong answer analysis:\nイ — NAND and NOR do not directly produce the half-adder sum and carry truth tables.\n\nウ — NOR cannot produce the sum bit, and XOR cannot produce a carry only for 1 + 1.\n\nエ — AND as the sum would incorrectly output 1 for 1 + 1, while OR as carry would incorrectly output 1 when only one input is 1.\n\nMemory trick:\nHalf adder: SUM = XOR, CARRY = AND.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch02/set02/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "2-5",
+      "optionMode": "labels-only",
+      "jp": "論理式X＝NOT A・B＋A・NOT B＋NOT A・NOT Bと同じ結果が得られる論理回路はどれか。ここで，論理式中の・は論理積，＋は論理和，NOT AはAの否定を表す。",
+      "romaji": "Ronrishiki X = NOT A ten B tasu A ten NOT B tasu NOT A ten NOT B to onaji kekka ga erareru ronri kairo wa dore ka. Koko de, ronrishiki-chu no ten wa ronriseki, tasu wa ronriwa, NOT A wa A no hitei o arawasu.",
+      "en": "Which logic circuit gives the same result as X = (NOT A AND B) OR (A AND NOT B) OR (NOT A AND NOT B)? Here, the dot means AND, plus means OR, and NOT A means the negation of A.",
+      "options": [
+        { "label": "ア", "jp": "ANDゲート（論理積）", "romaji": "AND geto (ronriseki)", "en": "AND gate" },
+        { "label": "イ", "jp": "NANDゲート（出力を否定した論理積）", "romaji": "NAND geto (shutsuryoku o hitei shita ronriseki)", "en": "NAND gate: an AND-shaped gate with an output inversion bubble" },
+        { "label": "ウ", "jp": "ORゲート（論理和）", "romaji": "OR geto (ronriwa)", "en": "OR gate" },
+        { "label": "エ", "jp": "NORゲート（出力を否定した論理和）", "romaji": "NOR geto (shutsuryoku o hitei shita ronriwa)", "en": "NOR gate: an OR-shaped gate with an output inversion bubble" }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nGroup the two terms that start with NOT A. Whether B is 0 or 1, those terms reduce to NOT A. The remaining expression is true unless both A and B are 1, which is NAND.\n\nTechnical breakdown:\nStart with:\n\nX = NOT A·B + A·NOT B + NOT A·NOT B\n\nGroup the first and third terms:\n\nNOT A·B + NOT A·NOT B\n= NOT A(B + NOT B)\n= NOT A\n\nThen:\n\nX = NOT A + A·NOT B\n= NOT A + NOT B\n\nBy De Morgan's law:\n\nNOT A + NOT B = NOT(A·B)\n\nSo X is NAND. Visually, NAND is an AND-shaped gate with a small inversion bubble at its output.\n\nJapanese keywords to remember:\n論理式 = ronrishiki = Boolean expression\n論理積 = ronriseki = AND\n論理和 = ronriwa = OR\n否定 = hitei = NOT\n否定論理積 = hitei ronriseki = NAND\nド・モルガンの法則 = Do Morugan no hosoku = De Morgan's law\n\nWhy the best solution works:\nOption イ is the NAND symbol. Its output is NOT(A AND B), exactly the simplified expression.\n\nWrong answer analysis:\nア — AND outputs 1 only when both inputs are 1, the opposite of the required result.\n\nウ — OR outputs 0 only when both inputs are 0; NAND outputs 0 only when both are 1.\n\nエ — NOR is NOT(A OR B), so it outputs 1 only when both inputs are 0.\n\nMemory trick:\nAND gate + output bubble = NAND. OR gate + output bubble = NOR.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set02/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "2-6",
+      "optionMode": "labels-only",
+      "jp": "図に示すデジタル回路と等価な論理式はどれか。ここで，論理式中の“・”は論理積を，“＋”は論理和を，NOT XはXの否定を表す。",
+      "romaji": "Zu ni shimesu dejitaru kairo to toka na ronrishiki wa dore ka. Koko de, ronrishiki-chu no ten wa ronriseki o, tasu wa ronriwa o, NOT X wa X no hitei o arawasu.",
+      "en": "Which Boolean expression is equivalent to the digital circuit shown? In the expressions, the dot means AND, plus means OR, and NOT X means the negation of X.",
+      "options": [
+        { "label": "ア", "jp": "X＝A・B＋A・NOT B", "romaji": "X = A AND B OR A AND NOT B", "en": "X = (A AND B) OR (A AND NOT B)" },
+        { "label": "イ", "jp": "X＝A・B＋NOT A・NOT B", "romaji": "X = A AND B OR NOT A AND NOT B", "en": "X = (A AND B) OR (NOT A AND NOT B)" },
+        { "label": "ウ", "jp": "X＝A・NOT B＋NOT A・B", "romaji": "X = A AND NOT B OR NOT A AND B", "en": "X = (A AND NOT B) OR (NOT A AND B)" },
+        { "label": "エ", "jp": "X＝(NOT A＋B)・(A＋NOT B)", "romaji": "X = (NOT A OR B) AND (A OR NOT B)", "en": "X = (NOT A OR B) AND (A OR NOT B)" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nFollow the wires from left to right. A and B are first flipped. Their flipped values are ORed, and that shared result is combined once with A and once with B. The final OR keeps the cases where A and B differ.\n\nTechnical breakdown:\nThe NOT gates produce NOT A and NOT B. The first OR produces:\n\nNOT A + NOT B\n\nThe upper AND branch is:\n\nA(NOT A + NOT B)\n\nThe lower branch is:\n\nB(NOT A + NOT B)\n\nThe final OR gives:\n\nX = A(NOT A + NOT B) + B(NOT A + NOT B)\n\nExpanding:\n\nX = A·NOT A + A·NOT B + B·NOT A + B·NOT B\n\nBecause A·NOT A = 0 and B·NOT B = 0:\n\nX = A·NOT B + NOT A·B\n\nThis is XOR.\n\nJapanese keywords to remember:\nデジタル回路 = dejitaru kairo = digital circuit\n等価 = toka = equivalent\n論理式 = ronrishiki = Boolean expression\n論理積 = ronriseki = AND\n論理和 = ronriwa = OR\n否定 = hitei = NOT\n排他的論理和 = haitateki ronriwa = XOR\n\nWhy the best solution works:\nOption ウ is 1 precisely for A=1, B=0 or A=0, B=1, matching the traced circuit and XOR truth table.\n\nWrong answer analysis:\nア — This simplifies to A, so it ignores the cases required when only B is 1.\n\nイ — This is XNOR: it is 1 when A and B are equal, opposite to XOR.\n\nエ — This also represents equality/XNOR, not the unequal-input behavior of the circuit.\n\nMemory trick:\nTrace gates in order: NOT → OR → two AND branches → final OR. Then simplify complements such as A·NOT A to 0.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set02/q03.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "2-7",
+      "optionMode": "labels-only",
+      "jp": "図は全加算器を表す論理回路である。図中のxに1，yに0，zに1を入力したとき，出力となるc（けた上げ数），s（和）の値はどれか。",
+      "romaji": "Zu wa zenkasanki o arawasu ronri kairo de aru. Zuchu no x ni 1, y ni 0, z ni 1 o nyuryoku shita toki, shutsuryoku to naru c (ketaage-su), s (wa) no atai wa dore ka.",
+      "en": "The diagram is a full-adder circuit. When x=1, y=0, and z=1 are input, which values are output as c (carry) and s (sum)?",
+      "options": [
+        { "label": "ア", "jp": "c＝0，s＝0", "romaji": "c = 0, s = 0", "en": "c = 0, s = 0" },
+        { "label": "イ", "jp": "c＝0，s＝1", "romaji": "c = 0, s = 1", "en": "c = 0, s = 1" },
+        { "label": "ウ", "jp": "c＝1，s＝0", "romaji": "c = 1, s = 0", "en": "c = 1, s = 0" },
+        { "label": "エ", "jp": "c＝1，s＝1", "romaji": "c = 1, s = 1", "en": "c = 1, s = 1" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nAdd the three input bits: 1 + 0 + 1 = binary 10. The right digit is the sum bit 0, and the left digit is the carry 1.\n\nTechnical breakdown:\nA full adder accepts two data bits plus a carry-in. Its sum is the XOR of all three inputs:\n\ns = 1 XOR 0 XOR 1 = 0\n\nThe carry becomes 1 when at least two inputs are 1. Here x and z are both 1, so:\n\nc = 1\n\nThus the output pair is c=1, s=0. A half adder has only two input bits; a full adder includes the third carry-in bit.\n\nJapanese keywords to remember:\n全加算器 = zenkasanki = full adder\n入力 = nyuryoku = input\n出力 = shutsuryoku = output\nけた上げ数 = ketaage-su = carry value\n和 = wa = sum\n\nWhy the best solution works:\nOption ウ gives c=1 and s=0, which is the two-bit binary result 10 from adding 1+0+1.\n\nWrong answer analysis:\nア — It loses the carry produced by the two input 1s.\n\nイ — It gives binary 01, equal to decimal 1 rather than the required decimal 2.\n\nエ — It gives binary 11, equal to decimal 3; only two of the three inputs are 1.\n\nMemory trick:\nCount the 1s: 0 or 1 ones gives carry 0; 2 or 3 ones gives carry 1. The sum bit is 1 for an odd number of ones and 0 for an even number.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set02/q04.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}

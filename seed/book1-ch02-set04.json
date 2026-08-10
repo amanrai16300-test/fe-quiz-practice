@@ -1,0 +1,110 @@
+{
+  "exam_set": {
+    "id": "book1-ch02-set04",
+    "title": "Book 1 — Chapter 2 — Practice Set 4",
+    "description": "Textbook Practice — Book 1, Chapter 2, Practice Set 4",
+    "question_count": 5
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "2-11",
+      "optionMode": "labels-only",
+      "jp": "AIにおける機械学習の説明として，最も適切なものはどれか。",
+      "romaji": "AI ni okeru kikai gakushu no setsumei to shite, mottomo tekisetsu na mono wa dore ka.",
+      "en": "Which is the most appropriate description of machine learning in AI?",
+      "options": [
+        { "label": "ア", "jp": "記憶したデータから特定のパターンを見つけ出すなどの，人が自然に行っている学習能力をコンピュータにもたせるための技術", "romaji": "Kioku shita deta kara tokutei no patan o mitsukedasu nado no, hito ga shizen ni okonatte iru gakushu noryoku o konpyuta ni motaseru tame no gijutsu.", "en": "Technology that gives computers learning abilities like those people naturally use, such as finding specific patterns in stored data." },
+        { "label": "イ", "jp": "コンピュータ，機械などを使って，生命現象や進化のプロセスを再現するための技術", "romaji": "Konpyuta, kikai nado o tsukatte, seimei gensho ya shinka no purosesu o saigen suru tame no gijutsu.", "en": "Technology that uses computers or machines to reproduce biological phenomena or evolutionary processes." },
+        { "label": "ウ", "jp": "特定の分野の専門知識をコンピュータに入力し，入力された知識を用いてコンピュータが推論する技術", "romaji": "Tokutei no bun'ya no senmon chishiki o konpyuta ni nyuryoku shi, nyuryoku sareta chishiki o mochiite konpyuta ga suiron suru gijutsu.", "en": "Technology that enters domain-expert knowledge into a computer and lets the computer reason from that knowledge." },
+        { "label": "エ", "jp": "人が双方向学習を行うために，Webシステムなどの情報技術を用いて，教材や学習管理能力をコンピュータにもたせるための技術", "romaji": "Hito ga sohoko gakushu o okonau tame ni, Web shisutemu nado no joho gijutsu o mochiite, kyozai ya gakushu kanri noryoku o konpyuta ni motaseru tame no gijutsu.", "en": "Technology that uses information systems such as the Web to provide learning materials and learning management for interactive human study." }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nMachine learning lets a computer study examples and discover patterns instead of requiring a person to write every rule.\n\nTechnical breakdown:\nA machine-learning system uses data to learn a model: relationships, regularities, or decision boundaries that can be applied to new inputs. Pattern discovery from stored examples is therefore a defining description. This differs from manually encoding expert knowledge or merely using computers to simulate a process or deliver lessons.\n\nJapanese keywords to remember:\nAI = artificial intelligence\n機械学習 = kikai gakushu = machine learning\n記憶したデータ = kioku shita deta = stored data\n特定のパターン = tokutei no patan = specific pattern\n学習能力 = gakushu noryoku = learning ability\n技術 = gijutsu = technology\n\nWhy the best solution works:\nOption ア describes learning patterns or abilities from data, the central mechanism of machine learning.\n\nWrong answer analysis:\nイ — This describes simulation of life or evolutionary processes, not the general definition of machine learning.\n\nウ — This describes a rule/knowledge-based expert system whose knowledge is explicitly entered by specialists.\n\nエ — This describes e-learning technology that supports human learners, not a computer learning a model from data.\n\nMemory trick:\nMachine learning: data in, patterns learned. The rules are learned rather than all written by hand.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch02/set04/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "2-12",
+      "optionMode": "labels-only",
+      "jp": "機械学習における教師あり学習の説明として，最も適切なものはどれか。",
+      "romaji": "Kikai gakushu ni okeru kyoshi ari gakushu no setsumei to shite, mottomo tekisetsu na mono wa dore ka.",
+      "en": "Which is the most appropriate description of supervised learning in machine learning?",
+      "options": [
+        { "label": "ア", "jp": "個々の行動に対しての善しあしを得点として与えることによって，得点が最も多く得られるような方策を学習する。", "romaji": "Koko no kodo ni taishite no yoshiashi o tokuten to shite ataeru koto ni yotte, tokuten ga mottomo oku erareru yona hosaku o gakushu suru.", "en": "Learn a policy that obtains the greatest score by assigning a score to how good or bad each action is." },
+        { "label": "イ", "jp": "コンピュータ利用者の挙動データを蓄積し，挙動データの出現頻度に従って次の挙動を推論する。", "romaji": "Konpyuta riyosha no kyodo deta o chikuseki shi, kyodo deta no shutsugen hindo ni shitagatte tsugi no kyodo o suiron suru.", "en": "Accumulate computer-user behavior data and infer the next behavior according to how frequently behaviors occur." },
+        { "label": "ウ", "jp": "正解のデータを提示したり，データが誤りであることを指摘したりすることによって，未知のデータに対して正誤を得ることを助ける。", "romaji": "Seikai no deta o teiji shitari, deta ga ayamari de aru koto o shiteki shitari suru koto ni yotte, michi no deta ni taishite seigo o eru koto o tasukeru.", "en": "Provide correct-answer data or identify erroneous data so that correct judgments can be made for unknown data." },
+        { "label": "エ", "jp": "正解のデータを提示せずに，統計的性質や，ある種の条件によって入力パターンを判定したり，クラスタリングしたりする。", "romaji": "Seikai no deta o teiji sezu ni, tokeiteki seishitsu ya, aru shu no joken ni yotte nyuryoku patan o hantei shitari, kurasutaringu shitari suru.", "en": "Without presenting correct-answer data, classify or cluster input patterns using statistical properties or certain conditions." }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nSupervised learning is like studying with a teacher who provides answer labels. The model compares its guesses with those answers and learns how to handle new examples.\n\nTechnical breakdown:\nTraining data in supervised learning contains input-output pairs or other explicit correctness guidance. The learner adjusts its model from these labeled examples, then predicts labels or values for unseen data. Presenting correct examples and pointing out errors describes that supervision directly.\n\nJapanese keywords to remember:\n教師あり学習 = kyoshi ari gakushu = supervised learning\n正解 = seikai = correct answer\n未知のデータ = michi no deta = unseen data\n正誤 = seigo = correctness\n学習 = gakushu = learning\n教師データ = kyoshi deta = labeled training data\n\nWhy the best solution works:\nOption ウ supplies explicit correct/incorrect guidance and uses it to improve judgments on unknown data, which is supervised learning.\n\nWrong answer analysis:\nア — Scores or rewards for actions describe reinforcement learning.\n\nイ — Frequency-based behavior prediction may be a statistical application, but it does not state the defining labeled-teacher mechanism.\n\nエ — Learning without correct-answer labels and discovering patterns or clusters describes unsupervised learning.\n\nMemory trick:\nSupervised = a teacher provides the answer. Unsupervised = no answer labels. Reinforcement = rewards.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set04/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "2-13",
+      "optionMode": "labels-only",
+      "jp": "AIにおけるディープラーニングの特徴はどれか。",
+      "romaji": "AI ni okeru dipu raningu no tokucho wa dore ka.",
+      "en": "Which describes a characteristic of deep learning in AI?",
+      "options": [
+        { "label": "ア", "jp": "“AならばBである”というルールを人間があらかじめ設定して，新しい知識を論理式で表現したルールに基づく推論の結果として，解を求めるものである。", "romaji": "‘A naraba B de aru’ to iu ruru o ningen ga arakajime settei shite, atarashii chishiki o ronrishiki de hyogen shita ruru ni motozuku suiron no kekka to shite, kai o motomeru mono de aru.", "en": "Humans define rules such as ‘if A, then B’ in advance, and answers are obtained by inference based on rules expressed as logical formulas." },
+        { "label": "イ", "jp": "厳密な解でなくてもなるべく正解に近い解を得るようにする方法であり，特定分野に特化せずに，広範囲で汎用的な問題解決ができるようにするものである。", "romaji": "Genmitsu na kai de nakute mo narubeku seikai ni chikai kai o eru yo ni suru hoho de ari, tokutei bun'ya ni tokka sezu ni, kohan'i de han'yoteki na mondai kaiketsu ga dekiru yo ni suru mono de aru.", "en": "A method that seeks an answer close to correct even if it is not exact and enables broad, general-purpose problem solving without specializing in a field." },
+        { "label": "ウ", "jp": "人間の脳神経回路を模倣して，認識などの知能を実現する方法であり，ニューラルネットワークを用いて，人間と同じような認識ができるようにするものである。", "romaji": "Ningen no no-shinkei kairo o moho shite, ninshiki nado no chino o jitsugen suru hoho de ari, nyuraru nettowaku o mochiite, ningen to onaji yona ninshiki ga dekiru yo ni suru mono de aru.", "en": "A method that models human neural circuits and uses neural networks to realize intelligent capabilities such as recognition." },
+        { "label": "エ", "jp": "判断ルールを作成できる医療診断などの分野に限定されるが，症状から特定の病気に絞り込むといった，確率的に高い判断ができる。", "romaji": "Handan ruru o sakusei dekiru iryo shindan nado no bun'ya ni gentei sareru ga, shojo kara tokutei no byoki ni shiborikomu to itta, kakuritsuteki ni takai handan ga dekiru.", "en": "It is limited to fields such as medical diagnosis where decision rules can be created, but can make high-probability judgments such as narrowing symptoms to a disease." }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nDeep learning uses many connected layers inspired by networks of brain cells. From data, those layers learn useful patterns for recognition and other tasks.\n\nTechnical breakdown:\nDeep learning is machine learning based on deep, multilayer neural networks. Successive layers learn increasingly useful representations or features from training data. Neural networks were inspired by biological neural circuits, and deep architectures are especially effective for recognition tasks involving images, speech, and language.\n\nJapanese keywords to remember:\nディープラーニング = dipu raningu = deep learning\n脳神経回路 = no-shinkei kairo = neural circuitry\n模倣 = moho = imitation / modeling\n認識 = ninshiki = recognition\n知能 = chino = intelligence\nニューラルネットワーク = nyuraru nettowaku = neural network\n\nWhy the best solution works:\nOption ウ connects neural-network modeling with recognition and intelligence, matching the core mechanism behind deep learning.\n\nWrong answer analysis:\nア — Prewritten if-then rules describe rule-based symbolic AI, not learning deep representations from data.\n\nイ — Seeking approximate general solutions is too broad and does not identify neural networks or deep learning.\n\nエ — A system limited to authored diagnostic rules resembles an expert system; deep learning is not defined by that restriction.\n\nMemory trick:\nDeep learning → deep neural network: many layers learn features from data.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set04/q03.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "2-14",
+      "optionMode": "labels-only",
+      "jp": "生産現場における機械学習の活用事例として，適切なものはどれか。",
+      "romaji": "Seisan genba ni okeru kikai gakushu no katsuyo jirei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which is an appropriate example of using machine learning at a production site?",
+      "options": [
+        { "label": "ア", "jp": "工場における不良品の発生原因をツリー状に分解して整理し，アナリストが統計的にその原因や解決策を探る。", "romaji": "Kojo ni okeru furyohin no hassei gen'in o tsuri-jo ni bunkai shite seiri shi, anaristo ga tokeiteki ni sono gen'in ya kaiketsusaku o saguru.", "en": "Break down and organize causes of factory defects in a tree, then have an analyst statistically investigate causes and solutions." },
+        { "label": "イ", "jp": "工場の生産設備を高速通信で接続し，ホストコンピュータがリアルタイムで制御できるようにする。", "romaji": "Kojo no seisan setsubi o kosoku tsushin de setsuzoku shi, hosuto konpyuta ga riaru taimu de seigyo dekiru yo ni suru.", "en": "Connect factory production equipment with high-speed communications so a host computer can control it in real time." },
+        { "label": "ウ", "jp": "工場の生産ロボットに対して作業方法をプログラミングするのではなく，ロボット自らが学んで作業の効率を高める。", "romaji": "Kojo no seisan robotto ni taishite sagyo hoho o puroguramingu suru no de wa naku, robotto mizukara ga manande sagyo no koritsu o takameru.", "en": "Instead of programming every work method into a factory robot, let the robot learn by itself and improve work efficiency." },
+        { "label": "エ", "jp": "累積生産量が倍増するたびに工場従業員の生産性が向上し，一定の比率で単位コストが減少する。", "romaji": "Ruiseki seisanryo ga baizo suru tabi ni kojo jugyoin no seisansei ga kojo shi, ittei no hiritsu de tan'i kosuto ga gensho suru.", "en": "Whenever cumulative production doubles, worker productivity rises and unit cost decreases at a constant rate." }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nA machine-learning robot improves by learning from experience instead of following only instructions written in advance.\n\nTechnical breakdown:\nA genuine machine-learning application uses data or experience to update a model or policy. A production robot that learns work methods and improves efficiency fits this pattern. Networking equipment, manual analysis, and observing a production-cost relationship may support factory operations, but none by itself means a machine is learning.\n\nJapanese keywords to remember:\n生産現場 = seisan genba = production site\n機械学習 = kikai gakushu = machine learning\n活用事例 = katsuyo jirei = application example\n生産ロボット = seisan robotto = production robot\n作業方法 = sagyo hoho = work method\n学ぶ = manabu = to learn\n効率 = koritsu = efficiency\n\nWhy the best solution works:\nOption ウ explicitly contrasts fixed programming with a robot learning and improving its work, which is the defining machine-learning behavior.\n\nWrong answer analysis:\nア — A human analyst performs the statistical cause investigation; the description does not say a model learns from data.\n\nイ — High-speed communication and real-time centralized control are networking/control-system functions, not machine learning.\n\nエ — This describes a learning-curve or economies-of-scale relationship, not an ML system learning a task.\n\nMemory trick:\nAsk: does the machine improve a model from data or experience? If not, the example is not necessarily machine learning.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set04/q04.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "2-15",
+      "optionMode": "labels-only",
+      "jp": "大規模言語モデルを用いた自然言語処理において，事前学習済みのモデルに対して行う，ファインチューニングに関する記述として，最も適切なものはどれか。",
+      "romaji": "Daikibo gengo moderu o mochiita shizen gengo shori ni oite, jizen gakushu-zumi no moderu ni taishite okonau, fain chuningu ni kansuru kijutsu to shite, mottomo tekisetsu na mono wa dore ka.",
+      "en": "In natural-language processing with a large language model, which is the most appropriate description of fine-tuning performed on a pretrained model?",
+      "options": [
+        { "label": "ア", "jp": "強化学習を行い，最適な結果が得られるようにする。", "romaji": "Kyoka gakushu o okonai, saiteki na kekka ga erareru yo ni suru.", "en": "Use reinforcement learning so that optimal results are obtained." },
+        { "label": "イ", "jp": "事前学習と同じデータを繰り返し用いて学習を行い，モデルの精度を高めるようにする。", "romaji": "Jizen gakushu to onaji deta o kurikaeshi mochiite gakushu o okonai, moderu no seido o takameru yo ni suru.", "en": "Repeatedly train with the same data used for pretraining to improve model accuracy." },
+        { "label": "ウ", "jp": "大量のテキストデータを用いて学習を行い，モデルの精度を高めるようにする。", "romaji": "Tairyo no tekisuto deta o mochiite gakushu o okonai, moderu no seido o takameru yo ni suru.", "en": "Train with a large amount of text data to improve model accuracy." },
+        { "label": "エ", "jp": "特定のデータを用いて追加で学習を行い，目的とするタスクに適用できるようにする。", "romaji": "Tokutei no deta o mochiite tsuika de gakushu o okonai, mokuteki to suru tasuku ni tekiyo dekiru yo ni suru.", "en": "Perform additional training with specific data so the model can be applied to the target task." }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nPretraining gives a model broad knowledge. Fine-tuning is the later adjustment that teaches it to work better for a particular purpose using focused examples.\n\nTechnical breakdown:\nA pretrained model has already learned general patterns from broad data. Fine-tuning continues training its parameters on task-specific or domain-specific data so its behavior better fits a target task. The scale, objectives, and data are narrower and more purposeful than general pretraining. Reinforcement learning can be one separate optimization technique, but it is not the definition of fine-tuning.\n\nJapanese keywords to remember:\n大規模言語モデル = daikibo gengo moderu = large language model\n自然言語処理 = shizen gengo shori = natural-language processing\n事前学習済み = jizen gakushu-zumi = pretrained\nファインチューニング = fain chuningu = fine-tuning\n特定のデータ = tokutei no deta = specific data\n追加で学習 = tsuika de gakushu = additional training\n目的とするタスク = mokuteki to suru tasuku = target task\n適用 = tekiyo = application\n\nWhy the best solution works:\nOption エ starts from the pretrained model and performs additional learning with specific data to adapt it to the intended task, exactly describing fine-tuning.\n\nWrong answer analysis:\nア — Reinforcement learning alone is not the definition of fine-tuning; fine-tuning can use other supervised objectives.\n\nイ — Repeating the same broad pretraining data does not provide the targeted adaptation described by fine-tuning.\n\nウ — Large-scale general text training describes pretraining rather than task-specific post-training.\n\nMemory trick:\nPretraining = learn broadly first. Fine-tuning = adjust afterward for a specific purpose.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set04/q05.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}

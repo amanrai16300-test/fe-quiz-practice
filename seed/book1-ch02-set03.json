@@ -1,0 +1,70 @@
+{
+  "exam_set": {
+    "id": "book1-ch02-set03",
+    "title": "Book 1 — Chapter 2 — Practice Set 3",
+    "description": "Textbook Practice — Book 1, Chapter 2, Practice Set 3",
+    "question_count": 3
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "2-8",
+      "optionMode": "labels-only",
+      "jp": "後置記法（逆ポーランド記法）では，例えば，式Y＝(A－B)×CをYAB－C×＝と表現する。次の式を後置記法で表現したものはどれか。Y＝(A＋B)×(C－D÷E)",
+      "romaji": "Kochi kiho (gyaku Porando kiho) de wa, tatoeba, shiki Y = (A - B) × C o Y A B - C × = to hyogen suru. Tsugi no shiki o kochi kiho de hyogen shita mono wa dore ka. Y = (A + B) × (C - D ÷ E).",
+      "en": "In postfix notation (Reverse Polish notation), for example, Y=(A-B)×C is written as Y A B - C × =. Which postfix expression represents Y=(A+B)×(C-D÷E)?",
+      "options": [
+        { "label": "ア", "jp": "YAB＋C－DE÷×＝", "romaji": "Y A B + C - D E ÷ × =", "en": "Y A B + C - D E ÷ × =" },
+        { "label": "イ", "jp": "YAB＋CDE÷－×＝", "romaji": "Y A B + C D E ÷ - × =", "en": "Y A B + C D E ÷ - × =" },
+        { "label": "ウ", "jp": "YAB＋EDC÷－×＝", "romaji": "Y A B + E D C ÷ - × =", "en": "Y A B + E D C ÷ - × =" },
+        { "label": "エ", "jp": "YBA＋CDE÷－×＝", "romaji": "Y B A + C D E ÷ - × =", "en": "Y B A + C D E ÷ - × =" }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nPostfix notation writes the numbers or letters first and puts each operator after the values it uses. Convert the small parenthesized parts before joining them.\n\nTechnical breakdown:\nConvert (A+B):\n\nA B +\n\nConvert D÷E:\n\nD E ÷\n\nThen convert (C-D÷E):\n\nC D E ÷ -\n\nMultiply the two completed parts:\n\nA B + C D E ÷ - ×\n\nFollowing the source's assignment convention, add Y at the front and = at the end:\n\nY A B + C D E ÷ - × =\n\nJapanese keywords to remember:\n後置記法 = kochi kiho = postfix notation\n逆ポーランド記法 = gyaku Porando kiho = Reverse Polish notation\n演算子 = enzanshi = operator\n演算対象 = enzan taisho = operand\n表現する = hyogen suru = to represent\n式変換 = shiki henkan = expression conversion\n\nWhy the best solution works:\nOption イ preserves operand order and places ÷ after D and E, - after C and the division result, and × after the two parenthesized results.\n\nWrong answer analysis:\nア — It places subtraction before the D÷E subexpression has been formed, so the original precedence and grouping are lost.\n\nウ — It reverses the operands involved in the division/subtraction region; subtraction and division are not commutative.\n\nエ — It reverses A and B relative to the source expression. Even though addition happens to be commutative, it is not a faithful postfix conversion of the written operand order.\n\nMemory trick:\nNormal: A + B. Postfix: A B +. The operator goes after its operands.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set03/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "2-9",
+      "optionMode": "labels-only",
+      "jp": "表は，文字列を検査するための状態遷移表である。検査では，初期状態をaとし，文字列の検査中に状態がeになれば不合格とする。解答群で示される文字列のうち，不合格となるものはどれか。ここで，文字列は左端から検査し，解答群中の△は空白を表す。",
+      "romaji": "Hyo wa, mojiretsu o kensa suru tame no jotai sen'i-hyo de aru. Kensa de wa, shoki jotai o a to shi, mojiretsu no kensachu ni jotai ga e ni nareba fugokaku to suru. Kaito-gun de shimesareru mojiretsu no uchi, fugokaku to naru mono wa dore ka. Koko de, mojiretsu wa satan kara kensa shi, kaito-gunchu no sankaku wa kuhaku o arawasu.",
+      "en": "The table is a state-transition table for checking strings. The initial state is a, and a string fails if state e is reached while it is checked. Which answer string fails? Strings are checked from the left, and the triangle symbol represents a blank space.",
+      "options": [
+        { "label": "ア", "jp": "＋0010", "romaji": "+0010", "en": "+0010" },
+        { "label": "イ", "jp": "－1", "romaji": "-1", "en": "-1" },
+        { "label": "ウ", "jp": "12.2", "romaji": "12.2", "en": "12.2" },
+        { "label": "エ", "jp": "9△", "romaji": "9 sankaku (kuhaku)", "en": "9 followed by a blank" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nDo not decide whether a string looks like a number. Start at a and use the table once for every character. If the path ever reaches e, the string fails.\n\nTechnical breakdown:\nFor 12.2, begin at a:\n\n1 (digit): a → b\n2 (digit): b → b\n. (decimal point): b → d\n2 (digit): d → e\n\nState e is reached, so 12.2 is invalid. The other choices can be traced without entering e: +0010 follows the permitted sign-and-digit path, -1 follows the permitted sign-and-digit path, and 9△ follows the permitted digit-and-blank path. The triangle is a blank, not a literal triangle character.\n\nJapanese keywords to remember:\n状態遷移表 = jotai sen'i-hyo = state-transition table\n初期状態 = shoki jotai = initial state\n文字列 = mojiretsu = string\n検査 = kensa = check\n不合格 = fugokaku = invalid / fail\n空白 = kuhaku = blank\n数字 = suji = digit\n符号 = fugo = sign\n小数点 = shosuten = decimal point\n現在の状態 = genzai no jotai = current state\n\nWhy the best solution works:\nOption ウ reaches e on its final digit: d with a digit transitions to e. The rule says reaching e at any point makes the string fail.\n\nWrong answer analysis:\nア — Tracing the plus sign and following digits stays on valid transitions and never reaches e.\n\nイ — The minus sign followed by a digit follows the valid sign path and does not enter e.\n\nエ — Starting with 9 reaches the digit state, and the trailing blank follows the table's valid blank transition.\n\nMemory trick:\nFollow the state table one character at a time; never judge from what looks like a valid number.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set03/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "2-10",
+      "optionMode": "labels-only",
+      "jp": "次の状態遷移図で表現されるオートマトンで受理されるビット列はどれか。ここで，ビット列は左から順に読み込まれるものとする。",
+      "romaji": "Tsugi no jotai sen'i-zu de hyogen sareru otomaton de juri sareru bitto-retsu wa dore ka. Koko de, bitto-retsu wa hidari kara jun ni yomikomareru mono to suru.",
+      "en": "Which bit string is accepted by the automaton represented by the following state-transition diagram? The bit string is read from left to right.",
+      "options": [
+        { "label": "ア", "jp": "0000", "romaji": "0000", "en": "0000" },
+        { "label": "イ", "jp": "0111", "romaji": "0111", "en": "0111" },
+        { "label": "ウ", "jp": "1010", "romaji": "1010", "en": "1010" },
+        { "label": "エ", "jp": "1111", "romaji": "1111", "en": "1111" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nTrace each bit along an arrow. The accepting state is the double circle. The machine reaches it after moving to the middle on 1 and then reading 0.\n\nTechnical breakdown:\nAt the start state, 0 loops at the start and 1 moves to the middle. At the middle state, 1 loops there and 0 moves to the accepting state. At the accepting state, either 0 or 1 loops and remains accepted.\n\nTrace 1010:\n\n1 → middle\n0 → accepting\n1 → remain accepting\n0 → remain accepting\n\nTherefore 1010 is accepted. In general, after any leading zeros, the string must contain one or more 1s followed by a 0; later bits cannot undo acceptance.\n\nJapanese keywords to remember:\n状態遷移図 = jotai sen'i-zu = state-transition diagram\nオートマトン = otomaton = automaton\n受理 = juri = acceptance\nビット列 = bitto-retsu = bit string\n読み込む = yomikomu = to read\n初期状態 = shoki jotai = initial state\n受理状態 = juri jotai = accepting state\n\nWhy the best solution works:\nOption ウ contains the transition 1 then 0, reaches the double-circle state on its second bit, and stays accepted for the remaining bits.\n\nWrong answer analysis:\nア — Every 0 loops at the start, so the accepting state is never reached.\n\nイ — The leading 0 stays at the start, then 1 reaches the middle; the remaining 1s loop there, with no 0 to reach acceptance.\n\nエ — The first 1 reaches the middle and all later 1s stay there, so it is rejected.\n\nMemory trick:\nTrace arrows. Never judge acceptance from the bit pattern by intuition.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set03/q03.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}
