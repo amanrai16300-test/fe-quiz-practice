@@ -1214,3 +1214,105 @@ Current product state: Book 1 Chapter 1 provides Practice Set 1 (`1-1` through
 Future textbook work starts with source overview/images, authoritative printed
 question count/number mapping, then implementation; do not redesign this shared
 architecture.
+
+## Phase 3C Book 1 Chapter 2 Practice Set 1 Deployment and Live Verification Checkpoint
+
+Book 1 Chapter 2 Practice Set 1 is complete, committed, pushed, deployed,
+imported, and live-verified. The source branch is
+`feature/2025-part-b-source`; implementation commit
+`fb43c838faf31aa68fb3c3e2a40220065b4851d5` has subject
+`feat: add Book 1 chapter 2 practice set 1`.
+
+Practice Set 1 contract:
+- Generic `exam_set_id`: `book1-ch02-set01`.
+- Seed: `seed/book1-ch02-set01.json`; question count: 3.
+- Source images: `public/questions/book1/ch02/set01/q01.png`, `q02.png`, and
+  `q03.png`.
+- Printed-number mapping is authoritative: `2-1` → `q01.png` → correct `イ`;
+  `2-2` → `q02.png` → correct `ウ`; `2-3` → `q03.png` → correct `ウ`.
+- All three questions are image-first `labels-only`, with explicit labels `ア`,
+  `イ`, `ウ`, `エ`. They reuse the shared Language Help, explanation, progress,
+  resume, reset, sync, and generic `exam_set_id` contracts.
+
+Catalog, navigation, and progress:
+- Chapter 2 did not previously exist. It was added declaratively as collection
+  `book1-ch02`, with generic question-set node `book1-ch02-set01`; no
+  chapter-specific controller, renderer, or API family was added.
+- Book 1 children remain explicitly ordered: Chapter 1, then Chapter 2.
+- Available totals are Chapter 1 = 8, Chapter 2 = 3, and Book 1 = 11.
+  Chapter/book progress remains derived by descendant aggregation from submitted
+  question progress, with no duplicate progress counters.
+
+Local implementation and regression verification:
+- Generic seed validation passed for `book1-ch02-set01` (3),
+  `book1-ch01-set01` (6), `book1-ch01-set02` (2), `fe-2025-a-public` (20),
+  and `fe-2025-b-public` (6). `node --check app.js` and `git diff --check`
+  passed before commit.
+- Headless regression checks passed for catalog navigation and chapter ordering;
+  Chapter 1 and Book 1 rollups including `8/11` through `11/11`; Start,
+  Continue, and Review states; shared-engine loading; authoritative display
+  numbers, answer keys, and image mappings; labels-only controls; Language Help;
+  correct/wrong submissions; Japanese-label progress POSTs; resume; per-set reset
+  isolation; Chapter 1, 科目A, and 科目B regressions; explanation and Past Exam
+  policies; lightbox; dark mode; 320/390/desktop responsive overflow; and zero
+  unexpected runtime errors.
+
+Oracle production deployment and validation:
+- Production source repository: `/home/ubuntu/fe-quiz-src`, branch
+  `feature/2025-part-b-source`. A clean fast-forward pull advanced HEAD from
+  `c46accb` to `fb43c83`; the pull also included documentation commit `49cd390`,
+  subject `docs: record Phase 3B live deployment checkpoint`.
+- Production frontend root is `/var/www/html`; backend source remains
+  `/opt/fe-quiz-api/main.py`; service remains `fe-quiz-api.service`; FastAPI
+  remains bound to `127.0.0.1:8010`; Nginx continues proxying `/api/fe/`.
+  No backend change or service restart was performed.
+- Oracle-side seed validation passed for `book1-ch02-set01` (3 questions), all
+  three source images were confirmed as readable PNG files, and
+  `node --check app.js` passed.
+- Deployment copied only `app.js` and the three Chapter 2 question images to the
+  production frontend tree. Repository and deployed SHA-256 values matched:
+  - `app.js`: `e9699e8b1db683b7f72030de4492bbe3e38ba258af2ecdb17f31766e862d1a54`
+  - `q01.png`: `4ce03acad5d3facae1ec971202157eadf941a23ff0593720fb80224ce4e9e236`
+  - `q02.png`: `c3503e396138812e94790a40944b2909d3029c7f5dc5ff1c44eeb2f422b86d36`
+  - `q03.png`: `aa09a57ab72f44c8fd64f494a0f490fe4e6599cd7113a5b07d0471dbbb39e7a6`
+
+Database and live API:
+- The existing generic importer was reused unchanged. Import returned
+  `Imported exam set: book1-ch02-set01` and `Questions imported: 3`.
+- Both direct FastAPI and Nginx health endpoints passed with
+  `{"ok":true,"database":true}`.
+- The live generic set API returned exactly three questions with the expected
+  `2-1`/`2-2`/`2-3` display numbers, image mappings, `labels-only` modes,
+  explicit labels, and `イ`/`ウ`/`ウ` correct answers. All three live image URLs
+  returned HTTP 200.
+
+Live browser verification:
+- At `http://100.95.39.107/`, Book 1 showed Chapter 1 followed by Chapter 2;
+  Chapter 2 Practice Set 1 opened through the shared quiz engine with the
+  expected rollups and question behavior.
+- Manual live verification passed, and the user confirmed that it “works fine.”
+
+Whole-chapter authoring and deployment process:
+- Starting with the next chapter, batch work at whole-chapter scope: collect
+  overview references; collect every question image for all sets; determine the
+  full chapter structure and counts; map authoritative printed question numbers;
+  author all seeds; validate all sets; integrate the catalog declaratively; run
+  regression checks once for the whole chapter; make one commit and push; perform
+  one Oracle deployment/import/live verification; then write one final docs
+  checkpoint.
+- Practice sets remain independent generic `exam_set_id` units. Whole-chapter
+  batching is an operational workflow only and does not collapse separate sets.
+
+Architecture guardrails remain unchanged:
+- Reuse the shared quiz engine and generic `exam_set_id`; preserve image-first
+  presentation and authoritative printed numbering; use explicit answer labels;
+  use `labels-only` when complete choices are present in the source image; and
+  reuse shared Language Help and explanations.
+- Preserve generic question-level progress, per-set reset isolation, and
+  descendant chapter/book aggregation. Do not add chapter-specific controllers
+  or renderers, a Book API family, or a schema redesign without a demonstrated
+  need.
+
+Next milestone: Book 1 → next chapter, using whole-chapter batching. Do not guess
+the number of sets, question counts, or printed-number structure until the source
+overview and images have been collected and authoritatively mapped.
