@@ -985,3 +985,129 @@ additive FastAPI adapter, copying/importing `seed/book1-ch01-set01.json` with th
 existing importer, and restarting the API service. No migration is required.
 
 Next recommended work: **Chapter 1 Practice Set 2 / Phase 3B**.
+
+## Phase 3A Deployment and Live Verification Checkpoint
+
+Phase 3A is complete, committed, pushed, deployed, imported, and manually
+live-verified. Commit `f3b24a2` (`feat: add Book 1 chapter 1 practice set`) is on
+`feature/2025-part-b-source` and was pushed to
+`origin/feature/2025-part-b-source`.
+
+Live product state:
+- The Study Hub retains **Past Exam Questions → 2025 → 科目A / 科目B** and now
+  exposes **Textbook Practice — Book 1 → Chapter 1 → Practice Set 1**.
+- Practice Set 1 contains six questions, with internal contiguous numbers 1–6
+  and user-facing display numbers `1-1` through `1-6`.
+- **Practice Set 2** and **Textbook Practice — Book 2** remain visible as
+  **Coming Soon**. No fake Topic layer or textbook-specific controller was added.
+- Navigation and reverse Back navigation use the declarative catalog tree and
+  the one shared quiz engine.
+
+Book 1 Chapter 1 Practice Set 1 contract:
+- Generic question-set ID and progress-isolation key: `book1-ch01-set01`.
+- Seed: `seed/book1-ch01-set01.json`; title:
+  **Book 1 — Chapter 1 — Practice Set 1**; `question_count`: 6.
+- Generic optional `displayNumber` supplies textbook numbering without hard-coded
+  Book 1 logic. Past Exam numbering remains unchanged.
+- All six questions explicitly use `optionMode: "labels-only"` and labels `ア`,
+  `イ`, `ウ`, `エ`. Each source image contains the full Japanese question and
+  answer choices, so that wording is not duplicated beneath the image.
+- Verified answer key: `1-1 エ`, `1-2 ア`, `1-3 イ`, `1-4 ウ`, `1-5 ア`,
+  `1-6 ア` (compact: `エ ア イ ウ ア ア`).
+- Every question has real Japanese transcription, Romaji, English, explicit
+  Japanese option labels, option translations, correct answer, ELI5 explanation,
+  technical breakdown, wrong-answer analysis, and correct-answer section. No
+  placeholder explanation is used.
+
+Source-image record:
+- `public/questions/book1/ch01/set01/q01.png` through `q06.png` map in order to
+  Problems `1-1` through `1-6`.
+- Preparation uploads arrived in reverse order; the printed question number in
+  each image was treated as authoritative rather than upload order or timestamp.
+- The PNGs were not modified, regenerated, recompressed, or cropped.
+- All six files are deployed beneath the live Nginx web root and each returned
+  HTTP 200.
+
+Shared presentation behavior:
+- The shared Phase 2B image renderer provides loading/error states, Retry,
+  responsive fitting, dark-theme-safe presentation, and the accessible lightbox
+  with Escape/backdrop close, focus trap/restoration, and scroll lock. No separate
+  textbook image viewer exists.
+- Language Help begins collapsed. Japanese transcription remains in structured
+  data; Romaji, English, and translations keyed by explicit Japanese option labels
+  appear dynamically. Correct-answer information stays hidden until Submit.
+- Shared quiz-context policy expands textbook explanations after either correct or
+  wrong submissions. Past Exam policy remains unchanged: correct answers default
+  collapsed under **Review explanation**; wrong answers default expanded under
+  **Understand why**. No second explanation renderer exists.
+
+Progress, resume, reset, and sync:
+- The existing generic GET/POST/DELETE routes under
+  `/api/fe/progress/{exam_set_id}` are reused with `X-FE-User-Key` and existing
+  localStorage/sync behavior.
+- Book and chapter progress is derived from submitted question progress. Practice
+  Set 2 contributes zero while unavailable: 0 submitted = Start, 1–5 = Continue,
+  and 6 = Review/completed.
+- Reset is scoped to `book1-ch01-set01`; Past Exam 科目A/科目B progress is not
+  affected.
+
+Importer, API, and storage:
+- The same generic importer, `scripts/import_seed_oracle.js`, is reused. It now
+  validates optional non-empty unique `displayNumber` values, the source-image
+  requirement for `labels-only`, paths beneath `public/questions`, physical file
+  existence, non-empty/non-placeholder explanations outside the intentional
+  legacy exception, and existing option-label/correct-answer rules.
+- `displayNumber` is stored in the existing JSON body. The small additive adapter
+  change in `oracle/backend/main.py` passes it through the existing generic route
+  `GET /api/fe/exam-sets/{exam_set_id}/questions`; no Book/Textbook API was added.
+- The production endpoint `/api/fe/exam-sets/book1-ch01-set01/questions` returned
+  all six questions with display numbers `1-1`–`1-6`, `labels-only`, and labels
+  `['ア','イ','ウ','エ']`.
+
+Oracle production deployment:
+- Repository: `/home/ubuntu/fe-quiz-src`, checked out at
+  `feature/2025-part-b-source`, deployed commit `f3b24a2`.
+- Frontend root: `/var/www/html`; backend: `/opt/fe-quiz-api/main.py`; systemd
+  service: `fe-quiz-api.service`; FastAPI bind: `127.0.0.1:8010`.
+- Deployment included `app.js`, `index.html`, `style.css`, the additive backend
+  adapter, `q01.png` through `q06.png`, and the Book 1 seed import. Backend restart
+  succeeded.
+- Image validation requires repository-root-relative files, so validation/import
+  ran from `/home/ubuntu/fe-quiz-src`, using the existing PostgreSQL module at
+  `/home/ubuntu/fe-quiz-import/node_modules`:
+
+  ```sh
+  NODE_PATH=/home/ubuntu/fe-quiz-import/node_modules \
+  node scripts/import_seed_oracle.js seed/book1-ch01-set01.json
+  ```
+
+- Import succeeded with `Imported exam set: book1-ch01-set01` and
+  `Questions imported: 6`.
+- API health passed directly and through Nginx at
+  `http://127.0.0.1:8010/api/fe/health` and
+  `http://127.0.0.1/api/fe/health`, returning
+  `{"ok":true,"database":true}`.
+
+Guardrails and regression state:
+- PostgreSQL schema, Nginx configuration, systemd configuration, authentication,
+  sync identity, and progress contract are unchanged. No migration, table,
+  relational column, or route family was added; `exam_set_id` remains the generic
+  internal question-set identifier.
+- Existing 2025 科目A/科目B and shared Study Hub, navigation, Submit/Next/Back,
+  progress/resume/reset/sync, theme, Language Help, lightbox, supplemental content,
+  arbitrary option counts, explicit labels, explanation behavior, API loading,
+  and Paper A fallback remain intact.
+- Local/headless Phase 3A checks passed before deployment. Live Book 1 behavior was
+  manually checked and reported working correctly.
+
+Current architecture is proven for both official Past Exam content and image-first
+textbook content while retaining one shared quiz engine. Future work must not add
+separate Book 1 or Book 2 controllers.
+
+Next recommended milestone: **Chapter 1 → Practice Set 2**. Obtain and map its real
+source images by printed question number under
+`public/questions/book1/ch01/set02/`, create generic set ID
+`book1-ch01-set02`, author complete language/answer/explanation data, reuse the
+shared importer and quiz engine, and enable the existing catalog node. Book 1 and
+Chapter 1 progress should then aggregate both available sets. Do not redesign the
+architecture unless real Set 2 content exposes a genuine limitation.
