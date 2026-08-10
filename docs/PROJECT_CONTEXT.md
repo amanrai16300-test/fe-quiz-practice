@@ -1111,3 +1111,106 @@ source images by printed question number under
 shared importer and quiz engine, and enable the existing catalog node. Book 1 and
 Chapter 1 progress should then aggregate both available sets. Do not redesign the
 architecture unless real Set 2 content exposes a genuine limitation.
+
+## Phase 3B Book 1 Chapter 1 Practice Set 2 Deployment and Live Verification Checkpoint
+
+Phase 3B is complete, committed, pushed, deployed, imported, and live-verified.
+The source branch is `feature/2025-part-b-source`; implementation commit
+`c46accb424bc60decbd3aa13497a5d3b14e2277b` has subject
+`feat: add Book 1 chapter 1 practice set 2`.
+
+Practice Set 2 contract:
+- Generic `exam_set_id`: `book1-ch01-set02`.
+- Seed: `seed/book1-ch01-set02.json`; question count: 2.
+- Source images:
+  `public/questions/book1/ch01/set02/q01.png` and `q02.png`.
+- Printed-number mapping is authoritative: `q01.png` = `1-7`; `q02.png` =
+  `1-8`. Internal numbers 1 and 2 use display numbers `1-7` and `1-8`.
+- Both questions are image-first `labels-only`, with explicit labels `ア`, `イ`,
+  `ウ`, `エ`. Their complete Japanese question/options remain in the source
+  images; structured Japanese, Romaji, English, and explicit-label Language Help
+  data remain available through the shared contract.
+- Verified answer key: `1-7 ウ`; `1-8 ア`. Textbook explanations reuse the shared
+  renderer and textbook policy.
+
+Catalog, navigation, and progress:
+- The existing Practice Set 2 **Coming Soon** node was converted in place to an
+  available generic question-set node; no duplicate node was created.
+- Navigation is Study Hub → Textbook Practice — Book 1 → Chapter 1 → Practice
+  Set 2 → shared quiz engine. Back navigation remains declarative; no fake Topic
+  layer was added.
+- Set IDs are `book1-ch01-set01` and `book1-ch01-set02`.
+- Available totals are Set 1 = 6, Set 2 = 2, Chapter 1 = 8, and Book 1 = 8.
+  Book/chapter totals remain derived from descendant submitted-question progress;
+  no duplicate progress counter is stored.
+
+Local verification before deployment:
+- Local/headless checks passed for catalog navigation, no duplicate Set 2 node,
+  0/8 through 8/8 rollups, Set 2 Start/Continue/Review states, display numbers,
+  image mapping/order, labels-only, Language Help explicit-label mapping,
+  correct/wrong submissions, Japanese-label progress POSTs, resume, reset
+  isolation, reverse navigation, textbook explanation expansion, Past Exam policy,
+  lightbox, dark image behavior, 320/390/desktop overflow, 科目A/科目B regressions,
+  and zero unexpected runtime errors.
+- Generic validation passed for `book1-ch01-set02` (2), `book1-ch01-set01` (6),
+  `fe-2025-a-public` (20), and `fe-2025-b-public` (6). `node --check app.js` and
+  `git diff --check` passed before commit.
+
+Oracle production deployment and validation:
+- Production source repository: `/home/ubuntu/fe-quiz-src`, branch
+  `feature/2025-part-b-source`. It was clean at prior commit `f3b24a2`; after
+  `git fetch origin` and `git pull --ff-only origin feature/2025-part-b-source`,
+  HEAD became `c46accb`. This update also included the earlier Phase 3A
+  documentation commit `245d8e6`.
+- From `/home/ubuntu/fe-quiz-src`, validation-only returned
+  `Validated seed: book1-ch01-set02 (2 questions)`.
+- `q01.png` was verified as a readable 1021 × 337 RGBA PNG; `q02.png` as a
+  readable 1017 × 257 RGBA PNG.
+- Only `app.js` was copied to `/var/www/html/app.js`. The Set 2 image directory
+  `/var/www/html/public/questions/book1/ch01/set02/` was created and received
+  `q01.png` and `q02.png`. Repository and deployed SHA-256 hashes matched for all
+  three files. Images were not modified, cropped, regenerated, resized, or
+  recompressed.
+
+Database and live API:
+- Existing generic importer was reused, with the database URL loaded from
+  `/etc/fe-quiz-api.env` and no credentials exposed:
+
+  ```sh
+  NODE_PATH=/home/ubuntu/fe-quiz-import/node_modules \
+  node scripts/import_seed_oracle.js seed/book1-ch01-set02.json
+  ```
+
+- Import returned `Imported exam set: book1-ch01-set02` and
+  `Questions imported: 2`. Set 1, 科目A, and 科目B required no re-import.
+- Nginx health endpoint `GET /api/fe/health` returned
+  `{"ok":true,"database":true}`.
+- `GET /api/fe/exam-sets/book1-ch01-set02/questions` returned exactly two
+  questions. Live contract confirmed `1-7` / internal 1 / `labels-only` /
+  labels `ア` `イ` `ウ` `エ` / correct `ウ` / `q01.png`, and `1-8` / internal 2 /
+  `labels-only` / same labels / correct `ア` / `q02.png`.
+- Both live Nginx image URLs returned HTTP 200 with `Content-Type: image/png`.
+
+Live browser verification:
+- At `http://100.95.39.107/`, manual browser verification passed for FE Study →
+  Textbook Practice — Book 1 → Chapter 1 → Practice Set 2.
+- Practice Set 2 opened through the shared quiz engine. Both display numbers,
+  source images, labels-only controls, Language Help, correct-answer behavior,
+  explanations, and image-first presentation worked. The live Set 2 experience
+  was manually reported working correctly.
+
+Architecture and guardrails unchanged:
+- No backend change or FastAPI restart was needed. No PostgreSQL schema migration,
+  Nginx/systemd configuration change, API route family, progress model,
+  authentication/sync change, Book 1-specific controller, or second renderer was
+  introduced.
+- `exam_set_id` remains the generic question-set identity. The shared quiz engine,
+  normalizer, image viewer/lightbox, labels-only mode, Language Help, explanation
+  renderer, progress, resume, reset, sync, and theme are reused. Practice Set 1
+  and existing Past Exam content remain unchanged.
+
+Current product state: Book 1 Chapter 1 provides Practice Set 1 (`1-1` through
+`1-6`) and Practice Set 2 (`1-7` through `1-8`), for eight available questions.
+Future textbook work starts with source overview/images, authoritative printed
+question count/number mapping, then implementation; do not redesign this shared
+architecture.
