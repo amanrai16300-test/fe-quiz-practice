@@ -1316,3 +1316,143 @@ Architecture guardrails remain unchanged:
 Next milestone: Book 1 → next chapter, using whole-chapter batching. Do not guess
 the number of sets, question counts, or printed-number structure until the source
 overview and images have been collected and authoritatively mapped.
+
+## Phase 3D Book 1 Chapter 2 Complete Deployment and Live Verification Checkpoint
+
+This is the current Chapter 2 checkpoint. It supersedes the current-state portion
+of the earlier Phase 3C checkpoint, which remains an accurate historical record
+of the original Practice Set 1-only deployment.
+
+Chapter 2 completion is committed, pushed, deployed, imported, and live-verified.
+The source branch is `feature/2025-part-b-source`; implementation commit
+`2989557dbffd1ad8c808d30d817e68b2cf4ed6c4` has subject
+`feat: complete Book 1 chapter 2 practice sets`.
+
+Final Chapter 2 content:
+- Four independent generic question sets are available:
+  `book1-ch02-set01` (3), `book1-ch02-set02` (4),
+  `book1-ch02-set03` (3), and `book1-ch02-set04` (5).
+- Printed-number mapping remains authoritative. The complete answer key is:
+  `2-1 イ`, `2-2 ウ`, `2-3 ウ`; `2-4 ア`, `2-5 イ`, `2-6 ウ`, `2-7 ウ`;
+  `2-8 イ`, `2-9 ウ`, `2-10 ウ`; `2-11 ア`, `2-12 ウ`, `2-13 ウ`,
+  `2-14 ウ`, `2-15 エ`.
+- Set 2 seed is `seed/book1-ch02-set02.json`; Set 3 seed is
+  `seed/book1-ch02-set03.json`; Set 4 seed is
+  `seed/book1-ch02-set04.json`.
+- Image folders are `public/questions/book1/ch02/set01/` (q01–q03),
+  `set02/` (q01–q04), `set03/` (q01–q03), and `set04/` (q01–q05).
+  Source images were neither rewritten nor remapped after the authoritative
+  printed-number intake gate.
+
+Catalog, navigation, and progress:
+- The existing `book1-ch02` collection was reused. Its children are exactly, in
+  order: `book1-ch02-set01`, `book1-ch02-set02`, `book1-ch02-set03`,
+  `book1-ch02-set04`.
+- Sets 2–4 use the same declarative generic set contract as Set 1. No duplicate
+  Chapter 2 or Practice Set node was created.
+- Chapter 1 remains 8 questions. Chapter 2 is 3 + 4 + 3 + 5 = 15 questions.
+  Book 1 is 8 + 15 = 23 questions.
+- Chapter and Book totals remain descendant-set aggregations from submitted
+  question progress; no separate Chapter 2 or Book 1 progress counter exists.
+  Every set remains an independent progress, resume, and reset unit.
+
+Content and architecture contract:
+- All 15 Chapter 2 questions are image-first `labels-only`, with explicit
+  `ア` / `イ` / `ウ` / `エ` labels. The source image is the authoritative visible
+  Japanese question/options; complete Japanese, Romaji, and English remain
+  available through shared Language Help and explicit-label mapping.
+- The shared quiz engine, source-image loader/lightbox, labels-only selector,
+  answer checker, textbook explanation renderer, navigator, generic progress
+  GET/POST/DELETE, resume, reset, sync, and theme are reused unchanged.
+- No Chapter 2-specific controller, renderer, loader, API route, schema, progress
+  model, importer, or Book-specific quiz behavior was introduced.
+
+Local validation before deployment:
+- Generic validation passed for `book1-ch02-set01` (3), `book1-ch02-set02` (4),
+  `book1-ch02-set03` (3), `book1-ch02-set04` (5), `book1-ch01-set01` (6),
+  `book1-ch01-set02` (2), `fe-2025-a-public` (20), and `fe-2025-b-public` (6).
+  `node --check app.js` and `git diff --check` passed.
+- Headless/local regressions passed for chapter/set ordering and uniqueness;
+  Chapter 1 = 8, Chapter 2 = 15, and Book 1 = 23 rollups; Start/Continue/Review
+  boundaries; the shared engine and all 15 Chapter 2 questions; labels-only,
+  image and answer mappings, Language Help, correct/wrong submissions,
+  Japanese-label progress POSTs, resume, reset isolation, Chapter 1, 科目A, 科目B,
+  textbook and Past Exam explanation policies, navigation, lightbox, dark mode,
+  and zero unexpected runtime errors.
+- Real Chrome checks passed at 320 px, 390 px, and 1280 px with no page-level
+  horizontal overflow. Dark mode did not invert source images, and lightbox
+  behavior passed.
+
+Oracle production deployment:
+- Production source repository is `/home/ubuntu/fe-quiz-src` on
+  `feature/2025-part-b-source`. Before deployment it was at `fb43c83`
+  (`feat: add Book 1 chapter 2 practice set 1`); fetch identified intervening
+  documentation commit `fd786e9` (`docs: record Phase 3C live deployment
+  checkpoint`) and implementation commit `2989557`. Oracle was fast-forwarded to
+  `2989557`.
+- Production frontend root is `/var/www/html`; backend remains
+  `/opt/fe-quiz-api/main.py`; service remains `fe-quiz-api.service`; FastAPI
+  remains bound to `127.0.0.1:8010`. No backend restart was required.
+- Oracle validation passed for all four Chapter 2 seeds, all 12 newly-added PNGs
+  were present, and `node --check app.js` passed.
+- Deployed runtime files were `app.js` plus Set 2 q01–q04, Set 3 q01–q03, and
+  Set 4 q01–q05 under `/var/www/html/public/questions/book1/ch02/`.
+  Repository/deployed binary comparison passed for `app.js` and all 12 PNGs.
+- Verified SHA-256 hashes, each matching its deployed copy:
+  - Set 2: q01 `8140289d2e210fe21bc60ce7e16a050ac6e9b63d712e752fc82523dd069f2f75`;
+    q02 `e31f06944fd8a49e23c84059d883e88d7a1cc7d57cc13c59259da15fa10f9b62`;
+    q03 `3f189187e909b558c8fa0c33f38baa5979590a68bd5d7121c7d82d6a5f2e90e4`;
+    q04 `13b26cc6b76fd9f521c804305216941f482af46588871a8b0398d44907686052`.
+  - Set 3: q01 `a060ab046d0843a1a8d341958c66b89f6bc405c4d995c6088ee1ec85fcb00360`;
+    q02 `93dfc3fb1b002dc53dd9fcc0a8a2db365df1c71f83022243745ce251f6846770`;
+    q03 `103be30b435d3c762e32620ec81395951ae3169dc796cfd09f87273819cd82dc`.
+  - Set 4: q01 `604bf0786daf34f65e772241d2440d9b6d8e06a6a1b188a0ff513383f09d7795`;
+    q02 `4fdefb24de97953dfb25681ff8bcf56ab8fee052fced28deb587f1b90450faf3`;
+    q03 `96dfe6852d6d139b095550b96b8001de8d0d939658367527541a55e7a30e4575`;
+    q04 `bf1dc8ade951902667bd8bb62b7972f18e9868f5a40694d5eb4659ee5c05f184`;
+    q05 `27c40e202855542a409078f4f377c3f91613276a9c0e549351a2f5d1a68865f8`.
+
+Database, API, and live browser verification:
+- The existing generic importer was reused unchanged. It imported
+  `book1-ch02-set02` (4 questions), `book1-ch02-set03` (3 questions), and
+  `book1-ch02-set04` (5 questions). Set 1 already existed in production.
+- Both health endpoints, `127.0.0.1:8010/api/fe/health` and
+  `127.0.0.1/api/fe/health`, returned `{"ok":true,"database":true}`.
+- The production generic question API returned each Chapter 2 set at the expected
+  count, display-number/image mapping, `labels-only` mode, explicit labels, and
+  answer key listed above. All 12 newly-deployed image URLs returned HTTP 200.
+- At `http://100.95.39.107/`, manual verification passed for Study Hub →
+  Textbook Practice — Book 1 → Chapter 2. The chapter shows all four Practice
+  Sets, and all question images and quiz flows work. The user confirmed:
+  “all working properly.” Chapter 2 is complete and live.
+
+Whole-chapter workflow decision:
+- Future textbook chapters are processed as one chapter-completion batch:
+  1. Create every Practice Set image folder.
+  2. Copy all source images for every set.
+  3. Run one complete source inventory/mapping gate.
+  4. Confirm every printed question number and per-set count.
+  5. Author all chapter seeds in one batch.
+  6. Validate every completed set.
+  7. Integrate all chapter/set catalog nodes in one step.
+  8. Run one full chapter regression cycle.
+  9. Make one implementation commit and push.
+  10. Perform one Oracle pull/deployment.
+  11. Deploy all chapter images together.
+  12. Import all new generic exam sets together.
+  13. Run complete API and live-browser verification.
+  14. Add one final documentation checkpoint.
+- This batches operations only. It does not merge Practice Sets: each retains its
+  own generic `exam_set_id`, progress, resume, reset, and generic API behavior.
+
+Next milestone: Chapter 2 is closed. Continue with Textbook Practice — Book 1 →
+Chapter 3 using whole-chapter batching. Do not infer Practice Set count, question
+count, printed ranges, or source mappings until Chapter 3 source images are
+supplied and verified.
+
+Guardrails remain: one shared quiz engine; generic `exam_set_id`; image-first
+textbook content; authoritative printed question numbers; `labels-only` when the
+image contains complete options; explicit Japanese labels; label-mapped Language
+Help; shared explanations; generic progress API; per-set reset isolation;
+descendant aggregation; no chapter-specific controller, Book-specific renderer,
+new API family, or schema redesign without an actual content need.
