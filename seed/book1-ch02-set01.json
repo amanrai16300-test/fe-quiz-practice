@@ -1,0 +1,130 @@
+{
+  "exam_set": {
+    "id": "book1-ch02-set01",
+    "title": "Book 1 — Chapter 2 — Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 2, Practice Set 1",
+    "question_count": 3
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "2-1",
+      "optionMode": "labels-only",
+      "jp": "XとYの否定論理積X NAND Yは、NOT(X AND Y)として定義される。X OR YをNANDだけを使って表した論理式はどれか。",
+      "romaji": "X to Y no hitei ronriseki X NAND Y wa, NOT(X AND Y) to shite teigi sareru. X OR Y o NAND dake o tsukatte arawashita ronrishiki wa dore ka.",
+      "en": "The NAND operation X NAND Y is defined as NOT(X AND Y). Which logical expression represents X OR Y using only NAND operations?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "((X NAND Y) NAND X) NAND Y",
+          "romaji": "((X NAND Y) NAND X) NAND Y",
+          "en": "((X NAND Y) NAND X) NAND Y"
+        },
+        {
+          "label": "イ",
+          "jp": "(X NAND X) NAND (Y NAND Y)",
+          "romaji": "(X NAND X) NAND (Y NAND Y)",
+          "en": "(X NAND X) NAND (Y NAND Y)"
+        },
+        {
+          "label": "ウ",
+          "jp": "(X NAND Y) NAND (X NAND Y)",
+          "romaji": "(X NAND Y) NAND (X NAND Y)",
+          "en": "(X NAND Y) NAND (X NAND Y)"
+        },
+        {
+          "label": "エ",
+          "jp": "X NAND (Y NAND (X NAND Y))",
+          "romaji": "X NAND (Y NAND (X NAND Y))",
+          "en": "X NAND (Y NAND (X NAND Y))"
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nThink of NAND as a machine that performs AND and then flips the result.\n\nThere is an important trick:\n\nX NAND X = NOT X\n\nWhy?\n\nX AND X is just X, so:\n\nX NAND X\n= NOT(X AND X)\n= NOT X\n\nThe same applies to Y:\n\nY NAND Y = NOT Y\n\nNow use those two inverted values:\n\n(X NAND X) NAND (Y NAND Y)\n\nbecomes:\n\n(NOT X) NAND (NOT Y)\n\nNAND means NOT of AND, so:\n\nNOT((NOT X) AND (NOT Y))\n\nBy De Morgan's law:\n\nNOT((NOT X) AND (NOT Y))\n= X OR Y\n\nSo this expression creates OR using only NAND.\n\nTechnical breakdown:\nNAND is defined as:\n\nX NAND Y = NOT(X AND Y)\n\nFirst create NOT X using NAND:\n\nX NAND X\n= NOT(X AND X)\n= NOT X\n\nLikewise:\n\nY NAND Y\n= NOT(Y AND Y)\n= NOT Y\n\nNow NAND those two results:\n\n(X NAND X) NAND (Y NAND Y)\n\n= (NOT X) NAND (NOT Y)\n\n= NOT((NOT X) AND (NOT Y))\n\nUsing De Morgan's law:\n\nNOT((NOT X) AND (NOT Y))\n\n= X OR Y\n\nTherefore this expression is exactly equivalent to X OR Y.\n\nJapanese keywords to remember:\n否定論理積 = hitei ronriseki = NAND\n\n定義される = teigi sareru = is defined\n\n論理式 = ronrishiki = logical expression\n\n表す = arawasu = to express / represent\n\nだけを使って = dake o tsukatte = using only\n\n否定 = hitei = negation / NOT\n\n論理積 = ronriseki = logical AND\n\n論理和 = ronriwa = logical OR\n\nド・モルガンの法則 = Do Morugan no hōsoku = De Morgan's law\n\nWhy the best solution works:\nThe key NAND trick is:\n\nX NAND X = NOT X\n\nand:\n\nY NAND Y = NOT Y\n\nSo the expression becomes:\n\nNOT X NAND NOT Y\n\nSince NAND means NOT of AND:\n\nNOT((NOT X) AND (NOT Y))\n\nDe Morgan's law converts this to:\n\nX OR Y\n\nTherefore it produces exactly the required OR operation using NAND only.\n\nWrong answer analysis:\nア\n\n((X NAND Y) NAND X) NAND Y\n\nThis does not simplify to X OR Y.\n\nLet:\n\nA = X NAND Y = NOT(X AND Y)\n\nThen:\n\nA NAND X\n\nsimplifies to:\n\nNOT X OR Y\n\nNANDing that with Y ultimately produces:\n\nNOT Y\n\nSo this expression does not represent X OR Y.\n\nウ\n\n(X NAND Y) NAND (X NAND Y)\n\nLet:\n\nA = X NAND Y\n\nThen:\n\nA NAND A = NOT A\n\nSince:\n\nA = NOT(X AND Y)\n\nwe get:\n\nNOT(NOT(X AND Y))\n= X AND Y\n\nSo this expression creates AND, not OR.\n\nエ\n\nX NAND (Y NAND (X NAND Y))\n\nThis expression simplifies to:\n\nNOT X\n\nIt therefore represents a negation of X, not X OR Y.\n\nMemory trick:\nNAND can make NOT by feeding the same value into both inputs:\n\nX NAND X = NOT X\n\nTo make OR, remember De Morgan:\n\nX OR Y\n= NOT((NOT X) AND (NOT Y))\n\nSo with NAND:\n\nfirst make NOT X\nfirst make NOT Y\nthen NAND them together\n\nThat gives:\n\n(X NAND X) NAND (Y NAND Y)\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set01/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "2-2",
+      "optionMode": "labels-only",
+      "jp": "8ビットのビット列の下位4ビットが変化しない操作はどれか。",
+      "romaji": "8-bitto no bitto-retsu no kai 4-bitto ga henka shinai sōsa wa dore ka.",
+      "en": "Which operation leaves the lower 4 bits of an 8-bit bit string unchanged?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "16進表記0Fのビット列との排他的論理和をとる。",
+          "romaji": "16-shin hyōki 0F no bitto-retsu to no haitateki ronriwa o toru.",
+          "en": "Take the exclusive OR (XOR) with the bit string represented by hexadecimal 0F."
+        },
+        {
+          "label": "イ",
+          "jp": "16進表記0Fのビット列との否定論理積をとる。",
+          "romaji": "16-shin hyōki 0F no bitto-retsu to no hitei ronriseki o toru.",
+          "en": "Take the NAND with the bit string represented by hexadecimal 0F."
+        },
+        {
+          "label": "ウ",
+          "jp": "16進表記0Fのビット列との論理積をとる。",
+          "romaji": "16-shin hyōki 0F no bitto-retsu to no ronriseki o toru.",
+          "en": "Take the logical AND with the bit string represented by hexadecimal 0F."
+        },
+        {
+          "label": "エ",
+          "jp": "16進表記0Fのビット列との論理和をとる。",
+          "romaji": "16-shin hyōki 0F no bitto-retsu to no ronriwa o toru.",
+          "en": "Take the logical OR with the bit string represented by hexadecimal 0F."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nThink of the lower 4 bits as four switches that we want to keep exactly as they already are.\n\nHexadecimal 0F means:\n\n0F\n= 0000 1111\n\nThe lower four bits of 0F are all 1.\n\nThere is a useful AND rule:\n\n0 AND 1 = 0\n1 AND 1 = 1\n\nSo ANDing any bit with 1 keeps the original bit unchanged.\n\nFor example:\n\noriginal:\n1010 0110\n\nmask:\n0000 1111\n\nAND result:\n0000 0110\n\nThe lower four bits were:\n\n0110\n\nand after the operation they are still:\n\n0110\n\nTherefore AND with 0F leaves the lower four bits unchanged.\n\nTechnical breakdown:\nHexadecimal 0F corresponds to the 8-bit pattern:\n\n0000 1111\n\nFor logical AND:\n\nA AND 1 = A\n\nTherefore each of the lower four bits is ANDed with 1 and remains unchanged.\n\nIf the original 8-bit value is represented as:\n\nabcd efgh\n\nand the mask 0F is:\n\n0000 1111\n\nthen:\n\nabcd efgh\nAND\n0000 1111\n------------\n0000 efgh\n\nThe upper four bits become 0, but the lower four bits efgh remain exactly the same.\n\nTherefore the required operation is AND with hexadecimal 0F.\n\nJapanese keywords to remember:\n8ビット = 8-bitto = 8 bits\n\nビット列 = bitto-retsu = bit string\n\n下位4ビット = kai 4-bitto = lower 4 bits\n\n変化しない = henka shinai = do not change / remain unchanged\n\n操作 = sōsa = operation\n\n16進表記 = 16-shin hyōki = hexadecimal notation\n\n排他的論理和 = haitateki ronriwa = exclusive OR / XOR\n\n否定論理積 = hitei ronriseki = NAND\n\n論理積 = ronriseki = AND\n\n論理和 = ronriwa = OR\n\nWhy the best solution works:\nThe key is the identity:\n\nA AND 1 = A\n\nHexadecimal 0F is:\n\n0000 1111\n\nIts lower four bits are all 1.\n\nTherefore:\n\nlower bit AND 1 = original lower bit\n\nfor every one of the lower four positions.\n\nSo all four lower bits stay unchanged.\n\nThe upper four bits are ANDed with 0 and therefore become 0, but the question asks only that the lower four bits remain unchanged.\n\nWrong answer analysis:\nア\n\nXOR with 0F means XOR with:\n\n0000 1111\n\nFor XOR:\n\nA XOR 1 = NOT A\n\nTherefore every lower bit is flipped.\n\nExample:\n\n0110 XOR 1111 = 1001\n\nThe lower four bits change, so this is wrong.\n\nイ\n\nNAND means NOT of AND.\n\nWith 0F:\n\nNOT(value AND 0000 1111)\n\nThe AND operation would preserve the lower four bits, but NAND then negates the result.\n\nTherefore the lower four bits are inverted instead of preserved.\n\nThis is wrong.\n\nエ\n\nOR with 0F means OR with:\n\n0000 1111\n\nFor OR:\n\nA OR 1 = 1\n\nTherefore every lower bit becomes 1.\n\nFor example:\n\n0110 OR 1111 = 1111\n\nThis does not preserve the original lower four bits unless they happened to already be 1111.\n\nTherefore this is wrong.\n\nMemory trick:\nFor masks, remember:\n\nAND with 1 → KEEP\nAND with 0 → CLEAR\n\nOR with 1 → SET to 1\nXOR with 1 → FLIP\n\nHere:\n\n0F = 0000 1111\n\nWe want to KEEP the lower four bits.\n\nSo think:\n\n1111 + AND = KEEP\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set01/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "2-3",
+      "optionMode": "labels-only",
+      "jp": "8ビットの値の全ビットを反転する操作はどれか。",
+      "romaji": "8-bitto no atai no zen bitto o hanten suru sōsa wa dore ka.",
+      "en": "Which operation inverts all bits of an 8-bit value?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "16進表記 00 のビット列と排他的論理和をとる。",
+          "romaji": "16-shin hyōki 00 no bitto-retsu to haitateki ronriwa o toru.",
+          "en": "Take the exclusive OR (XOR) with the bit string represented by hexadecimal 00."
+        },
+        {
+          "label": "イ",
+          "jp": "16進表記 00 のビット列と論理和をとる。",
+          "romaji": "16-shin hyōki 00 no bitto-retsu to ronriwa o toru.",
+          "en": "Take the logical OR with the bit string represented by hexadecimal 00."
+        },
+        {
+          "label": "ウ",
+          "jp": "16進表記 FF のビット列と排他的論理和をとる。",
+          "romaji": "16-shin hyōki FF no bitto-retsu to haitateki ronriwa o toru.",
+          "en": "Take the exclusive OR (XOR) with the bit string represented by hexadecimal FF."
+        },
+        {
+          "label": "エ",
+          "jp": "16進表記 FF のビット列と論理和をとる。",
+          "romaji": "16-shin hyōki FF no bitto-retsu to ronriwa o toru.",
+          "en": "Take the logical OR with the bit string represented by hexadecimal FF."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nImagine an 8-bit value as eight light switches.\n\nWe want every switch to flip:\n\n0 → 1\n1 → 0\n\nHexadecimal FF means:\n\nFF\n= 1111 1111\n\nXOR has a very useful rule:\n\n0 XOR 1 = 1\n1 XOR 1 = 0\n\nSo XOR with 1 always flips the original bit.\n\nBecause FF contains eight 1s, XOR with FF flips all eight bits.\n\nFor example:\n\noriginal:\n1010 0110\n\nFF:\n1111 1111\n\nXOR result:\n0101 1001\n\nEvery bit has been reversed.\n\nTechnical breakdown:\nHexadecimal FF corresponds to:\n\n1111 1111\n\nFor XOR:\n\nA XOR 1 = NOT A\n\nTherefore, for each bit position:\n\nbit XOR 1 = inverted bit\n\nApplying XOR with FF to an 8-bit value means every bit is XORed with 1.\n\nSo:\n\nabcdefgh\nXOR\n11111111\n--------\n¬a¬b¬c¬d¬e¬f¬g¬h\n\nEvery bit is inverted.\n\nTherefore XOR with hexadecimal FF performs a full 8-bit inversion.\n\nJapanese keywords to remember:\n8ビット = 8-bitto = 8 bits\n\n値 = atai = value\n\n全ビット = zen bitto = all bits\n\n反転する = hanten suru = to invert / flip\n\n操作 = sōsa = operation\n\n16進表記 = 16-shin hyōki = hexadecimal notation\n\nビット列 = bitto-retsu = bit string\n\n排他的論理和 = haitateki ronriwa = exclusive OR / XOR\n\n論理和 = ronriwa = OR\n\nWhy the best solution works:\nThe goal is:\n\n0 → 1\n1 → 0\n\nThe XOR identity we need is:\n\nA XOR 1 = NOT A\n\nHexadecimal FF is:\n\n1111 1111\n\nSo every bit of the original value is XORed with 1.\n\nThat means every bit is inverted.\n\nTherefore XOR with FF gives exactly the required result.\n\nWrong answer analysis:\nア\n\nHexadecimal 00 is:\n\n0000 0000\n\nFor XOR:\n\nA XOR 0 = A\n\nSo XOR with 00 leaves every bit unchanged.\n\nIt does not invert anything.\n\nイ\n\nOR with 00 also leaves the original value unchanged because:\n\nA OR 0 = A\n\nSo this does not invert the bits.\n\nエ\n\nOR with FF means:\n\nvalue OR 1111 1111\n\nFor OR:\n\nA OR 1 = 1\n\nTherefore every output bit becomes 1.\n\nThe result is always:\n\n1111 1111\n\nThis sets every bit to 1 rather than inverting each original bit.\n\nMemory trick:\nFor XOR, remember:\n\nXOR with 0 → KEEP\nXOR with 1 → FLIP\n\nThen remember:\n\n00 = 0000 0000\nFF = 1111 1111\n\nSo:\n\nXOR 00 → keep all bits\nXOR FF → flip all bits\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch02/set01/q03.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}
