@@ -1456,3 +1456,197 @@ image contains complete options; explicit Japanese labels; label-mapped Language
 Help; shared explanations; generic progress API; per-set reset isolation;
 descendant aggregation; no chapter-specific controller, Book-specific renderer,
 new API family, or schema redesign without an actual content need.
+
+## Phase 3E Book 1 Chapter 3 Complete Deployment and Live Verification Checkpoint
+
+Chapter 3 implementation is deployed and its current seed content is imported in
+production. Final browser verification after the explanation-quality rewrite is
+**COMPLETE / PASSED**. The user manually verified the production site and
+confirmed: “all working.” Chapter 3 is fully deployed, live-verified, and CLOSED.
+
+Whole-chapter batching remains the required textbook workflow:
+
+1. Collect all source images for the chapter.
+2. Inventory every image and map every printed question number.
+3. Author every Practice Set seed in the chapter.
+4. Integrate the catalog once.
+5. Validate and regression-test the whole chapter.
+6. Make one implementation commit/push.
+7. Perform one Oracle deployment/import cycle.
+8. Complete one live verification.
+9. Add one documentation checkpoint.
+
+This is operational batching only. Practice Sets remain independent generic
+`exam_set_id` values with isolated progress, resume, and reset behavior. Large
+chapters may require multiple local authoring continuation passes, but partial
+sets must not be committed, pushed, imported, or deployed separately unless the
+user explicitly requests a different workflow.
+
+Chapter 3 structure and totals:
+
+- Parent: Textbook Practice — Book 1 → Chapter 3.
+- Chapter ID: `book1-ch03`.
+- `book1-ch03-set01`: 5 questions, display numbers 3-1 through 3-5.
+- `book1-ch03-set02`: 4 questions, display numbers 3-6 through 3-9.
+- `book1-ch03-set03`: 5 questions, display numbers 3-10 through 3-14.
+- `book1-ch03-set04`: 8 questions, display numbers 3-15 through 3-22.
+- Chapter 3 total: 22 questions.
+- Chapter 1 total: 8; Chapter 2 total: 15; Book 1 total: 45.
+- Chapter and Book totals remain descendant-derived through the generic catalog
+  and progress architecture.
+
+Catalog order:
+
+- Book 1 children: `book1-ch01`, `book1-ch02`, `book1-ch03`.
+- Chapter 3 children: `book1-ch03-set01`, `book1-ch03-set02`,
+  `book1-ch03-set03`, `book1-ch03-set04`.
+- No Chapter 3-specific controller, renderer, API, schema, importer, or backend
+  logic was added.
+
+Authoritative image mapping under `public/questions/book1/ch03/`:
+
+- Set 1: `set01/q01.png` → 3-1; `q02.png` → 3-2; `q03.png` → 3-3;
+  `q04.png` → 3-4; `q05.png` → 3-5.
+- Set 2: `set02/q01.png` → 3-6; `q02.png` → 3-7; `q03.png` → 3-8;
+  `q04.png` → 3-9.
+- Set 3: `set03/q01.png` → 3-10; `q02.png` → 3-11; `q03.png` → 3-12;
+  `q04.png` → 3-13; `q05.png` → 3-14.
+- Set 4: `set04/q01.png` → 3-15; `q02.png` → 3-16; `q03.png` → 3-17;
+  `q04.png` → 3-18; `q05.png` → 3-19; `q06.png` → 3-20;
+  `q07.png` → 3-21; `q08.png` → 3-22.
+- All 22 source images remain authoritative and unchanged.
+- All 22 questions use `optionMode: "labels-only"` with explicit Japanese
+  option identities ア, イ, ウ, エ.
+
+Confirmed answer key:
+
+- Set 1: 3-1 ウ; 3-2 ウ; 3-3 ア; 3-4 エ; 3-5 イ.
+- Set 2: 3-6 ア; 3-7 イ; 3-8 イ; 3-9 イ.
+- Set 3: 3-10 ウ; 3-11 ウ; 3-12 イ; 3-13 ア; 3-14 ウ.
+- Set 4: 3-15 イ; 3-16 エ; 3-17 ア; 3-18 ウ; 3-19 ア;
+  3-20 イ; 3-21 イ; 3-22 ア.
+
+Implementation history:
+
+- `4a5000d3cf8c9bc7ab67fbd852782822028d5eed` —
+  `feat: add Book 1 chapter 3 practice sets`.
+  Changed `app.js`, four Chapter 3 seed JSONs, and 22 Chapter 3 PNGs: 27
+  files total.
+- `e65c2f722bbf66ce3bb3b26b53a9241c469a6daa` —
+  `fix: complete Chapter 3 language help romaji`.
+  Changed only `seed/book1-ch03-set01.json`. Question 3-2 now includes the
+  complete ENQ/DEQ sequence in Romaji: ENQ 1, ENQ 2, ENQ 3, DEQ, ENQ 4,
+  ENQ 5, DEQ, ENQ 6, DEQ, DEQ. The cleaned commit was one insertion and one
+  deletion, with no question, answer, image, or catalog changes.
+- `d26693fae36b296a63f4a82360fa67be9ff70d78` —
+  `fix: improve Chapter 3 explanations`.
+  Rewrote all 22 explanation fields: Set 1 5/5, Set 2 4/4, Set 3 5/5,
+  Set 4 8/8. Only the four Chapter 3 seed JSONs changed; diff was 22
+  insertions and 22 deletions.
+
+Explanation-quality standard established by `d26693f`:
+
+- Every explanation retains, in order: `ELI5:`, `Technical breakdown:`,
+  `Japanese keywords to remember:`, `Why the best solution works:`,
+  `Wrong answer analysis:`, `Memory trick:`, and `Correct answer: X`.
+- ELI5 content must teach a beginner, technical breakdowns must show FE
+  reasoning step by step, and Japanese keywords use
+  `Japanese = romaji = English`.
+- Each of the three incorrect choices is analyzed separately by label.
+- The learner should understand the concept, derive the answer, recognize why
+  every other choice fails, and solve a similar future FE question.
+- For future textbook chapters, apply this quality standard during initial
+  authoring. Do not accept an explanation merely because it contains the required
+  headings; “Understand why” must genuinely teach the concept, step-by-step FE
+  reasoning, useful Japanese keywords, why the correct solution works, each wrong
+  option separately, and a useful memory trick.
+- Audit complete Romaji during initial authoring too. Do not omit operation
+  sequences, formulas, conditions, or definitions, and never use placeholder
+  `...` to represent omitted source text.
+- The rewrite did not alter answers, JP, Romaji, English, options, labels,
+  `optionMode`, image mappings, application code, images, backend, schema, or
+  importer. All four seeds validated at 5 / 4 / 5 / 8 and
+  `git diff --check` passed.
+
+Initial Oracle deployment and validation:
+
+- Production source repository: `/home/ubuntu/fe-quiz-src` on
+  `feature/2025-part-b-source`.
+- The pre-Chapter 3 production base was `2989557` (`feat: complete Book 1
+  chapter 2 practice sets`). Oracle used `git pull --ff-only`, with no merge,
+  and advanced through `38eeb66`, `4a5000d`, and `e65c2f7`.
+- All Chapter 3 seeds validated on Oracle: Set 1 = 5, Set 2 = 4,
+  Set 3 = 5, Set 4 = 8. `node --check app.js` and `git diff --check` passed.
+- Runtime deployment copied only `app.js` and all 22 files under
+  `public/questions/book1/ch03/`. Source/runtime `app.js` comparison passed,
+  source and deployed image counts were both 22, and every image comparison
+  was byte-for-byte OK.
+- No backend deployment or restart, schema change, Nginx change, or systemd
+  change was required.
+
+Initial database import and production verification:
+
+- The existing generic Oracle importer imported all four sets together:
+  5 + 4 + 5 + 8 = 22 questions.
+- Direct backend health at `http://127.0.0.1:8010/api/fe/health` and Nginx
+  health at `http://127.0.0.1/api/fe/health` both returned
+  `{"ok":true,"database":true}`.
+- All four generic Chapter 3 question endpoints returned HTTP 200 with counts
+  5 / 4 / 5 / 8 and the complete display sequence 3-1 through 3-22.
+- All 22 Chapter 3 source-image URLs returned HTTP 200 (`BAD=0`). Production
+  `app.js` returned HTTP 200.
+
+Explanation-fix Oracle update:
+
+- Oracle fetched `d26693f` and fast-forwarded from `e65c2f7` to `d26693f`.
+- Only the four Chapter 3 seed JSONs changed. No `app.js` or image
+  redeployment and no backend restart were needed.
+- The four updated seeds validated again at 5 / 4 / 5 / 8 and were re-imported
+  together. The improved “Understand why” content is currently in production
+  for all 22 Chapter 3 questions.
+- Windows development branch and Oracle source repository were both last known
+  at `d26693f` after this update.
+
+Final live-browser verification:
+
+- Live URL: `http://100.95.39.107/`.
+- After the all-22-question explanation rewrite and production re-import, the
+  user manually verified the live site and confirmed: “all working.”
+- Verification covered Chapter 3 navigation; all four Practice Sets in order;
+  counts 5 / 4 / 5 / 8; Chapter 3 total 22; Book 1 total 45; authoritative
+  source images; labels-only ア/イ/ウ/エ; Language Help; the corrected full
+  3-2 ENQ/DEQ Romaji; correct and wrong submissions; explanation disclosure;
+  Next; navigator; Back to Chapter 3; progress/resume; image lightbox;
+  dark-mode source-image handling; and no observed layout regression.
+- The improved “Understand why” content is confirmed live and acceptable. Its
+  beginner-friendly ELI5 sections, step-by-step technical breakdowns, useful
+  Japanese keywords, best-solution reasoning, separate wrong-option analysis,
+  memory tricks, and final answer labels passed the user's live review.
+- Final live-browser verification therefore PASSED. Chapter 3 is CLOSED.
+
+Next content milestone:
+
+- Textbook Practice — Book 1 → Chapter 4.
+- Do not assume Chapter 4 Practice Set count, question count, printed-number
+  ranges, answer keys, source mappings, or topic hierarchy.
+- Begin only after the user supplies authoritative source material and the
+  whole chapter is inventoried. Follow the whole-chapter workflow.
+
+Architecture guardrails remain:
+
+- Keep the three top-level entrances: Past Exam Questions, Textbook Practice —
+  Book 1, and Textbook Practice — Book 2.
+- Keep one shared quiz engine and generic `exam_set_id` architecture; no
+  Book/Chapter-specific quiz controllers or renderers.
+- Source images remain the authoritative visible Japanese question for new
+  textbook content. Use labels-only when the image contains complete options,
+  and structured text only when necessary.
+- Option identity, Language Help, and progress use explicit Japanese labels,
+  never inferred indexes. Selected answers remain Japanese labels.
+- Preserve `GET/POST/DELETE /api/fe/progress/{exam_set_id}` and
+  `X-FE-User-Key`, the shared image viewer/lightbox, shared explanation
+  renderer, textbook explanation policy, and existing Past Exam policy.
+- Keep Book/Chapter totals descendant-derived and each Practice Set an
+  independent `exam_set_id`.
+- Do not change schema, backend, importer, API, or progress architecture unless
+  an actual generic compatibility defect is proven.
