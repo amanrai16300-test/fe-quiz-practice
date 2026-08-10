@@ -849,10 +849,24 @@ const CATALOG_NODES = [
   },
   {
     id: "book1-ch01-set02",
-    kind: "unavailable",
+    kind: "set",
     title: "Practice Set 2",
-    description: "Coming Soon",
+    description: "2 questions",
     parentView: "book1-ch01",
+    set: {
+      id: "book1-ch01-set02",
+      section: "Practice Set 2",
+      desc: "Textbook Practice — Book 1, Chapter 1, Practice Set 2",
+      questionCount: 2,
+      quiz: null,
+      contextPolicy: "textbook",
+      imageContainsQuestionText: true,
+      breadcrumb: "Textbook Practice — Book 1 › Chapter 1 › Practice Set 2",
+      quizTitle: "Practice Set 2",
+      parentView: "book1-ch01",
+      backLabel: "← Chapter 1",
+      available: true,
+    },
   },
 ];
 const CATALOG_NODE_BY_ID = new Map(CATALOG_NODES.map((node) => [node.id, node]));

@@ -1,0 +1,90 @@
+{
+  "exam_set": {
+    "id": "book1-ch01-set02",
+    "title": "Book 1 — Chapter 1 — Practice Set 2",
+    "description": "Textbook Practice — Book 1, Chapter 1, Practice Set 2",
+    "question_count": 2
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "1-7",
+      "optionMode": "labels-only",
+      "jp": "数値を2進数で格納するレジスタがある。このレジスタに正の整数xを設定した後，“レジスタの値を2ビット左にシフトして，xを加える”操作を行うと，レジスタの値はxの何倍になるか。ここで，あふれ（オーバーフロー）は，発生しないものとする。",
+      "romaji": "Sūchi o 2-shinsū de kakunō suru rejisuta ga aru. Kono rejisuta ni sei no seisū x o settei shita ato, “rejisuta no atai o 2-bitto hidari ni shifuto shite, x o kuwaeru” sōsa o okonau to, rejisuta no atai wa x no nanbai ni naru ka. Koko de, afure (ōbāfurō) wa, hassei shinai mono to suru.",
+      "en": "There is a register that stores a number in binary. After setting a positive integer x in the register, the operation “shift the register value 2 bits to the left and add x” is performed. How many times x will the resulting register value be? Assume that overflow does not occur.",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "3",
+          "romaji": "san",
+          "en": "3"
+        },
+        {
+          "label": "イ",
+          "jp": "4",
+          "romaji": "yon",
+          "en": "4"
+        },
+        {
+          "label": "ウ",
+          "jp": "5",
+          "romaji": "go",
+          "en": "5"
+        },
+        {
+          "label": "エ",
+          "jp": "6",
+          "romaji": "roku",
+          "en": "6"
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nImagine x is one box.\n\nA 1-bit left shift doubles the value.\nA 2-bit left shift doubles it twice.\n\nSo:\n\nx → 2x → 4x\n\nAfter the shift, the register contains 4x.\n\nThe question then says to add x:\n\n4x + x = 5x\n\nSo the final register value is five times x.\n\nTechnical breakdown:\nA left shift by n bits multiplies a binary integer by 2^n, provided overflow does not occur.\n\nTherefore, shifting x left by 2 bits gives:\n\nx × 2^2 = 4x\n\nThe instruction then says to add x:\n\n4x + x = 5x\n\nFor example, if x = 3:\n\n3 shifted left by 2 bits = 12\n\n12 + 3 = 15\n\n15 = 5 × 3\n\nTherefore the register contains 5x.\n\nJapanese keywords to remember:\n2進数 = nishinsū = binary\n\n格納する = kakunō suru = to store\n\nレジスタ = rejisuta = register\n\n正の整数 = sei no seisū = positive integer\n\n設定する = settei suru = to set\n\n左にシフトする = hidari ni shifuto suru = to shift left\n\n2ビット左にシフト = 2-bitto hidari ni shifuto = shift left by 2 bits\n\n加える = kuwaeru = to add\n\n何倍 = nanbai = how many times\n\nあふれ = afure = overflow\n\n発生しない = hassei shinai = does not occur\n\nWhy the best solution works:\nThe key rule is:\n\nleft shift by 1 bit = ×2\nleft shift by 2 bits = ×4\nleft shift by 3 bits = ×8\n\nHere the value starts as x.\n\nAfter shifting left by 2 bits:\n\nx → 4x\n\nThen x is added:\n\n4x + x = 5x\n\nSo the required multiplier is 5.\n\nWrong answer analysis:\nア — 3\n\nThis would result from incorrectly treating a 2-bit left shift as ×2:\n\n2x + x = 3x\n\nBut shifting left by 2 bits means multiplying by 2^2 = 4.\n\nイ — 4\n\n4x is the value immediately after the 2-bit left shift.\n\nHowever, the operation does not stop there. The question also says to add x.\n\nTherefore the final value is not 4x.\n\nエ — 6\n\nThere is no operation that produces another 2x.\n\nThe actual calculation is:\n\n4x + x\n\nnot:\n\n4x + 2x\n\nMemory trick:\nLeft shift means keep doubling:\n\n<< 1 → ×2\n<< 2 → ×4\n<< 3 → ×8\n<< 4 → ×16\n\nFor this question:\n\nshift 2 → 4x\nthen +x → 5x\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch01/set02/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "1-8",
+      "optionMode": "labels-only",
+      "jp": "数値を2進数で表すレジスタがある。このレジスタに格納されている正の整数xを10倍にする操作はどれか。ここで，桁あふれは起こらないものとする。",
+      "romaji": "Sūchi o 2-shinsū de arawasu rejisuta ga aru. Kono rejisuta ni kakunō sarete iru sei no seisū x o 10-bai ni suru sōsa wa dore ka. Koko de, keta afure wa okoranai mono to suru.",
+      "en": "There is a register that represents numbers in binary. Which operation makes the positive integer x stored in this register 10 times its original value? Assume that no overflow occurs.",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "xを2ビット左にシフトした値にxを加算し，更に1ビット左にシフトする。",
+          "romaji": "x o 2-bitto hidari ni shifuto shita atai ni x o kasan shi, sara ni 1-bitto hidari ni shifuto suru.",
+          "en": "Add x to the value obtained by shifting x left by 2 bits, and then shift the result left by 1 more bit."
+        },
+        {
+          "label": "イ",
+          "jp": "xを2ビット左にシフトした値にxを加算し，更に2ビット左にシフトする。",
+          "romaji": "x o 2-bitto hidari ni shifuto shita atai ni x o kasan shi, sara ni 2-bitto hidari ni shifuto suru.",
+          "en": "Add x to the value obtained by shifting x left by 2 bits, and then shift the result left by 2 more bits."
+        },
+        {
+          "label": "ウ",
+          "jp": "xを3ビット左にシフトした値と，xを2ビット左にシフトした値を加算する。",
+          "romaji": "x o 3-bitto hidari ni shifuto shita atai to, x o 2-bitto hidari ni shifuto shita atai o kasan suru.",
+          "en": "Add the value obtained by shifting x left by 3 bits to the value obtained by shifting x left by 2 bits."
+        },
+        {
+          "label": "エ",
+          "jp": "xを3ビット左にシフトした値にxを加算し，更に1ビット左にシフトする。",
+          "romaji": "x o 3-bitto hidari ni shifuto shita atai ni x o kasan shi, sara ni 1-bitto hidari ni shifuto suru.",
+          "en": "Add x to the value obtained by shifting x left by 3 bits, and then shift the result left by 1 more bit."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nWe want to turn x into 10x.\n\nRemember that shifting left doubles the value:\n\n1-bit left shift = ×2\n2-bit left shift = ×4\n3-bit left shift = ×8\n\nFor the correct operation:\n\nFirst shift x left by 2 bits:\n\nx → 4x\n\nThen add the original x:\n\n4x + x = 5x\n\nThen shift that result left by 1 bit:\n\n5x × 2 = 10x\n\nSo this operation produces exactly 10x.\n\nTechnical breakdown:\nA left shift by n bits multiplies an integer by 2^n, assuming overflow does not occur.\n\nEvaluate each operation mathematically.\n\nFor the correct operation:\n\nx << 2 = 4x\n\nThen:\n\n4x + x = 5x\n\nThen shift left by 1 bit:\n\n5x << 1 = 10x\n\nTherefore the result is exactly ten times x.\n\nFor example, if x = 3:\n\n3 << 2 = 12\n\n12 + 3 = 15\n\n15 << 1 = 30\n\n30 = 10 × 3\n\nJapanese keywords to remember:\n2進数 = nishinsū = binary\n\n表す = arawasu = to represent\n\nレジスタ = rejisuta = register\n\n格納されている = kakunō sarete iru = is stored\n\n正の整数 = sei no seisū = positive integer\n\n10倍 = jūbai = ten times\n\n操作 = sōsa = operation\n\n左にシフト = hidari ni shifuto = shift left\n\n加算する = kasan suru = to add\n\n更に = sara ni = furthermore / then additionally\n\n桁あふれ = keta afure = overflow\n\n起こらない = okoranai = does not occur\n\nWhy the best solution works:\nThe target is 10x.\n\nIt is useful to break 10 into:\n\n10 = 5 × 2\n\nA 2-bit left shift gives:\n\n4x\n\nAdding x gives:\n\n4x + x = 5x\n\nA final 1-bit left shift doubles that:\n\n5x × 2 = 10x\n\nSo this sequence reaches exactly the target.\n\nWrong answer analysis:\nイ\n\nFirst:\n\nx << 2 = 4x\n\nAdd x:\n\n4x + x = 5x\n\nThen shift left by 2 bits:\n\n5x × 4 = 20x\n\nThis produces 20x, not 10x.\n\nウ\n\nA 3-bit left shift gives:\n\nx << 3 = 8x\n\nA 2-bit left shift gives:\n\nx << 2 = 4x\n\nAdding them gives:\n\n8x + 4x = 12x\n\nThis produces 12x, not 10x.\n\nエ\n\nFirst:\n\nx << 3 = 8x\n\nAdd x:\n\n8x + x = 9x\n\nThen shift left by 1 bit:\n\n9x × 2 = 18x\n\nThis produces 18x, not 10x.\n\nMemory trick:\nLeft shifts are powers of 2:\n\n<< 1 = ×2\n<< 2 = ×4\n<< 3 = ×8\n\nWhen the exam asks for ×10, think:\n\n10x = (4x + x) × 2\n\nSo:\n\nshift 2\n+ x\nshift 1\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch01/set02/q02.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}
