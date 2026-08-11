@@ -1650,3 +1650,232 @@ Architecture guardrails remain:
   independent `exam_set_id`.
 - Do not change schema, backend, importer, API, or progress architecture unless
   an actual generic compatibility defect is proven.
+
+## Phase 3F Book 1 Chapter 4 Complete Deployment and Live Verification Checkpoint
+
+Book 1 Chapter 4 is locally authored, fully QA-audited, committed, pushed,
+pulled and validated on Oracle, deployed with all source images, imported as
+three generic sets, API- and Nginx-verified, and manually verified in the live
+browser. The user confirmed: “works great.” Chapter 4 is therefore
+**COMPLETE / PASSED / CLOSED**.
+
+Implementation commit:
+
+- Branch: `feature/2025-part-b-source`.
+- Commit: `a74f13530c834a11d6d52a735d173054b9959718`.
+- Subject: `feat: add Book 1 chapter 4 practice sets`.
+- Contents: declarative Chapter 4 catalog additions in `app.js`, three Chapter
+  4 seed JSON files, and 19 Chapter 4 source PNGs.
+- Stats: 23 files changed, 446 insertions, and 1 deletion.
+- No backend, schema, importer, Nginx, systemd, progress, auth, or API-family
+  change was required.
+
+Chapter 4 structure and totals:
+
+- Parent: Textbook Practice — Book 1 → Chapter 4.
+- Chapter ID: `book1-ch04`.
+- `book1-ch04-set01`: 9 questions, display numbers 4-1 through 4-9.
+- `book1-ch04-set02`: 5 questions, display numbers 4-10 through 4-14.
+- `book1-ch04-set03`: 5 questions, display numbers 4-15 through 4-19.
+- Chapter 4 total: 19 questions.
+- Final Book 1 totals: Chapter 1 = 8, Chapter 2 = 15, Chapter 3 = 22,
+  Chapter 4 = 19, and Book 1 = 64.
+- Chapter and Book totals remain descendant-derived through the generic catalog
+  and progress architecture.
+
+Catalog order and architecture:
+
+- Book 1 children are exactly `book1-ch01`, `book1-ch02`, `book1-ch03`, and
+  `book1-ch04`, in that order.
+- Chapter 4 children are exactly `book1-ch04-set01`, `book1-ch04-set02`, and
+  `book1-ch04-set03`, in that order.
+- No duplicate node or fake Topic layer was created.
+- No Chapter 4-specific controller, renderer, API route, backend logic, schema,
+  importer, or progress implementation was added.
+
+Authoritative source-image mapping under `public/questions/book1/ch04/`:
+
+- Practice Set 1: `set01/q01.png` → 4-1; `q02.png` → 4-2;
+  `q03.png` → 4-3; `q04.png` → 4-4; `q05.png` → 4-5;
+  `q06.png` → 4-6; `q07.png` → 4-7; `q08.png` → 4-8; and
+  `q09.png` → 4-9.
+- Practice Set 2: `set02/q01.png` → 4-10; `q02.png` → 4-11;
+  `q03.png` → 4-12; `q04.png` → 4-13; and `q05.png` → 4-14.
+- Practice Set 3: `set03/q01.png` → 4-15; `q02.png` → 4-16;
+  `q03.png` → 4-17; `q04.png` → 4-18; and `q05.png` → 4-19.
+- The source inventory contains three Practice Sets and 19 images with the
+  complete printed sequence 4-1 through 4-19. There are no gaps, duplicate
+  printed numbers, duplicate/suspicious/misplaced images, or uncertain mappings.
+- All 19 source-image SHA-256 values remained unchanged through authoring and
+  QA. The printed question number in each source image remained authoritative.
+
+Final authoritative answer key:
+
+- Practice Set 1: 4-1 エ; 4-2 ア; 4-3 エ; 4-4 ア; 4-5 エ; 4-6 ウ;
+  4-7 エ; 4-8 イ; 4-9 ア.
+- Practice Set 2: 4-10 イ; 4-11 エ; 4-12 ア; 4-13 エ; 4-14 イ.
+- Practice Set 3: 4-15 エ; 4-16 イ; 4-17 ア; 4-18 エ; 4-19 ウ.
+- Compact sequence: `エ ア エ ア エ ウ エ イ ア / イ エ ア エ イ / エ イ ア エ ウ`.
+
+Important 4-5 answer-key correction:
+
+- An earlier manually supplied transcription incorrectly listed 4-5 as イ.
+- The source question gives a CPU frequency of 1 GHz and an average of 0.8
+  clocks per instruction. Therefore `10^9 ÷ 0.8 = 1.25 × 10^9`
+  instructions/second, which is 125,000 万 instructions/second.
+- Option エ is 125,000, and the authoritative answer-key source image also
+  shows 4-5 = エ. The corrected final authoritative answer is 4-5 = エ.
+- No partial implementation occurred before this conflict was resolved.
+
+Content quality and final local QA:
+
+- Japanese audit passed 19/19; complete Romaji audit passed 19/19; English
+  audit passed 19/19; and option JP/Romaji/English mappings passed 76/76.
+- Explicit option-label and authored-order mapping passed for all questions.
+- Explanation quality passed 19/19; authoritative answer labels passed 19/19;
+  and source images remained unchanged 19/19.
+- All required seed/content validations, `node --check app.js`, and
+  `git diff --check` passed.
+- Browser checks passed at 320 px, 390 px, and desktop. Chapter 1/2/3 and 科目A/
+  科目B regressions passed with no unexpected runtime or console errors.
+- Every explanation follows the Chapter 3 quality contract, in order:
+  `ELI5:`, `Technical breakdown:`, `Japanese keywords to remember:`,
+  `Why the best solution works:`, `Wrong answer analysis:`, `Memory trick:`,
+  and `Correct answer: X`.
+- Each wrong option is explained separately. Complete Japanese, Romaji,
+  English, formulas, values, conditions, and relevant sequences are preserved;
+  no placeholder `...` represents omitted content.
+
+Special 4-16 diagram QA:
+
+- Question 4-16 uses diagram/image answer choices.
+- Final QA made all diagram descriptions neutral, explicit, and visually
+  accurate; corrected the Micro-B/Mini-B identification; and removed an
+  incorrect HDMI claim.
+- The options continue to use the existing generic question and Language Help
+  contract. No fake source Japanese was invented for purely visual information,
+  and no Chapter 4-specific renderer or schema was introduced.
+
+Display contract:
+
+- All 19 questions use `optionMode: "labels-only"` with explicit labels ア, イ,
+  ウ, and エ.
+- The source PNG is the authoritative visible Japanese question and options.
+  Language Help uses structured Japanese/Romaji/English data mapped by the same
+  explicit Japanese labels.
+- Answer selection and progress continue to use Japanese labels, never inferred
+  array indexes.
+
+Oracle source update and validation:
+
+- Production source repository: `/home/ubuntu/fe-quiz-src`, branch
+  `feature/2025-part-b-source`.
+- Before Chapter 4 deployment, Oracle source was at `d26693f`
+  (`fix: improve Chapter 3 explanations`).
+- Oracle ran `git fetch origin` and
+  `git pull --ff-only origin feature/2025-part-b-source`. The repository
+  fast-forwarded cleanly to `a74f135` (`feat: add Book 1 chapter 4 practice
+  sets`) with no merge. The pull also included the intervening Chapter 3
+  documentation checkpoint commit.
+- After the pull, Git status was clean, `node --check app.js` passed, all three
+  Chapter 4 seeds passed `--validate-only`, and the repository Chapter 4 PNG
+  count was 19.
+- Validation-only counts were 9 for `book1-ch04-set01`, 5 for
+  `book1-ch04-set02`, and 5 for `book1-ch04-set03`.
+
+Oracle production frontend deployment:
+
+- Production frontend root: `/var/www/html`.
+- Deployment copied `app.js` and every file under
+  `public/questions/book1/ch04/`.
+- No backend file, schema, Nginx configuration, or systemd configuration
+  changed; no FastAPI restart or schema migration was required.
+- Source/deployed `app.js` comparison matched. All 19 deployed images matched
+  source byte-for-byte, with `BAD=0`, and the deployed Chapter 4 PNG count was
+  19.
+
+Database import:
+
+- The existing generic importer was reused unchanged. The database environment
+  came from `/etc/fe-quiz-api.env`; credential values must not be recorded or
+  exposed. The existing Node PostgreSQL module path was
+  `/home/ubuntu/fe-quiz-import/node_modules`.
+- Imported `book1-ch04-set01` with 9 questions, `book1-ch04-set02` with 5, and
+  `book1-ch04-set03` with 5: 19 Chapter 4 questions total.
+- No Chapter 1/2/3 or Past Exam set required re-import for this deployment.
+
+Health and API verification:
+
+- Both `http://127.0.0.1:8010/api/fe/health` and
+  `http://127.0.0.1/api/fe/health` returned
+  `{"ok":true,"database":true}`.
+- The generic question APIs returned exactly 9, 5, and 5 questions for the three
+  Chapter 4 sets and the complete live display sequence 4-1 through 4-19.
+- Every question returned its correct `displayNumber`, `labels-only` mode,
+  explicit labels ア/イ/ウ/エ, authoritative `correct_answer`, and correct
+  Chapter 4 image path. The corrected live API value for 4-5 is エ.
+
+Nginx source-image verification:
+
+- All 19 Chapter 4 image URLs returned HTTP 200; final result was `BAD=0`.
+- An initial verification loop generated `q1.png`, `q2.png`, and so on because
+  `seq -w 1 9` did not zero-pad a one-digit maximum. Those requests correctly
+  returned 404. This was a verification-command formatting issue, not a
+  production defect.
+- The loop was corrected with `printf "%02d"`; all actual `qNN.png` URLs then
+  returned HTTP 200 with `BAD=0`.
+
+Final live-browser verification:
+
+- Live URL: `http://100.95.39.107/`.
+- Manual production verification covered Study Hub → Textbook Practice — Book 1;
+  Chapter 4 and its three sets in correct order; set counts 9 / 5 / 5; Chapter
+  total 19; Book total 64; display numbers 4-1 through 4-19; source images;
+  labels-only ア/イ/ウ/エ controls; Language Help; 4-16 diagram Language Help;
+  correct/wrong submission; corrected 4-5 = エ; explanations; Next; navigator;
+  Back navigation; progress/resume; image lightbox; and dark-mode source-image
+  behavior.
+- The user reported: “works great.”
+- **CHAPTER 4 LIVE VERIFICATION: PASSED**.
+- **CHAPTER 4: COMPLETE / DEPLOYED / LIVE-VERIFIED / CLOSED**.
+
+Architecture and guardrails remain unchanged:
+
+- One shared quiz engine, generic `exam_set_id`, generic question API, generic
+  progress GET/POST/DELETE, and isolated per-set progress/resume/reset.
+- Descendant-derived Chapter/Book totals; source-image-first textbook display;
+  explicit Japanese labels; labels-only when source images contain complete
+  options; label-mapped Language Help; shared explanation renderer; shared image
+  viewer/lightbox; and shared theme/responsive behavior.
+- No Chapter 4-specific controller or renderer, Book API family, schema redesign,
+  backend/importer/auth/sync change, or Nginx/systemd change was introduced.
+
+Whole-chapter workflow for future textbook chapters:
+
+1. Collect all source images.
+2. Inventory and map every printed question number.
+3. Confirm answer keys.
+4. Author every set for the chapter.
+5. Integrate the catalog once.
+6. Validate and regression-test the whole chapter.
+7. Complete final content QA.
+8. Make one implementation commit and push.
+9. Perform one Oracle pull/deployment.
+10. Deploy all chapter images.
+11. Import all generic sets.
+12. Verify APIs and images.
+13. Complete live-browser verification.
+14. Add one final documentation checkpoint.
+
+Practice Sets remain independent generic `exam_set_id` units. Whole-chapter
+batching is operational only and does not merge progress, resume, or reset
+identity.
+
+Next content milestone:
+
+- Chapter 4 is CLOSED.
+- Continue with Textbook Practice — Book 1 → Chapter 5 using the same
+  whole-chapter workflow and architecture guardrails.
+- Do not infer Chapter 5 Practice Set count, question count, printed-number
+  ranges, answer keys, source mappings, or topic hierarchy until authoritative
+  Chapter 5 source material is supplied and inventoried.
