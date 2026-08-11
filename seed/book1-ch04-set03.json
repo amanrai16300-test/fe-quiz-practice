@@ -1,0 +1,100 @@
+{
+  "exam_set": {
+    "id": "book1-ch04-set03",
+    "title": "Practice Set 3",
+    "description": "Textbook Practice — Book 1, Chapter 4, Practice Set 3",
+    "question_count": 5
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "4-15",
+      "optionMode": "labels-only",
+      "jp": "USB 3.0の説明として、適切なものはどれか。",
+      "romaji": "USB 3.0 no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes USB 3.0?",
+      "options": [
+        { "label": "ア", "jp": "1クロックで2ビットの情報を伝送する4対の信号線を使用し、最大1Gビット／秒のスループットをもつインタフェースである。", "romaji": "1 kurokku de 2 bitto no jōhō o densō suru 4-tsui no shingōsen o shiyō shi, saidai 1 G bitto/byō no surūputto o motsu intāfēsu de aru.", "en": "It is an interface that uses four pairs of signal lines, each transmitting two bits of information per clock, and has a maximum throughput of 1 Gbit/s." },
+        { "label": "イ", "jp": "PCと周辺機器とを接続するATA仕様をシリアル化したものである。", "romaji": "PC to shūhen kiki to o setsuzoku suru ATA shiyō o shiriaru-ka shita mono de aru.", "en": "It is a serialized version of the ATA specification for connecting a PC and peripheral devices." },
+        { "label": "ウ", "jp": "音声、映像などに適したアイソクロナス転送を採用しており、ブロードキャスト転送モードをもつシリアルインタフェースである。", "romaji": "Onsei, eizō nado ni tekishita aisokuronasu tensō o saiyō shite ori, burōdokyasuto tensō mōdo o motsu shiriaru intāfēsu de aru.", "en": "It is a serial interface that uses isochronous transfer suited to audio and video and has a broadcast transfer mode." },
+        { "label": "エ", "jp": "スーパースピードと呼ばれる5Gビット／秒のデータ転送モードをもつシリアルインタフェースである。", "romaji": "Sūpā supīdo to yobareru 5 G bitto/byō no dēta tensō mōdo o motsu shiriaru intāfēsu de aru.", "en": "It is a serial interface with a 5-Gbit/s data-transfer mode called SuperSpeed." }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nUSB 3.0 introduced a faster mode called SuperSpeed. Its headline signaling rate is 5 gigabits per second, much faster than the 480 megabits per second of USB 2.0.\n\nTechnical breakdown:\n1. USB is a serial peripheral interface.\n2. USB 3.0 adds SuperSpeed signaling while retaining compatibility concepts for older USB operation.\n3. SuperSpeed's nominal data-transfer signaling rate is 5 Gbit/s.\n4. Therefore the description naming a 5-Gbit/s SuperSpeed serial interface matches USB 3.0.\nThe nominal signaling rate and real application throughput are not identical because encoding and protocol overhead consume part of the capacity.\n\nJapanese keywords to remember:\nスーパースピード = sūpā supīdo = SuperSpeed\nデータ転送モード = dēta tensō mōdo = data-transfer mode\nシリアルインタフェース = shiriaru intāfēsu = serial interface\n5Gビット／秒 = 5 G bitto/byō = 5 gigabits per second\n\nWhy the best solution works:\nエ is correct because USB 3.0's characteristic new transfer mode is SuperSpeed with a nominal 5-Gbit/s rate.\n\nWrong answer analysis:\nア:\nThis four-pair, two-bits-per-clock, 1-Gbit/s description does not define USB 3.0. USB 3.0 SuperSpeed is identified by its 5-Gbit/s serial signaling.\n\nイ:\nSerializing ATA produces Serial ATA, or SATA, which connects storage devices and is not USB 3.0.\n\nウ:\nIsochronous transfer exists in USB, but the additional broadcast-mode description does not identify USB 3.0 and resembles characteristics associated with other serial multimedia interfaces.\n\nMemory trick:\nUSB 3.0 = SuperSpeed = 5 Gbit/s.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set03/q01.png"],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "4-16",
+      "optionMode": "labels-only",
+      "jp": "USB Type-Cのプラグ側コネクタの断面図はどれか。ここで、図の縮尺は同一ではない。",
+      "romaji": "USB Type-C no puragu-gawa konekuta no danmenzu wa dore ka. Koko de, zu no shukushaku wa dōitsu de wa nai.",
+      "en": "Which cross-sectional diagram shows the plug-side connector of USB Type-C? The diagrams are not drawn to the same scale.",
+      "options": [
+        { "label": "ア", "jp": "図の説明：横長の長方形で、上辺と下辺は直線状。内部中央の舌片に4個の短い横長接点が一列に並ぶ。", "romaji": "Zu no setsumei: Yokonaga no chōhōkei de, jōhen to kahen wa chokusenjō. Naibu chūō no zetsuhen ni 4-ko no mijikai yokonaga setten ga ichiretsu ni narabu.", "en": "Diagram description: A wide rectangular shell with straight top and bottom edges. Four short horizontal contacts appear in one row on the central tongue." },
+        { "label": "イ", "jp": "図の説明：外形は角丸の横長長円形。内部中央の角丸の舌片に、小さい接点が上下二列に並ぶ。", "romaji": "Zu no setsumei: Gaikei wa kadomaru no yokonaga chōenkei. Naibu chūō no kadomaru no zetsuhen ni, chiisai setten ga jōge niretsu ni narabu.", "en": "Diagram description: The outer shell is a wide rounded oblong. Small contacts appear in two rows on the centered rounded tongue." },
+        { "label": "ウ", "jp": "図の説明：低く横長で、左右の側面に段差がある外形。内部に5個の短い横長接点が一列に並ぶ。", "romaji": "Zu no setsumei: Hikuku yokonaga de, sayū no sokumen ni dansa ga aru gaikei. Naibu ni 5-ko no mijikai yokonaga setten ga ichiretsu ni narabu.", "en": "Diagram description: A low, wide shell with stepped sides. Five short horizontal contacts appear in one row." },
+        { "label": "エ", "jp": "図の説明：左右上側の角が斜めになった台形状の外形。内部に5個の細い縦長接点が一列に並ぶ。", "romaji": "Zu no setsumei: Sayū uwagawa no kado ga naname ni natta daikeijō no gaikei. Naibu ni 5-ko no hosoi tatenaga setten ga ichiretsu ni narabu.", "en": "Diagram description: A trapezoidal shell with slanted upper side corners. Five narrow vertical contacts appear in one row." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nUSB Type-C has a small rounded, symmetrical shape. Because it looks the same when flipped over, the plug can be inserted either way. Among the diagrams, only イ has that reversible rounded-oblong form with contacts on both sides.\n\nTechnical breakdown:\n1. USB Type-C is designed as a reversible connector.\n2. Its shell has a horizontally elongated rounded-rectangle or oblong cross-section that is symmetric top to bottom.\n3. The plug provides contact rows arranged so either orientation can connect correctly.\n4. Diagram イ shows this symmetric shell and two-sided contact arrangement.\nThe question warns that scales differ, so identify the connector by geometry and contact arrangement rather than apparent size.\n\nJapanese keywords to remember:\nプラグ側コネクタ = puragu-gawa konekuta = plug-side connector\n断面図 = danmenzu = cross-sectional diagram\n縮尺 = shukushaku = scale\n上下対称 = jōge taishō = vertically symmetrical\n\nWhy the best solution works:\nイ is correct because its rounded, top-bottom-symmetric outline and two-row contact structure match the reversible USB Type-C plug.\n\nWrong answer analysis:\nア:\nThe plain rectangular shell with four horizontal contacts matches USB Type-A. Its shape is not rounded or reversible.\n\nウ:\nThe low stepped shell with five horizontal contacts matches USB Micro-B. It is asymmetric and does not have Type-C's rounded shell and two contact rows.\n\nエ:\nThe trapezoidal shell with five vertical contacts matches USB Mini-B. It is orientation-specific and does not have Type-C's rounded shell and two contact rows.\n\nMemory trick:\nType-C can flip, so look for a fully symmetric rounded shape.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch04/set03/q02.png"],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "4-17",
+      "optionMode": "labels-only",
+      "jp": "デバイスドライバの説明として、適切なものはどれか。",
+      "romaji": "Debaisu doraiba no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes a device driver?",
+      "options": [
+        { "label": "ア", "jp": "PCに接続された周辺機器を制御するソフトウェア", "romaji": "PC ni setsuzoku sareta shūhen kiki o seigyo suru sofutowea", "en": "Software that controls peripheral devices connected to a PC" },
+        { "label": "イ", "jp": "アプリケーションプログラムをPCに導入するソフトウェア", "romaji": "Apurikēshon puroguramu o PC ni dōnyū suru sofutowea", "en": "Software that installs application programs on a PC" },
+        { "label": "ウ", "jp": "キーボードなどの操作手順を登録して、その操作を自動化するソフトウェア", "romaji": "Kībōdo nado no sōsa tejun o tōroku shite, sono sōsa o jidōka suru sofutowea", "en": "Software that records operating procedures such as keyboard actions and automates those actions" },
+        { "label": "エ", "jp": "他のPCに入り込んで不利益をもたらすソフトウェア", "romaji": "Hoka no PC ni hairikonde furieki o motarasu sofutowea", "en": "Software that enters another PC and causes harm" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA device driver is a translator and controller between the operating system and a hardware device. It lets the PC tell a printer, keyboard, display adapter, or other peripheral what to do using that device's specific rules.\n\nTechnical breakdown:\n1. Applications request services through the operating system.\n2. The operating system uses a device driver appropriate for the target hardware.\n3. The driver converts generic OS requests into device-specific commands and register operations.\n4. It also reports device status, completion, and errors back to the OS.\nThis hardware-control role allows the same OS interface to support many different device models.\n\nJapanese keywords to remember:\nデバイスドライバ = debaisu doraiba = device driver\n周辺機器 = shūhen kiki = peripheral device\n制御 = seigyo = control\n接続 = setsuzoku = connection\n\nWhy the best solution works:\nア is correct because controlling connected peripherals and mediating between hardware and the operating system is exactly the function of a device driver.\n\nWrong answer analysis:\nイ:\nSoftware that installs application programs is an installer, not a device driver.\n\nウ:\nSoftware that records and automates user operations is a macro or automation tool, not a hardware driver.\n\nエ:\nSoftware that enters another PC and causes harm is malware, such as a computer virus or worm, not a device driver.\n\nMemory trick:\nDriver drives a device: OS request in, hardware command out.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch04/set03/q03.png"],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "4-18",
+      "optionMode": "labels-only",
+      "jp": "96dpiのディスプレイに12ポイントの文字をビットマップで表示したい。正方フォントの縦は何ドットになるか。ここで、1ポイントは1/72インチとする。",
+      "romaji": "96 dpi no disupurei ni 12 pointo no moji o bittomappu de hyōji shitai. Seihō fonto no tate wa nan dotto ni naru ka. Koko de, 1 pointo wa 1/72 inchi to suru.",
+      "en": "A 12-point character is to be displayed as a bitmap on a 96-dpi display. How many dots high is the square font? Assume that 1 point is 1/72 inch.",
+      "options": [
+        { "label": "ア", "jp": "8", "romaji": "hachi", "en": "8 dots" },
+        { "label": "イ", "jp": "9", "romaji": "kyū", "en": "9 dots" },
+        { "label": "ウ", "jp": "12", "romaji": "jūni", "en": "12 dots" },
+        { "label": "エ", "jp": "16", "romaji": "jūroku", "en": "16 dots" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nPoints measure physical size in inches, while dpi tells how many screen dots fit in one inch. Convert 12 points to inches, then multiply by 96 dots per inch. The result is 16 dots.\n\nTechnical breakdown:\nGiven 1 point = 1/72 inch:\n12 points = 12 ÷ 72 inch = 1/6 inch.\nDisplay density = 96 dots/inch.\nFont height = (1/6 inch) × (96 dots/inch).\n= 96 ÷ 6 dots\n= 16 dots.\nThe inch units cancel, leaving dots. Because the font is square, this calculation gives its vertical dot count.\n\nJapanese keywords to remember:\ndpi = dots per inch = 1インチ当たりのドット数\nポイント = pointo = point\nビットマップ = bittomappu = bitmap\n正方フォント = seihō fonto = square font\n\nWhy the best solution works:\nエ is correct because 12 points equals one-sixth of an inch, and one-sixth of 96 dots is 16 dots.\n\nWrong answer analysis:\nア:\n8 dots results from using a factor of 48 dpi or otherwise halving the required value. It does not use the stated 96 dpi correctly.\n\nイ:\n9 dots can result from reversing or mixing the 72-point and 96-dpi conversion factors.\n\nウ:\n12 dots incorrectly treats the point count as though one point always equals one display dot. The actual dot count depends on dpi.\n\nMemory trick:\nDots = points ÷ 72 × dpi.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set03/q04.png"],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "4-19",
+      "optionMode": "labels-only",
+      "jp": "3Dプリンタの機能の説明として、適切なものはどれか。",
+      "romaji": "3D purinta no kinō no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes the function of a 3D printer?",
+      "options": [
+        { "label": "ア", "jp": "高温の印字ヘッドのピンを感熱紙に押し付けることによって印刷を行う。", "romaji": "Kōon no inji heddo no pin o kannetsushi ni oshitsukeru koto ni yotte insatsu o okonau.", "en": "It prints by pressing pins in a high-temperature print head against thermal paper." },
+        { "label": "イ", "jp": "コンピュータグラフィックスを建物、家具など凹凸のある立体物に投影する。", "romaji": "Konpyūta gurafikkusu o tatemono, kagu nado ōtotsu no aru rittai-butsu ni tōei suru.", "en": "It projects computer graphics onto three-dimensional objects with uneven surfaces, such as buildings and furniture." },
+        { "label": "ウ", "jp": "熱溶解積層方式などによって、立体物を造形する。", "romaji": "Netsu yōkai sekisō hōshiki nado ni yotte, rittai-butsu o zōkei suru.", "en": "It forms three-dimensional objects using methods such as fused deposition modeling." },
+        { "label": "エ", "jp": "立体物の形状を感知して、3Dデータとして出力する。", "romaji": "Rittai-butsu no keijō o kanchi shite, 3D dēta to shite shutsuryoku suru.", "en": "It senses the shape of a three-dimensional object and outputs it as 3D data." }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nA 3D printer builds a real object from digital shape data. Many models melt plastic filament and place it one thin layer at a time until the complete object has been formed.\n\nTechnical breakdown:\n1. A three-dimensional model is divided into thin cross-sectional layers by slicing software.\n2. In fused deposition modeling, material such as thermoplastic filament is heated and extruded.\n3. The printer places material along the current layer's path.\n4. It repeats the process for successive layers.\n5. The stacked layers form the physical three-dimensional object.\nOther 3D-printing methods use resin curing or powder fusion, but all perform additive manufacturing.\n\nJapanese keywords to remember:\n3Dプリンタ = 3D purinta = 3D printer\n熱溶解積層方式 = netsu yōkai sekisō hōshiki = fused deposition modeling\n立体物 = rittai-butsu = three-dimensional object\n造形 = zōkei = forming or fabrication\n\nWhy the best solution works:\nウ is correct because creating a physical three-dimensional object by depositing and stacking material is the defining function of a 3D printer.\n\nWrong answer analysis:\nア:\nPressing heated pins against thermal paper describes thermal printing, which produces a flat printed image rather than a three-dimensional object.\n\nイ:\nProjecting computer graphics onto shaped surfaces describes projection mapping, not fabrication.\n\nエ:\nSensing an object's shape and outputting 3D data describes a 3D scanner, which captures an existing object instead of manufacturing one.\n\nMemory trick:\nScanner reads a 3D object; printer builds a 3D object.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch04/set03/q05.png"],
+      "imagePath": null
+    }
+  ]
+}

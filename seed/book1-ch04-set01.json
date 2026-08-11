@@ -1,0 +1,172 @@
+{
+  "exam_set": {
+    "id": "book1-ch04-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 4, Practice Set 1",
+    "question_count": 9
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "4-1",
+      "optionMode": "labels-only",
+      "jp": "図はプロセッサによってフェッチされた命令の格納順序を表している。aに当てはまるものはどれか。",
+      "romaji": "Zu wa purosessa ni yotte fecchi sareta meirei no kakunō junjo o arawashite iru. a ni atehamaru mono wa dore ka.",
+      "en": "The diagram shows where an instruction fetched by the processor is stored before decoding. What belongs at a?",
+      "options": [
+        { "label": "ア", "jp": "アキュムレータ", "romaji": "akyumurēta", "en": "accumulator" },
+        { "label": "イ", "jp": "データキャッシュ", "romaji": "dēta kyasshu", "en": "data cache" },
+        { "label": "ウ", "jp": "プログラムレジスタ（プログラムカウンター）", "romaji": "puroguramu rejisuta (puroguramu kauntā)", "en": "program register (program counter)" },
+        { "label": "エ", "jp": "命令レジスタ", "romaji": "meirei rejisuta", "en": "instruction register" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nA processor first fetches an instruction from memory, places that instruction in a small holding box, and then lets the decoder read it. That holding box is the instruction register.\n\nTechnical breakdown:\n1. The program counter supplies the address of the next instruction.\n2. The processor fetches the instruction stored at that main-memory address.\n3. The fetched instruction is loaded into the instruction register.\n4. The instruction decoder reads the instruction register and determines the operation to execute.\nTherefore the block between main memory and the instruction decoder is the instruction register.\n\nJapanese keywords to remember:\n命令 = meirei = instruction\nフェッチ = fecchi = fetch\n命令レジスタ = meirei rejisuta = instruction register\n命令デコーダ = meirei dekōda = instruction decoder\n\nWhy the best solution works:\nエ is correct because the instruction register temporarily holds the complete fetched instruction while the decoder interprets its operation code and other fields. Its position in the diagram exactly matches memory → instruction register → decoder.\n\nWrong answer analysis:\nア:\nAn accumulator holds arithmetic operands or results. It does not hold each fetched instruction for the decoder.\n\nイ:\nA data cache stores frequently used data close to the CPU. It is not the dedicated register immediately feeding the instruction decoder.\n\nウ:\nThe program register or program counter holds the address of the next instruction, not the fetched instruction itself. It participates before the memory fetch.\n\nMemory trick:\nPC points; instruction register holds; decoder understands.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q01.png"],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "4-2",
+      "optionMode": "labels-only",
+      "jp": "主記憶のデータを図のように参照するアドレス指定方式はどれか。",
+      "romaji": "Shukioku no dēta o zu no yō ni sanshō suru adoresu shitei hōshiki wa dore ka.",
+      "en": "Which addressing method refers to data in main memory as shown in the diagram?",
+      "options": [
+        { "label": "ア", "jp": "間接アドレス指定", "romaji": "kansetsu adoresu shitei", "en": "indirect addressing" },
+        { "label": "イ", "jp": "指標アドレス指定", "romaji": "shihyō adoresu shitei", "en": "indexed addressing" },
+        { "label": "ウ", "jp": "相対アドレス指定", "romaji": "sōtai adoresu shitei", "en": "relative addressing" },
+        { "label": "エ", "jp": "直接アドレス指定", "romaji": "chokusetsu adoresu shitei", "en": "direct addressing" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nThe instruction does not point straight to the data. It points to memory location 20, which contains another address, 25. The processor follows that second address to reach the data, like reading a note that tells you where the real box is.\n\nTechnical breakdown:\n1. The instruction's address field contains 20.\n2. Main-memory address 20 contains the value 25.\n3. That value is treated as the effective address.\n4. The processor accesses main-memory address 25 and obtains the data.\nThe address field therefore refers indirectly to the data through an address stored in memory.\n\nJapanese keywords to remember:\n主記憶 = shukioku = main memory\nアドレス部 = adoresu-bu = address field\n実効アドレス = jikkō adoresu = effective address\n間接アドレス指定 = kansetsu adoresu shitei = indirect addressing\n\nWhy the best solution works:\nア is correct because the instruction's address field leads to a memory location containing the real data address. The extra memory lookup is the defining feature of indirect addressing.\n\nWrong answer analysis:\nイ:\nIndexed addressing adds an index-register value to an address field. The diagram shows no addition and no index register.\n\nウ:\nRelative addressing adds a displacement to a base such as the program counter. The diagram instead follows a pointer stored in memory.\n\nエ:\nDirect addressing would use 20 itself as the address of the data. Here address 20 contains 25, and the data is at address 25.\n\nMemory trick:\nIndirect means address of an address: 20 → 25 → data.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch04/set01/q02.png"],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "4-3",
+      "optionMode": "labels-only",
+      "jp": "平均命令実行時間が20ナノ秒のコンピュータがある。このコンピュータの性能は何MIPSか。",
+      "romaji": "Heikin meirei jikkō jikan ga 20 nanobyō no konpyūta ga aru. Kono konpyūta no seinō wa nan MIPS ka.",
+      "en": "A computer has an average instruction execution time of 20 nanoseconds. What is its performance in MIPS?",
+      "options": [
+        { "label": "ア", "jp": "5", "romaji": "go", "en": "5 MIPS" },
+        { "label": "イ", "jp": "10", "romaji": "jū", "en": "10 MIPS" },
+        { "label": "ウ", "jp": "20", "romaji": "nijū", "en": "20 MIPS" },
+        { "label": "エ", "jp": "50", "romaji": "gojū", "en": "50 MIPS" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nIf one instruction takes 20 nanoseconds, count how many 20-nanosecond pieces fit into one second. That gives 50 million instructions each second, or 50 MIPS.\n\nTechnical breakdown:\nMIPS means millions of instructions per second.\nAverage time per instruction = 20 ns = 20 × 10^-9 s.\nInstructions per second = 1 ÷ (20 × 10^-9) = 50 × 10^6.\nMIPS = (50 × 10^6) ÷ 10^6 = 50.\nUnit check: seconds cancel, leaving instructions per second.\n\nJapanese keywords to remember:\n平均命令実行時間 = heikin meirei jikkō jikan = average instruction execution time\n性能 = seinō = performance\nナノ秒 = nanobyō = nanosecond\n百万命令毎秒 = hyakuman meirei maibyō = million instructions per second\n\nWhy the best solution works:\nエ is correct because taking the reciprocal of 20 nanoseconds gives 50,000,000 instructions per second, and dividing by one million converts that rate to 50 MIPS.\n\nWrong answer analysis:\nア:\n5 MIPS corresponds to 200 nanoseconds per instruction, ten times slower than the stated time.\n\nイ:\n10 MIPS corresponds to 100 nanoseconds per instruction, not 20 nanoseconds.\n\nウ:\n20 MIPS corresponds to 50 nanoseconds per instruction. It incorrectly treats the time value as though it were already the MIPS value.\n\nMemory trick:\nMIPS and execution time are reciprocals: smaller time means larger MIPS.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q03.png"],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "4-4",
+      "optionMode": "labels-only",
+      "jp": "50MIPSのプロセッサの平均命令実行時間は幾らか。",
+      "romaji": "50 MIPS no purosessa no heikin meirei jikkō jikan wa ikura ka.",
+      "en": "What is the average instruction execution time of a 50-MIPS processor?",
+      "options": [
+        { "label": "ア", "jp": "20ナノ秒", "romaji": "20 nanobyō", "en": "20 nanoseconds" },
+        { "label": "イ", "jp": "50ナノ秒", "romaji": "50 nanobyō", "en": "50 nanoseconds" },
+        { "label": "ウ", "jp": "2マイクロ秒", "romaji": "2 maikurobyō", "en": "2 microseconds" },
+        { "label": "エ", "jp": "5マイクロ秒", "romaji": "5 maikurobyō", "en": "5 microseconds" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA 50-MIPS processor finishes 50 million instructions every second. Divide one second by 50 million to find the time for one instruction: 20 nanoseconds.\n\nTechnical breakdown:\n50 MIPS = 50 × 10^6 instructions/s.\nAverage instruction time = 1 ÷ (50 × 10^6) s/instruction.\n= 0.02 × 10^-6 s\n= 20 × 10^-9 s\n= 20 ns.\nThe reciprocal converts an instruction rate into time per instruction.\n\nJapanese keywords to remember:\nプロセッサ = purosessa = processor\n平均命令実行時間 = heikin meirei jikkō jikan = average instruction execution time\nナノ秒 = nanobyō = nanosecond\nマイクロ秒 = maikurobyō = microsecond\n\nWhy the best solution works:\nア is correct because 1 ÷ 50,000,000 second equals 0.00000002 second, which is 20 nanoseconds.\n\nWrong answer analysis:\nイ:\n50 nanoseconds corresponds to 20 MIPS, because 1 ÷ 50 ns = 20 million instructions per second.\n\nウ:\n2 microseconds equals 2,000 nanoseconds and corresponds to only 0.5 MIPS.\n\nエ:\n5 microseconds equals 5,000 nanoseconds and corresponds to only 0.2 MIPS.\n\nMemory trick:\nRate to time: flip it. Then remember 1 microsecond = 1,000 nanoseconds.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch04/set01/q04.png"],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "4-5",
+      "optionMode": "labels-only",
+      "jp": "1GHzのクロックで動作するCPUがある。このCPUは、機械語の1命令を平均0.8クロックで実行できることが分かっている。このCPUは1秒間に平均何万命令を実行できるか。",
+      "romaji": "1 GHz no kurokku de dōsa suru CPU ga aru. Kono CPU wa, kikaigo no 1 meirei o heikin 0.8 kurokku de jikkō dekiru koto ga wakatte iru. Kono CPU wa 1 byōkan ni heikin nan-man meirei o jikkō dekiru ka.",
+      "en": "A CPU operates with a 1-GHz clock and can execute one machine-language instruction in an average of 0.8 clock cycles. On average, how many ten-thousands of instructions can it execute in one second?",
+      "options": [
+        { "label": "ア", "jp": "125", "romaji": "hyaku nijūgo", "en": "125 ten-thousands of instructions" },
+        { "label": "イ", "jp": "250", "romaji": "nihyaku gojū", "en": "250 ten-thousands of instructions" },
+        { "label": "ウ", "jp": "80,000", "romaji": "hachi-man", "en": "80,000 ten-thousands of instructions" },
+        { "label": "エ", "jp": "125,000", "romaji": "jūni-man go-sen", "en": "125,000 ten-thousands of instructions" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nThe CPU receives one billion clock cycles each second. Because one instruction needs only 0.8 cycle on average, it completes more than one instruction per cycle: 1.25 billion instructions per second. Converting that count into units of ten thousand gives 125,000.\n\nTechnical breakdown:\nClock frequency = 1 GHz = 1 × 10^9 clocks/s.\nAverage clocks per instruction = 0.8 clocks/instruction.\nInstructions per second = (1 × 10^9 clocks/s) ÷ (0.8 clocks/instruction)\n= 1.25 × 10^9 instructions/s.\nOne 万 is 10,000 = 10^4.\nInstructions in 万 units = (1.25 × 10^9) ÷ 10^4 = 1.25 × 10^5 = 125,000 万 instructions/s.\n\nJapanese keywords to remember:\nクロック周波数 = kurokku shūhasū = clock frequency\n機械語命令 = kikaigo meirei = machine-language instruction\n平均クロック数 = heikin kurokku-sū = average clock cycles\n何万命令 = nan-man meirei = how many ten-thousands of instructions\n\nWhy the best solution works:\nエ is correct because dividing the one-billion-clock rate by 0.8 clock per instruction gives 1.25 billion instructions per second, and dividing again by 10,000 gives 125,000 in 万 units.\n\nWrong answer analysis:\nア:\n125 is smaller by a factor of 1,000. It results from an incorrect GHz or 万 unit conversion.\n\nイ:\n250 does not follow from dividing 1 GHz by 0.8 clock per instruction and then converting to 万. It is smaller than the correct result by a factor of 500.\n\nウ:\n80,000 comes from multiplying 1 billion by 0.8 instead of dividing by the clocks required per instruction.\n\nMemory trick:\nInstructions per second = clocks per second ÷ clocks per instruction; then divide by 10,000 for 万.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q05.png"],
+      "imagePath": null
+    },
+    {
+      "number": 6,
+      "displayNumber": "4-6",
+      "optionMode": "labels-only",
+      "jp": "割込み処理の終了後に、割込みによって中断された処理を割り込まれた場所から再開するために、割込み発生時にプロセッサが保存するものはどれか。",
+      "romaji": "Warikomi shori no shūryō-go ni, warikomi ni yotte chūdan sareta shori o warikomareta basho kara saikai suru tame ni, warikomi hassei-ji ni purosessa ga hozon suru mono wa dore ka.",
+      "en": "What does the processor save when an interrupt occurs so that, after interrupt processing ends, the interrupted processing can resume from the point where it was interrupted?",
+      "options": [
+        { "label": "ア", "jp": "インデックスレジスタ", "romaji": "indekkusu rejisuta", "en": "index register" },
+        { "label": "イ", "jp": "データレジスタ", "romaji": "dēta rejisuta", "en": "data register" },
+        { "label": "ウ", "jp": "プログラムカウンター", "romaji": "puroguramu kauntā", "en": "program counter" },
+        { "label": "エ", "jp": "命令レジスタ", "romaji": "meirei rejisuta", "en": "instruction register" }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nAn interrupt is like pausing a book to answer the door. To continue at the same place, you save the page number. The program counter is the processor's page number because it identifies the next instruction to execute.\n\nTechnical breakdown:\n1. Normal processing is executing instructions in sequence.\n2. An interrupt arrives and control must move to an interrupt handler.\n3. Before that move, the processor saves the program counter value representing the return position.\n4. The interrupt handler runs.\n5. The saved program counter is restored, so execution resumes at the interrupted program's next required instruction.\nOther processor state may also be saved, but among these options the essential return-location value is the program counter.\n\nJapanese keywords to remember:\n割込み = warikomi = interrupt\n中断 = chūdan = suspension\n再開 = saikai = resume\nプログラムカウンター = puroguramu kauntā = program counter\n\nWhy the best solution works:\nウ is correct because restoring the saved program counter restores the instruction address from which the original program must continue after the handler returns.\n\nWrong answer analysis:\nア:\nAn index register assists indexed address calculation. It does not identify the interrupted program's resume position.\n\nイ:\nA data register holds operands or data values. Saving only it cannot tell the CPU which instruction to execute next.\n\nエ:\nThe instruction register holds the currently fetched instruction. The resume address is tracked by the program counter, not by retaining that instruction register value.\n\nMemory trick:\nInterrupt resume needs the program's bookmark: the program counter.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q06.png"],
+      "imagePath": null
+    },
+    {
+      "number": 7,
+      "displayNumber": "4-7",
+      "optionMode": "labels-only",
+      "jp": "CPUのプログラムレジスタ（プログラムカウンター）の役割はどれか。",
+      "romaji": "CPU no puroguramu rejisuta (puroguramu kauntā) no yakuwari wa dore ka.",
+      "en": "What is the role of the CPU's program register (program counter)?",
+      "options": [
+        { "label": "ア", "jp": "演算を行うために、メモリから読み出したデータを保持する。", "romaji": "Enzan o okonau tame ni, memori kara yomidashita dēta o hoji suru.", "en": "It holds data read from memory for performing calculations." },
+        { "label": "イ", "jp": "条件付き分岐命令を実行するために、演算結果の状態を保持する。", "romaji": "Jōkentsuki bunki meirei o jikkō suru tame ni, enzan kekka no jōtai o hoji suru.", "en": "It holds the state of an operation result for executing conditional branch instructions." },
+        { "label": "ウ", "jp": "命令のデコードを行うために、メモリから読み出した命令を保持する。", "romaji": "Meirei no dekōdo o okonau tame ni, memori kara yomidashita meirei o hoji suru.", "en": "It holds an instruction read from memory so that the instruction can be decoded." },
+        { "label": "エ", "jp": "命令を読み出すために、次の命令が格納されたアドレスを保持する。", "romaji": "Meirei o yomidasu tame ni, tsugi no meirei ga kakunō sareta adoresu o hoji suru.", "en": "It holds the address where the next instruction is stored so that the instruction can be fetched." }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nThe program counter is the CPU's bookmark. It remembers where the next instruction is stored so the CPU knows what to fetch next.\n\nTechnical breakdown:\n1. A program's instructions occupy memory addresses.\n2. The program counter holds the address of the next instruction to fetch.\n3. During a normal sequential fetch, the counter advances to the following address.\n4. A branch, jump, call, return, or interrupt may replace it with a different address.\nThis address-control role keeps instruction execution in the correct order.\n\nJapanese keywords to remember:\n役割 = yakuwari = role\n次の命令 = tsugi no meirei = next instruction\n格納されたアドレス = kakunō sareta adoresu = stored address\nプログラムカウンター = puroguramu kauntā = program counter\n\nWhy the best solution works:\nエ is correct because the program counter's defined job is to hold the address used to fetch the next instruction.\n\nWrong answer analysis:\nア:\nHolding data used in arithmetic is the role of a general-purpose register, data register, or accumulator, not the program counter.\n\nイ:\nHolding condition information about an arithmetic result is the role of a status or flag register.\n\nウ:\nHolding the fetched instruction for decoding is the role of the instruction register.\n\nMemory trick:\nProgram counter = pointer to the next program instruction.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q07.png"],
+      "imagePath": null
+    },
+    {
+      "number": 8,
+      "displayNumber": "4-8",
+      "optionMode": "labels-only",
+      "jp": "内部割込みに分類されるものはどれか。",
+      "romaji": "Naibu warikomi ni bunrui sareru mono wa dore ka.",
+      "en": "Which event is classified as an internal interrupt?",
+      "options": [
+        { "label": "ア", "jp": "商用電源の瞬時停電などの電源異常による割込み", "romaji": "Shōyō dengen no shunji teiden nado no dengen ijō ni yoru warikomi", "en": "An interrupt caused by a power abnormality such as a momentary outage of the commercial power supply" },
+        { "label": "イ", "jp": "ゼロで除算を実行したことによる割込み", "romaji": "Zero de josan o jikkō shita koto ni yoru warikomi", "en": "An interrupt caused by executing division by zero" },
+        { "label": "ウ", "jp": "入出力が完了したことによる割込み", "romaji": "Nyūshutsuryoku ga kanryō shita koto ni yoru warikomi", "en": "An interrupt caused by completion of input/output" },
+        { "label": "エ", "jp": "メモリパリティエラーが発生したことによる割込み", "romaji": "Memori pariti erā ga hassei shita koto ni yoru warikomi", "en": "An interrupt caused by a memory parity error" }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nAn internal interrupt is triggered by something that happens while the CPU executes the current instruction. Dividing by zero is discovered directly during arithmetic execution, so it comes from inside the instruction-processing flow.\n\nTechnical breakdown:\nInternal interrupts, also called exceptions, arise synchronously from instruction execution.\n1. The CPU decodes and executes a division instruction.\n2. It detects that the divisor is zero.\n3. A valid quotient cannot be produced.\n4. The CPU raises an exception and transfers control to an exception handler.\nPower, I/O completion, and hardware error notifications originate outside the normal instruction's arithmetic semantics.\n\nJapanese keywords to remember:\n内部割込み = naibu warikomi = internal interrupt\n除算 = josan = division\nゼロ除算 = zero josan = division by zero\n例外 = reigai = exception\n\nWhy the best solution works:\nイ is correct because division by zero is detected as a direct consequence of executing a CPU instruction, making it a synchronous internal exception.\n\nWrong answer analysis:\nア:\nA power abnormality comes from the power system outside the executing instruction and is classified as an external or hardware interrupt.\n\nウ:\nI/O completion is reported asynchronously by an I/O device, so it is an external interrupt.\n\nエ:\nA memory parity error is a hardware fault notification rather than an arithmetic exception caused by the instruction's defined operation.\n\nMemory trick:\nInternal means caused by executing the instruction; divide-by-zero is the classic example.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch04/set01/q08.png"],
+      "imagePath": null
+    },
+    {
+      "number": 9,
+      "displayNumber": "4-9",
+      "optionMode": "labels-only",
+      "jp": "外部割込みに分類されるものはどれか。",
+      "romaji": "Gaibu warikomi ni bunrui sareru mono wa dore ka.",
+      "en": "Which event is classified as an external interrupt?",
+      "options": [
+        { "label": "ア", "jp": "インターバルタイマによって、指定時間が経過したときに生じる割込み", "romaji": "Intābaru taima ni yotte, shitei jikan ga keika shita toki ni shōjiru warikomi", "en": "An interrupt generated by an interval timer when the specified time has elapsed" },
+        { "label": "イ", "jp": "演算結果のオーバーフローやゼロによる除算で生じる割込み", "romaji": "Enzan kekka no ōbāfurō ya zero ni yoru josan de shōjiru warikomi", "en": "An interrupt caused by arithmetic-result overflow or division by zero" },
+        { "label": "ウ", "jp": "仮想記憶管理において、存在しないページへのアクセスによって生じる割込み", "romaji": "Kasō kioku kanri ni oite, sonzai shinai pēji e no akusesu ni yotte shōjiru warikomi", "en": "An interrupt caused by accessing a page that is not present under virtual-memory management" },
+        { "label": "エ", "jp": "ソフトウェア割込み命令の実行によって生じる割込み", "romaji": "Sofutowea warikomi meirei no jikkō ni yotte shōjiru warikomi", "en": "An interrupt caused by executing a software-interrupt instruction" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nAn external interrupt is a signal that arrives from outside the instruction currently being executed. A timer is separate hardware that watches time and alerts the CPU when the requested interval ends.\n\nTechnical breakdown:\n1. Software programs an interval timer with a specified duration.\n2. The CPU continues executing other instructions.\n3. When the duration expires, the timer hardware sends an interrupt request.\n4. The request is asynchronous to the current instruction and is therefore external.\nOverflow, page faults, and explicit software interrupts arise from instruction execution and are treated as internal interrupts or exceptions.\n\nJapanese keywords to remember:\n外部割込み = gaibu warikomi = external interrupt\nインターバルタイマ = intābaru taima = interval timer\n指定時間 = shitei jikan = specified time\n経過 = keika = elapsed\n\nWhy the best solution works:\nア is correct because timer expiration is generated by external timer hardware independently of the instruction being executed when the signal arrives.\n\nWrong answer analysis:\nイ:\nOverflow and division by zero are arithmetic exceptions detected while an instruction executes, so they are internal interrupts.\n\nウ:\nA missing-page access produces a page fault as a consequence of the current memory-reference instruction, so it is an internal exception.\n\nエ:\nA software-interrupt instruction deliberately raises the event through instruction execution, so it is classified as an internal or software interrupt.\n\nMemory trick:\nTimer and I/O signals come from outside; arithmetic and page faults come from inside instruction execution.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch04/set01/q09.png"],
+      "imagePath": null
+    }
+  ]
+}

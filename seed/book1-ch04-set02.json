@@ -1,0 +1,100 @@
+{
+  "exam_set": {
+    "id": "book1-ch04-set02",
+    "title": "Practice Set 2",
+    "description": "Textbook Practice — Book 1, Chapter 4, Practice Set 2",
+    "question_count": 5
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "4-10",
+      "optionMode": "labels-only",
+      "jp": "キャッシュメモリの効果として、適切なものはどれか。",
+      "romaji": "Kyasshu memori no kōka to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes the effect of cache memory?",
+      "options": [
+        { "label": "ア", "jp": "主記憶からキャッシュメモリへの命令の読出しと、主記憶からキャッシュメモリへのデータの読出しを同時に行うことによって、データ転送を高速に行う。", "romaji": "Shukioku kara kyasshu memori e no meirei no yomidashi to, shukioku kara kyasshu memori e no dēta no yomidashi o dōji ni okonau koto ni yotte, dēta tensō o kōsoku ni okonau.", "en": "It speeds up data transfer by simultaneously reading instructions and data from main memory into cache memory." },
+        { "label": "イ", "jp": "主記憶から読み出したデータをキャッシュメモリに保持し、CPUが後で同じデータを読み出すときのデータ転送を高速に行う。", "romaji": "Shukioku kara yomidashita dēta o kyasshu memori ni hoji shi, CPU ga ato de onaji dēta o yomidasu toki no dēta tensō o kōsoku ni okonau.", "en": "It keeps data read from main memory in cache memory and speeds up data transfer when the CPU later reads the same data." },
+        { "label": "ウ", "jp": "主記憶から読み出したデータをキャッシュメモリに保持し、命令を並列に処理することによって演算を高速に行う。", "romaji": "Shukioku kara yomidashita dēta o kyasshu memori ni hoji shi, meirei o heiretsu ni shori suru koto ni yotte enzan o kōsoku ni okonau.", "en": "It keeps data read from main memory in cache memory and speeds up computation by processing instructions in parallel." },
+        { "label": "エ", "jp": "主記憶から読み出した命令をキャッシュメモリに保持し、キャッシュメモリ上でデコードして実行することによって演算を高速に行う。", "romaji": "Shukioku kara yomidashita meirei o kyasshu memori ni hoji shi, kyasshu memori-jō de dekōdo shite jikkō suru koto ni yotte enzan o kōsoku ni okonau.", "en": "It keeps instructions read from main memory in cache memory and speeds up computation by decoding and executing them in cache memory." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nCache memory is a small, fast shelf near the CPU. When data has already been brought from the slower main-memory warehouse, keeping a copy on the nearby shelf lets the CPU get the same data much faster next time.\n\nTechnical breakdown:\n1. The CPU requests data.\n2. On a cache miss, the system obtains the data from main memory and places a copy in cache.\n3. Programs often reuse recently accessed data because of temporal locality.\n4. A later request for the same cached data becomes a cache hit.\n5. Cache access is much faster than main-memory access, reducing average access time.\nThe cache improves speed by exploiting locality, not by becoming an execution unit.\n\nJapanese keywords to remember:\nキャッシュメモリ = kyasshu memori = cache memory\n主記憶 = shukioku = main memory\n保持 = hoji = retain\nデータ転送 = dēta tensō = data transfer\n\nWhy the best solution works:\nイ is correct because it describes reuse of a cached copy. When the CPU later requests the same data and gets a hit, the transfer completes using fast cache memory instead of slower main memory.\n\nWrong answer analysis:\nア:\nSimultaneously reading instructions and data from main memory is not the defining cache effect. Cache speed comes from satisfying later accesses from fast stored copies.\n\nウ:\nInstruction-level parallel processing is provided by CPU execution architecture, such as pipelines or multiple execution units. Cache memory does not itself process instructions in parallel.\n\nエ:\nInstructions are decoded and executed by the CPU, not inside cache memory. An instruction cache stores instruction copies but is not an instruction decoder or executor.\n\nMemory trick:\nCache means keep a nearby copy for the next access.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch04/set02/q01.png"],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "4-11",
+      "optionMode": "labels-only",
+      "jp": "主記憶のアクセス時間が60ナノ秒、キャッシュメモリのアクセス時間が10ナノ秒であるシステムがある。キャッシュメモリを介して主記憶にアクセスする場合の実効アクセス時間が15ナノ秒であるとき、キャッシュメモリのヒット率は幾らか。",
+      "romaji": "Shukioku no akusesu jikan ga 60 nanobyō, kyasshu memori no akusesu jikan ga 10 nanobyō de aru shisutemu ga aru. Kyasshu memori o kaishite shukioku ni akusesu suru baai no jikkō akusesu jikan ga 15 nanobyō de aru toki, kyasshu memori no hitto-ritsu wa ikura ka.",
+      "en": "A system has a main-memory access time of 60 nanoseconds and a cache-memory access time of 10 nanoseconds. When the effective access time through cache memory is 15 nanoseconds, what is the cache hit ratio?",
+      "options": [
+        { "label": "ア", "jp": "0.1", "romaji": "rei ten ichi", "en": "0.1" },
+        { "label": "イ", "jp": "0.17", "romaji": "rei ten ichi nana", "en": "0.17" },
+        { "label": "ウ", "jp": "0.83", "romaji": "rei ten hachi san", "en": "0.83" },
+        { "label": "エ", "jp": "0.9", "romaji": "rei ten kyū", "en": "0.9" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nMost requests must be served by the fast 10-nanosecond cache because the average is only 15 nanoseconds, close to 10 and far from 60. Solving the weighted average shows that 90% are cache hits.\n\nTechnical breakdown:\nLet h be the cache hit ratio. Under the question's effective-time model:\nEffective time = hit time × h + main-memory time × (1 - h).\n15 = 10h + 60(1 - h).\n15 = 10h + 60 - 60h.\n50h = 45.\nh = 45 ÷ 50 = 0.9.\nCheck: 10 × 0.9 + 60 × 0.1 = 9 + 6 = 15 ns.\n\nJapanese keywords to remember:\nアクセス時間 = akusesu jikan = access time\n実効アクセス時間 = jikkō akusesu jikan = effective access time\nヒット率 = hitto-ritsu = hit ratio\nキャッシュヒット = kyasshu hitto = cache hit\n\nWhy the best solution works:\nエ is correct because a 0.9 hit ratio weights the fast 10-nanosecond access at 90% and the slower 60-nanosecond access at 10%, producing the stated 15-nanosecond effective time.\n\nWrong answer analysis:\nア:\nA 0.1 hit ratio gives 10 × 0.1 + 60 × 0.9 = 55 ns, much slower than 15 ns.\n\nイ:\nA 0.17 hit ratio gives about 51.5 ns, not 15 ns.\n\nウ:\nA 0.83 hit ratio gives about 18.5 ns. This is close enough to tempt estimation but does not satisfy the equation.\n\nMemory trick:\nWrite a weighted average: fast time × hit rate + slow time × miss rate.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set02/q02.png"],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "4-12",
+      "optionMode": "labels-only",
+      "jp": "キャッシュメモリに関する記述のうち、適切なものはどれか。",
+      "romaji": "Kyasshu memori ni kansuru kijutsu no uchi, tekisetsu na mono wa dore ka.",
+      "en": "Which statement about cache memory is correct?",
+      "options": [
+        { "label": "ア", "jp": "書込み命令を実行したときに、キャッシュメモリと主記憶の両方を書き換える方式と、キャッシュメモリだけを書き換えておき、主記憶の書換えはキャッシュメモリから当該データが追い出されるときに行う方式とがある。", "romaji": "Kakikomi meirei o jikkō shita toki ni, kyasshu memori to shukioku no ryōhō o kakikaeru hōshiki to, kyasshu memori dake o kakikaete oki, shukioku no kakikae wa kyasshu memori kara tōgai dēta ga oidasareru toki ni okonau hōshiki to ga aru.", "en": "There is a method that updates both cache memory and main memory when a write instruction is executed, and another method that updates only cache memory and updates main memory when that data is evicted from cache." },
+        { "label": "イ", "jp": "キャッシュメモリにヒットしない場合に割込みが生じ、プログラムによって主記憶からキャッシュメモリにデータが転送される。", "romaji": "Kyasshu memori ni hitto shinai baai ni warikomi ga shōji, puroguramu ni yotte shukioku kara kyasshu memori ni dēta ga tensō sareru.", "en": "When an access does not hit in cache memory, an interrupt occurs and a program transfers data from main memory to cache memory." },
+        { "label": "ウ", "jp": "キャッシュメモリは、実記憶と仮想記憶とのメモリ容量の差を埋めるために採用される。", "romaji": "Kyasshu memori wa, jitsukioku to kasō kioku to no memori yōryō no sa o umeru tame ni saiyō sareru.", "en": "Cache memory is used to bridge the difference in memory capacity between real memory and virtual memory." },
+        { "label": "エ", "jp": "半導体メモリのアクセス速度の向上が著しいので、キャッシュメモリの必要性は減っている。", "romaji": "Handōtai memori no akusesu sokudo no kōjō ga ichijirushii node, kyasshu memori no hitsuyōsei wa hette iru.", "en": "Because semiconductor-memory access speed has improved greatly, the need for cache memory is decreasing." }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nWhen the CPU changes cached data, the system needs a rule for keeping main memory consistent. One rule writes both places immediately; the other waits and writes the changed cache block back only when it leaves cache.\n\nTechnical breakdown:\nTwo standard cache write policies are described.\n1. Write-through: each write updates cache and main memory at the same time. Main memory stays current, but write traffic is higher.\n2. Write-back: each write updates cache and marks the block dirty. Main memory is updated when the dirty block is evicted. This reduces memory traffic but needs dirty-state management.\nBoth are valid cache-coherency policies between a cache and main memory.\n\nJapanese keywords to remember:\n書込み = kakikomi = write\n書換え = kakikae = update or rewrite\n追い出される = oidasareru = be evicted\nライトスルー = raito surū = write-through\nライトバック = raito bakku = write-back\n\nWhy the best solution works:\nア is correct because it accurately describes write-through and write-back, the two common policies for propagating CPU writes from cache to main memory.\n\nWrong answer analysis:\nイ:\nA cache miss is normally handled by cache-control hardware, not by raising a program-handled interrupt for every miss.\n\nウ:\nVirtual memory bridges an apparent capacity gap using secondary storage. Cache memory addresses a speed gap between CPU and main memory.\n\nエ:\nCPU performance has also advanced, so the speed gap between processors and main memory remains important. Cache memory is still essential.\n\nMemory trick:\nThrough writes now; back writes later at eviction.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch04/set02/q03.png"],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "4-13",
+      "optionMode": "labels-only",
+      "jp": "キャッシュの書込み方式には、ライトスルー方式とライトバック方式がある。ライトバック方式を使用する目的として、適切なものはどれか。",
+      "romaji": "Kyasshu no kakikomi hōshiki ni wa, raito surū hōshiki to raito bakku hōshiki ga aru. Raito bakku hōshiki o shiyō suru mokuteki to shite, tekisetsu na mono wa dore ka.",
+      "en": "Cache write methods include write-through and write-back. What is an appropriate purpose for using write-back?",
+      "options": [
+        { "label": "ア", "jp": "キャッシュと主記憶の一貫性（コヒーレンシ）を保ちながら、書込みを行う。", "romaji": "Kyasshu to shukioku no ikkansei (kohīrenshi) o tamochinagara, kakikomi o okonau.", "en": "Perform writes while maintaining consistency (coherency) between cache and main memory." },
+        { "label": "イ", "jp": "キャッシュミスが発生したときに、キャッシュの内容の主記憶への書き戻しを不要にする。", "romaji": "Kyasshu misu ga hassei shita toki ni, kyasshu no naiyō no shukioku e no kakimodoshi o fuyō ni suru.", "en": "Make it unnecessary to write cache contents back to main memory when a cache miss occurs." },
+        { "label": "ウ", "jp": "個々のプロセッサがそれぞれのキャッシュをもつマルチプロセッサシステムにおいて、キャッシュ管理をライトスルー方式よりも簡単な回路構成で実現する。", "romaji": "Koko no purosessa ga sorezore no kyasshu o motsu maruchipurosessa shisutemu ni oite, kyasshu kanri o raito surū hōshiki yori mo kantan na kairo kōsei de jitsugen suru.", "en": "In a multiprocessor system where each processor has its own cache, implement cache management with a simpler circuit than write-through." },
+        { "label": "エ", "jp": "プロセッサから主記憶への書込み頻度を減らす。", "romaji": "Purosessa kara shukioku e no kakikomi hindo o herasu.", "en": "Reduce the frequency of writes from the processor to main memory." }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nWrite-back lets the CPU make several changes to a cached block without sending every change to slow main memory. The final changed block is written back when necessary, so fewer main-memory writes occur.\n\nTechnical breakdown:\nIn write-through, every processor write reaches both cache and main memory. If the same cache block is updated five times, main memory receives five writes.\nIn write-back:\n1. Each processor write updates only the cached block.\n2. The block is marked dirty.\n3. Additional writes can update the same cached copy.\n4. Main memory is updated when the dirty block is evicted or otherwise flushed.\nThus several cache writes can be combined into one main-memory write, reducing bandwidth use and write latency exposure.\n\nJapanese keywords to remember:\nライトバック方式 = raito bakku hōshiki = write-back method\n書込み頻度 = kakikomi hindo = write frequency\n主記憶 = shukioku = main memory\n書き戻し = kakimodoshi = write-back\n\nWhy the best solution works:\nエ is correct because delaying propagation allows repeated writes to the same cache block to produce fewer writes to main memory.\n\nWrong answer analysis:\nア:\nBoth write policies require a consistency strategy. Merely saying consistency is maintained does not identify write-back's distinctive performance purpose.\n\nイ:\nA dirty block selected for replacement must be written back before it can be discarded. Write-back does not make that operation unnecessary.\n\nウ:\nPrivate caches in a multiprocessor make coherency more complex, and dirty write-back data does not generally simplify the circuitry compared with write-through.\n\nMemory trick:\nWrite-back batches writes: change cache now, update memory later.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch04/set02/q04.png"],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "4-14",
+      "optionMode": "labels-only",
+      "jp": "メモリインタリーブの説明として、適切なものはどれか。",
+      "romaji": "Memori intarību no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly explains memory interleaving?",
+      "options": [
+        { "label": "ア", "jp": "CPUから主記憶へのアクセスを高速化するために、キャッシュメモリと主記憶との両方に同時にデータを書き込む。", "romaji": "CPU kara shukioku e no akusesu o kōsokuka suru tame ni, kyasshu memori to shukioku to no ryōhō ni dōji ni dēta o kakikomu.", "en": "To speed up CPU access to main memory, write data simultaneously to both cache memory and main memory." },
+        { "label": "イ", "jp": "CPUから主記憶へのアクセスを高速化するために、主記憶内部を複数のバンクに分割し、各バンクを並列にアクセスする。", "romaji": "CPU kara shukioku e no akusesu o kōsokuka suru tame ni, shukioku naibu o fukusū no banku ni bunkatsu shi, kaku banku o heiretsu ni akusesu suru.", "en": "To speed up CPU access to main memory, divide main memory into multiple banks and access the banks in parallel." },
+        { "label": "ウ", "jp": "CPUと主記憶のアクセス速度の違いによるボトルネックを解消するために、高速かつ小容量のメモリを配置する。", "romaji": "CPU to shukioku no akusesu sokudo no chigai ni yoru botorunekku o kaishō suru tame ni, kōsoku katsu shōyōryō no memori o haichi suru.", "en": "To eliminate the bottleneck caused by the difference between CPU and main-memory access speeds, place a small, high-speed memory between them." },
+        { "label": "エ", "jp": "パイプライン処理を乱す要因をなくすために、キャッシュメモリを命令用とデータ用の二つに分離する。", "romaji": "Paipurain shori o midasu yōin o nakusu tame ni, kyasshu memori o meirei-yō to dēta-yō no futatsu ni bunri suru.", "en": "To remove a factor that disrupts pipeline processing, separate cache memory into instruction and data caches." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nImagine several checkout lanes instead of one. Memory interleaving splits main memory into banks so consecutive accesses can overlap across different banks instead of waiting for one bank each time.\n\nTechnical breakdown:\n1. Main memory is divided into multiple independent banks.\n2. Consecutive addresses are distributed across those banks.\n3. While one bank completes an access cycle, another bank can begin or complete another access.\n4. Parallel or overlapped bank operation increases memory throughput, especially for sequential access.\nInterleaving improves bandwidth even though the access latency of one individual bank may remain unchanged.\n\nJapanese keywords to remember:\nメモリインタリーブ = memori intarību = memory interleaving\n複数のバンク = fukusū no banku = multiple banks\n分割 = bunkatsu = division\n並列にアクセス = heiretsu ni akusesu = access in parallel\n\nWhy the best solution works:\nイ is correct because bank division and parallel access are the defining structure and operation of memory interleaving.\n\nWrong answer analysis:\nア:\nWriting cache and main memory simultaneously describes write-through cache behavior, not memory interleaving.\n\nウ:\nPlacing a small, fast memory between CPU and main memory describes cache memory.\n\nエ:\nSeparating instruction and data caches describes a split-cache or Harvard-style arrangement used to avoid access conflicts, not bank interleaving within main memory.\n\nMemory trick:\nInterleave = alternate addresses across banks so banks can overlap work.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch04/set02/q05.png"],
+      "imagePath": null
+    }
+  ]
+}
