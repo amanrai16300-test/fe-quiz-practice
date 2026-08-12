@@ -1,0 +1,130 @@
+{
+  "exam_set": {
+    "id": "book1-ch05-set02",
+    "title": "Practice Set 2",
+    "description": "Textbook Practice — Book 1, Chapter 5, Practice Set 2",
+    "question_count": 3
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "5-11",
+      "optionMode": "labels-only",
+      "jp": "コンピュータシステムの信頼性に関する記述のうち、適切なものはどれか。",
+      "romaji": "Konpyūta shisutemu no shinraisei ni kansuru kijutsu no uchi, tekisetsu na mono wa dore ka.",
+      "en": "Which statement about computer-system reliability is correct?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "システムの遠隔保守は、MTTRを長くし、稼働率を向上させる。",
+          "romaji": "Shisutemu no enkaku hoshu wa, MTTR o nagaku shi, kadōritsu o kōjō saseru.",
+          "en": "Remote system maintenance lengthens MTTR and improves availability."
+        },
+        {
+          "label": "イ",
+          "jp": "システムの稼働率は、MTTRとMTBFを長くすることによって向上する。",
+          "romaji": "Shisutemu no kadōritsu wa, MTTR to MTBF o nagaku suru koto ni yotte kōjō suru.",
+          "en": "System availability improves by lengthening both MTTR and MTBF."
+        },
+        {
+          "label": "ウ",
+          "jp": "システムの構成が複雑なほど、MTBFは長くなる。",
+          "romaji": "Shisutemu no kōsei ga fukuzatsu na hodo, MTBF wa nagaku naru.",
+          "en": "The more complex the system configuration, the longer its MTBF becomes."
+        },
+        {
+          "label": "エ",
+          "jp": "システムの予防保守は、MTBFを長くするために行う。",
+          "romaji": "Shisutemu no yobō hoshu wa, MTBF o nagaku suru tame ni okonau.",
+          "en": "Preventive system maintenance is performed to lengthen MTBF."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nPreventive maintenance checks and replaces weak parts before they fail. Fewer failures mean the system runs longer between failures, so MTBF increases.\n\nTechnical breakdown:\n1. MTBF means mean time between failures and measures the average operating interval between one failure and the next.\n2. MTTR means mean time to repair and measures average recovery time.\n3. Preventive maintenance reduces the likelihood of an unexpected failure.\n4. Reducing failure frequency lengthens the average interval between failures, which raises MTBF.\n5. Availability is commonly calculated as MTBF ÷ (MTBF + MTTR), so long MTBF and short MTTR are desirable.\n\nJapanese keywords to remember:\n信頼性 = shinraisei = reliability\n予防保守 = yobō hoshu = preventive maintenance\n平均故障間隔 = heikin koshō kankaku = mean time between failures\n稼働率 = kadōritsu = availability\n\nWhy the best solution works:\nエ is correct because preventive maintenance aims to prevent failures before they occur, thereby increasing the mean operating time between failures, MTBF.\n\nWrong answer analysis:\nア:\nRemote maintenance is intended to shorten repair work and MTTR. Lengthening MTTR would reduce, not improve, availability.\n\nイ:\nA longer MTBF improves availability, but a longer MTTR increases downtime and lowers availability.\n\nウ:\nMore components and interactions generally introduce more possible failure points. Complexity does not inherently lengthen MTBF.\n\nMemory trick:\nReliable longer: MTBF up. Repair faster: MTTR down.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set02/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "5-12",
+      "optionMode": "labels-only",
+      "jp": "あるシステムの今年度のMTBFは3,000時間、MTTRは1,000時間である。翌年度はMTBFについて今年度の20%分の改善、MTTRについて今年度の10%分の改善を図ると、翌年度の稼働率は何%になるか。",
+      "romaji": "Aru shisutemu no konnendo no MTBF wa sanzen jikan, MTTR wa sen jikan de aru. Yokunendo wa MTBF ni tsuite konnendo no nijuppāsento-bun no kaizen, MTTR ni tsuite konnendo no juppāsento-bun no kaizen o hakaru to, yokunendo no kadōritsu wa nanpāsento ni naru ka.",
+      "en": "A system's MTBF this fiscal year is 3,000 hours and its MTTR is 1,000 hours. Next year, MTBF is improved by 20% of this year's value and MTTR by 10% of this year's value. What will next year's availability be?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "69",
+          "romaji": "roku-jū kyū",
+          "en": "69%"
+        },
+        {
+          "label": "イ",
+          "jp": "73",
+          "romaji": "nana-jū san",
+          "en": "73%"
+        },
+        {
+          "label": "ウ",
+          "jp": "77",
+          "romaji": "nana-jū nana",
+          "en": "77%"
+        },
+        {
+          "label": "エ",
+          "jp": "80",
+          "romaji": "hachi-jū",
+          "en": "80%"
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nAvailability compares working time with the whole working-plus-repair cycle. Next year the system works longer between failures and takes less time to repair, so its availability rises to 80%.\n\nTechnical breakdown:\n1. Formula: availability = MTBF ÷ (MTBF + MTTR).\n2. Known values: current MTBF = 3,000 hours and current MTTR = 1,000 hours.\n3. A 20% MTBF improvement increases operating time: 3,000 × 1.20 = 3,600 hours.\n4. A 10% MTTR improvement reduces repair time: 1,000 × (1 − 0.10) = 900 hours.\n5. Substitute: availability = 3,600 ÷ (3,600 + 900).\n6. Arithmetic: 3,600 ÷ 4,500 = 0.8.\n7. Unit conversion: 0.8 × 100 = 80%.\nTherefore next year's availability is 80%.\n\nJapanese keywords to remember:\n平均故障間隔 = heikin koshō kankaku = mean time between failures\n平均修復時間 = heikin shūfuku jikan = mean time to repair\n改善 = kaizen = improvement\n稼働率 = kadōritsu = availability\n\nWhy the best solution works:\nエ is correct because the improved values produce 3,600 operating hours per 4,500-hour operating-and-repair cycle, and 3,600 ÷ 4,500 equals 80%.\n\nWrong answer analysis:\nア:\n69% does not result from applying the stated MTBF increase, MTTR decrease, and availability formula together.\n\nイ:\n73% is near the result of changing only part of the input or mishandling one improvement, but both improved values must be used.\n\nウ:\n77% can arise from treating the repair-time improvement incorrectly. An MTTR improvement makes repair time shorter, from 1,000 to 900 hours.\n\nMemory trick:\nAvailability likes MTBF up and MTTR down: work ÷ (work + repair).\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set02/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "5-13",
+      "optionMode": "labels-only",
+      "jp": "図のような、稼働率Pのシステムで構成された多重化システム全体の稼働率を表す式はどれか。ここで、並列の部分は、どちらか一方が稼働していればよいものとする。",
+      "romaji": "Zu no yō na, kadōritsu P no shisutemu de kōsei sareta tajūka shisutemu zentai no kadōritsu o arawasu shiki wa dore ka. Koko de, heiretsu no bubun wa, dochira ka ippō ga kadō shite ireba yoi mono to suru.",
+      "en": "Which expression gives the availability of the entire redundant system shown, whose components each have availability P? For the parallel section, it is sufficient for either branch to be operating.",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "1−(1−P)(1−P²)²",
+          "romaji": "ichi mainasu kakko ichi mainasu P kakko, kakeru kakko ichi mainasu P nijō kakko nijō",
+          "en": "1 − (1 − P)(1 − P²)²"
+        },
+        {
+          "label": "イ",
+          "jp": "P{1−(1−P)⁴}",
+          "romaji": "P kakeru chūkakko ichi mainasu kakko ichi mainasu P kakko yonjō chūkakko",
+          "en": "P{1 − (1 − P)⁴}"
+        },
+        {
+          "label": "ウ",
+          "jp": "P{1−(1−P)²}²",
+          "romaji": "P kakeru chūkakko ichi mainasu kakko ichi mainasu P kakko nijō chūkakko nijō",
+          "en": "P{1 − (1 − P)²}²"
+        },
+        {
+          "label": "エ",
+          "jp": "P{1−(1−P²)²}",
+          "romaji": "P kakeru chūkakko ichi mainasu kakko ichi mainasu P nijō kakko nijō chūkakko",
+          "en": "P{1 − (1 − P²)²}"
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nThe first component is a single gate that must work. After it, either of two routes can carry the service, but each route needs both of its two components to work. Multiply the first gate's availability by the chance that at least one complete route works.\n\nTechnical breakdown:\n1. The leftmost component is in series with everything else, so its availability contributes a factor P.\n2. Each parallel branch contains two components in series. A series branch works only when both work, so one branch has availability P × P = P².\n3. One branch fails with probability 1 − P².\n4. The two branches are independent and both fail with probability (1 − P²)².\n5. Therefore the parallel section works with probability 1 − (1 − P²)².\n6. The initial component and parallel section are in series, so multiply them.\n7. Final expression: P{1 − (1 − P²)²}.\n\nJapanese keywords to remember:\n稼働率 = kadōritsu = availability\n多重化システム = tajūka shisutemu = redundant system\n直列 = chokuretsu = series\n並列 = heiretsu = parallel\n\nWhy the best solution works:\nエ exactly models the diagram: P for the required first component, P² for each two-component series branch, and one minus the probability that both parallel branches fail.\n\nWrong answer analysis:\nア:\nThis subtracts a combined failure product from 1 as though the entire arrangement were one parallel-failure calculation. The leftmost component is in series and must contribute a multiplying factor P.\n\nイ:\nThis treats the four components in the parallel section as four individually parallel components. The diagram instead groups them into two branches, each containing two series components.\n\nウ:\nThis treats each column as two parallel components and then places those two parallel groups in series. The actual wiring has two horizontal series branches in parallel.\n\nMemory trick:\nSeries: multiply successes. Parallel: one minus all failures. Read the wires, not the box layout.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set02/q03.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}

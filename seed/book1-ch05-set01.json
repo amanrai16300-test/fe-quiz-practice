@@ -1,0 +1,410 @@
+{
+  "exam_set": {
+    "id": "book1-ch05-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 5, Practice Set 1",
+    "question_count": 10
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "5-1",
+      "optionMode": "labels-only",
+      "jp": "3層クライアントサーバシステム構成で実現したWebシステムの特徴として、適切なものはどれか。",
+      "romaji": "Sansō kuraianto sāba shisutemu kōsei de jitsugen shita Web shisutemu no tokuchō to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes a web system implemented with a three-tier client-server architecture?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "HTMLで記述されたプログラムをサーバ側で動作させ、クライアントソフトはその結果を画面に表示する。",
+          "romaji": "HTML de kijutsu sareta puroguramu o sāba-gawa de dōsa sase, kuraianto sofuto wa sono kekka o gamen ni hyōji suru.",
+          "en": "A program written in HTML runs on the server, and the client software displays its result on the screen."
+        },
+        {
+          "label": "イ",
+          "jp": "業務処理の変更のたびに、Webシステムを動作させるための業務処理用アプリケーションをクライアント端末に送付し、インストールする必要がある。",
+          "romaji": "Gyōmu shori no henkō no tabi ni, Web shisutemu o dōsa saseru tame no gyōmu shori-yō apurikēshon o kuraianto tanmatsu ni sōfu shi, insutōru suru hitsuyō ga aru.",
+          "en": "Whenever business processing changes, the business application needed by the web system must be sent to and installed on each client terminal."
+        },
+        {
+          "label": "ウ",
+          "jp": "業務処理はサーバ側で実行し、クライアントソフトはHTMLの記述に従って、その結果を画面に表示する。",
+          "romaji": "Gyōmu shori wa sāba-gawa de jikkō shi, kuraianto sofuto wa HTML no kijutsu ni shitagatte, sono kekka o gamen ni hyōji suru.",
+          "en": "Business processing runs on the server, and the client software displays the result according to the HTML description."
+        },
+        {
+          "label": "エ",
+          "jp": "クライアント端末には、サーバ側からのHTTP要求を待ち受けるサービスを常駐させておく必要がある。",
+          "romaji": "Kuraianto tanmatsu ni wa, sāba-gawa kara no HTTP yōkyū o machiukeru sābisu o jōchū sasete oku hitsuyō ga aru.",
+          "en": "A service that waits for HTTP requests from the server must run continuously on each client terminal."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nA web browser is the display counter, while the servers do the business work behind it. The server sends an HTML result, and the browser follows that HTML to show the page.\n\nTechnical breakdown:\n1. A three-tier web system separates presentation, business logic, and data management.\n2. The browser handles the presentation tier.\n3. The application server performs business processing.\n4. The database tier stores and retrieves data.\n5. The server returns an HTML response, which the browser renders.\nThis separation lets business logic change centrally without reinstalling a business application on every client.\n\nJapanese keywords to remember:\n3層 = sansō = three-tier\nクライアントサーバシステム = kuraianto sāba shisutemu = client-server system\n業務処理 = gyōmu shori = business processing\nサーバ側 = sāba-gawa = server side\n\nWhy the best solution works:\nウ correctly assigns business processing to the server and presentation of the HTML result to the client. That is the standard responsibility split in a three-tier web system.\n\nWrong answer analysis:\nア:\nHTML describes page structure and presentation; it is not itself the server-side business program described here.\n\nイ:\nCentral server-side processing avoids distributing and reinstalling the business application on every client after each change.\n\nエ:\nThe client normally sends an HTTP request and the server waits for it. This option reverses that relationship.\n\nMemory trick:\nBrowser shows; application server works; database stores.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "5-2",
+      "optionMode": "labels-only",
+      "jp": "冗長構成におけるデュアルシステムの説明として、適切なものはどれか。",
+      "romaji": "Jōchō kōsei ni okeru dyuaru shisutemu no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes a dual system in a redundant configuration?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "2系統のシステムで並列処理をすることによって性能を上げる方式である。",
+          "romaji": "Nikeitō no shisutemu de heiretsu shori o suru koto ni yotte seinō o ageru hōshiki de aru.",
+          "en": "It improves performance by processing in parallel on two systems."
+        },
+        {
+          "label": "イ",
+          "jp": "2系統のシステムの負荷が均等になるように、処理を分散する方式である。",
+          "romaji": "Nikeitō no shisutemu no fuka ga kintō ni naru yō ni, shori o bunsan suru hōshiki de aru.",
+          "en": "It distributes processing so that the loads on two systems are equal."
+        },
+        {
+          "label": "ウ",
+          "jp": "現用系と待機系の2系統のシステムで構成され、現用系に障害が生じたときに、待機系が処理を受け継ぐ方式である。",
+          "romaji": "Gen'yō-kei to taiki-kei no nikeitō no shisutemu de kōsei sare, gen'yō-kei ni shōgai ga shōjita toki ni, taiki-kei ga shori o uketsugu hōshiki de aru.",
+          "en": "It consists of an active system and a standby system, and the standby takes over when the active system fails."
+        },
+        {
+          "label": "エ",
+          "jp": "一つの処理を2系統のシステムで独立に行い、結果を照合する方式である。",
+          "romaji": "Hitotsu no shori o nikeitō no shisutemu de dokuritsu ni okonai, kekka o shōgō suru hōshiki de aru.",
+          "en": "Two systems perform the same processing independently, and their results are compared."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nImagine two people independently solving the same calculation and then comparing answers. If the answers differ, something is wrong. A dual system uses two systems this way.\n\nTechnical breakdown:\n1. A dual system runs the same task independently on two system lines.\n2. It compares their outputs.\n3. Matching outputs increase confidence that processing is correct.\n4. A mismatch exposes a fault so corrective action can be taken.\nThe defining feature is independent duplicate execution plus result comparison, not merely sharing work.\n\nJapanese keywords to remember:\n冗長構成 = jōchō kōsei = redundant configuration\nデュアルシステム = dyuaru shisutemu = dual system\n独立に行う = dokuritsu ni okonau = perform independently\n結果を照合する = kekka o shōgō suru = compare results\n\nWhy the best solution works:\nエ states both essential properties of a dual system: two independent executions of one task and comparison of their results.\n\nWrong answer analysis:\nア:\nParallel processing divides or coordinates work to improve performance. It does not define duplicate independent execution with comparison.\n\nイ:\nEqual load distribution describes load balancing, whose goal is workload allocation rather than result verification.\n\nウ:\nAn active system with a standby that takes over describes a duplex system, not a dual system in which both systems execute and compare.\n\nMemory trick:\nDual = do it twice, then compare. Duplex = one works, one waits.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "5-3",
+      "optionMode": "labels-only",
+      "jp": "コンピュータを2台用意しておき、現用系が故障したときは、現用系と同一のオンライン処理プログラムをあらかじめ起動して待機している待機系のコンピュータに速やかに切り替えて、処理を続行するシステムはどれか。",
+      "romaji": "Konpyūta o nidai yōi shite oki, gen'yō-kei ga koshō shita toki wa, gen'yō-kei to dōitsu no onrain shori puroguramu o arakajime kidō shite taiki shite iru taiki-kei no konpyūta ni sumiyaka ni kirikaete, shori o zokukō suru shisutemu wa dore ka.",
+      "en": "Which system prepares two computers and, if the active system fails, quickly switches processing to a standby computer on which the same online processing program has already been started?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "コールドスタンバイシステム",
+          "romaji": "kōrudo sutanbai shisutemu",
+          "en": "cold standby system"
+        },
+        {
+          "label": "イ",
+          "jp": "ホットスタンバイシステム",
+          "romaji": "hotto sutanbai shisutemu",
+          "en": "hot standby system"
+        },
+        {
+          "label": "ウ",
+          "jp": "マルチプロセッサシステム",
+          "romaji": "maruchi purosessa shisutemu",
+          "en": "multiprocessor system"
+        },
+        {
+          "label": "エ",
+          "jp": "マルチユーザーシステム",
+          "romaji": "maruchi yūzā shisutemu",
+          "en": "multi-user system"
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nThe spare computer is already awake, with the needed program running. When the main computer fails, work can move to the spare quickly. That ready-to-go spare is hot standby.\n\nTechnical breakdown:\n1. The configuration has an active system and a standby system.\n2. The standby has already started the same online processing program.\n3. It is kept ready while the active system operates.\n4. On failure, processing switches rapidly to the prepared standby.\nA prestarted, ready standby is the defining condition for hot standby.\n\nJapanese keywords to remember:\n現用系 = gen'yō-kei = active system\n待機系 = taiki-kei = standby system\nあらかじめ起動 = arakajime kidō = started in advance\n切り替える = kirikaeru = switch over\n\nWhy the best solution works:\nイ is correct because the standby program is already running, reducing switchover time and allowing online processing to continue quickly.\n\nWrong answer analysis:\nア:\nA cold standby is not kept fully ready with the required program already running, so recovery needs more startup and preparation time.\n\nウ:\nA multiprocessor system has multiple processors cooperating within a system; it does not describe an active computer and a prestarted standby computer.\n\nエ:\nA multi-user system supports multiple users. User count does not define failure takeover behavior.\n\nMemory trick:\nHot standby is hot and ready; cold standby must warm up.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q03.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "5-4",
+      "optionMode": "labels-only",
+      "jp": "フォールトトレラントシステムの説明として、適切なものはどれか。",
+      "romaji": "Fōruto toreranto shisutemu no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes a fault-tolerant system?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "システムが部分的に故障しても、システム全体としては必要な機能を維持するシステム",
+          "romaji": "Shisutemu ga bubunteki ni koshō shite mo, shisutemu zentai to shite wa hitsuyō na kinō o iji suru shisutemu",
+          "en": "A system that maintains the necessary functions as a whole even if part of it fails"
+        },
+        {
+          "label": "イ",
+          "jp": "地域的な災害などの発生に備えて、遠隔地に予備を用意しておくシステム",
+          "romaji": "Chiikiteki na saigai nado no hassei ni sonaete, enkakuchi ni yobi o yōi shite oku shisutemu",
+          "en": "A system that prepares a backup at a remote location for a regional disaster"
+        },
+        {
+          "label": "ウ",
+          "jp": "複数のプロセッサがネットワークを介して接続され、資源を共有するシステム",
+          "romaji": "Fukusū no purosessa ga nettowāku o kaishite setsuzoku sare, shigen o kyōyū suru shisutemu",
+          "en": "A system in which multiple processors are connected through a network and share resources"
+        },
+        {
+          "label": "エ",
+          "jp": "複数のプロセッサで一つのトランザクションを並行して処理し、結果を照合するシステム",
+          "romaji": "Fukusū no purosessa de hitotsu no toranzakushon o heikō shite shori shi, kekka o shōgō suru shisutemu",
+          "en": "A system that processes one transaction concurrently on multiple processors and compares the results"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA fault-tolerant system is like a vehicle that can keep moving safely even when one part has a problem. A component failure does not immediately remove the system's required service.\n\nTechnical breakdown:\n1. Fault tolerance assumes that some component can fail.\n2. Redundant components or alternative paths isolate or cover that failure.\n3. The system continues providing its required functions, possibly with reduced capacity.\n4. The core criterion is continued service despite a partial fault.\n\nJapanese keywords to remember:\n部分的に故障 = bubunteki ni koshō = fail partially\n必要な機能 = hitsuyō na kinō = necessary functions\n維持する = iji suru = maintain\nフォールトトレラント = fōruto toreranto = fault-tolerant\n\nWhy the best solution works:\nア directly states the defining property of fault tolerance: the whole system preserves required functions even when a part fails.\n\nWrong answer analysis:\nイ:\nA remote backup site is a disaster-recovery measure. It does not by itself define continued operation during an internal component fault.\n\nウ:\nNetworked processors sharing resources describe a distributed system, not necessarily a fault-tolerant one.\n\nエ:\nDuplicate processing and result comparison is one fault-detection technique, but this description alone is not the general definition of maintaining service after a partial failure.\n\nMemory trick:\nFault tolerated = part breaks, required service stays.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q04.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "5-5",
+      "optionMode": "labels-only",
+      "jp": "安全性や信頼性を確保するための設計のうち、フールプルーフに該当するものはどれか。",
+      "romaji": "Anzensei ya shinraisei o kakuho suru tame no sekkei no uchi, fūru pūfu ni gaitō suru mono wa dore ka.",
+      "en": "Which design for ensuring safety and reliability is an example of foolproof design?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "装置が故障したときは、システムが安全に停止するようにして、被害を最小限に抑える。",
+          "romaji": "Sōchi ga koshō shita toki wa, shisutemu ga anzen ni teishi suru yō ni shite, higai o saishōgen ni osaeru.",
+          "en": "If equipment fails, make the system stop safely to minimize damage."
+        },
+        {
+          "label": "イ",
+          "jp": "装置が故障したときは、利用できる機能を制限したり、処理能力を低下させたりしても、システムは稼働させる。",
+          "romaji": "Sōchi ga koshō shita toki wa, riyō dekiru kinō o seigen shitari, shori nōryoku o teika sasetari shite mo, shisutemu wa kadō saseru.",
+          "en": "If equipment fails, keep the system operating even with limited functions or reduced processing capacity."
+        },
+        {
+          "label": "ウ",
+          "jp": "装置が故障しても、システム全体の機能に影響がないように、二重化などを行って冗長な構成とする。",
+          "romaji": "Sōchi ga koshō shite mo, shisutemu zentai no kinō ni eikyō ga nai yō ni, nijūka nado o okonatte jōchō na kōsei to suru.",
+          "en": "Use duplication and other redundancy so equipment failure does not affect overall system functions."
+        },
+        {
+          "label": "エ",
+          "jp": "利用者が誤った操作をしても、システムに異常が起こらないようにする。",
+          "romaji": "Riyōsha ga ayamatta sōsa o shite mo, shisutemu ni ijō ga okoranai yō ni suru.",
+          "en": "Prevent a system abnormality even if a user performs an incorrect operation."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nFoolproof design assumes people can make mistakes and makes those mistakes harmless. A plug that fits only the correct way is a simple example.\n\nTechnical breakdown:\n1. Foolproof design focuses on human operational mistakes.\n2. Controls, shapes, ranges, and validation prevent an invalid action or prevent harmful consequences.\n3. The system remains normal even when the user chooses or enters something incorrectly.\n4. This differs from designs that respond to hardware failure after it occurs.\n\nJapanese keywords to remember:\nフールプルーフ = fūru pūfu = foolproof\n誤った操作 = ayamatta sōsa = incorrect operation\n異常 = ijō = abnormality\n安全性 = anzensei = safety\n\nWhy the best solution works:\nエ is correct because it explicitly prevents an incorrect user operation from causing abnormal system behavior, which is the purpose of foolproof design.\n\nWrong answer analysis:\nア:\nStopping safely after a failure is fail-safe design.\n\nイ:\nContinuing with reduced functions or performance is fail-soft design.\n\nウ:\nUsing redundancy so service survives equipment failure is fault-tolerant design.\n\nMemory trick:\nFoolproof protects system from user mistakes; fail-safe protects people when system fails.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q05.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 6,
+      "displayNumber": "5-6",
+      "optionMode": "labels-only",
+      "jp": "データを分散して複数の磁気ディスクに書き込むことによって、データ入出力の高速化を図る方式はどれか。",
+      "romaji": "Dēta o bunsan shite fukusū no jiki disuku ni kakikomu koto ni yotte, dēta nyūshutsuryoku no kōsokuka o hakaru hōshiki wa dore ka.",
+      "en": "Which method speeds up data input/output by distributing data and writing it across multiple magnetic disks?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "ストライピング",
+          "romaji": "sutoraipingu",
+          "en": "striping"
+        },
+        {
+          "label": "イ",
+          "jp": "スワッピング",
+          "romaji": "suwappingu",
+          "en": "swapping"
+        },
+        {
+          "label": "ウ",
+          "jp": "ディスクキャッシュ",
+          "romaji": "disuku kyasshu",
+          "en": "disk cache"
+        },
+        {
+          "label": "エ",
+          "jp": "ミラーリング",
+          "romaji": "mirāringu",
+          "en": "mirroring"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nInstead of making one disk carry the whole load, striping splits data into pieces and lets several disks work at the same time. Parallel work makes input/output faster.\n\nTechnical breakdown:\n1. Data is divided into blocks or stripes.\n2. Consecutive stripes are placed across multiple disks.\n3. Several disks can read or write different stripes concurrently.\n4. Their combined transfer activity raises throughput.\nStriping alone improves speed but does not automatically provide redundancy.\n\nJapanese keywords to remember:\n分散 = bunsan = distribution\n磁気ディスク = jiki disuku = magnetic disk\nデータ入出力 = dēta nyūshutsuryoku = data input/output\n高速化 = kōsokuka = speedup\n\nWhy the best solution works:\nア is correct because striping distributes data across disks specifically to enable parallel disk input/output.\n\nWrong answer analysis:\nイ:\nSwapping moves memory contents between main memory and secondary storage; it is a memory-management operation.\n\nウ:\nA disk cache keeps frequently used data in faster memory. It does not mean distributing the data across several disks.\n\nエ:\nMirroring writes identical copies to multiple disks for reliability, not striped distribution for the stated speedup.\n\nMemory trick:\nStripes split data; mirrors copy data.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q06.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 7,
+      "displayNumber": "5-7",
+      "optionMode": "labels-only",
+      "jp": "RAIDの分類において、ミラーリングを用いることで信頼性を高め、障害発生時には冗長ディスクを用いてデータ復元を行う方式はどれか。",
+      "romaji": "RAID no bunrui ni oite, mirāringu o mochiiru koto de shinraisei o takame, shōgai hassei-ji ni wa jōchō disuku o mochiite dēta fukugen o okonau hōshiki wa dore ka.",
+      "en": "In RAID classifications, which method improves reliability through mirroring and restores data from a redundant disk when a failure occurs?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "RAID1",
+          "romaji": "RAID ichi",
+          "en": "RAID 1"
+        },
+        {
+          "label": "イ",
+          "jp": "RAID2",
+          "romaji": "RAID ni",
+          "en": "RAID 2"
+        },
+        {
+          "label": "ウ",
+          "jp": "RAID3",
+          "romaji": "RAID san",
+          "en": "RAID 3"
+        },
+        {
+          "label": "エ",
+          "jp": "RAID4",
+          "romaji": "RAID yon",
+          "en": "RAID 4"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nRAID 1 keeps a twin copy of the same data on another disk. If one disk fails, the twin still has the data and can be used for recovery.\n\nTechnical breakdown:\n1. Mirroring writes the same data to two or more disks.\n2. Each mirrored disk holds a complete copy.\n3. A read can continue from the surviving copy after one disk fails.\n4. The failed disk can be rebuilt from that redundant copy.\nThis mirrored organization is RAID 1.\n\nJapanese keywords to remember:\nミラーリング = mirāringu = mirroring\n信頼性 = shinraisei = reliability\n冗長ディスク = jōchō disuku = redundant disk\nデータ復元 = dēta fukugen = data recovery\n\nWhy the best solution works:\nア is correct because RAID 1 is the RAID level defined by disk mirroring and recovery from an identical redundant copy.\n\nWrong answer analysis:\nイ:\nRAID 2 uses bit-level striping with error-correcting codes rather than ordinary disk mirroring.\n\nウ:\nRAID 3 uses byte-level striping with a dedicated parity disk. Recovery uses parity, not an identical mirrored copy.\n\nエ:\nRAID 4 uses block-level striping with a dedicated parity disk. It is also parity-based rather than mirror-based.\n\nMemory trick:\nRAID 1 = one data set, one mirror copy.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q07.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 8,
+      "displayNumber": "5-8",
+      "optionMode": "labels-only",
+      "jp": "コンピュータシステムによって単位時間当たりに処理される仕事の量を表す用語はどれか。",
+      "romaji": "Konpyūta shisutemu ni yotte tan'i jikan atari ni shori sareru shigoto no ryō o arawasu yōgo wa dore ka.",
+      "en": "Which term represents the amount of work processed by a computer system per unit of time?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "スループット",
+          "romaji": "surūputto",
+          "en": "throughput"
+        },
+        {
+          "label": "イ",
+          "jp": "ターンアラウンドタイム",
+          "romaji": "tān araundo taimu",
+          "en": "turnaround time"
+        },
+        {
+          "label": "ウ",
+          "jp": "タイムスライス",
+          "romaji": "taimu suraisu",
+          "en": "time slice"
+        },
+        {
+          "label": "エ",
+          "jp": "レスポンスタイム",
+          "romaji": "resuponsu taimu",
+          "en": "response time"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nThroughput asks how much work the whole system finishes during a fixed time, like how many customers a counter serves per hour.\n\nTechnical breakdown:\n1. Choose a time interval, such as one second or one hour.\n2. Count the jobs or transactions completed in that interval.\n3. Throughput = completed work ÷ elapsed time.\n4. Higher throughput means more work is completed per unit time.\nIt measures work volume, not how long one individual job waits or runs.\n\nJapanese keywords to remember:\n単位時間当たり = tan'i jikan atari = per unit of time\n処理される = shori sareru = be processed\n仕事の量 = shigoto no ryō = amount of work\nスループット = surūputto = throughput\n\nWhy the best solution works:\nア is correct because throughput is exactly the quantity of work a system processes per unit of time.\n\nWrong answer analysis:\nイ:\nTurnaround time is the duration from submitting a job until its result is complete.\n\nウ:\nA time slice is the CPU time allocated to a task before scheduling may switch to another task.\n\nエ:\nResponse time is the delay from a request until the system begins or returns a response.\n\nMemory trick:\nThroughput counts jobs per time; response and turnaround measure time per job.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q08.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 9,
+      "displayNumber": "5-9",
+      "optionMode": "labels-only",
+      "jp": "システムのスケールアウトに関する記述として、適切なものはどれか。",
+      "romaji": "Shisutemu no sukēru auto ni kansuru kijutsu to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes scaling out a system?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "既存のシステムにサーバを追加導入することによって、システム全体の処理能力を向上させる。",
+          "romaji": "Kizon no shisutemu ni sāba o tsuika dōnyū suru koto ni yotte, shisutemu zentai no shori nōryoku o kōjō saseru.",
+          "en": "Improve the processing capacity of the whole system by adding servers to the existing system."
+        },
+        {
+          "label": "イ",
+          "jp": "既存のシステムのサーバの一部又は全部を、クラウドサービスなどに再配置することによって、システム運用コストを下げる。",
+          "romaji": "Kizon no shisutemu no sāba no ichibu mata wa zenbu o, kuraudo sābisu nado ni saihaichi suru koto ni yotte, shisutemu un'yō kosuto o sageru.",
+          "en": "Lower operating costs by relocating some or all existing system servers to a cloud service or similar environment."
+        },
+        {
+          "label": "ウ",
+          "jp": "既存のシステムのサーバを、より高性能なものと入れ替えることによって、個々のサーバの処理能力を向上させる。",
+          "romaji": "Kizon no shisutemu no sāba o, yori kōseinō na mono to irekaeru koto ni yotte, koko no sāba no shori nōryoku o kōjō saseru.",
+          "en": "Improve each server's processing capacity by replacing existing servers with higher-performance ones."
+        },
+        {
+          "label": "エ",
+          "jp": "一つのサーバをあたかも複数のサーバであるかのように見せることによって、システム運用コストを下げる。",
+          "romaji": "Hitotsu no sāba o atakamo fukusū no sāba de aru ka no yō ni miseru koto ni yotte, shisutemu un'yō kosuto o sageru.",
+          "en": "Lower operating costs by making one server appear to be multiple servers."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nScaling out is adding more workers. Instead of replacing one server with a stronger one, the system adds servers so they can share the workload.\n\nTechnical breakdown:\n1. Scale-out expands capacity horizontally.\n2. Additional server nodes join the existing system.\n3. Work is distributed across the larger pool.\n4. Aggregate processing capacity and often availability can increase.\nThe contrasting approach, scale-up, strengthens an individual server.\n\nJapanese keywords to remember:\nスケールアウト = sukēru auto = scale out\n追加導入 = tsuika dōnyū = additional deployment\n処理能力 = shori nōryoku = processing capacity\n向上させる = kōjō saseru = improve\n\nWhy the best solution works:\nア is correct because adding servers to raise total system capacity is the definition of horizontal scaling, or scale-out.\n\nWrong answer analysis:\nイ:\nRelocation to cloud services is migration or deployment restructuring. Cost reduction alone does not define scale-out.\n\nウ:\nReplacing a server with a more powerful one is scale-up, which increases vertical capacity.\n\nエ:\nMaking one physical server appear as several servers describes virtualization, not adding physical or logical nodes for scale-out.\n\nMemory trick:\nScale out = add boxes; scale up = strengthen a box.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q09.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 10,
+      "displayNumber": "5-10",
+      "optionMode": "labels-only",
+      "jp": "ベンチマークテストの説明として、適切なものはどれか。",
+      "romaji": "Benchimāku tesuto no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes a benchmark test?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "監視・計測用のプログラムによってシステムの稼働状態や資源の状況を測定し、システム構成や応答性能のデータを得る。",
+          "romaji": "Kanshi keisoku-yō no puroguramu ni yotte shisutemu no kadō jōtai ya shigen no jōkyō o sokutei shi, shisutemu kōsei ya ōtō seinō no dēta o eru.",
+          "en": "Use monitoring and measurement programs to measure system operation and resource conditions and obtain configuration and response-performance data."
+        },
+        {
+          "label": "イ",
+          "jp": "使用目的に合わせて選定した標準的なプログラムを実行させ、システムの処理性能を測定する。",
+          "romaji": "Shiyō mokuteki ni awasete sentei shita hyōjunteki na puroguramu o jikkō sase, shisutemu no shori seinō o sokutei suru.",
+          "en": "Run standard programs selected for the intended use and measure the system's processing performance."
+        },
+        {
+          "label": "ウ",
+          "jp": "将来の予測を含めて評価する場合などに、モデルを作成して模擬的に実験するプログラムでシステムの性能を評価する。",
+          "romaji": "Shōrai no yosoku o fukumete hyōka suru baai nado ni, moderu o sakusei shite mogiteki ni jikken suru puroguramu de shisutemu no seinō o hyōka suru.",
+          "en": "When evaluating future predictions, create a model and assess system performance with a program that conducts simulated experiments."
+        },
+        {
+          "label": "エ",
+          "jp": "プログラムを実際には実行せずに、机上でシステムの処理を解析して、個々の命令の出現回数や実行回数の予測値から処理時間を推定し、性能を評価する。",
+          "romaji": "Puroguramu o jissai ni wa jikkō sezu ni, kijō de shisutemu no shori o kaiseki shite, koko no meirei no shutsugen kaisū ya jikkō kaisū no yosokuchi kara shori jikan o suitei shi, seinō o hyōka suru.",
+          "en": "Without actually running a program, analyze processing theoretically and estimate execution time from predicted instruction occurrence and execution counts."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nA benchmark is a fair test course for computers. Run the same representative program on each system and compare how well they perform.\n\nTechnical breakdown:\n1. Select a standard workload that represents the intended use.\n2. Execute that workload on the target system.\n3. Measure processing time, throughput, or another defined performance value.\n4. Compare results under consistent conditions.\nA benchmark measures actual execution of a standardized workload.\n\nJapanese keywords to remember:\nベンチマークテスト = benchimāku tesuto = benchmark test\n標準的なプログラム = hyōjunteki na puroguramu = standard program\n処理性能 = shori seinō = processing performance\n測定する = sokutei suru = measure\n\nWhy the best solution works:\nイ is correct because it includes both required elements: a standard program chosen for the usage purpose and actual measurement of system processing performance.\n\nWrong answer analysis:\nア:\nThis describes monitoring system operation and resources, not executing a standard workload as a benchmark.\n\nウ:\nThis describes simulation using a model, useful when the real system or future workload cannot be executed directly.\n\nエ:\nThis describes analytical performance estimation based on predicted instruction counts without actual program execution.\n\nMemory trick:\nBenchmark = standard workload actually run and measured.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch05/set01/q10.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}
