@@ -2116,3 +2116,188 @@ Next content milestone:
 - Do not infer Chapter 6 Practice Set count, question count, printed-number
   ranges, answer keys, source mappings, option modes, or topic hierarchy until
   authoritative Chapter 6 source material is supplied and inventoried.
+
+## Phase 3H Book 1 Chapter 6 Complete Deployment and Live Verification Checkpoint
+
+Book 1 Chapter 6 is source-inventoried, answer-key confirmed, locally authored,
+content-audited, validated, committed, pushed, pulled and validated on Oracle,
+frontend-deployed with all source images, imported as three generic sets,
+API- and Nginx-verified, and manually verified in the live browser. The user
+reported: “works great.” Chapter 6 is therefore **COMPLETE / PASSED / CLOSED**.
+
+Implementation commit:
+
+- Branch: `feature/2025-part-b-source`.
+- Commit: `59ff7b9a8cc892c5ae1e2614a80e6c134eb85cd5` (`59ff7b9`).
+- Subject: `feat: add Book 1 chapter 6 practice sets`.
+- Scope: declarative Chapter 6 catalog additions in `app.js`, three Chapter 6
+  seed files, and 22 Chapter 6 source PNGs: 26 files total.
+- The implementation commit was pushed successfully to GitHub.
+- No backend, schema, importer, API, progress, auth, sync, Nginx, systemd, or
+  deployment-configuration change was required.
+
+Chapter 6 structure and totals:
+
+- Parent: Textbook Practice — Book 1 → Chapter 6.
+- Chapter ID: `book1-ch06`.
+- `book1-ch06-set01`: 13 questions, display numbers 6-1 through 6-13.
+- `book1-ch06-set02`: 4 questions, display numbers 6-14 through 6-17.
+- `book1-ch06-set03`: 5 questions, display numbers 6-18 through 6-22.
+- Chapter 6 total: 22 questions, with no gaps or duplicate printed numbers.
+- Final Book 1 totals: Chapter 1 = 8, Chapter 2 = 15, Chapter 3 = 22,
+  Chapter 4 = 19, Chapter 5 = 13, Chapter 6 = 22, and Book 1 = 99.
+- Chapter and Book totals remain descendant-derived through the generic catalog
+  and progress architecture.
+
+Catalog order and architecture:
+
+- Book 1 children are exactly `book1-ch01`, `book1-ch02`, `book1-ch03`,
+  `book1-ch04`, `book1-ch05`, and `book1-ch06`, in that order.
+- Chapter 6 children are exactly `book1-ch06-set01`, `book1-ch06-set02`, and
+  `book1-ch06-set03`, in that order.
+- `app.js` received declarative catalog integration only.
+- No duplicate Chapter 6 or Practice Set node and no fake Topic layer was added.
+- No Chapter 6-specific controller or renderer, Book-specific API logic,
+  backend route redesign, schema redesign, or progress redesign was introduced.
+
+Authoritative source-image inventory under `public/questions/book1/ch06/`:
+
+- `set01/`: 13 PNGs; `q01.png` through `q13.png` map to 6-1 through 6-13.
+- `set02/`: 4 PNGs; `q01.png` through `q04.png` map to 6-14 through 6-17.
+- `set03/`: 5 PNGs; `q01.png` through `q05.png` map to 6-18 through 6-22.
+- Total: 22 PNGs and the complete printed sequence 6-1 through 6-22.
+- Inventory validation found no gaps, duplicate printed numbers, missing or
+  unexpected filenames, filename/order inconsistencies, SHA-256 exact duplicate
+  images, misplaced images, or uncertain mappings.
+- The printed question number inside each source image remained authoritative.
+- All 22 source images remained byte-for-byte unchanged during authoring and
+  deployment.
+
+Accepted 6-15 source-image exception:
+
+- `public/questions/book1/ch06/set02/q02.png` maps to printed question 6-15.
+- The image contains tiny accidental answer-reference text: `問題6-14 エ` and
+  `問題6-15 ア`.
+- Audit confirmed these annotations are not genuine 6-15 question content.
+- Safe rectangular cropping was not possible without removing meaningful source
+  content. The user explicitly chose to keep the image unchanged and continue.
+- The unchanged SHA-256 is
+  `942e7f30e0832c570dc2ff0a2b05345650bf21030a1df8588cd535557eb1b7dd`.
+- The annotations were not included in Japanese transcription, Romaji, English,
+  option content, or learner explanation.
+- No special renderer, controller, or application logic was added.
+- Production structured API verification confirmed both annotation strings are
+  absent from the authored 6-15 content.
+- This remains a user-accepted source-image anomaly only.
+
+Final authoritative answer key:
+
+- Practice Set 1: 6-1 ウ; 6-2 エ; 6-3 イ; 6-4 エ; 6-5 ア; 6-6 ウ;
+  6-7 ウ; 6-8 イ; 6-9 ア; 6-10 ア; 6-11 ア; 6-12 エ; 6-13 ア.
+- Practice Set 2: 6-14 エ; 6-15 ア; 6-16 イ; 6-17 ウ.
+- Practice Set 3: 6-18 ウ; 6-19 ウ; 6-20 ア; 6-21 ア; 6-22 ウ.
+- Compact sequence:
+  `ウ エ イ エ ア ウ ウ イ ア ア ア エ ア / エ ア イ ウ / ウ ウ ア ア ウ`.
+- The authoritative-answer audit passed 22/22.
+
+Content contract and quality:
+
+- All 22 questions use `optionMode: "labels-only"`; there are no
+  structured-text exceptions.
+- Every question uses explicit Japanese labels ア, イ, ウ, and エ.
+- Language Help is complete for 22/22 with Japanese, Romaji, simple English,
+  and option translations mapped by explicit label.
+- Explanations are complete for 22/22 in required order: `ELI5:`,
+  `Technical breakdown:`, `Japanese keywords to remember:`,
+  `Why the best solution works:`, `Wrong answer analysis:`, `Memory trick:`,
+  and `Correct answer: X`.
+- Every incorrect option is analyzed separately.
+- Final option translation mapping audit passed 88/88.
+
+Final local QA:
+
+- Result: `CHAPTER 6 FINAL LOCAL QA: PASSED — READY FOR IMPLEMENTATION COMMIT`.
+- Set 1 fixes before commit: corrected the 6-1 table transcription/Romaji and
+  restored the omitted 6-4 English condition.
+- Set 2 fixes before commit: corrected 6-15 path wording/Romaji/English and
+  removed the learner-facing anomaly note.
+- Japanese, Romaji, English, explanation, and authoritative-answer audits each
+  passed 22/22.
+- Option mappings passed 88/88; option modes were labels-only 22 and
+  structured-text 0.
+- Source-image integrity passed 22/22 with 22 unique image hashes.
+- Catalog/content/hash and static regression audits passed.
+- All current seeds validated 20/20.
+- `node --check app.js`, `git diff --check`, and all 55 DOM-reference checks
+  passed.
+- Local browser automation was unavailable because no browser backend or Python
+  Playwright was installed. No dependency was installed merely to force local
+  browser QA. Browser verification was deferred to and completed at the
+  production deployment gate.
+
+Oracle source update, validation, deployment, and import:
+
+- Production source repository: `/home/ubuntu/fe-quiz-src`.
+- Oracle started at Chapter 5 implementation commit `f1c9bdc` and
+  fast-forwarded cleanly to `59ff7b9`, naturally including the intervening
+  Chapter 5 documentation checkpoint.
+- Oracle-side `node --check app.js` passed.
+- Validate-only counts passed: Set 1 = 13, Set 2 = 4, Set 3 = 5.
+- Repository PNG counts passed: 13 / 4 / 5, total 22.
+- Frontend root: `/var/www/html`.
+- Deployment copied `app.js` and all 22 Chapter 6 PNGs.
+- Production `app.js` and all 22 PNGs matched repository sources byte-for-byte;
+  image verification reported `BAD=0` and a production PNG count of 22.
+- Environment was loaded from `/etc/fe-quiz-api.env`; credentials are not
+  recorded here.
+- The existing generic importer and Node module path were reused unchanged.
+- Import results: `book1-ch06-set01` = 13, `book1-ch06-set02` = 4, and
+  `book1-ch06-set03` = 5; 22 questions total.
+- No schema, importer, backend, Nginx, or systemd change was needed; no backend
+  restart was required.
+
+Production health, API, image, and browser verification:
+
+- Direct FastAPI health on `127.0.0.1:8010` and Nginx `/api/fe/` health both
+  passed with successful application/database status.
+- Production APIs returned exactly 13, 4, and 5 questions with the complete
+  sequence 6-1 through 6-22.
+- All 22 API questions had correct printed numbers, authoritative answer labels,
+  `optionMode = labels-only`, labels exactly ア/イ/ウ/エ, and correct image
+  paths.
+- All 22 production image URLs returned HTTP 200; result: `BAD=0`.
+- Oracle source remained clean at `59ff7b9`.
+- The user completed live production browser verification and reported
+  “works great.”
+- Live verification covered Chapter 6 navigation after Chapter 5; Book 1 total
+  99; Chapter 6 total 22; set counts 13 / 4 / 5; ranges 6-1 through 6-22;
+  images; labels-only answers; correct/wrong flows; explanations; Language Help;
+  corrected 6-1, 6-4, and 6-15 learner content; progress; resume; reset
+  isolation; independent per-set progress; image lightbox; dark mode;
+  responsive layouts; Chapters 1–5; 科目A; 科目B; and no reported regression.
+- **CHAPTER 6 LIVE VERIFICATION: PASSED**.
+- **CHAPTER 6: COMPLETE / DEPLOYED / LIVE-VERIFIED / CLOSED**.
+
+Architecture and guardrails remain unchanged:
+
+- Chapter 6 reused one shared quiz engine, generic `exam_set_id`, generic
+  question API, generic progress GET/POST/DELETE, independent per-set
+  progress/resume/reset, explicit Japanese labels, label-mapped Language Help,
+  shared explanation renderer, shared lightbox/image viewer, source-image-first
+  textbook presentation, descendant-derived totals, and the generic Oracle
+  importer.
+- No backend architecture, API route, schema, importer architecture,
+  authentication, synchronization, Nginx, or systemd change was introduced.
+- Whole-chapter batching remained operational only; each Practice Set retained
+  independent progress, resume, reset, and generic set identity.
+
+Next content milestone:
+
+- Chapter 6 is CLOSED.
+- Continue with **Book 1 → Chapter 7 source intake**.
+- Before implementation, collect authoritative source images, determine the
+  actual Practice Set structure from those sources, inventory every file, map
+  printed question numbers, obtain authoritative answer keys, and confirm all
+  counts and mappings.
+- Do not assume or invent Chapter 7 question counts, Practice Set counts,
+  numbering, answer keys, source mappings, option modes, or topic hierarchy.
