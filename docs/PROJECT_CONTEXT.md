@@ -1879,3 +1879,240 @@ Next content milestone:
 - Do not infer Chapter 5 Practice Set count, question count, printed-number
   ranges, answer keys, source mappings, or topic hierarchy until authoritative
   Chapter 5 source material is supplied and inventoried.
+
+## Phase 3G Book 1 Chapter 5 Complete Deployment and Live Verification Checkpoint
+
+Book 1 Chapter 5 is source-inventoried, answer-key confirmed, locally authored,
+locally content-audited, validated, committed, pushed, pulled and validated on
+Oracle, frontend-deployed with all source images, imported as two generic sets,
+API- and Nginx-verified, and manually verified in the live browser. The user
+reported: “works fine.” Chapter 5 is therefore **COMPLETE / PASSED / CLOSED**.
+
+Implementation commit:
+
+- Branch: `feature/2025-part-b-source`.
+- Commit: `f1c9bdc1bfd408449bd95db11b937b3fb4ed511f`.
+- Subject: `feat: add Book 1 chapter 5 practice sets`.
+- Contents: declarative Chapter 5 catalog additions in `app.js`,
+  `seed/book1-ch05-set01.json`, `seed/book1-ch05-set02.json`, and 13 Chapter 5
+  source PNGs.
+- Stats: 16 files changed, 593 insertions, and 1 deletion.
+- No backend, schema, importer, API, progress, auth, sync, Nginx, or systemd
+  change was required.
+
+Chapter 5 structure and totals:
+
+- Parent: Textbook Practice — Book 1 → Chapter 5.
+- Chapter ID: `book1-ch05`.
+- `book1-ch05-set01`: 10 questions, display numbers 5-1 through 5-10.
+- `book1-ch05-set02`: 3 questions, display numbers 5-11 through 5-13.
+- Chapter 5 total: 13 questions.
+- Final Book 1 totals: Chapter 1 = 8, Chapter 2 = 15, Chapter 3 = 22,
+  Chapter 4 = 19, Chapter 5 = 13, and Book 1 = 77.
+- Chapter and Book totals remain descendant-derived through the generic catalog
+  and progress architecture.
+
+Catalog order and architecture:
+
+- Book 1 children are exactly `book1-ch01`, `book1-ch02`, `book1-ch03`,
+  `book1-ch04`, and `book1-ch05`, in that order.
+- Chapter 5 children are exactly `book1-ch05-set01` and
+  `book1-ch05-set02`, in that order.
+- No duplicate Chapter 5 node, duplicate Practice Set node, or fake Topic layer
+  was created.
+- No Chapter 5-specific quiz controller or renderer and no Book-specific API
+  family was added.
+
+Authoritative source-image mapping under `public/questions/book1/ch05/`:
+
+- Practice Set 1: `set01/q01.png` → 5-1; `q02.png` → 5-2;
+  `q03.png` → 5-3; `q04.png` → 5-4; `q05.png` → 5-5;
+  `q06.png` → 5-6; `q07.png` → 5-7; `q08.png` → 5-8;
+  `q09.png` → 5-9; and `q10.png` → 5-10.
+- Practice Set 2: `set02/q01.png` → 5-11; `q02.png` → 5-12; and
+  `q03.png` → 5-13.
+- The source inventory contains two Practice Sets: 10 images in Set 1 and 3
+  images in Set 2, for 13 images total and the complete printed sequence 5-1
+  through 5-13.
+- There are no gaps, duplicate printed numbers, SHA-256 exact duplicate images,
+  suspicious or misplaced images, filename/order inconsistencies, or uncertain
+  mappings.
+- The printed question number inside each source image remained authoritative.
+- All 13 source images remained unchanged during authoring and deployment.
+
+Final authoritative answer key:
+
+- Practice Set 1: 5-1 ウ; 5-2 エ; 5-3 イ; 5-4 ア; 5-5 エ; 5-6 ア;
+  5-7 ア; 5-8 ア; 5-9 ア; 5-10 イ.
+- Practice Set 2: 5-11 エ; 5-12 エ; 5-13 エ.
+- Compact sequence: `ウ エ イ ア エ ア ア ア ア イ / エ エ エ`.
+- No Chapter 5 answer-key conflict was found during authoring.
+
+Display contract:
+
+- All 13 Chapter 5 questions use `optionMode: "labels-only"` with explicit
+  labels ア, イ, ウ, and エ. There are no structured-text exceptions.
+- The source PNG remains the authoritative visible Japanese question and
+  answer choices.
+- Language Help uses structured Japanese, Romaji, and English mapped by
+  explicit Japanese option labels.
+- Correct answers and saved progress continue to use Japanese labels, never
+  inferred indexes.
+
+Content quality and local validation:
+
+- Chapter 5 Language Help passed 13/13, and the explanation audit passed 13/13.
+- Source-image integrity passed 13/13 with SHA-256 values unchanged; there are
+  no exact duplicate source images.
+- No answer-key conflict was found.
+- All 17 old and new seeds validated, `node --check app.js` passed, the
+  catalog/content/hash audit passed, and `git diff --check` passed.
+- Every Chapter 5 explanation follows the Chapter 3/4 quality contract, in
+  order: `ELI5:`, `Technical breakdown:`,
+  `Japanese keywords to remember:`, `Why the best solution works:`,
+  `Wrong answer analysis:`, `Memory trick:`, and `Correct answer: X`.
+- Every incorrect option is analyzed separately.
+- Language Help preserves complete Japanese, Romaji, English, formulas,
+  conditions, values, and relevant technical details. No placeholder `...`
+  represents omitted source content.
+
+Local browser-regression limitation:
+
+- During the local Chapter 5 implementation pass, automated browser regression
+  could not run because the available browser backend was unavailable and
+  Python Playwright was not installed.
+- No dependency was installed merely to force the test. This was not a content
+  or implementation failure.
+- Static/content validation, seed validation, syntax checks, catalog checks,
+  and image/hash checks all passed.
+- Final manual testing against the deployed production application subsequently
+  covered the missing browser regression. Because production live-browser
+  verification passed, this is not an outstanding blocker.
+
+Oracle source update and validation:
+
+- Production source repository: `/home/ubuntu/fe-quiz-src`, branch
+  `feature/2025-part-b-source`.
+- Before the Chapter 5 pull, Oracle source was at `a74f135`
+  (`feat: add Book 1 chapter 4 practice sets`).
+- Oracle ran `git fetch origin` and
+  `git pull --ff-only origin feature/2025-part-b-source`.
+- The repository fast-forwarded cleanly to `f1c9bdc`
+  (`feat: add Book 1 chapter 5 practice sets`) with no merge. The pull also
+  included the intervening Chapter 4 documentation checkpoint commit.
+- Oracle-side `node --check app.js` passed.
+- `book1-ch05-set01` validated with 10 questions, and
+  `book1-ch05-set02` validated with 3 questions.
+- The repository Chapter 5 PNG count was 13: 10 in Set 1 and 3 in Set 2.
+
+Oracle production frontend deployment:
+
+- Production frontend root: `/var/www/html`.
+- Deployment copied `app.js` and every file under
+  `public/questions/book1/ch05/`.
+- No backend file changed, no FastAPI restart or schema migration was required,
+  and no Nginx or systemd configuration changed.
+- Source and deployed `app.js` matched.
+- All 13 deployed Chapter 5 PNGs matched their repository source byte-for-byte;
+  the image comparison result was `BAD=0`, and the deployed PNG count was 13.
+
+Database import:
+
+- The existing generic importer was reused unchanged.
+- The database environment came from `/etc/fe-quiz-api.env`; credential values
+  must not be recorded or exposed.
+- The existing Node PostgreSQL module path was
+  `/home/ubuntu/fe-quiz-import/node_modules`.
+- Import result: `Imported exam set: book1-ch05-set01`; questions imported: 10.
+- Import result: `Imported exam set: book1-ch05-set02`; questions imported: 3.
+- Total Chapter 5 questions imported: 13.
+- No Chapter 1/2/3/4 or Past Exam set required re-import for Chapter 5.
+
+Health verification:
+
+- Both `http://127.0.0.1:8010/api/fe/health` and
+  `http://127.0.0.1/api/fe/health` returned
+  `{"ok":true,"database":true}`.
+- A stray attempt to execute the printed JSON health response as a shell command
+  produced a harmless `command not found` message afterward. This was operator
+  copy/paste noise only; the real health checks had already passed, and there
+  was no service failure.
+
+Live API verification:
+
+- The generic API returned exactly 10 questions for `book1-ch05-set01` and
+  exactly 3 questions for `book1-ch05-set02`.
+- The live display sequence was complete from 5-1 through 5-13.
+- Every live question returned its correct `displayNumber`,
+  `optionMode = labels-only`, explicit labels ア/イ/ウ/エ, authoritative
+  `correct_answer`, and correct Chapter 5 source-image path.
+- The live answer sequence matched
+  `ウ エ イ ア エ ア ア ア ア イ / エ エ エ`.
+
+Nginx source-image verification:
+
+- All 13 Chapter 5 source-image URLs returned HTTP 200; final result was
+  `BAD=0`.
+- Unlike the first Chapter 4 verification attempt, Chapter 5 image verification
+  enumerated the real repository paths directly, so no zero-padding filename
+  mistake occurred.
+
+Final live-browser verification:
+
+- Live URL: `http://100.95.39.107/`.
+- Manual production verification was completed after deployment, imports,
+  health checks, API checks, and image HTTP checks.
+- Verification covered Book 1 showing Chapter 5 after Chapter 4; Book 1 total
+  77; Chapter 5 total 13; Practice Set counts 10 and 3; display numbers 5-1
+  through 5-13; all source images; labels-only ア/イ/ウ/エ controls; Language
+  Help; correct/wrong submission; explanations; Next; navigator; Back
+  navigation; independent Practice Set progress; resume; image lightbox;
+  dark-mode source-image handling; general responsive/layout behavior; and no
+  observed regression preventing use.
+- The user confirmed: “works fine.”
+- **CHAPTER 5 LIVE VERIFICATION: PASSED**.
+- **CHAPTER 5: COMPLETE / DEPLOYED / LIVE-VERIFIED / CLOSED**.
+
+Architecture and guardrails remain unchanged:
+
+- Chapter 5 reused one shared quiz engine, generic `exam_set_id`, generic
+  question API, generic progress GET/POST/DELETE, and per-set
+  progress/resume/reset isolation.
+- Descendant-derived Chapter/Book totals, source-image-first textbook
+  presentation, explicit Japanese labels, labels-only mode when the source
+  contains complete answer choices, label-mapped Language Help, the shared
+  explanation renderer, shared image viewer/lightbox, and shared
+  theme/responsive behavior remain unchanged.
+- No Chapter 5-specific controller or renderer, Book-specific API route family,
+  backend change, schema change, importer change, progress-model change,
+  auth/sync change, Nginx change, or systemd change was introduced.
+
+Whole-chapter workflow for future textbook chapters:
+
+1. Collect all chapter source images.
+2. Inventory and map every printed question number.
+3. Confirm answer keys.
+4. Author every Practice Set for the chapter.
+5. Integrate the catalog once.
+6. Validate and regression-test the whole chapter.
+7. Complete final content QA.
+8. Make one implementation commit and push.
+9. Perform one Oracle pull/deployment.
+10. Deploy all chapter images.
+11. Import all generic sets.
+12. Verify APIs and images.
+13. Complete live-browser verification.
+14. Add one final documentation checkpoint.
+
+Practice Sets remain independent generic `exam_set_id` units. Whole-chapter
+batching is operational only and does not merge progress, resume, or reset
+identity.
+
+Next content milestone:
+
+- Chapter 5 is CLOSED.
+- Continue with Textbook Practice — Book 1 → Chapter 6 using the same
+  whole-chapter workflow and architecture guardrails.
+- Do not infer Chapter 6 Practice Set count, question count, printed-number
+  ranges, answer keys, source mappings, option modes, or topic hierarchy until
+  authoritative Chapter 6 source material is supplied and inventoried.
