@@ -1,0 +1,530 @@
+{
+  "exam_set": {
+    "id": "book1-ch06-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 6, Practice Set 1",
+    "question_count": 13
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "6-1",
+      "optionMode": "labels-only",
+      "jp": "四つのジョブA～Dを次の条件で実行し印刷する。全ての印刷が完了するのは、ジョブを起動してから何秒後か。条件：(1)ジョブは一斉に起動され、多重度1で実行される。(2)優先順位はAが最も高く、B、C、Dの順に低くなる。(3)各ジョブの実行後、スプーリング機能が1台のプリンターを用いて逐次印刷を行う。(4)各ジョブを単独で実行した場合の実行時間と印刷時間は、表のとおりである。(5)その他のオーバーヘッドは考慮しない。表（単位：秒）：ジョブA＝実行時間50・印刷時間50、ジョブB＝実行時間30・印刷時間40、ジョブC＝実行時間20・印刷時間30、ジョブD＝実行時間40・印刷時間20。",
+      "romaji": "Yottsu no jobu A kara D o tsugi no jōken de jikkō shi insatsu suru. Subete no insatsu ga kanryō suru no wa, jobu o kidō shite kara nanbyō-go ka. Jōken: (1) jobu wa issei ni kidō sare, tajūdo ichi de jikkō sareru. (2) yūsen jun'i wa A ga mottomo takaku, B, C, D no jun ni hikuku naru. (3) kaku jobu no jikkō-go, supūringu kinō ga ichidai no purintā o mochiite chikujō insatsu o okonau. (4) kaku jobu o tandoku de jikkō shita baai no jikkō jikan to insatsu jikan wa, hyō no tōri de aru. (5) sono hoka no ōbāheddo wa kōryo shinai. Hyō (tan'i: byō): jobu A = jikkō jikan gojū, insatsu jikan gojū; jobu B = jikkō jikan sanjū, insatsu jikan yonjū; jobu C = jikkō jikan nijū, insatsu jikan sanjū; jobu D = jikkō jikan yonjū, insatsu jikan nijū.",
+      "en": "Four jobs A–D start together and run one at a time in priority order A, B, C, D. After each run, one printer prints through spooling. Run/print times in seconds are A 50/50, B 30/40, C 20/30, D 40/20. Ignoring overhead, when does all printing finish?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "100秒",
+          "romaji": "hyaku-byō",
+          "en": "100 seconds"
+        },
+        {
+          "label": "イ",
+          "jp": "160秒",
+          "romaji": "hyaku rokujū-byō",
+          "en": "160 seconds"
+        },
+        {
+          "label": "ウ",
+          "jp": "190秒",
+          "romaji": "hyaku kyūjū-byō",
+          "en": "190 seconds"
+        },
+        {
+          "label": "エ",
+          "jp": "280秒",
+          "romaji": "nihyaku hachijū-byō",
+          "en": "280 seconds"
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nThe CPU prepares jobs one by one while the printer can print an earlier job at the same time. The printer becomes the final queue and finishes at 190 seconds.\n\nTechnical breakdown:\n1. Execution order is A→B→C→D because all start together and priority is fixed.\n2. CPU completion times are A=50, B=80, C=100, D=140 seconds.\n3. A prints from 50 to 100.\n4. B is ready at 80 but waits, then prints 100 to 140.\n5. C prints 140 to 170.\n6. D prints 170 to 190.\n7. Therefore all printing completes 190 seconds after startup.\n\nJapanese keywords to remember:\n多重度 = tajūdo = multiprogramming degree\n優先順位 = yūsen jun'i = priority\n逐次印刷 = chikujō insatsu = sequential printing\n実行時間 = jikkō jikan = execution time\n\nWhy the best solution works:\nウ matches the printer timeline. CPU work and printing overlap, but one printer serializes print jobs until 190 seconds.\n\nWrong answer analysis:\nア:\n100 seconds is only when A's print and C's execution finish; B, C, and D printing remains.\n\nイ:\n160 seconds does not include the complete queued print timeline; C finishes at 170.\n\nエ:\n280 seconds adds every execution and print duration without allowing CPU/printer overlap.\n\nMemory trick:\nDraw two lanes: CPU completion feeds one printer queue.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "6-2",
+      "optionMode": "labels-only",
+      "jp": "スプーリングの説明として、適切なものはどれか。",
+      "romaji": "Supūringu no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes spooling?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "キーボードからの入力データを主記憶のキューに一旦保存しておく。",
+          "romaji": "Kībōdo kara no nyūryoku dēta o shukioku no kyū ni ittan hozon shite oku.",
+          "en": "Temporarily save keyboard input in a main-memory queue."
+        },
+        {
+          "label": "イ",
+          "jp": "システムに投入されたジョブの実行順序を、その特性や優先順位に応じて決定する。",
+          "romaji": "Shisutemu ni tōnyū sareta jobu no jikkō junjo o, sono tokusei ya yūsen jun'i ni ōjite kettei suru.",
+          "en": "Determine job execution order from characteristics and priority."
+        },
+        {
+          "label": "ウ",
+          "jp": "通信データを直接通信相手に送らず、あらかじめ登録しておいた代理に送る。",
+          "romaji": "Tsūshin dēta o chokusetsu tsūshin aite ni okurazu, arakajime tōroku shite oita dairi ni okuru.",
+          "en": "Send communication data to a registered proxy instead of directly to its peer."
+        },
+        {
+          "label": "エ",
+          "jp": "プリンターなどの低速な装置への出力データを一旦高速な磁気ディスクに格納しておき、その後に目的の装置に出力する。",
+          "romaji": "Purintā nado no teisoku na sōchi e no shutsuryoku dēta o ittan kōsoku na jiki disuku ni kakunō shite oki, sono go ni mokuteki no sōchi ni shutsuryoku suru.",
+          "en": "Temporarily store output for a slow device such as a printer on a fast magnetic disk, then send it to the target device."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nSpooling lets the computer drop print work into a fast holding area and continue, while the slow printer handles the queued work later.\n\nTechnical breakdown:\n1. CPU and disk are much faster than a printer.\n2. Output is written first to disk as a spool file.\n3. The application can finish without waiting for physical printing.\n4. The spooler later sends queued data to the printer in order.\n\nJapanese keywords to remember:\nスプーリング = supūringu = spooling\n低速な装置 = teisoku na sōchi = slow device\n磁気ディスク = jiki disuku = magnetic disk\n出力データ = shutsuryoku dēta = output data\n\nWhy the best solution works:\nエ states the defining two-stage path: fast disk storage first, slow output device later.\n\nWrong answer analysis:\nア:\nThis is input buffering in main memory, not disk-based spooling for a slow output device.\n\nイ:\nThis is job scheduling. It chooses execution order rather than staging device output.\n\nウ:\nThis describes proxy-style communication, unrelated to peripheral output queues.\n\nMemory trick:\nSpool = save print output on disk, print later.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "6-3",
+      "optionMode": "labels-only",
+      "jp": "入出力管理におけるバッファの機能として、適切なものはどれか。",
+      "romaji": "Nyūshutsuryoku kanri ni okeru baffa no kinō to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which is the correct function of a buffer in input/output management?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "入出力装置が利用可能になったことを、入出力装置が処理装置に伝える。",
+          "romaji": "Nyūshutsuryoku sōchi ga riyō kanō ni natta koto o, nyūshutsuryoku sōchi ga shori sōchi ni tsutaeru.",
+          "en": "An I/O device tells the processor that it is available."
+        },
+        {
+          "label": "イ",
+          "jp": "入出力装置と処理装置との間に特別な記憶域を設け、処理速度の違いを緩和する。",
+          "romaji": "Nyūshutsuryoku sōchi to shori sōchi to no aida ni tokubetsu na kiokuiki o mōke, shori sokudo no chigai o kanwa suru.",
+          "en": "Provide special storage between an I/O device and processor to absorb their speed difference."
+        },
+        {
+          "label": "ウ",
+          "jp": "入出力装置と処理装置との間のデータ交換に階層を設けることによって、入出力装置固有の仕様を意識せずに利用できる。",
+          "romaji": "Nyūshutsuryoku sōchi to shori sōchi to no aida no dēta kōkan ni kaisō o mōkeru koto ni yotte, nyūshutsuryoku sōchi koyū no shiyō o ishiki sezu ni riyō dekiru.",
+          "en": "Add layers to data exchange so device-specific specifications need not be considered."
+        },
+        {
+          "label": "エ",
+          "jp": "入出力装置をファイルと同じように取り扱えるようにする。",
+          "romaji": "Nyūshutsuryoku sōchi o fairu to onaji yō ni toriatsukaeru yō ni suru.",
+          "en": "Allow an I/O device to be handled like a file."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nA buffer is a waiting tray between a fast worker and a slow worker. It keeps data temporarily so neither side must move at exactly the same speed.\n\nTechnical breakdown:\n1. Processor and peripheral speeds differ greatly.\n2. A buffer is temporary storage placed between them.\n3. The sender deposits data at its own pace.\n4. The receiver removes data at its own pace.\n5. This smooths bursts and reduces direct waiting.\n\nJapanese keywords to remember:\n入出力管理 = nyūshutsuryoku kanri = I/O management\n記憶域 = kiokuiki = storage area\n処理速度 = shori sokudo = processing speed\n緩和する = kanwa suru = mitigate\n\nWhy the best solution works:\nイ precisely defines buffering as temporary storage that absorbs a speed mismatch.\n\nWrong answer analysis:\nア:\nThis is an interrupt or device-ready notification, not buffering.\n\nウ:\nThis describes device independence through abstraction layers or drivers.\n\nエ:\nThis describes a uniform file/device interface, not temporary speed-matching storage.\n\nMemory trick:\nBuffer bridges different speeds.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q03.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "6-4",
+      "optionMode": "labels-only",
+      "jp": "図の送信タスクから受信タスクにT秒間連続してデータを送信する。1秒当たりの送信量をS、1秒当たりの受信量をRとしたとき、バッファがオーバーフローしないバッファサイズLを表す関係式として適切なものはどれか。ここで、受信タスクよりも送信タスクの方が転送速度は速く、次の転送開始までの時間間隔は十分にあるものとする。",
+      "romaji": "Zu no sōshin tasuku kara jushin tasuku ni T-byōkan renzoku shite dēta o sōshin suru. Ichibyō atari no sōshinryō o S, ichibyō atari no jushinryō o R to shita toki, baffa ga ōbāfurō shinai baffa saizu L o arawasu kankeishiki to shite tekisetsu na mono wa dore ka. Koko de, jushin tasuku yori mo sōshin tasuku no hō ga tensō sokudo wa hayaku, tsugi no tensō kaishi made no jikan kankaku wa jūbun ni aru mono to suru.",
+      "en": "A sender transmits continuously for T seconds at S units/second while a receiver consumes R units/second, with S faster than R and enough time before the next transfer begins. Which relation gives buffer size L that avoids overflow?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "L＜(R−S)×T",
+          "romaji": "L shō-nari kakko R mainasu S kakko kakeru T",
+          "en": "L < (R − S) × T"
+        },
+        {
+          "label": "イ",
+          "jp": "L＜(S−R)×T",
+          "romaji": "L shō-nari kakko S mainasu R kakko kakeru T",
+          "en": "L < (S − R) × T"
+        },
+        {
+          "label": "ウ",
+          "jp": "L≧(R−S)×T",
+          "romaji": "L dai-nari ikō kakko R mainasu S kakko kakeru T",
+          "en": "L ≥ (R − S) × T"
+        },
+        {
+          "label": "エ",
+          "jp": "L≧(S−R)×T",
+          "romaji": "L dai-nari ikō kakko S mainasu R kakko kakeru T",
+          "en": "L ≥ (S − R) × T"
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nThe sender adds data faster than the receiver removes it. Each second the buffer grows by S−R, so after T seconds it must hold at least (S−R)T.\n\nTechnical breakdown:\n1. Input rate = S units/second.\n2. Output rate = R units/second, with S>R.\n3. Net accumulation rate = S−R units/second.\n4. Over T seconds, accumulated data = (S−R)×T units.\n5. To avoid overflow, capacity must satisfy L≥(S−R)×T.\n\nJapanese keywords to remember:\n送信量 = sōshinryō = transmitted amount\n受信量 = jushinryō = received amount\nオーバーフロー = ōbāfurō = overflow\nバッファサイズ = baffa saizu = buffer size\n\nWhy the best solution works:\nエ uses the positive excess rate S−R and requires capacity at least equal to the maximum accumulation.\n\nWrong answer analysis:\nア:\nR−S is negative because the sender is faster, so it cannot represent required capacity.\n\nイ:\nThe accumulated amount is correct, but L smaller than it would overflow.\n\nウ:\nThe inequality direction is safe, but R−S is the wrong, negative rate.\n\nMemory trick:\nBuffer need = excess per second × seconds.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q04.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "6-5",
+      "optionMode": "labels-only",
+      "jp": "メイン処理、及び表に示す二つの割込みA、Bの処理があり、多重割込みが許可されている。割込みA、Bが図のタイミングで発生するとき、0ミリ秒から5ミリ秒までの間にメイン処理が利用できるCPU時間は何ミリ秒か。割込みAの処理時間は0.5ミリ秒で優先度は高、割込みBの処理時間は1.5ミリ秒で優先度は低とし、割込み処理の呼出し及び復帰に伴うオーバーヘッドは無視する。図ではBが0及び5ミリ秒、Aが1、2.5、3.5ミリ秒に発生する。",
+      "romaji": "Mein shori, oyobi futatsu no warikomi A, B no shori ga ari, tajū warikomi ga kyoka sarete iru. Warikomi A, B ga zu no taimingu de hassei suru toki, zero miribyō kara go miribyō made no aida ni mein shori ga riyō dekiru CPU jikan wa nan-miribyō ka. Warikomi A no shori jikan wa rei ten go miribyō de yūsendo wa taka, warikomi B no shori jikan wa ichi ten go miribyō de yūsendo wa tei to shi, ōbāheddo wa mushi suru. B wa zero oyobi go miribyō, A wa ichi, ni ten go, san ten go miribyō ni hassei suru.",
+      "en": "Nested interrupts are allowed. A takes 0.5 ms at high priority and occurs at 1, 2.5, and 3.5 ms. B takes 1.5 ms at low priority and occurs at 0 and 5 ms. Ignoring overhead, how much CPU time can the main process use from 0 through 5 ms?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "2ミリ秒",
+          "romaji": "ni miribyō",
+          "en": "2 ms"
+        },
+        {
+          "label": "イ",
+          "jp": "2.5ミリ秒",
+          "romaji": "ni ten go miribyō",
+          "en": "2.5 ms"
+        },
+        {
+          "label": "ウ",
+          "jp": "3.5ミリ秒",
+          "romaji": "san ten go miribyō",
+          "en": "3.5 ms"
+        },
+        {
+          "label": "エ",
+          "jp": "5ミリ秒",
+          "romaji": "go miribyō",
+          "en": "5 ms"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nInterrupts borrow CPU time from the main process. Between 0 and 5 ms, B uses 1.5 ms total and three A interrupts use another 1.5 ms, leaving 2 ms.\n\nTechnical breakdown:\n1. Total interval = 5−0 = 5 ms.\n2. B begins at 0 and needs 1.5 ms. A at 1 preempts it for 0.5 ms, but B later completes its remaining 0.5 ms; total B CPU remains 1.5 ms.\n3. A occurs three times, each 0.5 ms: 3×0.5=1.5 ms.\n4. The B event exactly at 5 ms consumes no time inside the interval before 5.\n5. Main CPU time = 5−1.5−1.5=2 ms.\n\nJapanese keywords to remember:\n多重割込み = tajū warikomi = nested interrupt\n優先度 = yūsendo = priority\n処理時間 = shori jikan = processing time\nメイン処理 = mein shori = main processing\n\nWhy the best solution works:\nア equals the five-millisecond window minus all interrupt CPU service that occurs within it.\n\nWrong answer analysis:\nイ:\n2.5 ms misses 0.5 ms of interrupt work.\n\nウ:\n3.5 ms subtracts only one class of interrupts instead of both A and B.\n\nエ:\n5 ms assumes interrupts consume no CPU time.\n\nMemory trick:\nPreemption changes order, not total service time.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q05.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 6,
+      "displayNumber": "6-6",
+      "optionMode": "labels-only",
+      "jp": "優先度に基づくプリエンプティブなスケジューリングを行うリアルタイムOSで、二つのタスクA、Bをスケジューリングする。Aの方がBよりも優先度が高い場合にリアルタイムOSが行う動作のうち、適切なものはどれか。",
+      "romaji": "Yūsendo ni motozuku purienputibu na sukejūringu o okonau riaru taimu OS de, futatsu no tasuku A, B o sukejūringu suru. A no hō ga B yori mo yūsendo ga takai baai ni riaru taimu OS ga okonau dōsa no uchi, tekisetsu na mono wa dore ka.",
+      "en": "In a priority-based preemptive real-time OS, task A has higher priority than task B. Which behavior is correct?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "Aの実行中にBに起動がかかると、Aを実行可能状態にしてBを実行する。",
+          "romaji": "A no jikkōchū ni B ni kidō ga kakaru to, A o jikkō kanō jōtai ni shite B o jikkō suru.",
+          "en": "If B is activated while A runs, make A ready and run B."
+        },
+        {
+          "label": "イ",
+          "jp": "Aの実行中にBに起動がかかると、Aを待ち状態にしてBを実行する。",
+          "romaji": "A no jikkōchū ni B ni kidō ga kakaru to, A o machi jōtai ni shite B o jikkō suru.",
+          "en": "If B is activated while A runs, make A waiting and run B."
+        },
+        {
+          "label": "ウ",
+          "jp": "Bの実行中にAに起動がかかると、Bを実行可能状態にしてAを実行する。",
+          "romaji": "B no jikkōchū ni A ni kidō ga kakaru to, B o jikkō kanō jōtai ni shite A o jikkō suru.",
+          "en": "If A is activated while B runs, make B ready and run A."
+        },
+        {
+          "label": "エ",
+          "jp": "Bの実行中にAに起動がかかると、Bを待ち状態にしてAを実行する。",
+          "romaji": "B no jikkōchū ni A ni kidō ga kakaru to, B o machi jōtai ni shite A o jikkō suru.",
+          "en": "If A is activated while B runs, make B waiting and run A."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nWhen an urgent task A becomes ready, it takes the CPU from less urgent B. B did not request I/O, so it returns to the ready line rather than waiting.\n\nTechnical breakdown:\n1. Preemptive scheduling allows a higher-priority ready task to interrupt a running lower-priority task.\n2. A has higher priority than B.\n3. If A activates while B runs, the OS saves B's state.\n4. B remains runnable, so its state becomes ready.\n5. A receives the CPU immediately.\n\nJapanese keywords to remember:\nプリエンプティブ = purienputibu = preemptive\n実行可能状態 = jikkō kanō jōtai = ready state\n待ち状態 = machi jōtai = waiting state\n起動 = kidō = activation\n\nWhy the best solution works:\nウ correctly combines higher-priority preemption with B returning to ready state.\n\nWrong answer analysis:\nア:\nLower-priority B cannot preempt running higher-priority A merely by becoming ready.\n\nイ:\nIt both lets lower-priority B run and incorrectly makes A waiting.\n\nエ:\nB is still runnable after preemption, so it becomes ready, not waiting.\n\nMemory trick:\nPreempted means ready; blocked on an event means waiting.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q06.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 7,
+      "displayNumber": "6-7",
+      "optionMode": "labels-only",
+      "jp": "マルチプログラミングにおけるプロセスの切替え手順を示した図において、OSの処理a～cとして、適切な組合せはどれか。図では割込みによってプロセスAが実行状態から実行可能状態へ移り、プロセスBが実行可能状態から実行状態へ移る。",
+      "romaji": "Maruchi puroguramingu ni okeru purosesu no kirikae tejun o shimeshita zu ni oite, OS no shori a kara c to shite, tekisetsu na kumiawase wa dore ka. Zu de wa warikomi ni yotte purosesu A ga jikkō jōtai kara jikkō kanō jōtai e utsuri, purosesu B ga jikkō kanō jōtai kara jikkō jōtai e utsuru.",
+      "en": "In the process-switch diagram, an interrupt moves process A from running to ready and process B from ready to running. Which combination correctly identifies OS steps a–c?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "a：実行状態の回復、b：プロセスの選択、c：実行状態の退避",
+          "romaji": "a: jikkō jōtai no kaifuku, b: purosesu no sentaku, c: jikkō jōtai no taihi",
+          "en": "a: restore execution state; b: select process; c: save execution state"
+        },
+        {
+          "label": "イ",
+          "jp": "a：実行状態の退避、b：実行状態の回復、c：プロセスの選択",
+          "romaji": "a: jikkō jōtai no taihi, b: jikkō jōtai no kaifuku, c: purosesu no sentaku",
+          "en": "a: save execution state; b: restore execution state; c: select process"
+        },
+        {
+          "label": "ウ",
+          "jp": "a：実行状態の退避、b：プロセスの選択、c：実行状態の回復",
+          "romaji": "a: jikkō jōtai no taihi, b: purosesu no sentaku, c: jikkō jōtai no kaifuku",
+          "en": "a: save execution state; b: select process; c: restore execution state"
+        },
+        {
+          "label": "エ",
+          "jp": "a：プロセスの選択、b：実行状態の回復、c：実行状態の退避",
+          "romaji": "a: purosesu no sentaku, b: jikkō jōtai no kaifuku, c: jikkō jōtai no taihi",
+          "en": "a: select process; b: restore execution state; c: save execution state"
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nTo switch workers, first save the old worker's desk, choose the next worker, then restore that worker's desk.\n\nTechnical breakdown:\n1. Process A is running when the interrupt occurs.\n2. The OS first saves A's registers and execution context: execution-state save.\n3. The scheduler selects ready process B.\n4. The OS restores B's saved context.\n5. B then enters running state.\n\nJapanese keywords to remember:\n実行状態の退避 = jikkō jōtai no taihi = save execution state\nプロセスの選択 = purosesu no sentaku = process selection\n実行状態の回復 = jikkō jōtai no kaifuku = restore execution state\n切替え = kirikae = switch\n\nWhy the best solution works:\nウ gives the only valid order: save A, select B, restore B.\n\nWrong answer analysis:\nア:\nIt restores before saving and ends by saving after the switch, reversing context handling.\n\nイ:\nIt restores a context before selecting which process will run.\n\nエ:\nIt selects before safely saving A and places state saving last.\n\nMemory trick:\nSave → select → restore.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q07.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 8,
+      "displayNumber": "6-8",
+      "optionMode": "labels-only",
+      "jp": "タスクのディスパッチの説明として、適切なものはどれか。",
+      "romaji": "Tasuku no disupatchi no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes task dispatch?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "各タスクの実行順序を決定すること",
+          "romaji": "Kaku tasuku no jikkō junjo o kettei suru koto",
+          "en": "Determine the execution order of tasks"
+        },
+        {
+          "label": "イ",
+          "jp": "実行可能なタスクに対してプロセッサの使用権を割り当てること",
+          "romaji": "Jikkō kanō na tasuku ni taishite purosessa no shiyōken o wariateru koto",
+          "en": "Assign processor use to a ready task"
+        },
+        {
+          "label": "ウ",
+          "jp": "タスクの実行に必要な情報であるコンテキストのこと",
+          "romaji": "Tasuku no jikkō ni hitsuyō na jōhō de aru kontekisuto no koto",
+          "en": "The context information needed to execute a task"
+        },
+        {
+          "label": "エ",
+          "jp": "一つのプロセッサで複数のタスクを同時に実行しているかのように見せかける機能のこと",
+          "romaji": "Hitotsu no purosessa de fukusū no tasuku o dōji ni jikkō shite iru ka no yō ni misekakeru kinō no koto",
+          "en": "A function that makes multiple tasks appear to run simultaneously on one processor"
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nScheduling chooses who should run; dispatching actually hands that task the CPU.\n\nTechnical breakdown:\n1. Ready tasks wait for processor service.\n2. The scheduler determines which task is next.\n3. The dispatcher performs the context switch and grants CPU control to that task.\n4. The chosen task moves from ready to running.\n\nJapanese keywords to remember:\nディスパッチ = disupatchi = dispatch\n実行可能 = jikkō kanō = ready/runnable\n使用権 = shiyōken = right to use\n割り当てる = wariateru = assign\n\nWhy the best solution works:\nイ describes the dispatcher's concrete role: assigning processor control to a runnable task.\n\nWrong answer analysis:\nア:\nChoosing execution order is scheduling, which precedes dispatch.\n\nウ:\nContext is saved task state, not the act of granting CPU use.\n\nエ:\nThis describes time-sharing or multitasking as a whole, not dispatch itself.\n\nMemory trick:\nScheduler chooses; dispatcher hands over CPU.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q08.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 9,
+      "displayNumber": "6-9",
+      "optionMode": "labels-only",
+      "jp": "スケジューリングに関する記述のうち、ラウンドロビン方式の説明として、適切なものはどれか。",
+      "romaji": "Sukejūringu ni kansuru kijutsu no uchi, raundo robin hōshiki no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes round-robin scheduling?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "各タスクに、均等にCPU時間を割り当てて実行させる方式である。",
+          "romaji": "Kaku tasuku ni, kintō ni CPU jikan o wariatete jikkō saseru hōshiki de aru.",
+          "en": "Allocate CPU time equally among tasks."
+        },
+        {
+          "label": "イ",
+          "jp": "各タスクに、ターンアラウンドタイムに比例したCPU時間を割り当てて実行させる方式である。",
+          "romaji": "Kaku tasuku ni, tān araundo taimu ni hirei shita CPU jikan o wariatete jikkō saseru hōshiki de aru.",
+          "en": "Allocate CPU time in proportion to turnaround time."
+        },
+        {
+          "label": "ウ",
+          "jp": "各タスクの実行イベント発生に応じて、リアルタイムに実行させる方式である。",
+          "romaji": "Kaku tasuku no jikkō ibento hassei ni ōjite, riaru taimu ni jikkō saseru hōshiki de aru.",
+          "en": "Run tasks in real time according to execution events."
+        },
+        {
+          "label": "エ",
+          "jp": "各タスクを、優先度の高い順に実行させる方式である。",
+          "romaji": "Kaku tasuku o, yūsendo no takai jun ni jikkō saseru hōshiki de aru.",
+          "en": "Run tasks in descending priority order."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nRound robin gives each task the same short turn, then cycles to the next task like people taking turns around a circle.\n\nTechnical breakdown:\n1. Ready tasks are arranged in a circular queue.\n2. Each receives one fixed time quantum.\n3. An unfinished task returns to the end of the queue.\n4. Repeating equal turns provides fairness and responsiveness.\n\nJapanese keywords to remember:\nラウンドロビン = raundo robin = round robin\n均等に = kintō ni = equally\nCPU時間 = CPU jikan = CPU time\n割り当てる = wariateru = allocate\n\nWhy the best solution works:\nア captures the equal time-slice principle that defines round robin.\n\nWrong answer analysis:\nイ:\nRound robin does not size turns from turnaround time.\n\nウ:\nEvent-triggered real-time execution is a different scheduling policy.\n\nエ:\nPriority scheduling can favor high-priority tasks; round robin cycles equal quanta.\n\nMemory trick:\nRound robin = equal turns around a circle.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q09.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 10,
+      "displayNumber": "6-10",
+      "optionMode": "labels-only",
+      "jp": "ページング方式の説明として、適切なものはどれか。",
+      "romaji": "Pējingu hōshiki no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement correctly describes paging?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "仮想記憶空間と実記憶空間をそれぞれ固定長の領域に区切り、対応づけて管理する方式",
+          "romaji": "Kasō kioku kūkan to jitsukioku kūkan o sorezore koteichō no ryōiki ni kugiri, taiōzukete kanri suru hōshiki",
+          "en": "Divide virtual and real memory into fixed-size areas and manage their mapping"
+        },
+        {
+          "label": "イ",
+          "jp": "主記憶装置の異なった領域で実行できるように、プログラムを再配置する方式",
+          "romaji": "Shukioku sōchi no kotonatta ryōiki de jikkō dekiru yō ni, puroguramu o saihaichi suru hōshiki",
+          "en": "Relocate a program so it can execute in different main-memory areas"
+        },
+        {
+          "label": "ウ",
+          "jp": "主記憶装置を、同時に並行して読み書き可能な複数の領域に分ける方式",
+          "romaji": "Shukioku sōchi o, dōji ni heikō shite yomikaki kanō na fukusū no ryōiki ni wakeru hōshiki",
+          "en": "Divide main memory into areas that can be read and written concurrently"
+        },
+        {
+          "label": "エ",
+          "jp": "補助記憶装置に、複数のレコードをまとめて読み書きする方式",
+          "romaji": "Hojo kioku sōchi ni, fukusū no rekōdo o matomete yomikaki suru hōshiki",
+          "en": "Read and write multiple records together on secondary storage"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nPaging cuts virtual memory into equal pages and physical memory into equal frames, then keeps a map showing where each page is stored.\n\nTechnical breakdown:\n1. Virtual address space is divided into fixed-size pages.\n2. Physical memory is divided into frames of the same size.\n3. A page table maps virtual page numbers to frame numbers.\n4. Pages can occupy noncontiguous frames while appearing continuous to a program.\n\nJapanese keywords to remember:\n仮想記憶空間 = kasō kioku kūkan = virtual address space\n実記憶空間 = jitsukioku kūkan = physical memory space\n固定長 = koteichō = fixed length\n対応づけ = taiōzuke = mapping\n\nWhy the best solution works:\nア states both fixed-size division and mapping between virtual and physical memory.\n\nWrong answer analysis:\nイ:\nThis describes relocation, not page/frame mapping.\n\nウ:\nThis resembles memory interleaving or banking for parallel access.\n\nエ:\nThis is block-oriented secondary-storage I/O, unrelated to virtual-memory paging.\n\nMemory trick:\nPages map to equal-size frames.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q10.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 11,
+      "displayNumber": "6-11",
+      "optionMode": "labels-only",
+      "jp": "ページング方式の仮想記憶において、ページフォールトの発生回数を増加させる要因はどれか。",
+      "romaji": "Pējingu hōshiki no kasō kioku ni oite, pēji fōruto no hassei kaisū o zōka saseru yōin wa dore ka.",
+      "en": "In paged virtual memory, which factor increases the number of page faults?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "主記憶に存在しないページへのアクセスが増加すること",
+          "romaji": "Shukioku ni sonzai shinai pēji e no akusesu ga zōka suru koto",
+          "en": "More accesses to pages not present in main memory"
+        },
+        {
+          "label": "イ",
+          "jp": "主記憶に存在するページへのアクセスが増加すること",
+          "romaji": "Shukioku ni sonzai suru pēji e no akusesu ga zōka suru koto",
+          "en": "More accesses to pages already in main memory"
+        },
+        {
+          "label": "ウ",
+          "jp": "主記憶のページのうち、更新されたページの比率が高くなること",
+          "romaji": "Shukioku no pēji no uchi, kōshin sareta pēji no hiritsu ga takaku naru koto",
+          "en": "A higher proportion of modified pages in main memory"
+        },
+        {
+          "label": "エ",
+          "jp": "長時間アクセスしなかった主記憶のページをアクセスすること",
+          "romaji": "Chōjikan akusesu shinakatta shukioku no pēji o akusesu suru koto",
+          "en": "Access a main-memory page not used for a long time"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA page fault happens when the needed page is not in RAM. Therefore, asking more often for absent pages directly creates more faults.\n\nTechnical breakdown:\n1. The CPU references a virtual page.\n2. Hardware checks its page-table present bit.\n3. If absent from main memory, a page fault traps to the OS.\n4. The OS loads the page from secondary storage.\n5. More references to absent pages mean more such traps.\n\nJapanese keywords to remember:\nページフォールト = pēji fōruto = page fault\n主記憶 = shukioku = main memory\n存在しない = sonzai shinai = not present\n発生回数 = hassei kaisū = occurrence count\n\nWhy the best solution works:\nア is the exact condition that defines and triggers a page fault.\n\nWrong answer analysis:\nイ:\nAccessing a resident page is a normal memory hit, not a fault.\n\nウ:\nA modified page can increase replacement write-back cost, but modification alone does not trigger a fault.\n\nエ:\nThe page is explicitly still in main memory, so access does not fault regardless of recency.\n\nMemory trick:\nAbsent page = page fault.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q11.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 12,
+      "displayNumber": "6-12",
+      "optionMode": "labels-only",
+      "jp": "仮想記憶管理のページ入替え方式のうち、最後に使われてからの経過時間が最も長いページを入れ替えるものはどれか。",
+      "romaji": "Kasō kioku kanri no pēji irekae hōshiki no uchi, saigo ni tsukawarete kara no keika jikan ga mottomo nagai pēji o irekaeru mono wa dore ka.",
+      "en": "Which page-replacement method replaces the page whose last use was longest ago?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "FIFO",
+          "romaji": "FIFO",
+          "en": "FIFO"
+        },
+        {
+          "label": "イ",
+          "jp": "LFU",
+          "romaji": "LFU",
+          "en": "LFU"
+        },
+        {
+          "label": "ウ",
+          "jp": "LIFO",
+          "romaji": "LIFO",
+          "en": "LIFO"
+        },
+        {
+          "label": "エ",
+          "jp": "LRU",
+          "romaji": "LRU",
+          "en": "LRU"
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nLRU removes the page that has been ignored for the longest time—the least recently used page.\n\nTechnical breakdown:\n1. Track or approximate the most recent access time of resident pages.\n2. Compare how long each has gone unused.\n3. Choose the page with the oldest last-use time.\n4. That policy is Least Recently Used, LRU.\n\nJapanese keywords to remember:\nページ入替え = pēji irekae = page replacement\n経過時間 = keika jikan = elapsed time\n最後に使われた = saigo ni tsukawareta = last used\n最も長い = mottomo nagai = longest\n\nWhy the best solution works:\nエ expands to Least Recently Used and exactly matches longest time since last use.\n\nWrong answer analysis:\nア:\nFIFO removes the page loaded earliest, regardless of recent use.\n\nイ:\nLFU removes the page with the lowest access frequency.\n\nウ:\nLIFO removes the page loaded most recently.\n\nMemory trick:\nLRU = longest since recent use.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q12.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 13,
+      "displayNumber": "6-13",
+      "optionMode": "labels-only",
+      "jp": "仮想記憶方式では、割り当てられる実記憶の容量が小さいとページアウト、ページインが頻発し、処理能力が急速に低下することがある。このような現象を何というか。",
+      "romaji": "Kasō kioku hōshiki de wa, wariaterareru jitsukioku no yōryō ga chiisai to pēji auto, pēji in ga hinpatsu shi, shori nōryoku ga kyūsoku ni teika suru koto ga aru. Kono yō na genshō o nan to iu ka.",
+      "en": "In virtual memory, too little assigned physical memory can cause frequent page-outs and page-ins and a rapid performance drop. What is this phenomenon called?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "スラッシング",
+          "romaji": "surasshingu",
+          "en": "thrashing"
+        },
+        {
+          "label": "イ",
+          "jp": "スワッピング",
+          "romaji": "suwappingu",
+          "en": "swapping"
+        },
+        {
+          "label": "ウ",
+          "jp": "フラグメンテーション",
+          "romaji": "furagumentēshon",
+          "en": "fragmentation"
+        },
+        {
+          "label": "エ",
+          "jp": "メモリリーク",
+          "romaji": "memori rīku",
+          "en": "memory leak"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nWhen RAM is too small, the computer spends nearly all its time moving pages instead of doing useful work. That page-swapping storm is thrashing.\n\nTechnical breakdown:\n1. A process needs a working set of actively used pages.\n2. If allocated frames cannot hold it, references repeatedly miss.\n3. Each miss causes page-in and often page-out I/O.\n4. Disk I/O dominates CPU work and throughput collapses.\n5. This rapid degradation from excessive paging is thrashing.\n\nJapanese keywords to remember:\n実記憶 = jitsukioku = physical memory\nページアウト = pēji auto = page-out\nページイン = pēji in = page-in\n頻発 = hinpatsu = occur frequently\n\nWhy the best solution works:\nア names the exact vicious cycle of insufficient frames, frequent faults, and collapsing performance.\n\nWrong answer analysis:\nイ:\nSwapping is the general movement of process or memory data; it is not specifically the pathological performance collapse.\n\nウ:\nFragmentation is unusable scattered free space, not repeated page transfer.\n\nエ:\nA memory leak is unreleased memory accumulating over time.\n\nMemory trick:\nThrashing = paging instead of processing.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set01/q13.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}

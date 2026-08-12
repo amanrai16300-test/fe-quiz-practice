@@ -1,0 +1,170 @@
+{
+  "exam_set": {
+    "id": "book1-ch06-set02",
+    "title": "Practice Set 2",
+    "description": "Textbook Practice — Book 1, Chapter 6, Practice Set 2",
+    "question_count": 4
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "6-14",
+      "optionMode": "labels-only",
+      "jp": "ファイルシステムの絶対パス名を説明したものはどれか。",
+      "romaji": "Fairu shisutemu no zettai pasumei o setsumei shita mono wa dore ka.",
+      "en": "Which statement describes an absolute path name in a file system?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "あるディレクトリから対象ファイルに至る幾つかのパス名のうち、最短のパス名",
+          "romaji": "Aru direkutori kara taishō fairu ni itaru ikutsuka no pasumei no uchi, saitan no pasumei",
+          "en": "The shortest among several paths from some directory to the target file"
+        },
+        {
+          "label": "イ",
+          "jp": "カレントディレクトリから対象ファイルに至るパス名",
+          "romaji": "Karento direkutori kara taishō fairu ni itaru pasumei",
+          "en": "A path from the current directory to the target file"
+        },
+        {
+          "label": "ウ",
+          "jp": "ホームディレクトリから対象ファイルに至るパス名",
+          "romaji": "Hōmu direkutori kara taishō fairu ni itaru pasumei",
+          "en": "A path from the home directory to the target file"
+        },
+        {
+          "label": "エ",
+          "jp": "ルートディレクトリから対象ファイルに至るパス名",
+          "romaji": "Rūto direkutori kara taishō fairu ni itaru pasumei",
+          "en": "A path from the root directory to the target file"
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nAn absolute path gives the full address starting at the file system's root, so it means the same place regardless of the current folder.\n\nTechnical breakdown:\n1. The root directory is the top of the directory hierarchy.\n2. An absolute path begins there and lists every directory needed to reach the target.\n3. It does not depend on the current or home directory.\n4. A relative path instead starts from a contextual directory.\n\nJapanese keywords to remember:\n絶対パス名 = zettai pasumei = absolute path name\nルートディレクトリ = rūto direkutori = root directory\n対象ファイル = taishō fairu = target file\n至る = itaru = lead to\n\nWhy the best solution works:\nエ defines the full root-to-target route that makes a path absolute.\n\nWrong answer analysis:\nア:\nPath length does not decide whether a path is absolute.\n\nイ:\nA path from the current directory is a relative path.\n\nウ:\nA home-relative path depends on a user's home directory and is not the general definition.\n\nMemory trick:\nAbsolute starts at root; relative starts here.\n\nCorrect answer: エ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set02/q01.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "6-15",
+      "optionMode": "labels-only",
+      "jp": "A、Bという名の複数のディレクトリが、図に示す構造で管理されている。¥B¥A¥Bがカレントディレクトリになるのは、カレントディレクトリをどのように移動した場合か。ここで、ディレクトリの指定は次の方法によるものとし、→は移動の順序を示す。（ディレクトリ指定方法）(1)ディレクトリは、“ディレクトリ名¥……¥ディレクトリ名”のように、経路上のディレクトリを順に“¥”で区切って並べた後に、“¥”とディレクトリ名を指定する。(2)カレントディレクトリは、“.”で表す。(3)1階層上のディレクトリは、“..”で表す。(4)始まりが“¥”のときは、左端にルートディレクトリが省略されているものとする。(5)始まりが“¥”、“.”、“..”のいずれでもないときは、左端に“.¥”が省略されているものとする。",
+      "romaji": "A, B to iu na no fukusū no direkutori ga, zu ni shimesu kōzō de kanri sarete iru. ¥B¥A¥B ga karento direkutori ni naru no wa, karento direkutori o dono yō ni idō shita baai ka. Koko de, direkutori no shitei wa tsugi no hōhō ni yoru mono to shi, yajirushi wa idō no junjo o shimesu. (Direkutori shitei hōhō) (1) direkutori wa, direkutori-mei ¥ … ¥ direkutori-mei no yō ni, keiro-jō no direkutori o jun ni ¥ de kugitte narabeta nochi ni, ¥ to direkutori-mei o shitei suru. (2) karento direkutori wa ten de arawasu. (3) ikkaisō ue no direkutori wa ten-ten de arawasu. (4) hajimari ga ¥ no toki wa, hidarihashi ni rūto direkutori ga shōryaku sarete iru mono to suru. (5) hajimari ga ¥, ten, ten-ten no izure demo nai toki wa, hidarihashi ni ten-¥ ga shōryaku sarete iru mono to suru.",
+      "en": "Directories named A and B form the shown tree. Which sequence makes ¥B¥A¥B the current directory? A path lists its directories in order separated by ¥. A dot means current, two dots mean one level up, an initial ¥ starts at root, and a path without ¥, dot, or two dots is relative to current. Arrows show movement order.",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "¥A → ..¥B → .¥A¥B",
+          "romaji": "¥A, kara ..¥B, kara .¥A¥B",
+          "en": "¥A → ..¥B → .¥A¥B"
+        },
+        {
+          "label": "イ",
+          "jp": "¥B → .¥B¥A → ..¥B",
+          "romaji": "¥B, kara .¥B¥A, kara ..¥B",
+          "en": "¥B → .¥B¥A → ..¥B"
+        },
+        {
+          "label": "ウ",
+          "jp": "¥B → ¥A → ¥B",
+          "romaji": "¥B, kara ¥A, kara ¥B",
+          "en": "¥B → ¥A → ¥B"
+        },
+        {
+          "label": "エ",
+          "jp": "¥B¥A → ..¥B",
+          "romaji": "¥B¥A, kara ..¥B",
+          "en": "¥B¥A → ..¥B"
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nStart at root/A, go up to root and into B, then follow A/B below the current B. You finish at root/B/A/B.\n\nTechnical breakdown:\n1. `¥A` is absolute, so current becomes root/A.\n2. `..¥B` goes up from root/A to root, then down to root/B.\n3. `.¥A¥B` starts at current root/B and descends through A then B.\n4. Final path is root/B/A/B, written `¥B¥A¥B`.\n\nJapanese keywords to remember:\nカレントディレクトリ = karento direkutori = current directory\nルートディレクトリ = rūto direkutori = root directory\n1階層上 = ikkaisō ue = one level up\n移動の順序 = idō no junjo = movement order\n\nWhy the best solution works:\nア alone applies absolute, parent-relative, and current-relative movement to end at `¥B¥A¥B`.\n\nWrong answer analysis:\nイ:\nAfter entering root/B, `.¥B¥A` moves to root/B/B/A, and `..¥B` ends at root/B/B/B.\n\nウ:\nEach path begins with ¥ and resets from root, so the final `¥B` ends only at root/B.\n\nエ:\nFrom root/B/A, `..¥B` goes to root/B and then its B child, ending at root/B/B.\n\nMemory trick:\nLeading ¥ resets to root; dot stays here; two dots go up.\n\nCorrect answer: ア",
+      "imagePaths": [
+        "public/questions/book1/ch06/set02/q02.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "6-16",
+      "optionMode": "labels-only",
+      "jp": "データベースのバックアップ処理には、フルバックアップ方式と差分バックアップ方式がある。差分バックアップ方式に関する記述のうち、適切なものはどれか。",
+      "romaji": "Dētabēsu no bakkuappu shori ni wa, furu bakkuappu hōshiki to sabun bakkuappu hōshiki ga aru. Sabun bakkuappu hōshiki ni kansuru kijutsu no uchi, tekisetsu na mono wa dore ka.",
+      "en": "Database backup includes full and differential methods. Which statement about differential backup is correct?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "障害からの回復時に差分だけ処理すればよいので、フルバックアップ方式に比べて復旧時間が短い。",
+          "romaji": "Shōgai kara no kaifuku-ji ni sabun dake shori sureba yoi node, furu bakkuappu hōshiki ni kurabete fukkyū jikan ga mijikai.",
+          "en": "Recovery is shorter than full backup because only the differential data needs processing."
+        },
+        {
+          "label": "イ",
+          "jp": "フルバックアップのデータで修復した後に、差分を加えて復旧する。",
+          "romaji": "Furu bakkuappu no dēta de shūfuku shita ato ni, sabun o kuwaete fukkyū suru.",
+          "en": "Restore the full backup, then apply the differential data."
+        },
+        {
+          "label": "ウ",
+          "jp": "フルバックアップ方式と交互に運用することはできない。",
+          "romaji": "Furu bakkuappu hōshiki to kōgo ni un'yō suru koto wa dekinai.",
+          "en": "It cannot be operated alternately with full backup."
+        },
+        {
+          "label": "エ",
+          "jp": "フルバックアップ方式に比べ、バックアップに要する時間が長い。",
+          "romaji": "Furu bakkuappu hōshiki ni kurabe, bakkuappu ni yōsuru jikan ga nagai.",
+          "en": "It takes longer to back up than a full backup."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nA differential backup stores changes since the last full backup. To recover, restore the full foundation first, then add the latest difference.\n\nTechnical breakdown:\n1. A full backup copies the entire target dataset.\n2. Each differential backup copies changes made since that full backup.\n3. Recovery first restores the full backup.\n4. Then the chosen latest differential backup is applied.\n5. Differential backup is usually faster to create than another full backup, while recovery needs both components.\n\nJapanese keywords to remember:\nフルバックアップ = furu bakkuappu = full backup\n差分バックアップ = sabun bakkuappu = differential backup\n修復 = shūfuku = restore/repair\n復旧 = fukkyū = recovery\n\nWhy the best solution works:\nイ gives the correct recovery order: full backup first, differential changes second.\n\nWrong answer analysis:\nア:\nDifferential data alone is incomplete; the base full backup is also required.\n\nウ:\nDifferential backups depend on periodic full backups and are commonly combined with them.\n\nエ:\nA differential backup usually copies less data and takes less time than a full backup.\n\nMemory trick:\nDifferential recovery = full base + latest difference.\n\nCorrect answer: イ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set02/q03.png"
+      ],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "6-17",
+      "optionMode": "labels-only",
+      "jp": "バックアップ方式の説明のうち、増分バックアップはどれか。ここで、最初のバックアップでは、全てのファイルのバックアップを取得し、OSが管理しているファイル更新を示す情報はリセットされるものとする。",
+      "romaji": "Bakkuappu hōshiki no setsumei no uchi, zōbun bakkuappu wa dore ka. Koko de, saisho no bakkuappu de wa, subete no fairu no bakkuappu o shutoku shi, OS ga kanri shite iru fairu kōshin o shimesu jōhō wa risetto sareru mono to suru.",
+      "en": "Which description is incremental backup? The first backup copies every file and resets the OS file-update information.",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "最初のバックアップの後、ファイル更新を示す情報があるファイルだけをバックアップし、ファイル更新を示す情報は変更しないでそのまま残しておく。",
+          "romaji": "Saisho no bakkuappu no ato, fairu kōshin o shimesu jōhō ga aru fairu dake o bakkuappu shi, fairu kōshin o shimesu jōhō wa henkō shinai de sono mama nokoshite oku.",
+          "en": "After the first backup, copy only files marked updated and leave their update information unchanged."
+        },
+        {
+          "label": "イ",
+          "jp": "最初のバックアップの後、ファイル更新を示す情報にかかわらず、全てのファイルをバックアップし、ファイル更新を示す情報はリセットする。",
+          "romaji": "Saisho no bakkuappu no ato, fairu kōshin o shimesu jōhō ni kakawarazu, subete no fairu o bakkuappu shi, fairu kōshin o shimesu jōhō wa risetto suru.",
+          "en": "After the first backup, copy all files regardless of update information and reset it."
+        },
+        {
+          "label": "ウ",
+          "jp": "直前に行ったバックアップの後、ファイル更新を示す情報があるファイルだけをバックアップし、ファイル更新を示す情報はリセットする。",
+          "romaji": "Chokuzen ni okonatta bakkuappu no ato, fairu kōshin o shimesu jōhō ga aru fairu dake o bakkuappu shi, fairu kōshin o shimesu jōhō wa risetto suru.",
+          "en": "After the immediately preceding backup, copy only files marked updated and reset their update information."
+        },
+        {
+          "label": "エ",
+          "jp": "直前に行ったバックアップの後、ファイル更新を示す情報にかかわらず、全てのファイルをバックアップし、ファイル更新を示す情報は変更しないでそのまま残しておく。",
+          "romaji": "Chokuzen ni okonatta bakkuappu no ato, fairu kōshin o shimesu jōhō ni kakawarazu, subete no fairu o bakkuappu shi, fairu kōshin o shimesu jōhō wa henkō shinai de sono mama nokoshite oku.",
+          "en": "After the immediately preceding backup, copy all files regardless of update information and leave it unchanged."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nIncremental backup saves only files changed since the previous backup, then clears the change marks so the next incremental starts fresh.\n\nTechnical breakdown:\n1. The initial full backup copies everything and resets update flags.\n2. Later file changes set update information.\n3. An incremental backup copies only files marked changed since the immediately preceding backup.\n4. It resets those marks after copying.\n5. Recovery may require the full backup plus every later incremental in sequence.\n\nJapanese keywords to remember:\n増分バックアップ = zōbun bakkuappu = incremental backup\n直前 = chokuzen = immediately preceding\nファイル更新 = fairu kōshin = file update\nリセット = risetto = reset\n\nWhy the best solution works:\nウ contains both defining details: changes since the prior backup only, and reset of update information afterward.\n\nWrong answer analysis:\nア:\nNot resetting the marks makes future runs continue collecting changes since the full base, which behaves like differential backup.\n\nイ:\nCopying every file and resetting marks is a full backup.\n\nエ:\nCopying every file is not incremental, and leaving marks unchanged also contradicts the incremental cycle.\n\nMemory trick:\nIncremental = since last backup; reset after saving.\n\nCorrect answer: ウ",
+      "imagePaths": [
+        "public/questions/book1/ch06/set02/q04.png"
+      ],
+      "imagePath": null
+    }
+  ]
+}
