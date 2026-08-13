@@ -1,0 +1,195 @@
+{
+  "exam_set": {
+    "id": "book1-ch11-set03",
+    "title": "Practice Set 3",
+    "description": "Textbook Practice — Book 1, Chapter 11, Practice Set 3",
+    "question_count": 5
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "11-21",
+      "optionMode": "labels-only",
+      "jp": "ファイルの提供者は、ファイルの作成者が作成したファイルAを受け取り、ファイルAと、ファイルAにSHA-256を適用して算出した値Bとを利用者に送信する。そのとき、利用者が情報セキュリティ上実現できることはどれか。ここで、利用者が受信した値Bはファイルの提供者から事前に電話で直接伝えられた値と同じであり、改ざんされていないことが確認できているものとする。",
+      "romaji": "Fairu no teikyōsha wa, fairu no sakuseisha ga sakusei shita fairu A o uketori, fairu A to, fairu A ni SHA-256 o tekiyō shite sanshutsu shita atai B to o riyōsha ni sōshin suru. Sono toki, riyōsha ga jōhō sekyuriti-jō jitsugen dekiru koto wa dore ka. Koko de, riyōsha ga jushin shita atai B wa fairu no teikyōsha kara jizen ni denwa de chokusetsu tsutaerareta atai to onaji de ari, kaizan sarete inai koto ga kakunin dekite iru mono to suru.",
+      "en": "A provider sends file A and value B, the SHA-256 hash of A. B matches a trusted value previously given directly by phone. What security property can the user achieve?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "値BにSHA-256を適用して値Bからデジタル署名を算出し、そのデジタル署名を検証することによって、ファイルAの作成者を確認できる。",
+          "romaji": "Atai B ni SHA-256 o tekiyō shite atai B kara dejitaru shomei o sanshutsu shi, sono dejitaru shomei o kenshō suru koto ni yotte, fairu A no sakuseisha o kakunin dekiru.",
+          "en": "Hash B to derive a signature and verify A's author."
+        },
+        {
+          "label": "イ",
+          "jp": "値BにSHA-256を適用して値Bからデジタル署名を算出し、そのデジタル署名を検証することによって、ファイルAの提供者がファイルAの作成者であるかどうかを確認できる。",
+          "romaji": "Atai B ni SHA-256 o tekiyō shite atai B kara dejitaru shomei o sanshutsu shi, sono dejitaru shomei o kenshō suru koto ni yotte, fairu A no teikyōsha ga fairu A no sakuseisha de aru ka dō ka o kakunin dekiru.",
+          "en": "Hash B to derive a signature and verify whether provider authored A."
+        },
+        {
+          "label": "ウ",
+          "jp": "ファイルAにSHA-256を適用して値を算出し、その値と値Bを比較することによって、ファイルAの内容が改ざんされていないかどうかを検証できる。",
+          "romaji": "Fairu A ni SHA-256 o tekiyō shite atai o sanshutsu shi, sono atai to atai B o hikaku suru koto ni yotte, fairu A no naiyō ga kaizan sarete inai ka dō ka o kenshō dekiru.",
+          "en": "Hash A and compare it with B to verify A has not been altered."
+        },
+        {
+          "label": "エ",
+          "jp": "ファイルAの内容が改ざんされていても、ファイルAにSHA-256を適用して値を算出し、その値と値Bの差分を確認することによって、ファイルAの内容のうち改ざんされている部分を修復できる。",
+          "romaji": "Fairu A no naiyō ga kaizan sarete ite mo, fairu A ni SHA-256 o tekiyō shite atai o sanshutsu shi, sono atai to atai B no sabun o kakunin suru koto ni yotte, fairu A no naiyō no uchi kaizan sarete iru bubun o shūfuku dekiru.",
+          "en": "Use hash differences to locate and repair altered portions of A."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nMatching trusted fingerprints show the file stayed unchanged.\n\nTechnical breakdown:\nCompute SHA-256(A) and compare with trusted B. Equality gives integrity evidence; hashing neither authenticates an author nor repairs content.\n\nJapanese keywords to remember:\n改ざん = kaizan = tampering\n検証 = kenshō = verification\n\nWhy the best solution works:\nウ performs the correct trusted-hash integrity check.\n\nWrong answer analysis:\nア:\nHashing does not create a digital signature or identify an author.\nイ:\nIt likewise cannot prove provider and author identity.\nエ:\nA digest does not locate or repair changed bytes.\n\nMemory trick:\nHash compare = change detection, not identity or repair.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set03/q01.png"]
+    },
+    {
+      "number": 2,
+      "displayNumber": "11-22",
+      "optionMode": "labels-only",
+      "jp": "デジタル署名における署名鍵の使い方と、デジタル署名を行う目的のうち、適切なものはどれか。",
+      "romaji": "Dejitaru shomei ni okeru shomeikagi no tsukaikata to, dejitaru shomei o okonau mokuteki no uchi, tekisetsu na mono wa dore ka.",
+      "en": "Which correctly states use of a signing key and purpose of a digital signature?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "受信者が署名鍵を使って、暗号文を元のメッセージに戻すことができるようにする。",
+          "romaji": "Jushinsha ga shomeikagi o tsukatte, angōbun o moto no messēji ni modosu koto ga dekiru yō ni suru.",
+          "en": "Receiver uses signing key to decrypt ciphertext."
+        },
+        {
+          "label": "イ",
+          "jp": "送信者が固定文字列を付加したメッセージを署名鍵を使って暗号化することによって、受信者がメッセージの改ざん部位を特定できるようにする。",
+          "romaji": "Sōshinsha ga kotei mojiretsu o fuka shita messēji o shomeikagi o tsukatte angōka suru koto ni yotte, jushinsha ga messēji no kaizan bui o tokutei dekiru yō ni suru.",
+          "en": "Encrypt message plus fixed text so receiver can locate tampering."
+        },
+        {
+          "label": "ウ",
+          "jp": "送信者が署名鍵を使って署名を作成し、その署名をメッセージに付加することによって、受信者が送信者を確認できるようにする。",
+          "romaji": "Sōshinsha ga shomeikagi o tsukatte shomei o sakusei shi, sono shomei o messēji ni fuka suru koto ni yotte, jushinsha ga sōshinsha o kakunin dekiru yō ni suru.",
+          "en": "Sender creates and appends a signature so receiver can verify sender."
+        },
+        {
+          "label": "エ",
+          "jp": "送信者が署名鍵を使ってメッセージを暗号化することによって、メッセージの内容を関係者以外に分からないようにする。",
+          "romaji": "Sōshinsha ga shomeikagi o tsukatte messēji o angōka suru koto ni yotte, messēji no naiyō o kankeisha igai ni wakaranai yō ni suru.",
+          "en": "Sender encrypts with signing key to keep content confidential."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nSigner uses private signing key; receiver verifies who signed and whether message changed.\n\nTechnical breakdown:\nA signature is generated from a message digest using signer's private key and verified with corresponding public key, supporting authenticity and integrity.\n\nJapanese keywords to remember:\n署名鍵 = shomeikagi = signing key\n送信者を確認 = sōshinsha o kakunin = verify sender\n\nWhy the best solution works:\nウ correctly maps signer key use to sender authentication.\n\nWrong answer analysis:\nア:\nSignatures do not decrypt message content.\nイ:\nThey detect change but do not locate altered positions.\nエ:\nSignatures do not provide confidentiality.\n\nMemory trick:\nSignature proves who + unchanged, not secret.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set03/q02.png"]
+    },
+    {
+      "number": 3,
+      "displayNumber": "11-23",
+      "optionMode": "labels-only",
+      "jp": "PKIにおける認証局が、信頼できる第三者機関として果たす役割はどれか。",
+      "romaji": "PKI ni okeru ninshōkyoku ga, shinrai dekiru daisansha kikan to shite hatasu yakuwari wa dore ka.",
+      "en": "What role does a certification authority perform as trusted third party in PKI?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "利用者からの要求に対して正確な時刻を返答し、時刻合わせを可能にする。",
+          "romaji": "Riyōsha kara no yōkyū ni taishite seikaku na jikoku o hentō shi, jikoku awase o kanō ni suru.",
+          "en": "Return accurate time for synchronization."
+        },
+        {
+          "label": "イ",
+          "jp": "利用者から要求された電子メールの本文に対して、デジタル署名を付与する。",
+          "romaji": "Riyōsha kara yōkyū sareta denshi mēru no honbun ni taishite, dejitaru shomei o fuyo suru.",
+          "en": "Sign requested email bodies."
+        },
+        {
+          "label": "ウ",
+          "jp": "利用者やサーバの公開鍵を証明するデジタル証明書を発行する。",
+          "romaji": "Riyōsha ya sāba no kōkaikagi o shōmei suru dejitaru shōmeisho o hakkō suru.",
+          "en": "Issue digital certificates certifying users' or servers' public keys."
+        },
+        {
+          "label": "エ",
+          "jp": "利用者やサーバの秘密鍵を証明するデジタル証明書を発行する。",
+          "romaji": "Riyōsha ya sāba no himitsukagi o shōmei suru dejitaru shōmeisho o hakkō suru.",
+          "en": "Issue certificates certifying users' or servers' private keys."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nCA signs an ID card binding an identity to a public key.\n\nTechnical breakdown:\nA certification authority validates identity and issues a signed certificate binding subject information to a public key. Private keys remain secret.\n\nJapanese keywords to remember:\n認証局 = ninshōkyoku = certification authority\nデジタル証明書 = dejitaru shōmeisho = digital certificate\n\nWhy the best solution works:\nウ states CA's core PKI role.\n\nWrong answer analysis:\nア:\nTime synchronization is NTP/time-server work.\nイ:\nUsers sign their own messages; CA does not sign arbitrary email bodies.\nエ:\nCertificates contain/certify public keys, never expose private keys.\n\nMemory trick:\nCA certificate binds identity + public key.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set03/q03.png"]
+    },
+    {
+      "number": 4,
+      "displayNumber": "11-24",
+      "optionMode": "labels-only",
+      "jp": "メッセージにRSA方式のデジタル署名を付与して2者間で送受信する。そのときのデジタル署名の検証鍵と使用方法はどれか。",
+      "romaji": "Messēji ni RSA hōshiki no dejitaru shomei o fuyo shite nisha-kan de sōjushin suru. Sono toki no dejitaru shomei no kenshōkagi to shiyō hōhō wa dore ka.",
+      "en": "For an RSA digital signature sent between two parties, which verification key and use are correct?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "受信者の公開鍵であり、送信者がメッセージダイジェストからデジタル署名を作成する際に使用する。",
+          "romaji": "Jushinsha no kōkaikagi de ari, sōshinsha ga messēji daijesuto kara dejitaru shomei o sakusei suru sai ni shiyō suru.",
+          "en": "Receiver public key, used by sender to create signature."
+        },
+        {
+          "label": "イ",
+          "jp": "受信者の秘密鍵であり、受信者がデジタル署名からメッセージダイジェストを算出する際に使用する。",
+          "romaji": "Jushinsha no himitsukagi de ari, jushinsha ga dejitaru shomei kara messēji daijesuto o sanshutsu suru sai ni shiyō suru.",
+          "en": "Receiver private key, used to derive digest from signature."
+        },
+        {
+          "label": "ウ",
+          "jp": "送信者の公開鍵であり、受信者がデジタル署名からメッセージダイジェストを算出する際に使用する。",
+          "romaji": "Sōshinsha no kōkaikagi de ari, jushinsha ga dejitaru shomei kara messēji daijesuto o sanshutsu suru sai ni shiyō suru.",
+          "en": "Sender public key, used by receiver to derive/verify digest from signature."
+        },
+        {
+          "label": "エ",
+          "jp": "送信者の秘密鍵であり、送信者がメッセージダイジェストからデジタル署名を作成する際に使用する。",
+          "romaji": "Sōshinsha no himitsukagi de ari, sōshinsha ga messēji daijesuto kara dejitaru shomei o sakusei suru sai ni shiyō suru.",
+          "en": "Sender private key, used by sender to create signature."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nSender signs privately; receiver verifies with sender's public key.\n\nTechnical breakdown:\nRSA signature verification applies signer's public key operation to signature and compares recovered/encoded digest information with independently hashed message.\n\nJapanese keywords to remember:\n検証鍵 = kenshōkagi = verification key\n送信者の公開鍵 = sōshinsha no kōkaikagi = sender's public key\n\nWhy the best solution works:\nウ names correct verification key and receiver operation.\n\nWrong answer analysis:\nア:\nReceiver public key is unrelated to sender signature creation.\nイ:\nReceiver private key is for receiver operations, not verifying sender identity.\nエ:\nThis describes signing key/use, not requested verification key/use.\n\nMemory trick:\nSign private; verify public—both sender's.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set03/q04.png"]
+    },
+    {
+      "number": 5,
+      "displayNumber": "11-25",
+      "optionMode": "labels-only",
+      "jp": "アプリケーションソフトウェアにデジタル署名を施す目的はどれか。",
+      "romaji": "Apurikēshon sofutowea ni dejitaru shomei o hodokosu mokuteki wa dore ka.",
+      "en": "What is the purpose of digitally signing application software?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "アプリケーションソフトウェアの改ざんを利用者が検知できるようにする。",
+          "romaji": "Apurikēshon sofutowea no kaizan o riyōsha ga kenchi dekiru yō ni suru.",
+          "en": "Enable users to detect software tampering."
+        },
+        {
+          "label": "イ",
+          "jp": "アプリケーションソフトウェアの使用を特定の利用者に制限する。",
+          "romaji": "Apurikēshon sofutowea no shiyō o tokutei no riyōsha ni seigen suru.",
+          "en": "Restrict software use to specific users."
+        },
+        {
+          "label": "ウ",
+          "jp": "アプリケーションソフトウェアの著作権が作成者にあることを証明する。",
+          "romaji": "Apurikēshon sofutowea no chosakuken ga sakuseisha ni aru koto o shōmei suru.",
+          "en": "Prove copyright belongs to creator."
+        },
+        {
+          "label": "エ",
+          "jp": "アプリケーションソフトウェアの利用者による修正や改変を不可能にする。",
+          "romaji": "Apurikēshon sofutowea no riyōsha ni yoru shūsei ya kaihen o fukanō ni suru.",
+          "en": "Make user modification impossible."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nSignature does not stop editing, but shows whether bits changed since signer approved them.\n\nTechnical breakdown:\nCode signing verifies integrity and publisher authenticity by checking signature over software digest. Modification breaks verification.\n\nJapanese keywords to remember:\n改ざんを検知 = kaizan o kenchi = detect tampering\nデジタル署名を施す = dejitaru shomei o hodokosu = apply digital signature\n\nWhy the best solution works:\nア states integrity detection enabled by code signing.\n\nWrong answer analysis:\nイ:\nUsage restriction requires access/licensing controls.\nウ:\nSignature authenticates signer; it does not adjudicate copyright ownership.\nエ:\nUsers can alter files, but alteration invalidates signature.\n\nMemory trick:\nSignature detects change; it does not block change.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch11/set03/q05.png"]
+    }
+  ]
+}

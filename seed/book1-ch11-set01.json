@@ -1,0 +1,508 @@
+{
+  "exam_set": {
+    "id": "book1-ch11-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 11, Practice Set 1",
+    "question_count": 14
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "11-1",
+      "optionMode": "labels-only",
+      "jp": "ソーシャルエンジニアリングに分類される手口はどれか。",
+      "romaji": "Sōsharu enjinīaringu ni bunrui sareru teguchi wa dore ka.",
+      "en": "Which technique is social engineering?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "ウイルス感染で自動作成されたバックドアからシステムに侵入する。",
+          "romaji": "Uirusu kansen de jidō sakusei sareta bakkudoa kara shisutemu ni shinnyū suru.",
+          "en": "Enter through a malware-created backdoor."
+        },
+        {
+          "label": "イ",
+          "jp": "システム管理者などを装い、利用者に問い合わせてパスワードを取得する。",
+          "romaji": "Shisutemu kanrisha nado o yosooi, riyōsha ni toiawasete pasuwādo o shutoku suru.",
+          "en": "Impersonate an administrator and ask users for passwords."
+        },
+        {
+          "label": "ウ",
+          "jp": "総当たり攻撃ツールを用いてパスワードを解析する。",
+          "romaji": "Sōatari kōgeki tsūru o mochiite pasuwādo o kaiseki suru.",
+          "en": "Use brute-force tool to crack passwords."
+        },
+        {
+          "label": "エ",
+          "jp": "バッファオーバーフローなどのソフトウェアの脆（ぜい）弱性を利用してシステムに侵入する。",
+          "romaji": "Baffa ōbāfurō nado no sofutowea no zeijakusei o riyō shite shisutemu ni shinnyū suru.",
+          "en": "Exploit software vulnerabilities such as buffer overflow."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nSocial engineering tricks people, not machines.\n\nTechnical breakdown:\nImpersonation exploits human trust to obtain credentials.\n\nJapanese keywords to remember:\n装う = yosoou = impersonate\n手口 = teguchi = technique\n\nWhy the best solution works:\nイ manipulates a user into disclosing a password.\n\nWrong answer analysis:\nア:\nThis is malware/backdoor intrusion.\nウ:\nThis is technical brute force.\nエ:\nThis exploits a software vulnerability.\n\nMemory trick:\nSocial engineering hacks humans.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q01.png"]
+    },
+    {
+      "number": 2,
+      "displayNumber": "11-2",
+      "optionMode": "labels-only",
+      "jp": "不正が発生する際には“不正のトライアングル”の3要素全てが存在すると考えられている。“不正のトライアングル”の構成要素の説明として、適切なものはどれか。",
+      "romaji": "Fusei ga hassei suru sai ni wa 'fusei no toraianguru' no 3-yōso subete ga sonzai suru to kangaerarete iru. 'Fusei no toraianguru' no kōsei yōso no setsumei to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which correctly explains an element of the fraud triangle?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "“機会”とは、情報システムなどの技術や物理的な環境、組織のルールなど、内部者による不正行為の実行を可能又は容易にする環境の存在である。",
+          "romaji": "'Kikai' to wa, jōhō shisutemu nado no gijutsu ya butsuriteki na kankyō, soshiki no rūru nado, naibusha ni yoru fusei kōi no jikkō o kanō mata wa yōi ni suru kankyō no sonzai de aru.",
+          "en": "Opportunity is an environment—technical, physical, or organizational—that enables or eases insider fraud."
+        },
+        {
+          "label": "イ",
+          "jp": "“情報と伝達”とは、必要な情報が識別、把握及び処理され、組織内外及び関係者相互に正しく伝えられるようにすることである。",
+          "romaji": "'Jōhō to dentatsu' to wa, hitsuyō na jōhō ga shikibetsu, haaku oyobi shori sare, soshiki naigai oyobi kankeisha sōgo ni tadashiku tsutaerareru yō ni suru koto de aru.",
+          "en": "Information and communication ensures needed information is processed and communicated correctly."
+        },
+        {
+          "label": "ウ",
+          "jp": "“正当化”とは、ノルマによるプレッシャなどのことである。",
+          "romaji": "'Seitōka' to wa, noruma ni yoru puressha nado no koto de aru.",
+          "en": "Rationalization means pressure from quotas."
+        },
+        {
+          "label": "エ",
+          "jp": "“動機”とは、良心のかしゃくを乗り越える都合の良い解釈や他人への責任転嫁など、内部者が不正行為を自ら納得させるための自分勝手な理由付けである。",
+          "romaji": "'Dōki' to wa, ryōshin no kashaku o norikoeru tsugō no yoi kaishaku ya tanin e no sekinin tenka nado, naibusha ga fusei kōi o mizukara nattoku saseru tame no jibunkatte na riyūzuke de aru.",
+          "en": "Motivation means self-serving rationalization that overcomes guilt."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nFraud needs pressure, opportunity, and rationalization. Opportunity means a chance to do it.\n\nTechnical breakdown:\nWeak controls or rules create opportunity to commit and conceal fraud.\n\nJapanese keywords to remember:\n機会 = kikai = opportunity\n不正のトライアングル = fusei no toraianguru = fraud triangle\n\nWhy the best solution works:\nア correctly defines opportunity.\n\nWrong answer analysis:\nイ:\nThis is an internal-control component, not fraud-triangle element definition.\nウ:\nQuota pressure is motivation/pressure, not rationalization.\nエ:\nSelf-justification is rationalization, not motivation.\n\nMemory trick:\nFraud triangle: pressure, opportunity, excuse.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch11/set01/q02.png"]
+    },
+    {
+      "number": 3,
+      "displayNumber": "11-3",
+      "optionMode": "labels-only",
+      "jp": "攻撃者がシステムに侵入するときにポートスキャンを行う目的はどれか。",
+      "romaji": "Kōgekisha ga shisutemu ni shinnyū suru toki ni pōto sukyan o okonau mokuteki wa dore ka.",
+      "en": "Why does an attacker perform a port scan before intrusion?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "後処理の段階において、システムログに攻撃の痕跡が残っていないかどうかを調査する。",
+          "romaji": "Ato shori no dankai ni oite, shisutemu rogu ni kōgeki no konseki ga nokotte inai ka dō ka o chōsa suru.",
+          "en": "Check logs for attack traces afterward."
+        },
+        {
+          "label": "イ",
+          "jp": "権限取得の段階において、権限を奪取できそうなアカウントがあるかどうかを調査する。",
+          "romaji": "Kengen shutoku no dankai ni oite, kengen o dasshu dekisō na akaunto ga aru ka dō ka o chōsa suru.",
+          "en": "Find accounts whose privileges might be stolen."
+        },
+        {
+          "label": "ウ",
+          "jp": "事前調査の段階において、攻撃できそうなサービスがあるかどうかを調査する。",
+          "romaji": "Jizen chōsa no dankai ni oite, kōgeki dekisō na sābisu ga aru ka dō ka o chōsa suru.",
+          "en": "Identify potentially attackable services during reconnaissance."
+        },
+        {
+          "label": "エ",
+          "jp": "不正実行の段階において、攻撃者にとって有益な利用者情報があるかどうかを調査する。",
+          "romaji": "Fusei jikkō no dankai ni oite, kōgekisha ni totte yūeki na riyōsha jōhō ga aru ka dō ka o chōsa suru.",
+          "en": "Search for useful user information during exploitation."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nPort scan checks which service doors are open.\n\nTechnical breakdown:\nOpen ports reveal listening services and possible attack surface during reconnaissance.\n\nJapanese keywords to remember:\n事前調査 = jizen chōsa = reconnaissance\nポートスキャン = pōto sukyan = port scan\n\nWhy the best solution works:\nウ identifies exposed services before attack.\n\nWrong answer analysis:\nア:\nThis concerns trace removal.\nイ:\nPort scanning does not enumerate stealable accounts.\nエ:\nIt does not search stored user data.\n\nMemory trick:\nScan ports → find services.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q03.png"]
+    },
+    {
+      "number": 4,
+      "displayNumber": "11-4",
+      "optionMode": "labels-only",
+      "jp": "AES-256で暗号化されていることが分かっている暗号文が与えられているとき、ブルートフォース攻撃で鍵と解読した平文を得るまでに必要な試行回数の最大値はどれか。",
+      "romaji": "AES-256 de angōka sarete iru koto ga wakatte iru angōbun ga ataerarete iru toki, burūto fōsu kōgeki de kagi to kaidoku shita heibun o eru made ni hitsuyō na shikō kaisū no saidaichi wa dore ka.",
+      "en": "For AES-256 ciphertext, what is the maximum brute-force attempts needed to find key and plaintext?",
+      "options": [
+        { "label": "ア", "jp": "256", "romaji": "256", "en": "256" },
+        { "label": "イ", "jp": "2^128", "romaji": "2^128", "en": "2^128" },
+        { "label": "ウ", "jp": "2^255", "romaji": "2^255", "en": "2^255" },
+        { "label": "エ", "jp": "2^256", "romaji": "2^256", "en": "2^256" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nA 256-bit key has 2^256 possible keys; worst case tries all.\n\nTechnical breakdown:\nEach of 256 bits has two values, producing 2^256 combinations.\n\nJapanese keywords to remember:\n試行回数 = shikō kaisū = attempts\n最大値 = saidaichi = maximum\n\nWhy the best solution works:\nエ is full AES-256 keyspace.\n\nWrong answer analysis:\nア:\n256 is bit length, not combinations.\nイ:\n2^128 is too small.\nウ:\n2^255 is half the complete keyspace.\n\nMemory trick:\nn-bit key → 2^n possibilities.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q04.png"]
+    },
+    {
+      "number": 5,
+      "displayNumber": "11-5",
+      "optionMode": "labels-only",
+      "jp": "パスワードリスト攻撃の手口に該当するものはどれか。",
+      "romaji": "Pasuwādo risuto kōgeki no teguchi ni gaitō suru mono wa dore ka.",
+      "en": "Which describes a password-list attack?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "辞書にある単語をパスワードに設定している利用者がいる状況に着目して、攻撃対象とする利用者IDを一つ定め、辞書にある単語やその組合せをパスワードとして、ログインを試行する。",
+          "romaji": "Jisho ni aru tango o pasuwādo ni settei shite iru riyōsha ga iru jōkyō ni chakumoku shite, kōgeki taishō to suru riyōsha ID o hitotsu sadame, jisho ni aru tango ya sono kumiawase o pasuwādo to shite, roguin o shikō suru.",
+          "en": "Try dictionary words against one selected user ID."
+        },
+        {
+          "label": "イ",
+          "jp": "パスワードの文字数の上限が小さいWebサイトに対して、攻撃対象とする利用者IDを一つ定め、文字を組み合わせたパスワードを総当たりして、ログインを試行する。",
+          "romaji": "Pasuwādo no mojisū no jōgen ga chiisai Web saito ni taishite, kōgeki taishō to suru riyōsha ID o hitotsu sadame, moji o kumiawaseta pasuwādo o sōatari shite, roguin o shikō suru.",
+          "en": "Brute-force combinations against one user ID."
+        },
+        {
+          "label": "ウ",
+          "jp": "複数サイトで同一の利用者IDとパスワードを使っている利用者がいる状況に着目して、不正に取得した他サイトの利用者IDとパスワードの一覧表を用いて、ログインを試行する。",
+          "romaji": "Fukusū saito de dōitsu no riyōsha ID to pasuwādo o tsukatte iru riyōsha ga iru jōkyō ni chakumoku shite, fusei ni shutoku shita ta-saito no riyōsha ID to pasuwādo no ichiranhyō o mochiite, roguin o shikō suru.",
+          "en": "Try stolen username/password lists from other sites."
+        },
+        {
+          "label": "エ",
+          "jp": "よく用いられるパスワードを一つ定め、文字を組み合わせた利用者IDを総当たりして、ログインを試行する。",
+          "romaji": "Yoku mochiirareru pasuwādo o hitotsu sadame, moji o kumiawaseta riyōsha ID o sōatari shite, roguin o shikō suru.",
+          "en": "Try one common password against brute-forced user IDs."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nReuse leaked login pairs on another site.\n\nTechnical breakdown:\nPassword-list attack uses stolen credential lists, exploiting password reuse.\n\nJapanese keywords to remember:\n一覧表 = ichiranhyō = list\n不正に取得 = fusei ni shutoku = illicitly obtained\n\nWhy the best solution works:\nウ exactly describes credential stuffing.\n\nWrong answer analysis:\nア:\nThis is dictionary attack.\nイ:\nThis is brute force.\nエ:\nThis resembles password spraying.\n\nMemory trick:\nLeaked pair list → password-list attack.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q05.png"]
+    },
+    {
+      "number": 6,
+      "displayNumber": "11-6",
+      "optionMode": "labels-only",
+      "jp": "スパイウェアに該当するものはどれか。",
+      "romaji": "Supaiwea ni gaitō suru mono wa dore ka.",
+      "en": "Which is spyware?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "Webサイトへの不正な入力を排除するために、Webサイトの入力フォームの入力データから、HTMLタグ、JavaScript、SQL文などを検出し、それらを他の文字列に置き換えるプログラム",
+          "romaji": "Web saito e no fusei na nyūryoku o haijo suru tame ni, Web saito no nyūryoku fōmu no nyūryoku dēta kara, HTML tagu, JavaScript, SQL bun nado o kenshutsu shi, sorera o hoka no mojiretsu ni okikaeru puroguramu",
+          "en": "Sanitize Web input by replacing detected HTML, JavaScript, or SQL."
+        },
+        {
+          "label": "イ",
+          "jp": "サーバへの侵入口となり得る脆弱なポートを探すために、攻撃者のPCからサーバのTCPポートに順番にアクセスするプログラム",
+          "romaji": "Sāba e no shinnyūguchi to narieru zeijaku na pōto o sagasu tame ni, kōgekisha no PC kara sāba no TCP pōto ni junban ni akusesu suru puroguramu",
+          "en": "Scan server TCP ports sequentially."
+        },
+        {
+          "label": "ウ",
+          "jp": "利用者の意図に反してPCにインストールされ、利用者の個人情報やアクセス履歴などの情報を収集するプログラム",
+          "romaji": "Riyōsha no ito ni hanshite PC ni insutōru sare, riyōsha no kojin jōhō ya akusesu rireki nado no jōhō o shūshū suru puroguramu",
+          "en": "Install against user's intent and collect personal data/history."
+        },
+        {
+          "label": "エ",
+          "jp": "利用者のパスワードを調べるために、サーバにアクセスし、辞書に載っている単語を総当たりで試すプログラム",
+          "romaji": "Riyōsha no pasuwādo o shiraberu tame ni, sāba ni akusesu shi, jisho ni notte iru tango o sōatari de tamesu puroguramu",
+          "en": "Try dictionary words to discover a password."
+        }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nSpyware secretly watches and collects user information.\n\nTechnical breakdown:\nSpyware is unwanted software that monitors activity or exfiltrates personal data.\n\nJapanese keywords to remember:\n個人情報 = kojin jōhō = personal information\n収集 = shūshū = collection\n\nWhy the best solution works:\nウ matches covert monitoring.\n\nWrong answer analysis:\nア:\nThis is input sanitization.\nイ:\nThis is port scanning.\nエ:\nThis is dictionary attack.\n\nMemory trick:\nSpyware spies on user activity.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q06.png"]
+    },
+    {
+      "number": 7,
+      "displayNumber": "11-7",
+      "optionMode": "labels-only",
+      "jp": "情報セキュリティにおいてバックドアに該当するものはどれか。",
+      "romaji": "Jōhō sekyuriti ni oite bakkudoa ni gaitō suru mono wa dore ka.",
+      "en": "Which is a backdoor in information security?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "アクセスする際にパスワード認証などの正規の手続が必要なWebサイトに、当該手続を経ないでアクセス可能なURL",
+          "romaji": "Akusesu suru sai ni pasuwādo ninshō nado no seiki no tetsuzuki ga hitsuyō na Web saito ni, tōgai tetsuzuki o henai de akusesu kanō na URL",
+          "en": "A URL that bypasses normal password authentication to access a site."
+        },
+        {
+          "label": "イ",
+          "jp": "インターネットに公開されているサーバのTCPポートの中からアクティブになっているポートを探して、稼働中のサービスを特定するためのツール",
+          "romaji": "Intānetto ni kōkai sarete iru sāba no TCP pōto no naka kara akutibu ni natte iru pōto o sagashite, kadō-chū no sābisu o tokutei suru tame no tsūru",
+          "en": "Tool that scans active server ports to identify services."
+        },
+        {
+          "label": "ウ",
+          "jp": "ネットワーク上の通信パケットを取得して通信内容を見るために設けられたスイッチのLANポート",
+          "romaji": "Nettowāku-jō no tsūshin paketto o shutoku shite tsūshin naiyō o miru tame ni mōkerareta suicchi no LAN pōto",
+          "en": "Switch LAN port configured to capture packets."
+        },
+        {
+          "label": "エ",
+          "jp": "プログラムが確保するメモリ領域に、領域の大きさを超える長さの文字列を入力してあふれさせ、ダウンさせる攻撃",
+          "romaji": "Puroguramu ga kakuho suru memori ryōiki ni, ryōiki no ōkisa o koeru nagasa no mojiretsu o nyūryoku shite afuresase, daun saseru kōgeki",
+          "en": "Overflow memory with oversized input to crash a program."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nA backdoor is a hidden route around the normal front-door security check.\n\nTechnical breakdown:\nA path that bypasses required authentication is an alternate unauthorized entry mechanism: a backdoor.\n\nJapanese keywords to remember:\n正規の手続 = seiki no tetsuzuki = normal procedure\n経ないで = henai de = without going through\n\nWhy the best solution works:\nア bypasses normal authentication and provides backdoor access.\n\nWrong answer analysis:\nイ:\nThis is a port-scanning tool.\nウ:\nThis is a mirror/monitor port for packet capture, not unauthorized bypass access.\nエ:\nThis is a buffer-overflow denial/crash attack.\n\nMemory trick:\nBackdoor = route around authentication.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch11/set01/q07.png"]
+    },
+    {
+      "number": 8,
+      "displayNumber": "11-8",
+      "optionMode": "labels-only",
+      "jp": "キーロガーの悪用例はどれか。",
+      "romaji": "Kīrogā no akuyōrei wa dore ka.",
+      "en": "Which is malicious use of a keylogger?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "通信を行う2者間の経路上に割り込み、両者が交換する情報を収集し、改ざんする。",
+          "romaji": "Tsūshin o okonau nisha-kan no keiro-jō ni warikomi, ryōsha ga kōkan suru jōhō o shūshū shi, kaizan suru.",
+          "en": "Intercept and alter information between two parties."
+        },
+        {
+          "label": "イ",
+          "jp": "ネットバンキング利用時に、利用者が入力したパスワードを収集する。",
+          "romaji": "Netto bankingu riyō-ji ni, riyōsha ga nyūryoku shita pasuwādo o shūshū suru.",
+          "en": "Collect a password typed during online banking."
+        },
+        {
+          "label": "ウ",
+          "jp": "ブラウザでの動画閲覧時に、利用者の意図しない広告を勝手に表示する。",
+          "romaji": "Burauza de no dōga etsuran-ji ni, riyōsha no ito shinai kōkoku o katte ni hyōji suru.",
+          "en": "Display unwanted ads during video viewing."
+        },
+        {
+          "label": "エ",
+          "jp": "ブラウザの起動時に、利用者がインストールしていないツールバーを勝手に表示する。",
+          "romaji": "Burauza no kidō-ji ni, riyōsha ga insutōru shite inai tsūrubā o katte ni hyōji suru.",
+          "en": "Display an uninstalled toolbar at browser startup."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nKeylogger records keys people type, including passwords.\n\nTechnical breakdown:\nCapturing keyboard input steals credentials entered into applications.\n\nJapanese keywords to remember:\n入力した = nyūryoku shita = entered\n収集 = shūshū = collect\n\nWhy the best solution works:\nイ is direct keystroke credential capture.\n\nWrong answer analysis:\nア:\nThis is man-in-the-middle attack.\nウ:\nThis is adware behavior.\nエ:\nThis is unwanted browser modification.\n\nMemory trick:\nKeylogger logs keys.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q08.png"]
+    },
+    {
+      "number": 9,
+      "displayNumber": "11-9",
+      "optionMode": "labels-only",
+      "jp": "フィッシングの手口に該当するものはどれか。",
+      "romaji": "Fisshingu no teguchi ni gaitō suru mono wa dore ka.",
+      "en": "Which is phishing?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "Webページに入力した内容をそのまま表示する部分がある場合、ページ内に悪意のスクリプトを埋め込み、ユーザーとサーバに被害を与える。",
+          "romaji": "Web pēji ni nyūryoku shita naiyō o sono mama hyōji suru bubun ga aru baai, pēji-nai ni akui no sukuriputo o umekomi, yūzā to sāba ni higai o ataeru.",
+          "en": "Inject a malicious script into reflected Web input."
+        },
+        {
+          "label": "イ",
+          "jp": "ウイルスに感染したコンピュータを、インターネットなどのネットワークを通じて外部から操る。",
+          "romaji": "Uirusu ni kansen shita konpyūta o, intānetto nado no nettowāku o tsūjite gaibu kara ayatsuru.",
+          "en": "Remotely control an infected computer."
+        },
+        {
+          "label": "ウ",
+          "jp": "コンピュータ利用者のIPアドレスやWebの閲覧履歴などの個人情報を、ひそかに収集して外部へ送信する。",
+          "romaji": "Konpyūta riyōsha no IP adoresu ya Web no etsuran rireki nado no kojin jōhō o, hisoka ni shūshū shite gaibu e sōshin suru.",
+          "en": "Secretly collect and send personal browsing information."
+        },
+        {
+          "label": "エ",
+          "jp": "電子メールを発信して受信者を誘導し、実在する会社などを装った偽のWebサイトにアクセスさせ、個人情報をだまし取る。",
+          "romaji": "Denshi mēru o hasshin shite jushinsha o yūdō shi, jitsuzai suru kaisha nado o yosootta nise no Web saito ni akusesu sase, kojin jōhō o damashitoru.",
+          "en": "Use email to lure recipients to an impersonated site and steal personal data."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nPhishing bait sends victims to a fake trusted site to steal information.\n\nTechnical breakdown:\nDeceptive email and spoofed site exploit trust to harvest credentials.\n\nJapanese keywords to remember:\n偽のWebサイト = nise no Web saito = fake website\nだまし取る = damashitoru = fraudulently obtain\n\nWhy the best solution works:\nエ describes classic phishing flow.\n\nWrong answer analysis:\nア:\nThis is cross-site scripting.\nイ:\nThis is bot/remote-control malware.\nウ:\nThis is spyware.\n\nMemory trick:\nPhishing = fake message, fake site, stolen info.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q09.png"]
+    },
+    {
+      "number": 10,
+      "displayNumber": "11-10",
+      "optionMode": "labels-only",
+      "jp": "ドライブバイダウンロード攻撃に該当するものはどれか。",
+      "romaji": "Doraibu bai daunrōdo kōgeki ni gaitō suru mono wa dore ka.",
+      "en": "Which is a drive-by download attack?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "PC内のマルウェアを遠隔操作して、PCのハードディスクドライブを丸ごと暗号化する。",
+          "romaji": "PC-nai no maruwea o enkaku sōsa shite, PC no hādo disuku doraibu o marugoto angōka suru.",
+          "en": "Remotely command malware to encrypt an entire drive."
+        },
+        {
+          "label": "イ",
+          "jp": "外部ネットワークからファイアウォールの設定の誤りを突いて侵入し、内部ネットワークにあるサーバのシステムドライブにルートキットを仕掛ける。",
+          "romaji": "Gaibu nettowāku kara faiawōru no settei no ayamari o tsuite shinnyū shi, naibu nettowāku ni aru sāba no shisutemu doraibu ni rūtokitto o shikakeru.",
+          "en": "Exploit firewall misconfiguration and install a rootkit."
+        },
+        {
+          "label": "ウ",
+          "jp": "公開Webサイトにおいて、スクリプトをWebページ中の入力フィールドに入力し、Webサーバがアクセスするデータベース内のデータを不正にダウンロードする。",
+          "romaji": "Kōkai Web saito ni oite, sukuriputo o Web pēji-chū no nyūryoku fīrudo ni nyūryoku shi, Web sāba ga akusesu suru dētabēsu-nai no dēta o fusei ni daunrōdo suru.",
+          "en": "Inject script to illicitly download database data."
+        },
+        {
+          "label": "エ",
+          "jp": "利用者が公開Webサイトを閲覧したときに、その利用者の意図にかかわらず、PCにマルウェアをダウンロードさせて感染させる。",
+          "romaji": "Riyōsha ga kōkai Web saito o etsuran shita toki ni, sono riyōsha no ito ni kakawarazu, PC ni maruwea o daunrōdo sasete kansen saseru.",
+          "en": "Cause malware download/infection merely when user visits a website."
+        }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nVisiting a compromised page silently downloads malware.\n\nTechnical breakdown:\nDrive-by download exploits browser/content handling without informed user action.\n\nJapanese keywords to remember:\n閲覧 = etsuran = browsing\n意図にかかわらず = ito ni kakawarazu = regardless of intent\n\nWhy the best solution works:\nエ states involuntary Web-triggered infection.\n\nWrong answer analysis:\nア:\nThis is ransomware behavior.\nイ:\nThis is intrusion plus rootkit installation.\nウ:\nThis is Web injection/data theft.\n\nMemory trick:\nDrive by site → malware downloads.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q10.png"]
+    },
+    {
+      "number": 11,
+      "displayNumber": "11-11",
+      "optionMode": "labels-only",
+      "jp": "検索サイトの検索結果の上位に悪意のあるサイトが表示されるように細工する攻撃の名称はどれか。",
+      "romaji": "Kensaku saito no kensaku kekka no jōi ni akui no aru saito ga hyōji sareru yō ni saiku suru kōgeki no meishō wa dore ka.",
+      "en": "What attack manipulates search rankings so malicious sites appear high?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "DNSキャッシュポイズニング",
+          "romaji": "DNS kyasshu poizuningu",
+          "en": "DNS cache poisoning"
+        },
+        {
+          "label": "イ",
+          "jp": "SEOポイズニング",
+          "romaji": "SEO poizuningu",
+          "en": "SEO poisoning"
+        },
+        {
+          "label": "ウ",
+          "jp": "クロスサイトスクリプティング",
+          "romaji": "Kurosu saito sukuriputingu",
+          "en": "Cross-site scripting"
+        },
+        {
+          "label": "エ",
+          "jp": "ソーシャルエンジニアリング",
+          "romaji": "Sōsharu enjinīaringu",
+          "en": "Social engineering"
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nSEO poisoning tricks search ranking to promote harmful pages.\n\nTechnical breakdown:\nAttackers abuse search-engine optimization signals to raise malicious results.\n\nJapanese keywords to remember:\n検索結果の上位 = kensaku kekka no jōi = top search results\n細工 = saiku = manipulation\n\nWhy the best solution works:\nイ names malicious ranking manipulation.\n\nWrong answer analysis:\nア:\nThis corrupts DNS cache records.\nウ:\nThis injects scripts into Web content.\nエ:\nThis broadly manipulates people.\n\nMemory trick:\nPoison search ranking = SEO poisoning.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q11.png"]
+    },
+    {
+      "number": 12,
+      "displayNumber": "11-12",
+      "optionMode": "labels-only",
+      "jp": "DNSキャッシュポイズニングに分類される攻撃内容はどれか。",
+      "romaji": "DNS kyasshu poizuningu ni bunrui sareru kōgeki naiyō wa dore ka.",
+      "en": "Which attack is DNS cache poisoning?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "DNSサーバのソフトウェアのバージョン情報を入手して、DNSサーバのセキュリティホールを特定する。",
+          "romaji": "DNS sāba no sofutowea no bājon jōhō o nyūshu shite, DNS sāba no sekyuriti hōru o tokutei suru.",
+          "en": "Fingerprint DNS software to identify vulnerabilities."
+        },
+        {
+          "label": "イ",
+          "jp": "PCが参照するDNSサーバに偽のドメイン情報を注入して、利用者を偽装されたサーバに誘導する。",
+          "romaji": "PC ga sanshō suru DNS sāba ni nise no domein jōhō o chūnyū shite, riyōsha o gisō sareta sāba ni yūdō suru.",
+          "en": "Inject false domain information into DNS cache to redirect users."
+        },
+        {
+          "label": "ウ",
+          "jp": "攻撃対象のサービスを妨害するために、攻撃者がDNSサーバを踏み台に利用して再帰的な問い合わせを大量に行う。",
+          "romaji": "Kōgeki taishō no sābisu o bōgai suru tame ni, kōgekisha ga DNS sāba o fumidai ni riyō shite saikiteki na toiawase o tairyo ni okonau.",
+          "en": "Use DNS servers for massive recursive queries to disrupt service."
+        },
+        {
+          "label": "エ",
+          "jp": "内部情報を入手するために、DNSサーバが保存するゾーン情報をまとめて転送させる。",
+          "romaji": "Naibu jōhō o nyūshu suru tame ni, DNS sāba ga hozon suru zōn jōhō o matomete tensō saseru.",
+          "en": "Transfer zone data to obtain internal information."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nPoisoned DNS stores a fake address and sends users to wrong server.\n\nTechnical breakdown:\nForged DNS records corrupt resolver cache, redirecting name resolution.\n\nJapanese keywords to remember:\n偽のドメイン情報 = nise no domein jōhō = false domain information\n注入 = chūnyū = injection\n\nWhy the best solution works:\nイ precisely describes cache poisoning.\n\nWrong answer analysis:\nア:\nThis is reconnaissance.\nウ:\nThis is DNS amplification/DoS behavior.\nエ:\nThis is unauthorized zone transfer.\n\nMemory trick:\nPoison cache → fake name-to-IP mapping.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q12.png"]
+    },
+    {
+      "number": 13,
+      "displayNumber": "11-13",
+      "optionMode": "labels-only",
+      "jp": "SQLインジェクション攻撃の説明はどれか。",
+      "romaji": "SQL injekushon kōgeki no setsumei wa dore ka.",
+      "en": "Which describes SQL injection?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "Webアプリケーションに問題があるとき、悪意のある問い合わせや操作を行う命令文をWebサイトに入力して、データベースのデータを不正に取得したり改ざんしたりする攻撃",
+          "romaji": "Web apurikēshon ni mondai ga aru toki, akui no aru toiawase ya sōsa o okonau meireibun o Web saito ni nyūryoku shite, dētabēsu no dēta o fusei ni shutoku shitari kaizan shitari suru kōgeki",
+          "en": "Input malicious database commands through a vulnerable Web app to read or alter data."
+        },
+        {
+          "label": "イ",
+          "jp": "悪意のあるスクリプトを埋め込んだWebページを訪問者に閲覧させて、別のWebサイトで、その訪問者が意図しない操作を行わせる攻撃",
+          "romaji": "Akui no aru sukuriputo o umekonda Web pēji o hōmonsha ni etsuran sasete, betsu no Web saito de, sono hōmonsha ga ito shinai sōsa o okonawaseru kōgeki",
+          "en": "Make visitor perform unintended action on another site."
+        },
+        {
+          "label": "ウ",
+          "jp": "市販されているDBMSの脆弱性を悪用することによって、宿主となるデータベースサーバを探して感染を繰り返し、インターネットのトラフィックを急増させる攻撃",
+          "romaji": "Shihan sarete iru DBMS no zeijakusei o akuyō suru koto ni yotte, shukushu to naru dētabēsu sāba o sagashite kansen o kurikaeshi, intānetto no torafikku o kyūzō saseru kōgeki",
+          "en": "Exploit DBMS vulnerabilities to spread and increase traffic."
+        },
+        {
+          "label": "エ",
+          "jp": "訪問者の入力データをそのまま画面に表示するWebサイトを悪用して、悪意のあるスクリプトを訪問者のWebブラウザで実行させる攻撃",
+          "romaji": "Hōmonsha no nyūryoku dēta o sono mama gamen ni hyōji suru Web saito o akuyō shite, akui no aru sukuriputo o hōmonsha no Web burauza de jikkō saseru kōgeki",
+          "en": "Exploit reflected input to execute malicious script in visitor browser."
+        }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nAttacker puts database commands where normal input should be.\n\nTechnical breakdown:\nUnsafe query construction lets input change SQL syntax and access or modify DB data.\n\nJapanese keywords to remember:\n命令文 = meireibun = command statement\n不正に取得 = fusei ni shutoku = illicitly obtain\n\nWhy the best solution works:\nア maps malicious input to SQL execution.\n\nWrong answer analysis:\nイ:\nThis describes cross-site request forgery.\nウ:\nThis describes a DB-targeting worm.\nエ:\nThis describes cross-site scripting.\n\nMemory trick:\nInput becomes SQL → SQL injection.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch11/set01/q13.png"]
+    },
+    {
+      "number": 14,
+      "displayNumber": "11-14",
+      "optionMode": "labels-only",
+      "jp": "ディレクトリトラバーサル攻撃に該当するものはどれか。",
+      "romaji": "Direkutori torabāsaru kōgeki ni gaitō suru mono wa dore ka.",
+      "en": "Which is a directory traversal attack?",
+      "options": [
+        {
+          "label": "ア",
+          "jp": "攻撃者が、Webアプリケーションの入力データとしてデータベースへの命令文を構成するデータを入力し、管理者の意図していないSQL文を実行させる。",
+          "romaji": "Kōgekisha ga, Web apurikēshon no nyūryoku dēta to shite dētabēsu e no meireibun o kōsei suru dēta o nyūryoku shi, kanrisha no ito shite inai SQL bun o jikkō saseru.",
+          "en": "Inject data that causes unintended SQL execution."
+        },
+        {
+          "label": "イ",
+          "jp": "攻撃者が、パス名を使ってファイルを指定し、管理者の意図していないファイルを不正に閲覧する。",
+          "romaji": "Kōgekisha ga, pasu-mei o tsukatte fairu o shitei shi, kanrisha no ito shite inai fairu o fusei ni etsuran suru.",
+          "en": "Manipulate a path name to view an unintended file."
+        },
+        {
+          "label": "ウ",
+          "jp": "攻撃者が、利用者をWebサイトに誘導した上で、WebアプリケーションによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる。",
+          "romaji": "Kōgekisha ga, riyōsha o Web saito ni yūdō shita ue de, Web apurikēshon ni yoru HTML shutsuryoku no esukēpu shori no kekkan o akuyō shi, riyōsha no Web burauza de akui no aru sukuriputo o jikkō saseru.",
+          "en": "Exploit output escaping to run script in user's browser."
+        },
+        {
+          "label": "エ",
+          "jp": "セッションIDによってセッションが管理されるとき、攻撃者がログイン中の利用者のセッションIDを不正に取得し、その利用者になりすましてサーバにアクセスする。",
+          "romaji": "Sesshon ID ni yotte sesshon ga kanri sareru toki, kōgekisha ga roguin-chū no riyōsha no sesshon ID o fusei ni shutoku shi, sono riyōsha ni narisumashite sāba ni akusesu suru.",
+          "en": "Steal a session ID and impersonate logged-in user."
+        }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nAttacker climbs folder paths to reach files outside allowed folder.\n\nTechnical breakdown:\nPath manipulation such as parent-directory components bypasses intended file boundaries.\n\nJapanese keywords to remember:\nパス名 = pasu-mei = path name\n不正に閲覧 = fusei ni etsuran = unauthorized viewing\n\nWhy the best solution works:\nイ directly describes traversal to unintended files.\n\nWrong answer analysis:\nア:\nThis is SQL injection.\nウ:\nThis is cross-site scripting.\nエ:\nThis is session hijacking.\n\nMemory trick:\nTraversal travels directories via path.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch11/set01/q14.png"]
+    }
+  ]
+}
