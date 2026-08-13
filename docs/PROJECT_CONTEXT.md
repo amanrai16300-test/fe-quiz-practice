@@ -2301,3 +2301,168 @@ Next content milestone:
   counts and mappings.
 - Do not assume or invent Chapter 7 question counts, Practice Set counts,
   numbering, answer keys, source mappings, option modes, or topic hierarchy.
+
+## Phase 3I Book 1 Chapters 7–11 Batch Deployment and Live Verification Checkpoint
+
+Status:
+
+- **Book 1 Chapters 7–11: COMPLETE / PASSED / DEPLOYED / IMPORTED /
+  LIVE-VERIFIED / CLOSED**.
+- The reusable `docs/agents/BOOK_CHAPTER_FACTORY.md` workflow governed source
+  intake, answer-key locking, authoring, catalog integration, QA, deployment,
+  import, and live verification.
+- Authoring was safely split operationally into Chapter 7, Chapter 8, Chapter
+  9, Chapter 10, Chapter 11 Part A, and Chapter 11 Part B because 111 questions
+  exceeded one Codex authoring context. This did not merge Practice Sets or
+  cause partial chapter deployment. Every Practice Set remains an independent
+  generic `exam_set_id` unit.
+
+Batch structure and totals:
+
+- Chapter 7 (`book1-ch07`): 1 Practice Set;
+  `book1-ch07-set01` = 7 questions; printed 7-1 through 7-7.
+- Chapter 8 (`book1-ch08`): 1 Practice Set;
+  `book1-ch08-set01` = 11 questions; printed 8-1 through 8-11.
+- Chapter 9 (`book1-ch09`): 3 Practice Sets with 7 / 8 / 7 questions;
+  22 total; printed 9-1 through 9-22.
+- Chapter 10 (`book1-ch10`): 4 Practice Sets with 6 / 6 / 6 / 10 questions;
+  28 total; printed 10-1 through 10-28.
+- Chapter 11 (`book1-ch11`): 5 Practice Sets with 14 / 6 / 5 / 5 / 13
+  questions; 43 total; printed 11-1 through 11-43.
+- Whole batch: 14 independent generic Practice Sets, 111 questions, and 111
+  source PNGs.
+- Existing Book 1 Chapters 1–6 contain 99 questions. The final Book 1 total is
+  210 questions across Chapters 1–11, derived from descendant Practice Set
+  counts rather than a separately stored total.
+
+Final local authoring and whole-batch QA:
+
+- New seeds passed 14/14; questions passed 111/111.
+- Option modes: labels-only 111; structured-text 0.
+- Japanese, Romaji, English, explanation quality, authoritative answers, and
+  answer/explanation consistency each passed 111/111.
+- Option mappings passed 444/444. Every wrong option is analyzed separately.
+- Explanation order remains: ELI5; Technical breakdown; Japanese keywords to
+  remember; Why the best solution works; Wrong answer analysis; Memory trick;
+  Correct answer.
+- Source-image integrity passed 111/111; all 111 SHA-256 hashes were unique.
+- Placeholder/contamination audit passed.
+- All generic seeds in the repository validated 34/34.
+- `node --check app.js`, `git diff --check`, and static/regression checks passed.
+- Local browser automation was deferred to production live QA.
+
+Corrected Chapter 11 source/key conflicts:
+
+- For 11-7, the initially supplied key `ウ` conflicted with the manually
+  rechecked source. The question asks which item is a backdoor; option `ア`
+  bypasses the normal authentication/password path. The earlier `ウ` was
+  superseded. Final seed, API, and live behavior use `11-7 = ア`.
+- For 11-29, the initially supplied key `ウ` conflicted with the manually
+  rechecked source. The question asks which attack threatens information
+  integrity; option `ア`, Web-page alteration/tampering, threatens integrity,
+  while DoS threatens availability. The earlier `ウ` was superseded. Final
+  seed, API, and live behavior use `11-29 = ア`.
+- Both corrections were re-audited during final whole-batch QA and verified
+  through the production API and live application.
+
+Chapter 11 filename anomaly:
+
+- `public/questions/book1/ch11/set05/q013.png` maps authoritatively to 11-43.
+- This is a filename-pattern anomaly only and was intentionally not renamed.
+- There is no `q13.png`; the seed uses the exact `q013.png` path.
+- The production API and live browser successfully load this image.
+
+Git implementation history:
+
+- Batch branch: `feature/book1-ch07-ch11-batch`.
+- Reusable factory commit: `b368a68` — `docs: add reusable book chapter factory`.
+- Implementation commits:
+  - `980aaf6` — `feat: add Book 1 chapter 7 practice set`.
+  - `b92f5a4` — `feat: add Book 1 chapter 8 practice set`.
+  - `b0aad75` — `feat: add Book 1 chapter 9 practice sets`.
+  - `5334f2a` — `feat: add Book 1 chapter 10 practice sets`.
+  - `82cdb4b` — `feat: add Book 1 chapter 11 practice sets`.
+  - `9f332c2` — `feat: integrate Book 1 chapters 7 through 11`.
+- Final catalog commit SHA: `9f332c264e90988b853dc65810618969f98a53d3`.
+- The branch was pushed successfully to
+  `origin/feature/book1-ch07-ch11-batch`.
+
+Catalog state:
+
+- Book 1 children are ordered `book1-ch01`, `book1-ch02`, `book1-ch03`,
+  `book1-ch04`, `book1-ch05`, `book1-ch06`, `book1-ch07`, `book1-ch08`,
+  `book1-ch09`, `book1-ch10`, `book1-ch11`.
+- New catalog nodes are declarative only. No chapter-specific controller,
+  Book-specific renderer or API, fake Topic layer, schema redesign, or custom
+  progress model was introduced.
+
+Oracle branch handling and predeployment validation:
+
+- Oracle source repository: `/home/ubuntu/fe-quiz-src`.
+- Its fetch refspec initially included only `feature/2025-part-b-source`.
+  The new branch was explicitly fetched, and a second refspec was added for
+  `feature/book1-ch07-ch11-batch`.
+- Oracle switched cleanly to `feature/book1-ch07-ch11-batch`, tracking
+  `origin/feature/book1-ch07-ch11-batch`; production source HEAD was
+  `9f332c2`. The working tree was clean before and after deployment.
+- This was Oracle repository Git configuration for the deployment branch, not
+  an application architecture change.
+- Oracle predeployment checks passed: `node --check app.js`; all 14 new seeds
+  with `--validate-only`; set counts 7, 11, 7 / 8 / 7, 6 / 6 / 6 / 10, and
+  14 / 6 / 5 / 5 / 13; total 111.
+- Source PNG counts passed: Chapters 7–11 = 7 / 11 / 22 / 28 / 43, total 111.
+  SHA rows = 111 and unique hashes = 111. `q013.png` was present and unexpected
+  `q13.png` was absent.
+
+Production deployment and imports:
+
+- Frontend root: `/var/www/html`.
+- Deployment copied `app.js` and the Chapter 7, 8, 9, 10, and 11 source-image
+  trees. No backend file, schema, Nginx configuration, or systemd configuration
+  changed; no backend restart or schema migration was required.
+- Source and deployed `app.js` SHA-256:
+  `89e6fd9f29007b21171f54181a14cac70118da7c1148f79f8743be522d4ea03d`.
+  Source/runtime comparison passed.
+- All 111 deployed PNGs matched repository sources byte-for-byte. Deployment
+  image counts were 7 / 11 / 22 / 28 / 43.
+- The existing generic importer was reused unchanged. Environment came from
+  `/etc/fe-quiz-api.env` without exposing credentials; runtime used
+  `NODE_PATH=/home/ubuntu/fe-quiz-import/node_modules`.
+- All 14 imports succeeded: Chapter 7 Set 1 = 7; Chapter 8 Set 1 = 11;
+  Chapter 9 Sets 1–3 = 7 / 8 / 7; Chapter 10 Sets 1–4 = 6 / 6 / 6 / 10;
+  Chapter 11 Sets 1–5 = 14 / 6 / 5 / 5 / 13. Imported total: 111.
+
+Production API and live browser verification:
+
+- Direct FastAPI health at `http://127.0.0.1:8010/api/fe/health` and Nginx
+  health at `http://127.0.0.1/api/fe/health` both returned
+  `{"ok":true,"database":true}`.
+- All 14 generic question endpoints returned expected counts.
+- Production API special checks passed: `11-7 = ア`, `11-29 = ア`, and 11-43
+  uses `q013.png`.
+- All 111 live source-image URLs returned HTTP 200.
+- Live URL: `http://100.95.39.107/`.
+- The user manually tested the deployed batch and reported “works great.” Live
+  QA passed for the new Book 1 catalog, shared quiz flow, source images,
+  labels-only controls, Language Help, Romaji/English aids, answer submission,
+  explanations, navigation, corrected Chapter 11 answers, and `q013.png`.
+- **BOOK 1 CHAPTERS 7–11 LIVE VERIFICATION: PASSED**.
+
+Architecture and guardrails retained:
+
+- Chapters 7–11 introduced no change to PostgreSQL schema, FastAPI route
+  family, progress GET/POST/DELETE, authentication/sync identity, backend
+  service, Nginx, systemd, importer architecture, shared quiz engine, shared
+  explanation renderer, shared Language Help, shared image viewer/lightbox, or
+  per-set resume/reset/progress isolation.
+- Generic `exam_set_id` remains question-set identity. Book/chapter totals remain
+  descendant-derived. Source images remain authoritative visible Japanese
+  content. Explicit Japanese labels remain answer identity.
+
+Batch outcome and next-content guardrail:
+
+- **Book 1 Chapters 7–11 batch is COMPLETE, DEPLOYED, LIVE-VERIFIED, and
+  CLOSED.**
+- New content: 111 questions. Book 1: 210 total questions across Chapters 1–11.
+- Do not invent the next chapter structure or Book 2 content. Future content
+  must use the factory source-intake and answer-key gates before authoring.
