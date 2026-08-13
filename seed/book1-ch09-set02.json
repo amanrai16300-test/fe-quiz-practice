@@ -1,0 +1,85 @@
+{
+  "exam_set": {"id":"book1-ch09-set02","title":"Practice Set 2","description":"Textbook Practice — Book 1, Chapter 9, Practice Set 2","question_count":8},
+  "questions": [
+    {
+      "number":1,"displayNumber":"9-8","optionMode":"labels-only","jp":"関係データベースの関係演算における射影の説明として、適切なものはどれか。","romaji":"Kankei dētabēsu no kankei enzan ni okeru shaei no setsumei to shite, tekisetsu na mono wa dore ka.","en":"Which correctly describes projection in relational database operations?",
+      "options":[
+        {"label":"ア","jp":"二つの表から条件に合う行を組み合わせて、新しい表を作る。","romaji":"Futatsu no hyō kara jōken ni au gyō o kumiawasete, atarashii hyō o tsukuru.","en":"Combine matching rows from two tables to create a new table."},
+        {"label":"イ","jp":"表から、条件に合う行だけを取り出す。","romaji":"Hyō kara, jōken ni au gyō dake o toridasu.","en":"Extract only rows that satisfy a condition."},
+        {"label":"ウ","jp":"表から、特定の列だけを取り出す。","romaji":"Hyō kara, tokutei no retsu dake o toridasu.","en":"Extract only specified columns from a table."},
+        {"label":"エ","jp":"二つの表から、共通する属性の値が一致する行を結合する。","romaji":"Futatsu no hyō kara, kyōtsū suru zokusei no atai ga icchi suru gyō o ketsugō suru.","en":"Join rows from two tables whose common attribute values match."}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n射影は、表を縦に切って欲しい列だけを見る操作です。\n\nTechnical breakdown:\n関係代数の射影（projection）は、関係から指定した属性、つまり列を取り出す演算です。重複するタプルは関係として扱う際に除かれます。\n\nJapanese keywords to remember:\n射影 = projection\n列 = column\n選択 = selection\n結合 = join\n\nWhy the best solution works:\nウは、特定の列だけを取り出すと述べており、射影の定義そのものです。\n\nWrong answer analysis:\nア:\n二つの表の行を組み合わせる説明であり、結合に関する操作です。\nイ:\n条件に合う行を取り出す操作は選択です。\nエ:\n共通属性が一致する行を結び付ける操作は結合です。\n\nMemory trick:\n射影はプロジェクターで必要な列だけ映す、と覚えます。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set02/q01.png"]
+    },
+    {
+      "number":2,"displayNumber":"9-9","optionMode":"labels-only","jp":"SQL文「SELECT A1, A2, A3 FROM R WHERE A4 = 'a'」と同じ結果を得る関係演算の組合せはどれか。","romaji":"SQL bun 'SELECT A1, A2, A3 FROM R WHERE A4 = a' to onaji kekka o eru kankei enzan no kumiawase wa dore ka.","en":"Which combination of relational operations produces the same result as SELECT A1, A2, A3 FROM R WHERE A4 = 'a'?",
+      "options":[
+        {"label":"ア","jp":"結合と射影","romaji":"Ketsugō to shaei","en":"Join and projection"},
+        {"label":"イ","jp":"差と選択","romaji":"Sa to sentaku","en":"Difference and selection"},
+        {"label":"ウ","jp":"選択と射影","romaji":"Sentaku to shaei","en":"Selection and projection"},
+        {"label":"エ","jp":"和と射影","romaji":"Wa to shaei","en":"Union and projection"}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\nWHEREで行を選び、SELECTの列一覧で列を選びます。\n\nTechnical breakdown:\nWHERE A4 = 'a' は条件を満たす行を抽出する選択です。SELECT A1, A2, A3 は指定した列を抽出する射影です。したがって必要な演算は選択と射影です。\n\nJapanese keywords to remember:\nWHERE = 行の選択\nSELECT列 = 射影\n関係演算 = relational operation\n\nWhy the best solution works:\nウだけがWHEREによる選択と、列指定による射影の両方を含みます。\n\nWrong answer analysis:\nア:\nこのSQLは複数表を扱わないので結合は不要です。\nイ:\n差演算は使われず、射影も欠けています。\nエ:\n和演算は使われず、行の選択も表していません。\n\nMemory trick:\nWHEREは横に行を絞り、SELECT列は縦に列を絞ります。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set02/q02.png"]
+    },
+    {
+      "number":3,"displayNumber":"9-10","optionMode":"labels-only","jp":"学生表と学部表に対して、示されたSQL文を実行した結果はどれか。","romaji":"Gakusei-hyō to gakubu-hyō ni taishite, shimesareta SQL bun o jikkō shita kekka wa dore ka.","en":"Which result is produced by the shown SQL query on the Student and Department tables?",
+      "options":[
+        {"label":"ア","jp":"応用花子","romaji":"Ōyō Hanako","en":"Ōyō Hanako"},
+        {"label":"イ","jp":"応用花子、午前桜子","romaji":"Ōyō Hanako, Gozen Sakurako","en":"Ōyō Hanako and Gozen Sakurako"},
+        {"label":"ウ","jp":"応用花子、情報太郎","romaji":"Ōyō Hanako, Jōhō Tarō","en":"Ōyō Hanako and Jōhō Tarō"},
+        {"label":"エ","jp":"応用花子、情報太郎、午前桜子","romaji":"Ōyō Hanako, Jōhō Tarō, Gozen Sakurako","en":"Ōyō Hanako, Jōhō Tarō, and Gozen Sakurako"}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n学生の所属学部を学部表で調べ、その学部の住所が新宿の学生だけを残します。\n\nTechnical breakdown:\n所属=学部名で両表を結合し、学部.住所='新宿'で絞ります。理学部は新宿なので応用花子、工学部も新宿なので情報太郎が該当します。経済学部は渋谷なので午前桜子は該当しません。\n\nJapanese keywords to remember:\n所属 = affiliation\n学部名 = department name\n住所 = address\n結合条件 = join condition\n\nWhy the best solution works:\nウは、新宿にある理学部と工学部に所属する二人を正しく示しています。\n\nWrong answer analysis:\nア:\n工学部の情報太郎が漏れています。\nイ:\n渋谷にある経済学部の午前桜子を含み、情報太郎が漏れています。\nエ:\n渋谷にある経済学部の午前桜子を誤って含みます。\n\nMemory trick:\n先に所属と学部名を線で結び、次に住所フィルタを掛けます。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set02/q03.png"]
+    },
+    {
+      "number":4,"displayNumber":"9-11","optionMode":"labels-only","jp":"表Xと表Yから自然結合で作った表に、どの関係演算を行えば表Zが得られるか。","romaji":"Hyō X to hyō Y kara shizen ketsugō de tsukutta hyō ni, dono kankei enzan o okonaeba hyō Z ga erareru ka.","en":"Which relational operations on the natural join of tables X and Y produce table Z?",
+      "options":[
+        {"label":"ア","jp":"射影と和","romaji":"Shaei to wa","en":"Projection and union"},
+        {"label":"イ","jp":"選択","romaji":"Sentaku","en":"Selection"},
+        {"label":"ウ","jp":"選択と射影","romaji":"Sentaku to shaei","en":"Selection and projection"},
+        {"label":"エ","jp":"選択と和","romaji":"Sentaku to wa","en":"Selection and union"}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n結合した大きな表から情報学部の行だけを選び、必要な三列だけを残します。\n\nTechnical breakdown:\n自然結合後、表Zの二行を得るには学部名が情報学部のタプルを選択します。さらに表Zの属性は学部名・学生番号・氏名だけなので、これらを射影します。\n\nJapanese keywords to remember:\n自然結合 = natural join\n選択 = rows\n射影 = columns\n学部名 = department name\n\nWhy the best solution works:\nウは、情報学部の行への絞込みと、必要列への絞込みの両方を実現します。\n\nWrong answer analysis:\nア:\n和演算は不要で、情報学部の行を選択できません。\nイ:\n行は絞れますが、不要な列を除く射影がありません。\nエ:\n行は選べても、和演算では必要列だけにできません。\n\nMemory trick:\n行を減らすなら選択、列を減らすなら射影です。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set02/q04.png"]
+    },
+    {
+      "number":5,"displayNumber":"9-12","optionMode":"labels-only","jp":"売値と仕入値の差が40,000以上の商品を収益商品ビューに表示する。ビューの行数が減少する更新はどれか。","romaji":"Urine to shiirene no sa ga yon-man ijō no shōhin o shūeki shōhin byū ni hyōji suru. Byū no gyōsū ga genshō suru kōshin wa dore ka.","en":"A view shows products whose selling price minus purchase price is at least 40,000. Which update reduces the number of rows in the view?",
+      "options":[
+        {"label":"ア","jp":"商品番号S001の売値を130,000に更新する。","romaji":"Shōhin bangō S001 no urine o jūsan-man ni kōshin suru.","en":"Update S001's selling price to 130,000."},
+        {"label":"イ","jp":"商品番号S003の仕入値を150,000に更新する。","romaji":"Shōhin bangō S003 no shiirene o jūgo-man ni kōshin suru.","en":"Update S003's purchase price to 150,000."},
+        {"label":"ウ","jp":"商品番号S005の売値を130,000に更新する。","romaji":"Shōhin bangō S005 no urine o jūsan-man ni kōshin suru.","en":"Update S005's selling price to 130,000."},
+        {"label":"エ","jp":"商品番号S005の仕入値を90,000に更新する。","romaji":"Shōhin bangō S005 no shiirene o kyū-man ni kōshin suru.","en":"Update S005's purchase price to 90,000."}
+      ],
+      "correct_answer":"ア","explanation":"ELI5:\n利益が4万円未満になった商品だけがビューから消えます。\n\nTechnical breakdown:\n更新前はS001の差額が50,000、S005が60,000でビューに含まれます。アではS001の差額が130,000−100,000=30,000となり条件未満なので一行減ります。\n\nJapanese keywords to remember:\nビュー = view\n売値 = selling price\n仕入値 = purchase price\n差額 = difference\n\nWhy the best solution works:\nアは現在表示中のS001を条件外にし、ビューの行数を2から1へ減らします。\n\nWrong answer analysis:\nイ:\nS003の差額が50,000となって新たに追加され、行数は増えます。\nウ:\nS005の差額は50,000で、引き続き条件を満たします。\nエ:\nS005の差額は50,000で、引き続き条件を満たします。\n\nMemory trick:\n各選択肢で売値−仕入値を計算し、4万円の境界をまたぐか確認します。\n\nCorrect answer: ア","imagePaths":["public/questions/book1/ch09/set02/q05.png"]
+    },
+    {
+      "number":6,"displayNumber":"9-13","optionMode":"labels-only","jp":"得点表から、全科目の平均点が80点以上である学生番号と平均点を求めるSQL文の空欄aに入る句はどれか。","romaji":"Tokuten-hyō kara, zen kamoku no heikinten ga hachijutten ijō de aru gakusei bangō to heikinten o motomeru SQL bun no kūran a ni hairu ku wa dore ka.","en":"Which clause fills blank a in the SQL query that returns students whose average across all subjects is at least 80?",
+      "options":[
+        {"label":"ア","jp":"GROUP BY 科目 HAVING AVG(点数) >= 80","romaji":"GROUP BY kamoku HAVING AVG(tensū) >= 80","en":"GROUP BY subject HAVING AVG(score) >= 80"},
+        {"label":"イ","jp":"GROUP BY 科目 WHERE 点数 >= 80","romaji":"GROUP BY kamoku WHERE tensū >= 80","en":"GROUP BY subject WHERE score >= 80"},
+        {"label":"ウ","jp":"GROUP BY 学生番号 HAVING AVG(点数) >= 80","romaji":"GROUP BY gakusei bangō HAVING AVG(tensū) >= 80","en":"GROUP BY student number HAVING AVG(score) >= 80"},
+        {"label":"エ","jp":"GROUP BY 学生番号 WHERE 点数 >= 80","romaji":"GROUP BY gakusei bangō WHERE tensū >= 80","en":"GROUP BY student number WHERE score >= 80"}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n学生ごとに点数をまとめ、その平均が80以上のグループだけを残します。\n\nTechnical breakdown:\n学生単位の平均を求めるのでGROUP BY 学生番号が必要です。集約関数AVGの結果を条件にするため、WHEREではなくHAVING AVG(点数) >= 80を使います。\n\nJapanese keywords to remember:\nGROUP BY = グループ化\nHAVING = 集約後の条件\nAVG = 平均\n学生番号 = student number\n\nWhy the best solution works:\nウは正しいグループ単位と、集約結果に対する正しい条件句を組み合わせています。\n\nWrong answer analysis:\nア:\n科目ごとの平均になり、学生ごとの結果を得られません。\nイ:\n科目でグループ化しており、WHEREの位置と用途も不適切です。\nエ:\n学生ごとのグループ化は正しいものの、WHEREは集約前の各行を絞る句でAVGの結果を判定できません。\n\nMemory trick:\n集約前はWHERE、集約後はHAVINGです。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set02/q06.png"]
+    },
+    {
+      "number":7,"displayNumber":"9-14","optionMode":"labels-only","jp":"利用頻度が高い一連のSQL文をサーバ側DBMSにあらかじめ格納し、クライアントとサーバ間の通信負荷を減らす仕組みはどれか。","romaji":"Riyō hindo ga takai ichiren no SQL bun o sāba-gawa DBMS ni arakajime kakunō shi, kuraianto to sāba-kan no tsūshin fuka o herasu shikumi wa dore ka.","en":"Which mechanism stores frequently used sequences of SQL statements in the server DBMS to reduce client-server communication load?",
+      "options":[
+        {"label":"ア","jp":"2相コミット","romaji":"Nisō komitto","en":"Two-phase commit"},
+        {"label":"イ","jp":"グループコミット","romaji":"Gurūpu komitto","en":"Group commit"},
+        {"label":"ウ","jp":"サーバプロセスのマルチスレッド化","romaji":"Sāba purosesu no maruchisureddo-ka","en":"Multithreading the server process"},
+        {"label":"エ","jp":"ストアドプロシージャ","romaji":"Sutōdo puroshīja","en":"Stored procedure"}
+      ],
+      "correct_answer":"エ","explanation":"ELI5:\nよく使う処理手順をサーバに保存し、名前を呼ぶだけでまとめて実行します。\n\nTechnical breakdown:\nストアドプロシージャは、複数のSQL文からなる手続きをDBMS側に定義・格納します。クライアントは手続きの呼出しだけを送れるため、SQL文を何度も往復させる通信量を削減できます。\n\nJapanese keywords to remember:\nストアドプロシージャ = stored procedure\n通信負荷 = communication load\n格納 = store\nDBMS = database management system\n\nWhy the best solution works:\nエはSQL手続きをサーバ側に保存して呼び出す仕組みで、設問の目的に一致します。\n\nWrong answer analysis:\nア:\n分散トランザクションの整合したコミットを実現する方式です。\nイ:\n複数トランザクションのログ書込みをまとめる方式です。\nウ:\nサーバ内の並行処理方式であり、一連のSQLを格納する仕組みではありません。\n\nMemory trick:\nStoredは保存済み、procedureは手続きです。\n\nCorrect answer: エ","imagePaths":["public/questions/book1/ch09/set02/q07.png"]
+    },
+    {
+      "number":8,"displayNumber":"9-15","optionMode":"labels-only","jp":"関係データベースの表の列にインデックスを設定する目的はどれか。","romaji":"Kankei dētabēsu no hyō no retsu ni indekkusu o settei suru mokuteki wa dore ka.","en":"What is the purpose of creating an index on a relational database table column?",
+      "options":[
+        {"label":"ア","jp":"外部キーの値を、参照先の主キーの値と常に一致させる。","romaji":"Gaibu kī no atai o, sanshōsaki no shukī no atai to tsuneni icchi saseru.","en":"Always make a foreign-key value equal its referenced primary-key value."},
+        {"label":"イ","jp":"表に格納されたデータへのアクセスを高速化する。","romaji":"Hyō ni kakunō sareta dēta e no akusesu o kōsokuka suru.","en":"Speed up access to data stored in the table."},
+        {"label":"ウ","jp":"表を複数の磁気ディスクに分割して格納し、記憶容量を節約する。","romaji":"Hyō o fukusū no jiki disuku ni bunkatsu shite kakunō shi, kioku yōryō o setsuyaku suru.","en":"Split the table across disks to save storage capacity."},
+        {"label":"エ","jp":"列に同じ値が重複して格納されることを防ぐ。","romaji":"Retsu ni onaji atai ga chōfuku shite kakunō sareru koto o fusegu.","en":"Prevent duplicate values from being stored in a column."}
+      ],
+      "correct_answer":"イ","explanation":"ELI5:\n本の索引と同じで、全部を順番に読まずに目的のデータを見つけやすくします。\n\nTechnical breakdown:\nインデックスは検索キーと格納位置の対応を持つ補助データ構造です。追加の記憶領域や更新コストと引換えに、検索・並べ替え・結合などのアクセスを高速化できます。\n\nJapanese keywords to remember:\nインデックス = index\nアクセス = access\n高速化 = speed up\n検索 = search\n\nWhy the best solution works:\nイはインデックスの主目的であるデータアクセスの高速化を正しく述べています。\n\nWrong answer analysis:\nア:\n外部キー制約による参照整合性の説明です。\nウ:\n分割配置は容量節約を目的とするインデックスの機能ではありません。インデックス自体は追加容量を使います。\nエ:\n重複防止は一意制約やUNIQUEインデックスなら可能ですが、一般のインデックスの必須目的ではありません。\n\nMemory trick:\n索引を引けば本もDBも探すのが速い、と覚えます。\n\nCorrect answer: イ","imagePaths":["public/questions/book1/ch09/set02/q08.png"]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "exam_set": {"id":"book1-ch09-set03","title":"Practice Set 3","description":"Textbook Practice — Book 1, Chapter 9, Practice Set 3","question_count":7},
+  "questions": [
+    {
+      "number":1,"displayNumber":"9-16","optionMode":"labels-only","jp":"トランザクションの原子性（atomicity）の説明として、適切なものはどれか。","romaji":"Toranzakushon no genshisei (atomicity) no setsumei to shite, tekisetsu na mono wa dore ka.","en":"Which correctly describes transaction atomicity?",
+      "options":[
+        {"label":"ア","jp":"同じ処理を繰り返しても、常に同じ結果になる。","romaji":"Onaji shori o kurikaeshite mo, tsuneni onaji kekka ni naru.","en":"Repeating the same process always gives the same result."},
+        {"label":"イ","jp":"コミットした結果は、ハードウェア障害が発生しても失われない。","romaji":"Komitto shita kekka wa, hādowea shōgai ga hassei shite mo ushinawarenai.","en":"Committed results are not lost even if hardware fails."},
+        {"label":"ウ","jp":"トランザクション内の処理は、全て実行されるか、全て取り消される。","romaji":"Toranzakushon-nai no shori wa, subete jikkō sareru ka, subete torikesareru.","en":"All operations in a transaction occur, or all are rolled back."},
+        {"label":"エ","jp":"あるトランザクションの結果は、他のトランザクションの影響を受けない。","romaji":"Aru toranzakushon no kekka wa, hoka no toranzakushon no eikyō o ukenai.","en":"One transaction's result is unaffected by other transactions."}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n銀行振込なら、引落しと入金を両方行うか、両方とも行わないかです。半分だけでは終わりません。\n\nTechnical breakdown:\n原子性はACID特性のAです。トランザクションを分割不能な一単位として扱い、途中で失敗した場合は実行済み更新もロールバックして開始前の状態に戻します。\n\nJapanese keywords to remember:\n原子性 = atomicity\n全て実行 = all executed\n全て取消し = all rolled back\nACID = transaction properties\n\nWhy the best solution works:\nウはall-or-nothingという原子性の定義を正確に表します。\n\nWrong answer analysis:\nア:\n同じ操作を繰り返したときの性質であるべき等性の説明です。\nイ:\nコミット結果を障害後も保持する永続性の説明です。\nエ:\n同時実行するトランザクションを互いに分離する独立性の説明です。\n\nMemory trick:\nAtomicは割れない一個。全部かゼロです。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set03/q01.png"]
+    },
+    {
+      "number":2,"displayNumber":"9-17","optionMode":"labels-only","jp":"データベースの更新前情報と更新後情報を更新記録として格納するファイルはどれか。","romaji":"Dētabēsu no kōshin-mae jōhō to kōshin-go jōhō o kōshin kiroku to shite kakunō suru fairu wa dore ka.","en":"Which file stores database before-images and after-images as update records?",
+      "options":[
+        {"label":"ア","jp":"ダンプファイル","romaji":"Danpu fairu","en":"Dump file"},
+        {"label":"イ","jp":"チェックポイントファイル","romaji":"Chekkupointo fairu","en":"Checkpoint file"},
+        {"label":"ウ","jp":"バックアップファイル","romaji":"Bakkuappu fairu","en":"Backup file"},
+        {"label":"エ","jp":"ログファイル","romaji":"Rogu fairu","en":"Log file"}
+      ],
+      "correct_answer":"エ","explanation":"ELI5:\n変更の前と後を日記のように記録しておくファイルがログです。\n\nTechnical breakdown:\nログファイル（ジャーナルファイル）は更新操作ごとに更新前情報（before image）や更新後情報（after image）を記録します。障害回復時のロールバックやロールフォワードに利用されます。\n\nJapanese keywords to remember:\nログファイル = log file\n更新前情報 = before image\n更新後情報 = after image\n障害回復 = recovery\n\nWhy the best solution works:\nエはデータ更新履歴を継続的に記録し、回復処理に使うファイルです。\n\nWrong answer analysis:\nア:\nある時点のデータ内容を一括出力したもので、更新ごとの前後情報ではありません。\nイ:\n回復開始点を示す情報であり、各更新の前後像そのものを蓄積するファイルではありません。\nウ:\n復元用にデータを複製したもので、更新記録とは役割が異なります。\n\nMemory trick:\nログは変更の日記、と覚えます。\n\nCorrect answer: エ","imagePaths":["public/questions/book1/ch09/set03/q02.png"]
+    },
+    {
+      "number":3,"displayNumber":"9-18","optionMode":"labels-only","jp":"トランザクション処理中にシステムが異常終了したとき、ロールバックに用いる情報はどれか。","romaji":"Toranzakushon shori-chū ni shisutemu ga ijō shūryō shita toki, rōrubakku ni mochiiru jōhō wa dore ka.","en":"Which information is used to roll back after a system failure during transaction processing?",
+      "options":[
+        {"label":"ア","jp":"最新のスナップショット","romaji":"Saishin no sunappushotto","en":"Latest snapshot"},
+        {"label":"イ","jp":"最新のバックアップ","romaji":"Saishin no bakkuappu","en":"Latest backup"},
+        {"label":"ウ","jp":"ログの更新後情報","romaji":"Rogu no kōshin-go jōhō","en":"After-images in the log"},
+        {"label":"エ","jp":"ログの更新前情報","romaji":"Rogu no kōshin-mae jōhō","en":"Before-images in the log"}
+      ],
+      "correct_answer":"エ","explanation":"ELI5:\n変更を取り消すには、変更する前の値を書き戻します。\n\nTechnical breakdown:\n未コミットのトランザクションが行った更新を取り消すロールバックでは、ログに保存された更新前情報を使ってデータを元の値へ戻します。更新後情報は更新を再適用するロールフォワードで使います。\n\nJapanese keywords to remember:\nロールバック = rollback\n更新前情報 = before image\n更新後情報 = after image\n未コミット = uncommitted\n\nWhy the best solution works:\nエの更新前情報を復元すれば、未完了トランザクションの変更を正しく取り消せます。\n\nWrong answer analysis:\nア:\nスナップショットだけでは個々の未コミット更新を逆操作する情報になりません。\nイ:\nバックアップからの全面復元は媒体障害などに使いますが、通常のロールバック手段ではありません。\nウ:\n更新後情報は確定済み更新を再実行するロールフォワードに使います。\n\nMemory trick:\nBackするならbefore imageです。\n\nCorrect answer: エ","imagePaths":["public/questions/book1/ch09/set03/q03.png"]
+    },
+    {
+      "number":4,"displayNumber":"9-19","optionMode":"labels-only","jp":"データベースの障害回復に関する記述として、適切なものはどれか。","romaji":"Dētabēsu no shōgai kaifuku ni kansuru kijutsu to shite, tekisetsu na mono wa dore ka.","en":"Which statement about database failure recovery is correct?",
+      "options":[
+        {"label":"ア","jp":"システム障害では、処理途中のスナップショットから処理を再開する。","romaji":"Shisutemu shōgai de wa, shori tochū no sunappushotto kara shori o saikai suru.","en":"For a system failure, resume processing from a mid-operation snapshot."},
+        {"label":"イ","jp":"媒体障害では、バックアップを復元した後、ジャーナルの更新後情報を用いてロールフォワードする。","romaji":"Baitai shōgai de wa, bakkuappu o fukugen shita ato, jānaru no kōshin-go jōhō o mochiite rōrufowādo suru.","en":"For media failure, restore a backup and then roll forward using journal after-images."},
+        {"label":"ウ","jp":"デッドロックでは、排他制御を解除するだけで全トランザクションを継続する。","romaji":"Deddorokku de wa, haita seigyo o kaijo suru dake de zen toranzakushon o keizoku suru.","en":"For deadlock, simply release exclusion and continue all transactions."},
+        {"label":"エ","jp":"トランザクションの異常終了では、更新後情報を用いてロールバックする。","romaji":"Toranzakushon no ijō shūryō de wa, kōshin-go jōhō o mochiite rōrubakku suru.","en":"For abnormal transaction termination, roll back using after-images."}
+      ],
+      "correct_answer":"イ","explanation":"ELI5:\nディスクが壊れたら、まず保存コピーに戻し、その後の日記を順に再生して最新状態へ近づけます。\n\nTechnical breakdown:\n媒体障害ではデータ本体が失われるため、バックアップから復元します。そのバックアップ取得後にコミットされた更新を、ジャーナルの更新後情報で再適用するロールフォワードを行います。\n\nJapanese keywords to remember:\n媒体障害 = media failure\nバックアップ = backup\n更新後情報 = after image\nロールフォワード = roll forward\n\nWhy the best solution works:\nイは媒体障害に対する標準的なバックアップ復元とロールフォワードの順序を正しく示します。\n\nWrong answer analysis:\nア:\nシステム障害ではログを基に未完了処理の取消しや完了済み処理の再実行を行い、単純に途中のスナップショットから再開しません。\nウ:\nデッドロックでは通常、いずれかのトランザクションを犠牲にしてロールバックし、循環待ちを解消します。\nエ:\nロールバックに使うのは更新後情報ではなく更新前情報です。\n\nMemory trick:\n媒体が壊れたらbackupからforwardです。\n\nCorrect answer: イ","imagePaths":["public/questions/book1/ch09/set03/q04.png"]
+    },
+    {
+      "number":5,"displayNumber":"9-20","optionMode":"labels-only","jp":"複数のトランザクションが同じデータを同時に更新して論理的な矛盾が生じることを防ぐための制御はどれか。","romaji":"Fukusū no toranzakushon ga onaji dēta o dōji ni kōshin shite ronriteki na mujun ga shōjiru koto o fusegu tame no seigyo wa dore ka.","en":"Which control prevents logical inconsistencies when multiple transactions update the same data concurrently?",
+      "options":[
+        {"label":"ア","jp":"再編成","romaji":"Saihensei","en":"Reorganization"},
+        {"label":"イ","jp":"正規化","romaji":"Seikika","en":"Normalization"},
+        {"label":"ウ","jp":"整合性制約","romaji":"Seigōsei seiyaku","en":"Integrity constraint"},
+        {"label":"エ","jp":"排他制御","romaji":"Haita seigyo","en":"Concurrency/exclusion control"}
+      ],
+      "correct_answer":"エ","explanation":"ELI5:\n一つのデータを誰かが書き換えている間は、ほかの人が勝手に同時変更しないよう鍵を掛けます。\n\nTechnical breakdown:\n排他制御はロックなどを用いて競合するアクセスの実行順序を制御し、更新消失や不整合な読出しを防ぎます。トランザクションの直列可能性と整合性を保つための同時実行制御です。\n\nJapanese keywords to remember:\n排他制御 = concurrency control\nロック = lock\n同時更新 = concurrent update\n論理的矛盾 = logical inconsistency\n\nWhy the best solution works:\nエは同じデータへの競合更新を直接調整し、不整合を防ぐ制御です。\n\nWrong answer analysis:\nア:\n物理的な格納状態を整理する処理で、同時更新を制御しません。\nイ:\n表設計でデータ重複や更新時異常を減らしますが、実行時の競合を防ぎません。\nウ:\n値や参照関係のルールを検査しますが、同時実行順序そのものを制御する答えではありません。\n\nMemory trick:\n同時に触らせない排他的な鍵、と覚えます。\n\nCorrect answer: エ","imagePaths":["public/questions/book1/ch09/set03/q05.png"]
+    },
+    {
+      "number":6,"displayNumber":"9-21","optionMode":"labels-only","jp":"共有ロックと専有ロックの両立性に関する記述として、適切なものはどれか。","romaji":"Kyōyū rokku to sen'yū rokku no ryōritsusei ni kansuru kijutsu to shite, tekisetsu na mono wa dore ka.","en":"Which statement about shared-lock and exclusive-lock compatibility is correct?",
+      "options":[
+        {"label":"ア","jp":"T1が共有ロック中でも、T2は共有ロックと専有ロックのどちらも設定できる。","romaji":"T1 ga kyōyū rokku-chū demo, T2 wa kyōyū rokku to sen'yū rokku no dochira mo settei dekiru.","en":"While T1 holds a shared lock, T2 can obtain either a shared or exclusive lock."},
+        {"label":"イ","jp":"T1が共有ロック中なら、T2は共有ロックを設定できるが、専有ロックは設定できない。","romaji":"T1 ga kyōyū rokku-chū nara, T2 wa kyōyū rokku o settei dekiru ga, sen'yū rokku wa settei dekinai.","en":"While T1 holds a shared lock, T2 can obtain a shared lock but not an exclusive lock."},
+        {"label":"ウ","jp":"T1が専有ロック中でも、T2は共有ロックと専有ロックのどちらも設定できる。","romaji":"T1 ga sen'yū rokku-chū demo, T2 wa kyōyū rokku to sen'yū rokku no dochira mo settei dekiru.","en":"While T1 holds an exclusive lock, T2 can obtain either lock."},
+        {"label":"エ","jp":"T1が専有ロック中なら、T2は専有ロックを設定できるが、共有ロックは設定できない。","romaji":"T1 ga sen'yū rokku-chū nara, T2 wa sen'yū rokku o settei dekiru ga, kyōyū rokku wa settei dekinai.","en":"While T1 holds an exclusive lock, T2 can obtain an exclusive lock but not a shared lock."}
+      ],
+      "correct_answer":"イ","explanation":"ELI5:\n読む人同士は一緒に入れますが、誰かが読んでいる間に書き換える人は入れません。\n\nTechnical breakdown:\n共有ロック（S）は共有ロック同士で両立しますが、専有ロック（X）とは両立しません。専有ロックは共有・専有のどちらとも両立しません。したがってT1がSを保持中、T2はSを取得できますがXは待機します。\n\nJapanese keywords to remember:\n共有ロック = shared lock\n専有ロック = exclusive lock\n両立性 = compatibility\n読取り = read\n\nWhy the best solution works:\nイはS-Sが両立し、S-Xが両立しないというロック互換性を正確に示します。\n\nWrong answer analysis:\nア:\n共有ロック中に別トランザクションの専有ロックは取得できません。\nウ:\n専有ロック中は別トランザクションの共有・専有ロックとも取得できません。\nエ:\n専有ロック同士も両立せず、専有ロック中は共有ロックも取得できません。\n\nMemory trick:\nRead + readは可。Writeが一つでもあれば他は不可です。\n\nCorrect answer: イ","imagePaths":["public/questions/book1/ch09/set03/q06.png"]
+    },
+    {
+      "number":7,"displayNumber":"9-22","optionMode":"labels-only","jp":"二つのトランザクションが同じ表の複数行をそれぞれ更新する。ロック待ちが発生しやすいロック粒度aと、ロック管理用メモリが多く必要な粒度bの組合せはどれか。","romaji":"Futatsu no toranzakushon ga onaji hyō no fukusū gyō o sorezore kōshin suru. Rokku-machi ga hassei shiyasui rokku ryūdo a to, rokku kanri-yō memori ga ōku hitsuyō na ryūdo b no kumiawase wa dore ka.","en":"Two transactions update multiple rows of the same table. Which combination gives granularity a that causes more lock waiting and granularity b that needs more lock-management memory?",
+      "options":[
+        {"label":"ア","jp":"a：行、b：行","romaji":"a: gyō, b: gyō","en":"a: row, b: row"},
+        {"label":"イ","jp":"a：行、b：表","romaji":"a: gyō, b: hyō","en":"a: row, b: table"},
+        {"label":"ウ","jp":"a：表、b：行","romaji":"a: hyō, b: gyō","en":"a: table, b: row"},
+        {"label":"エ","jp":"a：表、b：表","romaji":"a: hyō, b: hyō","en":"a: table, b: table"}
+      ],
+      "correct_answer":"ウ","explanation":"ELI5:\n表全体に大きな鍵を掛けると他の人が待ちやすく、行ごとに小さな鍵をたくさん掛けると鍵の記録が増えます。\n\nTechnical breakdown:\n表単位ロックは対象範囲が広く、異なる行を更新するトランザクション同士も競合しやすいため待ちが増えます。行単位ロックは並行性が高い一方、多数のロック情報を管理するためメモリ消費が増えます。\n\nJapanese keywords to remember:\nロック粒度 = lock granularity\n表単位 = table level\n行単位 = row level\nロック待ち = lock wait\n\nWhy the best solution works:\nウは、待ちが発生しやすいaを表、管理メモリが多いbを行として正しく組み合わせます。\n\nWrong answer analysis:\nア:\n行ロックは管理メモリは増えますが、表ロックより競合範囲が狭く待ちは起きにくいです。\nイ:\n待ちやすさとメモリ量の特徴がどちらも逆です。\nエ:\n表ロックは待ちやすいものの、管理するロック数は少なくメモリ量は比較的小さいです。\n\nMemory trick:\n大きい鍵は待ち大、小さい鍵は数が大です。\n\nCorrect answer: ウ","imagePaths":["public/questions/book1/ch09/set03/q07.png"]
+    }
+  ]
+}
