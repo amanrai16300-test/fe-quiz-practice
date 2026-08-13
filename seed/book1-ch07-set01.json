@@ -1,0 +1,136 @@
+{
+  "exam_set": {
+    "id": "book1-ch07-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 7, Practice Set 1",
+    "question_count": 7
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "7-1",
+      "optionMode": "labels-only",
+      "jp": "フラッシュメモリに関する記述として、適切なものはどれか。",
+      "romaji": "Furasshu memori ni kansuru kijutsu to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which statement about flash memory is correct?",
+      "options": [
+        {"label": "ア", "jp": "高速に書換えができ、CPUのキャッシュメモリに用いられる。", "romaji": "Kōsoku ni kakikae ga deki, CPU no kyasshu memori ni mochiirareru.", "en": "It can be rewritten at high speed and is used as CPU cache memory."},
+        {"label": "イ", "jp": "紫外線で全データを一括消去できる。", "romaji": "Shigaisen de zen dēta o ikkatsu shōkyo dekiru.", "en": "All data can be erased at once with ultraviolet light."},
+        {"label": "ウ", "jp": "周期的にデータの再書込みが必要である。", "romaji": "Shūkiteki ni dēta no saikakikomi ga hitsuyō de aru.", "en": "Its data must be rewritten periodically."},
+        {"label": "エ", "jp": "ブロック単位で電気的にデータの消去ができる。", "romaji": "Burokku tan'i de denkiteki ni dēta no shōkyo ga dekiru.", "en": "Data can be erased electrically in blocks."}
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nFlash memory keeps data without power and can be erased using electricity. Its erase operation normally works on a block rather than one arbitrary byte at a time.\n\nTechnical breakdown:\n1. Flash memory is non-volatile semiconductor memory.\n2. Programming and erasing use electrical operations.\n3. Erasure is organized in blocks, which is why storage devices manage erase blocks and pages.\n4. Therefore the block-based electrical erase description is correct.\n\nJapanese keywords to remember:\nフラッシュメモリ = furasshu memori = flash memory\nブロック単位 = burokku tan'i = block unit\n電気的 = denkiteki = electrically\n消去 = shōkyo = erasure\n\nWhy the best solution works:\nエ states the defining erase behavior of flash memory: stored charge is removed electrically for an erase block.\n\nWrong answer analysis:\nア:\nCPU cache requires much faster SRAM; flash write latency and endurance make it unsuitable as cache memory.\n\nイ:\nUltraviolet bulk erasure describes UV-EPROM, not flash memory.\n\nウ:\nPeriodic refresh or rewriting is required by DRAM because capacitor charge leaks. Flash retains data without refresh.\n\nMemory trick:\nFlash: electrical erase, whole blocks.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q01.png"],
+      "imagePath": null
+    },
+    {
+      "number": 2,
+      "displayNumber": "7-2",
+      "optionMode": "labels-only",
+      "jp": "コンデンサに蓄えた電荷の有無で情報を記憶するメモリはどれか。",
+      "romaji": "Kondensa ni kuwaeta denka no umu de jōhō o kioku suru memori wa dore ka.",
+      "en": "Which memory stores information according to whether charge is present in a capacitor?",
+      "options": [
+        {"label": "ア", "jp": "EEPROM", "romaji": "EEPROM", "en": "EEPROM"},
+        {"label": "イ", "jp": "SDRAM", "romaji": "SDRAM", "en": "SDRAM"},
+        {"label": "ウ", "jp": "SRAM", "romaji": "SRAM", "en": "SRAM"},
+        {"label": "エ", "jp": "フラッシュメモリ", "romaji": "furasshu memori", "en": "flash memory"}
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nA DRAM cell is like a tiny cup of electric charge. Charge means one bit value and no charge means the other. SDRAM is DRAM synchronized to a clock.\n\nTechnical breakdown:\n1. Dynamic RAM stores each bit mainly with one capacitor and an access transistor.\n2. Capacitor charge leaks, so refresh is necessary.\n3. SDRAM is a synchronous form of DRAM and uses this capacitor-based storage principle.\n4. Thus SDRAM is the matching choice.\n\nJapanese keywords to remember:\nコンデンサ = kondensa = capacitor\n電荷 = denka = electric charge\n記憶する = kioku suru = store\nSDRAM = SDRAM = synchronous dynamic RAM\n\nWhy the best solution works:\nイ is DRAM technology, whose bit cell represents information through stored capacitor charge.\n\nWrong answer analysis:\nア:\nEEPROM stores charge in floating-gate transistors for non-volatile retention, not in a refreshed DRAM capacitor cell.\n\nウ:\nSRAM stores a bit in a bistable flip-flop-like circuit rather than a capacitor charge.\n\nエ:\nFlash memory uses floating-gate or charge-trap cells and retains data without DRAM refresh.\n\nMemory trick:\nD in DRAM: charge drains, so refresh it.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q02.png"],
+      "imagePath": null
+    },
+    {
+      "number": 3,
+      "displayNumber": "7-3",
+      "optionMode": "labels-only",
+      "jp": "DRAMの特徴はどれか。",
+      "romaji": "DRAM no tokuchō wa dore ka.",
+      "en": "Which is a characteristic of DRAM?",
+      "options": [
+        {"label": "ア", "jp": "書込み及び消去を一括又はブロック単位で行う。", "romaji": "Kakikomi oyobi shōkyo o ikkatsu mata wa burokku tan'i de okonau.", "en": "Writing and erasing are performed in bulk or by block."},
+        {"label": "イ", "jp": "データを保持するためのリフレッシュ操作又はアクセス操作が不要である。", "romaji": "Dēta o hoji suru tame no rifuresshu sōsa mata wa akusesu sōsa ga fuyō de aru.", "en": "No refresh or access operation is required to retain data."},
+        {"label": "ウ", "jp": "電源が遮断された状態でも、記憶した情報を保持することができる。", "romaji": "Dengen ga shadan sareta jōtai demo, kioku shita jōhō o hoji suru koto ga dekiru.", "en": "Stored information can be retained even when power is cut off."},
+        {"label": "エ", "jp": "メモリセル構造が単純なので高集積化することができ、ビット単価を安くできる。", "romaji": "Memori seru kōzō ga tanjun na node kōshūsekika suru koto ga deki, bitto tanka o yasuku dekiru.", "en": "Its simple memory-cell structure enables high integration and a low cost per bit."}
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nA DRAM bit uses very few parts: mainly one transistor and one capacitor. Small cells let manufacturers pack many bits onto one chip, making each bit inexpensive.\n\nTechnical breakdown:\n1. A typical DRAM cell has a simpler structure than an SRAM flip-flop cell.\n2. Smaller cells provide higher density on the same silicon area.\n3. Higher density lowers cost per stored bit.\n4. DRAM is volatile and needs refresh, but those tradeoffs enable economical main memory.\n\nJapanese keywords to remember:\nメモリセル = memori seru = memory cell\n高集積化 = kōshūsekika = high integration\nビット単価 = bitto tanka = cost per bit\nリフレッシュ = rifuresshu = refresh\n\nWhy the best solution works:\nエ correctly connects DRAM's simple cell with high density and low cost per bit.\n\nWrong answer analysis:\nア:\nBulk or block erase describes flash memory and related EEPROM technology, not DRAM.\n\nイ:\nDRAM capacitor charge leaks, so periodic refresh is essential for retention.\n\nウ:\nDRAM is volatile and loses its stored information when power is removed.\n\nMemory trick:\nDRAM: dense and cheap, but drains and refreshes.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q03.png"],
+      "imagePath": null
+    },
+    {
+      "number": 4,
+      "displayNumber": "7-4",
+      "optionMode": "labels-only",
+      "jp": "メモリセルにフリップフロップ回路を利用したものはどれか。",
+      "romaji": "Memori seru ni furippu furoppu kairo o riyō shita mono wa dore ka.",
+      "en": "Which memory uses a flip-flop circuit in its memory cells?",
+      "options": [
+        {"label": "ア", "jp": "DRAM", "romaji": "DRAM", "en": "DRAM"},
+        {"label": "イ", "jp": "EEPROM", "romaji": "EEPROM", "en": "EEPROM"},
+        {"label": "ウ", "jp": "SDRAM", "romaji": "SDRAM", "en": "SDRAM"},
+        {"label": "エ", "jp": "SRAM", "romaji": "SRAM", "en": "SRAM"}
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nSRAM keeps each bit in a tiny stable circuit with two states, like a switch that stays left or right while power is supplied. That circuit is a flip-flop.\n\nTechnical breakdown:\n1. SRAM cells use a bistable latch or flip-flop built from multiple transistors.\n2. The state remains stable while power is present, so no refresh cycle is needed.\n3. The larger cell is fast but less dense and more expensive than DRAM.\n4. Therefore SRAM is the flip-flop-based memory.\n\nJapanese keywords to remember:\nフリップフロップ回路 = furippu furoppu kairo = flip-flop circuit\nメモリセル = memori seru = memory cell\nSRAM = SRAM = static random-access memory\nリフレッシュ不要 = rifuresshu fuyō = no refresh required\n\nWhy the best solution works:\nエ identifies SRAM, whose static bit cell is a bistable circuit.\n\nWrong answer analysis:\nア:\nDRAM uses capacitor charge and an access transistor rather than a flip-flop cell.\n\nイ:\nEEPROM is non-volatile floating-gate memory, not volatile flip-flop memory.\n\nウ:\nSDRAM is synchronized DRAM and still uses capacitor-based DRAM cells.\n\nMemory trick:\nS in SRAM: stable flip-flop state.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q04.png"],
+      "imagePath": null
+    },
+    {
+      "number": 5,
+      "displayNumber": "7-5",
+      "optionMode": "labels-only",
+      "jp": "二つの安定状態をもつ順序回路はどれか。",
+      "romaji": "Futatsu no antei jōtai o motsu junjo kairo wa dore ka.",
+      "en": "Which sequential circuit has two stable states?",
+      "options": [
+        {"label": "ア", "jp": "NANDゲート", "romaji": "NAND gēto", "en": "NAND gate"},
+        {"label": "イ", "jp": "加算器", "romaji": "kasan-ki", "en": "adder"},
+        {"label": "ウ", "jp": "コンデンサ", "romaji": "kondensa", "en": "capacitor"},
+        {"label": "エ", "jp": "フリップフロップ", "romaji": "furippu furoppu", "en": "flip-flop"}
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nA flip-flop can rest in either of two states and remember which state it is in. Those two stable states represent 0 and 1.\n\nTechnical breakdown:\n1. A sequential circuit has state, so its output can depend on prior input.\n2. A flip-flop is bistable: both logical states are stable until an input changes the state.\n3. This enables storage of one binary bit.\n4. The other choices do not independently provide the specified bistable sequential behavior.\n\nJapanese keywords to remember:\n安定状態 = antei jōtai = stable state\n順序回路 = junjo kairo = sequential circuit\nフリップフロップ = furippu furoppu = flip-flop\n二つ = futatsu = two\n\nWhy the best solution works:\nエ is the standard bistable sequential circuit and stores one bit as one of two stable states.\n\nWrong answer analysis:\nア:\nA single NAND gate is a combinational logic element. Cross-coupled NAND gates can form a latch, but one NAND gate is not itself the requested bistable circuit.\n\nイ:\nAn adder is normally a combinational arithmetic circuit and has no stored state by itself.\n\nウ:\nA capacitor stores charge but is an electrical component, not the named two-state sequential logic circuit.\n\nMemory trick:\nFlip-flop flips between two stable bit states.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q05.png"],
+      "imagePath": null
+    },
+    {
+      "number": 6,
+      "displayNumber": "7-6",
+      "optionMode": "labels-only",
+      "jp": "機械式接点の押しボタンスイッチを1回押したときに、押してから数ミリ秒の間、複数回のON、OFFが発生する現象はどれか。",
+      "romaji": "Kikaishiki setten no oshibotan suicchi o ikkai oshita toki ni, oshite kara sū-miribyō no aida, fukūsū-kai no ON, OFF ga hassei suru genshō wa dore ka.",
+      "en": "When a mechanical push-button switch is pressed once, what is the phenomenon in which ON and OFF occur repeatedly for several milliseconds after the press?",
+      "options": [
+        {"label": "ア", "jp": "サンプリング", "romaji": "sanpuringu", "en": "sampling"},
+        {"label": "イ", "jp": "シェアリング", "romaji": "shearingu", "en": "sharing"},
+        {"label": "ウ", "jp": "チャタリング", "romaji": "chataringu", "en": "contact bounce (chattering)"},
+        {"label": "エ", "jp": "バッファリング", "romaji": "baffaringu", "en": "buffering"}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nMechanical contacts bounce when they meet. One physical press can therefore look like several fast electrical presses until the contact settles.\n\nTechnical breakdown:\n1. A mechanical switch contact does not transition cleanly from open to closed.\n2. Elastic collision and vibration make the contacts connect and separate repeatedly for a few milliseconds.\n3. Digital circuitry can interpret those transitions as multiple ON/OFF events.\n4. Hardware or software debouncing suppresses this chattering.\n\nJapanese keywords to remember:\n機械式接点 = kikaishiki setten = mechanical contact\n押しボタンスイッチ = oshibotan suicchi = push-button switch\nチャタリング = chataringu = contact bounce\n数ミリ秒 = sū-miribyō = several milliseconds\n\nWhy the best solution works:\nウ names the repeated rapid switching caused by mechanical contact bounce.\n\nWrong answer analysis:\nア:\nSampling measures a signal at discrete times; it does not name mechanical contact bounce.\n\nイ:\nSharing means making a resource available to multiple users or processes and is unrelated to switch contacts.\n\nエ:\nBuffering temporarily stores data to absorb rate differences; it does not describe rapid ON/OFF transitions.\n\nMemory trick:\nChattering contacts chatter ON and OFF.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q06.png"],
+      "imagePath": null
+    },
+    {
+      "number": 7,
+      "displayNumber": "7-7",
+      "optionMode": "labels-only",
+      "jp": "7セグメントLED点灯回路で、出力ポートに16進数で6Dを出力したときの表示状態はどれか。ここで、P7を最上位ビット（MSB）、P0を最下位ビット（LSB）とし、ポート出力が1のとき、LEDは点灯する。",
+      "romaji": "Nana-segumento LED tentō kairo de, shutsuryoku pōto ni jūroku-shinsū de 6D o shutsuryoku shita toki no hyōji jōtai wa dore ka. Koko de, P7 o saijōi bitto (MSB), P0 o saikai bitto (LSB) to shi, pōto shutsuryoku ga ichi no toki, LED wa tentō suru.",
+      "en": "In the seven-segment LED circuit, which display state results when hexadecimal 6D is output to the output port? P7 is the most significant bit (MSB), P0 is the least significant bit (LSB), and an LED lights when its port output is 1.",
+      "options": [
+        {"label": "ア", "jp": "図の選択肢アに示す点灯パターンで、小数点も点灯している。", "romaji": "Zu no sentakushi A ni shimesu tentō patān de, shōsūten mo tentō shite iru.", "en": "The illumination pattern shown in option ア, with the decimal point also lit."},
+        {"label": "イ", "jp": "図の選択肢イに示す点灯パターンで、小数点は消灯している。", "romaji": "Zu no sentakushi I ni shimesu tentō patān de, shōsūten wa shōtō shite iru.", "en": "The illumination pattern shown in option イ, with the decimal point off."},
+        {"label": "ウ", "jp": "図の選択肢ウに示す点灯パターンで、小数点は消灯している。", "romaji": "Zu no sentakushi U ni shimesu tentō patān de, shōsūten wa shōtō shite iru.", "en": "The illumination pattern shown in option ウ, with the decimal point off."},
+        {"label": "エ", "jp": "図の選択肢エに示す点灯パターンで、小数点も点灯している。", "romaji": "Zu no sentakushi E ni shimesu tentō patān de, shōsūten mo tentō shite iru.", "en": "The illumination pattern shown in option エ, with the decimal point also lit."}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nConvert 6D into eight bits, then use each 1 bit to light its connected segment. The lit bars form the shape shown by option ウ, and the decimal point stays off.\n\nTechnical breakdown:\n1. Hexadecimal 6D equals binary 0110 1101.\n2. With P7 through P0, the 1 outputs are P6, P5, P3, P2, and P0.\n3. The wiring maps P0→a, P1→b, P2→c, P3→d, P4→e, P5→f, P6→g, and P7→Dt.\n4. Therefore a, c, d, f, and g light; b, e, and Dt remain off.\n5. Comparing that exact segment pattern and dot state with the four drawings gives ウ.\n\nJapanese keywords to remember:\n7セグメント = nana-segumento = seven-segment display\n出力ポート = shutsuryoku pōto = output port\n最上位ビット = saijōi bitto = most significant bit\n点灯 = tentō = light up\n\nWhy the best solution works:\nウ alone matches both the segment pattern a/c/d/f/g and the unlit decimal point dictated by 0110 1101.\n\nWrong answer analysis:\nア:\nIt shows the ordinary 5 orientation and also lights Dt, but P7 is 0, so the decimal point must be off.\n\nイ:\nIts decimal point is correctly off, but its drawn segment orientation does not match the circuit's labeled a/c/d/f/g pattern.\n\nエ:\nIts segment orientation matches the alternative shape, but it incorrectly lights Dt even though P7 is 0.\n\nMemory trick:\nHex to bits, bits to labels, labels to lit bars.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch07/set01/q07.png"],
+      "imagePath": null
+    }
+  ]
+}
