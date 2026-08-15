@@ -1,0 +1,140 @@
+{
+  "exam_set": {"id":"book1-ch12-set02","title":"Practice Set 2","description":"Textbook Practice — Book 1, Chapter 12, Practice Set 2","question_count":9},
+  "questions": [
+    {
+      "number":1,"displayNumber":"12-7","optionMode":"labels-only",
+      "jp":"オブジェクト指向におけるクラスとインスタンスとの関係のうち、適切なものはどれか。",
+      "romaji":"Obujekuto shikō ni okeru kurasu to insutansu to no kankei no uchi, tekisetsu na mono wa dore ka.",
+      "en":"Which statement correctly describes the relationship between a class and an instance in object-oriented design?",
+      "options":[
+        {"label":"ア","jp":"インスタンスはクラスの仕様を定義したものである。","romaji":"Insutansu wa kurasu no shiyō o teigi shita mono de aru.","en":"An instance defines the specification of a class."},
+        {"label":"イ","jp":"クラスの定義に基づいてインスタンスが生成される。","romaji":"Kurasu no teigi ni motozuite insutansu ga seisei sareru.","en":"Instances are created based on a class definition."},
+        {"label":"ウ","jp":"一つのインスタンスに対して、複数のクラスが対応する。","romaji":"Hitotsu no insutansu ni taishite, fukusū no kurasu ga taiō suru.","en":"Multiple classes correspond to one instance."},
+        {"label":"エ","jp":"一つのクラスに対して、インスタンスはただ一つ存在する。","romaji":"Hitotsu no kurasu ni taishite, insutansu wa tada hitotsu sonzai suru.","en":"Only one instance exists for one class."}
+      ],
+      "correct_answer":"イ",
+      "explanation":"ELI5:\nA class is a blueprint; an instance is one real object built from that blueprint.\n\nTechnical breakdown:\nA class defines attributes and operations shared by a category of objects. Instantiation creates concrete objects from that definition. Normally one class can generate many instances, and each instance has its own state.\n\nJapanese keywords to remember:\nクラス = kurasu = class\nインスタンス = insutansu = instance\n生成される = seisei sareru = be created\n\nWhy the best solution works:\nイ correctly states the direction: the class definition exists first, and instances are generated from it.\n\nWrong answer analysis:\nア:\nThe relationship is reversed; the class defines the specification used by instances.\nウ:\nAn ordinary instance is an occurrence of its class, not a single object simultaneously defined by several unrelated classes.\nエ:\nA class can generate zero, one, or many instances.\n\nMemory trick:\nClass is cookie cutter; instances are cookies.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch12/set02/q01.png"]
+    },
+    {
+      "number":2,"displayNumber":"12-8","optionMode":"labels-only",
+      "jp":"オブジェクト指向において、あるクラスの属性や機能がサブクラスで利用できることを何というか。",
+      "romaji":"Obujekuto shikō ni oite, aru kurasu no zokusei ya kinō ga sabukurasu de riyō dekiru koto o nan to iu ka.",
+      "en":"In object orientation, what is it called when a subclass can use a class's attributes and functions?",
+      "options":[
+        {"label":"ア","jp":"オーバーライド","romaji":"Ōbāraido","en":"Override"},
+        {"label":"イ","jp":"カプセル化","romaji":"Kapuseruka","en":"Encapsulation"},
+        {"label":"ウ","jp":"継承","romaji":"Keishō","en":"Inheritance"},
+        {"label":"エ","jp":"多相性","romaji":"Tasōsei","en":"Polymorphism"}
+      ],
+      "correct_answer":"ウ",
+      "explanation":"ELI5:\nA child class can receive features from its parent class instead of defining everything again.\n\nTechnical breakdown:\nInheritance lets a subclass reuse and extend attributes and operations defined by a superclass. It expresses an is-a relationship and supports reuse. Override, encapsulation, and polymorphism are related but different concepts.\n\nJapanese keywords to remember:\n継承 = keishō = inheritance\n属性 = zokusei = attribute\nサブクラス = sabukurasu = subclass\n\nWhy the best solution works:\nウ names the mechanism that makes superclass features available to a subclass.\n\nWrong answer analysis:\nア:\nOverride replaces an inherited operation with subclass-specific behavior.\nイ:\nEncapsulation bundles data and operations and hides internal details.\nエ:\nPolymorphism allows the same interface to produce class-dependent behavior.\n\nMemory trick:\nInheritance: child receives from parent.\n\nCorrect answer: ウ",
+      "imagePaths":["public/questions/book1/ch12/set02/q02.png"]
+    },
+    {
+      "number":3,"displayNumber":"12-9","optionMode":"labels-only",
+      "jp":"オブジェクト指向におけるカプセル化を説明したものはどれか。",
+      "romaji":"Obujekuto shikō ni okeru kapuseruka o setsumei shita mono wa dore ka.",
+      "en":"Which statement explains encapsulation in object orientation?",
+      "options":[
+        {"label":"ア","jp":"同じ性質をもつ複数のオブジェクトを抽象化して、整理すること","romaji":"Onaji seishitsu o motsu fukusū no obujekuto o chūshōka shite, seiri suru koto","en":"Abstract and organize multiple objects with the same properties."},
+        {"label":"イ","jp":"基底クラスの性質を派生クラスに受け継がせること","romaji":"Kitei kurasu no seishitsu o hasei kurasu ni uketsugasaseru koto","en":"Pass properties of a base class to a derived class."},
+        {"label":"ウ","jp":"クラス間に共通する性質を抽出し、基底クラスを作ること","romaji":"Kurasu-kan ni kyōtsū suru seishitsu o chūshutsu shi, kitei kurasu o tsukuru koto","en":"Extract common properties between classes and create a base class."},
+        {"label":"エ","jp":"データとそれを操作する手続を一つのオブジェクトにして、データと手続の詳細をオブジェクトの外部から隠蔽すること","romaji":"Dēta to sore o sōsa suru tetsuzuki o hitotsu no obujekuto ni shite, dēta to tetsuzuki no shōsai o obujekuto no gaibu kara inpei suru koto","en":"Combine data and procedures that operate on it in one object and hide their details from outside the object."}
+      ],
+      "correct_answer":"エ",
+      "explanation":"ELI5:\nAn object keeps its data and the rules for using that data inside a protective capsule.\n\nTechnical breakdown:\nEncapsulation combines state with operations and exposes a controlled interface while hiding implementation details. Outside code uses public operations instead of directly depending on internal representation, reducing coupling and protecting invariants.\n\nJapanese keywords to remember:\nカプセル化 = kapuseruka = encapsulation\n隠蔽する = inpei suru = conceal\n手続 = tetsuzuki = procedure\n\nWhy the best solution works:\nエ includes both essential parts: bundling data with its procedures and hiding their internal details from external users.\n\nWrong answer analysis:\nア:\nGrouping similar objects describes classification or abstraction.\nイ:\nPassing base-class properties to a derived class is inheritance.\nウ:\nExtracting common properties into a base class is generalization.\n\nMemory trick:\nCapsule = data plus methods, protected inside.\n\nCorrect answer: エ",
+      "imagePaths":["public/questions/book1/ch12/set02/q03.png"]
+    },
+    {
+      "number":4,"displayNumber":"12-10","optionMode":"labels-only",
+      "jp":"オブジェクト指向プログラミングの特徴のうち、異なるクラスのオブジェクトを同一のインタフェースで操作したときに、操作対象クラスに応じた異なる動作を可能にすることを何と呼ぶか。",
+      "romaji":"Obujekuto shikō puroguramingu no tokuchō no uchi, kotonaru kurasu no obujekuto o dōitsu no intafēsu de sōsa shita toki ni, sōsa taishō kurasu ni ōjita kotonaru dōsa o kanō ni suru koto o nan to yobu ka.",
+      "en":"In object-oriented programming, what allows objects of different classes to behave differently according to their class when operated through the same interface?",
+      "options":[
+        {"label":"ア","jp":"委譲","romaji":"Ijō","en":"Delegation"},
+        {"label":"イ","jp":"継承","romaji":"Keishō","en":"Inheritance"},
+        {"label":"ウ","jp":"コンポジション","romaji":"Konpojishon","en":"Composition"},
+        {"label":"エ","jp":"多相性","romaji":"Tasōsei","en":"Polymorphism"}
+      ],
+      "correct_answer":"エ",
+      "explanation":"ELI5:\nThe same command can make different kinds of objects do their own appropriate action.\n\nTechnical breakdown:\nPolymorphism presents a common interface while dispatching an operation to the implementation belonging to the object's actual class. Client code can treat several types uniformly without hard-coding class checks.\n\nJapanese keywords to remember:\n多相性 = tasōsei = polymorphism\n同一のインタフェース = dōitsu no intafēsu = same interface\n異なる動作 = kotonaru dōsa = different behavior\n\nWhy the best solution works:\nエ exactly describes one interface producing class-specific behavior at runtime.\n\nWrong answer analysis:\nア:\nDelegation asks another object to perform responsibility; it does not itself define same-interface class-specific dispatch.\nイ:\nInheritance reuses and extends superclass definitions but is not the requested behavior.\nウ:\nComposition constructs an object from contained objects.\n\nMemory trick:\nOne message, many forms = polymorphism.\n\nCorrect answer: エ",
+      "imagePaths":["public/questions/book1/ch12/set02/q04.png"]
+    },
+    {
+      "number":5,"displayNumber":"12-11","optionMode":"labels-only",
+      "jp":"UMLにおける図の長方形の中に記述するものはどれか。",
+      "romaji":"UML ni okeru zu no chōhōkei no naka ni kijutsu suru mono wa dore ka.",
+      "en":"What is written inside the rectangle shown in the UML diagram?",
+      "options":[
+        {"label":"ア","jp":"関連名","romaji":"Kanrenmei","en":"Association name"},
+        {"label":"イ","jp":"クラス名","romaji":"Kurasumei","en":"Class name"},
+        {"label":"ウ","jp":"集約名","romaji":"Shūyakumei","en":"Aggregation name"},
+        {"label":"エ","jp":"ユースケース名","romaji":"Yūsu kēsu mei","en":"Use-case name"}
+      ],
+      "correct_answer":"イ",
+      "explanation":"ELI5:\nIn a UML class diagram, each box represents a class, so its name goes in the box.\n\nTechnical breakdown:\nA class is drawn as a rectangle, commonly divided into compartments for class name, attributes, and operations. Association information belongs on connecting lines, while use cases are drawn as ellipses.\n\nJapanese keywords to remember:\nクラス図 = kurasu zu = class diagram\nクラス名 = kurasu mei = class name\n関連 = kanren = association\n\nWhy the best solution works:\nイ identifies the basic content of the rectangular class symbol shown in the diagram.\n\nWrong answer analysis:\nア:\nAn association name is written near the line connecting classes.\nウ:\nAggregation is a relationship shown with a diamond, not a name placed as the class identity.\nエ:\nA use-case name is written inside an ellipse in a use-case diagram.\n\nMemory trick:\nRectangle is class; ellipse is use case.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch12/set02/q05.png"]
+    },
+    {
+      "number":6,"displayNumber":"12-12","optionMode":"labels-only",
+      "jp":"UML2.0において、オブジェクト間の相互作用を時系列に表す図はどれか。",
+      "romaji":"UML 2.0 ni oite, obujekuto-kan no sōgo sayō o jikeiretsu ni arawasu zu wa dore ka.",
+      "en":"In UML 2.0, which diagram represents interactions between objects in chronological order?",
+      "options":[
+        {"label":"ア","jp":"アクティビティ図","romaji":"Akutibiti zu","en":"Activity diagram"},
+        {"label":"イ","jp":"コンポーネント図","romaji":"Konpōnento zu","en":"Component diagram"},
+        {"label":"ウ","jp":"シーケンス図","romaji":"Shīkensu zu","en":"Sequence diagram"},
+        {"label":"エ","jp":"状態遷移図","romaji":"Jōtai sen'i zu","en":"State-transition diagram"}
+      ],
+      "correct_answer":"ウ",
+      "explanation":"ELI5:\nA sequence diagram reads from top to bottom like a timeline of messages between objects.\n\nTechnical breakdown:\nSequence diagrams place participants horizontally and time vertically. Message arrows show the order in which objects interact, so they are designed specifically for time-ordered collaboration.\n\nJapanese keywords to remember:\n相互作用 = sōgo sayō = interaction\n時系列 = jikeiretsu = chronological order\nシーケンス図 = shīkensu zu = sequence diagram\n\nWhy the best solution works:\nウ visualizes which object sends each message and in what temporal order.\n\nWrong answer analysis:\nア:\nAn activity diagram models control or work flow.\nイ:\nA component diagram models software components and dependencies.\nエ:\nA state-transition diagram models changes in one object's state caused by events.\n\nMemory trick:\nSequence means message order over time.\n\nCorrect answer: ウ",
+      "imagePaths":["public/questions/book1/ch12/set02/q06.png"]
+    },
+    {
+      "number":7,"displayNumber":"12-13","optionMode":"labels-only",
+      "jp":"UMLにおける振る舞い図の説明のうち、アクティビティ図のものはどれか。",
+      "romaji":"UML ni okeru furumai zu no setsumei no uchi, akutibiti zu no mono wa dore ka.",
+      "en":"Which description of a UML behavioral diagram describes an activity diagram?",
+      "options":[
+        {"label":"ア","jp":"ある振る舞いから次の振る舞いへの制御の流れを表現する。","romaji":"Aru furumai kara tsugi no furumai e no seigyo no nagare o hyōgen suru.","en":"Represent the flow of control from one behavior to the next."},
+        {"label":"イ","jp":"オブジェクト間の相互作用を時系列で表現する。","romaji":"Obujekuto-kan no sōgo sayō o jikeiretsu de hyōgen suru.","en":"Represent interactions between objects chronologically."},
+        {"label":"ウ","jp":"システムが外部に提供する機能と、それを利用する者や外部システムとの関係を表現する。","romaji":"Shisutemu ga gaibu ni teikyō suru kinō to, sore o riyō suru mono ya gaibu shisutemu to no kankei o hyōgen suru.","en":"Represent system functions provided externally and their relationships with users or external systems."},
+        {"label":"エ","jp":"一つのオブジェクトの状態がイベントの発生や時間の経過とともにどのように変化するかを表現する。","romaji":"Hitotsu no obujekuto no jōtai ga ibento no hassei ya jikan no keika to tomo ni dono yō ni henka suru ka o hyōgen suru.","en":"Represent how one object's state changes with events or the passage of time."}
+      ],
+      "correct_answer":"ア",
+      "explanation":"ELI5:\nAn activity diagram is a flowchart of actions: do this, then that, perhaps branch or run steps in parallel.\n\nTechnical breakdown:\nActivity diagrams model control and object flows among actions. They support decisions, merges, forks, joins, and start/end nodes, making them suitable for workflows and business processes.\n\nJapanese keywords to remember:\nアクティビティ図 = akutibiti zu = activity diagram\n制御の流れ = seigyo no nagare = control flow\n振る舞い = furumai = behavior\n\nWhy the best solution works:\nア states the defining purpose of an activity diagram: showing control flow from one behavior to the next.\n\nWrong answer analysis:\nイ:\nChronological object interaction describes a sequence diagram.\nウ:\nExternal functions and actors describe a use-case diagram.\nエ:\nEvent-driven changes in one object's state describe a state-machine diagram.\n\nMemory trick:\nActivity diagram = workflow of actions.\n\nCorrect answer: ア",
+      "imagePaths":["public/questions/book1/ch12/set02/q07.png"]
+    },
+    {
+      "number":8,"displayNumber":"12-14","optionMode":"labels-only",
+      "jp":"UMLのダイアグラムのうち、インスタンス間の関係を表現するものはどれか。",
+      "romaji":"UML no daiyaguramu no uchi, insutansu-kan no kankei o hyōgen suru mono wa dore ka.",
+      "en":"Which UML diagram represents relationships between instances?",
+      "options":[
+        {"label":"ア","jp":"アクティビティ図","romaji":"Akutibiti zu","en":"Activity diagram"},
+        {"label":"イ","jp":"オブジェクト図","romaji":"Obujekuto zu","en":"Object diagram"},
+        {"label":"ウ","jp":"コンポーネント図","romaji":"Konpōnento zu","en":"Component diagram"},
+        {"label":"エ","jp":"ユースケース図","romaji":"Yūsu kēsu zu","en":"Use-case diagram"}
+      ],
+      "correct_answer":"イ",
+      "explanation":"ELI5:\nAn object diagram is a snapshot of actual objects and the links between them at one moment.\n\nTechnical breakdown:\nA class diagram describes types and possible relationships; an object diagram instantiates those types and shows concrete instances, attribute values, and links. It therefore represents instance-level structure.\n\nJapanese keywords to remember:\nインスタンス間 = insutansu-kan = between instances\nオブジェクト図 = obujekuto zu = object diagram\n関係 = kankei = relationship\n\nWhy the best solution works:\nイ is specifically defined as a structural snapshot of instances and their links.\n\nWrong answer analysis:\nア:\nAn activity diagram represents workflow and control flow.\nウ:\nA component diagram represents deployable software components and dependencies.\nエ:\nA use-case diagram represents actors and externally visible system functions.\n\nMemory trick:\nClass diagram is blueprint; object diagram is snapshot.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch12/set02/q08.png"]
+    },
+    {
+      "number":9,"displayNumber":"12-15","optionMode":"labels-only",
+      "jp":"UMLのクラス図のうち、汎化の関係を示したものはどれか。",
+      "romaji":"UML no kurasu zu no uchi, hanka no kankei o shimeshita mono wa dore ka.",
+      "en":"Which UML class diagram shows a generalization relationship?",
+      "options":[
+        {"label":"ア","jp":"自動車と車検証を、両端の多重度が1の実線で結んだ図","romaji":"Jidōsha to shakenshō o, ryōtan no tajūdo ga ichi no jissen de musunda zu","en":"A diagram connecting Automobile and Vehicle Inspection Certificate with a solid line having multiplicity 1 at both ends."},
+        {"label":"イ","jp":"スポーツカーから自動車へ、白抜き三角形の矢印を付けた実線で結んだ図","romaji":"Supōtsukā kara jidōsha e, shironuki sankakkei no yajirushi o tsuketa jissen de musunda zu","en":"A diagram connecting Sports Car to Automobile with a solid line ending in a hollow triangular arrowhead."},
+        {"label":"ウ","jp":"自動車とタイヤ及びエンジンを、黒いひし形を付けた実線で結んだ図","romaji":"Jidōsha to taiya oyobi enjin o, kuroi hishigata o tsuketa jissen de musunda zu","en":"A diagram connecting Automobile to Tires and Engine with solid lines ending in filled diamonds."},
+        {"label":"エ","jp":"ドライバから自動車へ、破線の矢印で結んだ図","romaji":"Doraiba kara jidōsha e, hasen no yajirushi de musunda zu","en":"A diagram connecting Driver to Automobile with a dashed arrow."}
+      ],
+      "correct_answer":"イ",
+      "explanation":"ELI5:\nGeneralization means a specific kind points to its broader parent, such as Sports Car is an Automobile.\n\nTechnical breakdown:\nUML generalization is drawn with a solid line and a hollow triangular arrowhead pointing to the general classifier or superclass. The Sports Car-to-Automobile is-a relationship matches both the meaning and notation.\n\nJapanese keywords to remember:\n汎化 = hanka = generalization\n白抜き三角形 = shironuki sankakkei = hollow triangle\n実線 = jissen = solid line\n\nWhy the best solution works:\nイ uses the correct hollow-triangle notation and points from the specialized Sports Car class to the general Automobile class.\n\nWrong answer analysis:\nア:\nA plain solid line with multiplicities represents an association.\nウ:\nA filled diamond represents composition, a strong whole-part relationship.\nエ:\nA dashed arrow represents a dependency.\n\nMemory trick:\nHollow triangle points upward to the general parent.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch12/set02/q09.png"]
+    }
+  ]
+}

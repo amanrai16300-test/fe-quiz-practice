@@ -1,0 +1,112 @@
+{
+  "exam_set": {
+    "id": "book1-ch12-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 12, Practice Set 1",
+    "question_count": 6
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "12-1",
+      "optionMode": "labels-only",
+      "jp": "システム開発の最初の工程で行う作業として、適切なものはどれか。",
+      "romaji": "Shisutemu kaihatsu no saisho no kōtei de okonau sagyō to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which task is appropriate in the first phase of system development?",
+      "options": [
+        { "label": "ア", "jp": "各プログラムの内部構造を設計する。", "romaji": "Kaku puroguramu no naibu kōzō o sekkei suru.", "en": "Design the internal structure of each program." },
+        { "label": "イ", "jp": "現状の業務を分析し、システム要件を整理する。", "romaji": "Genjō no gyōmu o bunseki shi, shisutemu yōken o seiri suru.", "en": "Analyze current business operations and organize the system requirements." },
+        { "label": "ウ", "jp": "サブシステムをプログラム単位まで分割し、各プログラムの詳細を設計する。", "romaji": "Sabushisutemu o puroguramu tan'i made bunkatsu shi, kaku puroguramu no shōsai o sekkei suru.", "en": "Divide subsystems into programs and design each program in detail." },
+        { "label": "エ", "jp": "ユーザーインタフェースを設計する。", "romaji": "Yūzā intafēsu o sekkei suru.", "en": "Design the user interface." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nBefore building a system, first learn what work people do and what the system must accomplish.\n\nTechnical breakdown:\nThe first development activity is requirements analysis. The team studies current operations, identifies problems and stakeholders' needs, and organizes them as system requirements. Program structure, detailed program design, and user-interface design happen only after requirements are understood.\n\nJapanese keywords to remember:\n現状の業務 = genjō no gyōmu = current business operations\nシステム要件 = shisutemu yōken = system requirements\n最初の工程 = saisho no kōtei = first phase\n\nWhy the best solution works:\nイ establishes what the system must do by analyzing the current business and organizing requirements, so later design has a reliable foundation.\n\nWrong answer analysis:\nア:\nInternal program structure belongs to program design, after requirements and system design.\nウ:\nDividing subsystems into programs and designing details is a later detailed-design activity.\nエ:\nUser-interface design is an external-design activity performed after requirements are defined.\n\nMemory trick:\nFirst ask what is needed; then decide how to build it.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch12/set01/q01.png"]
+    },
+    {
+      "number": 2,
+      "displayNumber": "12-2",
+      "optionMode": "labels-only",
+      "jp": "図は、構造化分析法で用いられるDFDの例である。図中の“C”が表しているものはどれか。",
+      "romaji": "Zu wa, kōzōka bunsekihō de mochiirareru DFD no rei de aru. Zuchū no 'C' ga arawashite iru mono wa dore ka.",
+      "en": "The figure is an example of a DFD used in structured analysis. What does C in the figure represent?",
+      "options": [
+        { "label": "ア", "jp": "アクティビティ", "romaji": "Akutibiti", "en": "Activity" },
+        { "label": "イ", "jp": "データストア", "romaji": "Dēta sutoa", "en": "Data store" },
+        { "label": "ウ", "jp": "データフロー", "romaji": "Dēta furō", "en": "Data flow" },
+        { "label": "エ", "jp": "プロセス", "romaji": "Purosesu", "en": "Process" }
+      ],
+      "correct_answer": "エ",
+      "explanation": "ELI5:\nA DFD is a map showing data moving through work steps. A circle is a work step that transforms data.\n\nTechnical breakdown:\nIn a data-flow diagram, a circle represents a process, an arrow represents a data flow, two parallel lines represent a data store, and a rectangle represents an external entity. C identifies the circular symbol, so it is a process.\n\nJapanese keywords to remember:\nデータフロー図 = dēta furō zu = data-flow diagram\nプロセス = purosesu = process\nデータストア = dēta sutoa = data store\n\nWhy the best solution works:\nエ matches the DFD circle, which receives data, performs processing, and outputs transformed data.\n\nWrong answer analysis:\nア:\nActivity is terminology used in activity diagrams, not the name of this DFD symbol.\nイ:\nA data store is drawn as two parallel horizontal lines.\nウ:\nA data flow is shown by a directed arrow between DFD elements.\n\nMemory trick:\nDFD: circle works, arrow moves, parallel lines store.\n\nCorrect answer: エ",
+      "imagePaths": ["public/questions/book1/ch12/set01/q02.png"]
+    },
+    {
+      "number": 3,
+      "displayNumber": "12-3",
+      "optionMode": "labels-only",
+      "jp": "開発プロセスにおける、ソフトウェア方式設計で行うべき作業はどれか。",
+      "romaji": "Kaihatsu purosesu ni okeru, sofutowea hōshiki sekkei de okonau beki sagyō wa dore ka.",
+      "en": "Which task should be performed during software architectural design in the development process?",
+      "options": [
+        { "label": "ア", "jp": "顧客に意見を求めて仕様を決定する。", "romaji": "Kokyaku ni iken o motomete shiyō o kettei suru.", "en": "Ask the customer for opinions and determine the specifications." },
+        { "label": "イ", "jp": "既に決定しているソフトウェア要件を、どのように実現させるかを決める。", "romaji": "Sudeni kettei shite iru sofutowea yōken o, dono yō ni jitsugen saseru ka o kimeru.", "en": "Decide how to realize the software requirements that have already been determined." },
+        { "label": "ウ", "jp": "プログラム1行ごとの処理まで明確になるように詳細化する。", "romaji": "Puroguramu ichigyō goto no shori made meikaku ni naru yō ni shōsaika suru.", "en": "Refine the design until processing for each program line is clear." },
+        { "label": "エ", "jp": "要求内容を図表などの形式でまとめ、段階的に詳細化して分析する。", "romaji": "Yōkyū naiyō o zuhyō nado no keishiki de matome, dankai-teki ni shōsaika shite bunseki suru.", "en": "Organize requirements in diagrams or tables and analyze them through stepwise refinement." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nRequirements say what the software must do. Architectural design decides the overall way the software will do it.\n\nTechnical breakdown:\nSoftware architectural design begins after software requirements are established. It selects the major components, responsibilities, interfaces, data structures, and overall implementation approach that will realize those requirements. It is neither requirements determination nor line-level coding detail.\n\nJapanese keywords to remember:\nソフトウェア方式設計 = sofutowea hōshiki sekkei = software architectural design\nソフトウェア要件 = sofutowea yōken = software requirements\n実現させる = jitsugen saseru = realize or implement\n\nWhy the best solution works:\nイ directly describes translating fixed software requirements into an overall realization method, which is the purpose of software architectural design.\n\nWrong answer analysis:\nア:\nConsulting the customer to decide specifications belongs to requirements definition.\nウ:\nLine-by-line processing detail is too low-level and belongs to detailed program design or coding.\nエ:\nOrganizing and refining requested content is a requirements-analysis activity.\n\nMemory trick:\nRequirements are what; architecture is the big-picture how.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch12/set01/q03.png"]
+    },
+    {
+      "number": 4,
+      "displayNumber": "12-4",
+      "optionMode": "labels-only",
+      "jp": "ソフトウェアの分析・設計技法の特徴のうち、データ中心分析・設計技法の特徴として、最も適切なものはどれか。",
+      "romaji": "Sofutowea no bunseki sekkei gihō no tokuchō no uchi, dēta chūshin bunseki sekkei gihō no tokuchō to shite, mottomo tekisetsu na mono wa dore ka.",
+      "en": "Which characteristic best describes a data-centered software analysis and design method?",
+      "options": [
+        { "label": "ア", "jp": "機能の詳細化の過程で、モジュールの独立性が高くなるようにプログラムを分割していく。", "romaji": "Kinō no shōsaika no katei de, mojūru no dokuritsusei ga takaku naru yō ni puroguramu o bunkatsu shite iku.", "en": "During functional refinement, divide the program so that modules become highly independent." },
+        { "label": "イ", "jp": "システムの開発後の仕様変更は、データ構造や手続を局所的に変更したり追加したりすることによって、比較的容易に実現できる。", "romaji": "Shisutemu no kaihatsugo no shiyō henkō wa, dēta kōzō ya tetsuzuki o kyokushoteki ni henkō shitari tsuika shitari suru koto ni yotte, hikakuteki yōi ni jitsugen dekiru.", "en": "After development, specification changes can be implemented relatively easily by locally changing or adding data structures and procedures." },
+        { "label": "ウ", "jp": "対象業務領域のモデル化に当たって、情報資源のデータ構造に着目する。", "romaji": "Taishō gyōmu ryōiki no moderuka ni atatte, jōhō shigen no dēta kōzō ni chakumoku suru.", "en": "When modeling the target business domain, focus on the data structures of information resources." },
+        { "label": "エ", "jp": "プログラムが最も効率よくアクセスできるようにデータ構造を設計する。", "romaji": "Puroguramu ga mottomo kōritsu yoku akusesu dekiru yō ni dēta kōzō o sekkei suru.", "en": "Design data structures so programs can access them as efficiently as possible." }
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nA data-centered method starts by asking what information the business owns and how those data items relate.\n\nTechnical breakdown:\nData-centered analysis models a business domain around stable information resources and their structures and relationships. Processing functions may change, but the core data model often remains stable. Functional decomposition and physical access optimization are different concerns.\n\nJapanese keywords to remember:\nデータ中心 = dēta chūshin = data-centered\n情報資源 = jōhō shigen = information resources\nデータ構造 = dēta kōzō = data structure\n\nWhy the best solution works:\nウ identifies the defining viewpoint: modeling the target business by focusing on the structure of its information resources.\n\nWrong answer analysis:\nア:\nRefining functions and maximizing module independence describes function-centered structured design.\nイ:\nLocal changes to both data and procedures are not the defining characteristic of data-centered analysis and can still cause broad effects.\nエ:\nOptimizing data structures for program access is physical or implementation design, not business-domain analysis.\n\nMemory trick:\nData-centered means model the business nouns before the processing verbs.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch12/set01/q04.png"]
+    },
+    {
+      "number": 5,
+      "displayNumber": "12-5",
+      "optionMode": "labels-only",
+      "jp": "モジュール結合度が最も弱くなるものはどれか。",
+      "romaji": "Mojūru ketsugōdo ga mottomo yowaku naru mono wa dore ka.",
+      "en": "Which choice produces the weakest module coupling?",
+      "options": [
+        { "label": "ア", "jp": "一つのモジュールで、できるだけ多くの機能を実現する。", "romaji": "Hitotsu no mojūru de, dekiru dake ōku no kinō o jitsugen suru.", "en": "Implement as many functions as possible in one module." },
+        { "label": "イ", "jp": "二つのモジュール間で必要なデータ項目だけを引数として渡す。", "romaji": "Futatsu no mojūru-kan de hitsuyō na dēta kōmoku dake o hikisu to shite watasu.", "en": "Pass only the necessary data items as arguments between two modules." },
+        { "label": "ウ", "jp": "他のモジュールとデータ項目を共有するためにグローバルな領域を使用する。", "romaji": "Hoka no mojūru to dēta kōmoku o kyōyū suru tame ni gurōbaru na ryōiki o shiyō suru.", "en": "Use global storage to share data items with other modules." },
+        { "label": "エ", "jp": "他のモジュールを呼び出すときに、呼び出したモジュールの論理を制御するための引数を渡す。", "romaji": "Hoka no mojūru o yobidasu toki ni, yobidashita mojūru no ronri o seigyo suru tame no hikisu o watasu.", "en": "When calling another module, pass an argument that controls the called module's logic." }
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nModules are least tangled when they exchange only the small pieces of data required for the job.\n\nTechnical breakdown:\nData coupling occurs when modules communicate through simple parameters containing only necessary data. It is weaker and more maintainable than control coupling or common coupling. Weak coupling reduces unintended effects when one module changes.\n\nJapanese keywords to remember:\nモジュール結合度 = mojūru ketsugōdo = module coupling\n引数 = hikisu = argument\nグローバルな領域 = gurōbaru na ryōiki = global area\n\nWhy the best solution works:\nイ is data coupling: the interface exposes only required data and does not expose shared state or control the other module's internal behavior.\n\nWrong answer analysis:\nア:\nPutting many functions in one module concerns low cohesion and creates an oversized module; it does not describe weak intermodule coupling.\nウ:\nGlobal shared storage creates common coupling, so many modules depend on the same state.\nエ:\nPassing a flag that controls another module creates control coupling, which is stronger than simple data coupling.\n\nMemory trick:\nWeakest practical link: pass only needed data.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch12/set01/q05.png"]
+    },
+    {
+      "number": 6,
+      "displayNumber": "12-6",
+      "optionMode": "labels-only",
+      "jp": "システムの外部設計を完了させるとき、顧客から承認を受けるものはどれか。",
+      "romaji": "Shisutemu no gaibu sekkei o kanryō saseru toki, kokyaku kara shōnin o ukeru mono wa dore ka.",
+      "en": "When completing external system design, which item receives customer approval?",
+      "options": [
+        { "label": "ア", "jp": "画面レイアウト", "romaji": "Gamen reiauto", "en": "Screen layout" },
+        { "label": "イ", "jp": "システム開発計画", "romaji": "Shisutemu kaihatsu keikaku", "en": "System development plan" },
+        { "label": "ウ", "jp": "物理データベース仕様", "romaji": "Butsuri dētabēsu shiyō", "en": "Physical database specification" },
+        { "label": "エ", "jp": "プログラムの流れ図", "romaji": "Puroguramu no nagarezu", "en": "Program flowchart" }
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nExternal design defines what users will see and use, so the customer confirms items such as screen layouts.\n\nTechnical breakdown:\nExternal design specifies user-visible interfaces, input and output forms, screens, reports, and externally observable behavior. Customer approval is appropriate because these items directly affect business use. Physical database details and program flow are internal design matters.\n\nJapanese keywords to remember:\n外部設計 = gaibu sekkei = external design\n画面レイアウト = gamen reiauto = screen layout\n承認 = shōnin = approval\n\nWhy the best solution works:\nア is visible to users and expresses how they interact with the system, making it a customer-reviewable external-design deliverable.\n\nWrong answer analysis:\nイ:\nThe development plan is established during project planning, before external design is completed.\nウ:\nA physical database specification is an internal implementation design decided mainly by technical staff.\nエ:\nA program flowchart describes internal program logic and belongs to detailed design.\n\nMemory trick:\nExternal design is what the customer can see.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch12/set01/q06.png"]
+    }
+  ]
+}
