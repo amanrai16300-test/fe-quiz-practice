@@ -1,0 +1,129 @@
+{
+  "exam_set": {
+    "id": "book1-ch13-set01",
+    "title": "Practice Set 1",
+    "description": "Textbook Practice — Book 1, Chapter 13, Practice Set 1",
+    "question_count": 7
+  },
+  "questions": [
+    {
+      "number": 1,
+      "displayNumber": "13-1",
+      "optionMode": "labels-only",
+      "jp": "ソフトウェアのリバースエンジニアリングの説明はどれか。",
+      "romaji": "Sofutowea no ribāsu enjinīaringu no setsumei wa dore ka.",
+      "en": "Which statement describes software reverse engineering?",
+      "options": [
+        {"label":"ア","jp":"開発支援ツールなどを用いて、設計情報からソースコードを自動生成する。","romaji":"Kaihatsu shien tsūru nado o mochiite, sekkei jōhō kara sōsu kōdo o jidō seisei suru.","en":"Use a development support tool to automatically generate source code from design information."},
+        {"label":"イ","jp":"外部から見たときの振る舞いを変えずに、ソフトウェアの内部構造を変える。","romaji":"Gaibu kara mita toki no furumai o kaezu ni, sofutowea no naibu kōzō o kaeru.","en":"Change the internal structure of software without changing its externally visible behavior."},
+        {"label":"ウ","jp":"既存のソフトウェアを解析し、その仕様や構造を明らかにする。","romaji":"Kizon no sofutowea o kaiseki shi, sono shiyō ya kōzō o akiraka ni suru.","en":"Analyze existing software to reveal its specifications and structure."},
+        {"label":"エ","jp":"既存のソフトウェアを分析し理解した上で、ソフトウェア全体を新しく構築し直す。","romaji":"Kizon no sofutowea o bunseki shi rikai shita ue de, sofutowea zentai o atarashiku kōchiku shi naosu.","en":"Analyze and understand existing software, then rebuild the entire software system anew."}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nReverse engineering starts with a finished program and works backward to discover how it was designed.\n\nTechnical breakdown:\nSoftware reverse engineering examines source code, executable behavior, data structures, and dependencies to recover higher-level specifications and design information. Its direct objective is understanding and documentation; it does not automatically generate code or necessarily rebuild the product.\n\nJapanese keywords to remember:\nリバースエンジニアリング = ribāsu enjinīaringu = reverse engineering\n既存のソフトウェア = kizon no sofutowea = existing software\n仕様や構造 = shiyō ya kōzō = specifications and structure\n\nWhy the best solution works:\nウ precisely describes moving from an existing implementation toward knowledge of its specification and structure.\n\nWrong answer analysis:\nア:\nGenerating source from design information moves from design to implementation and is forward engineering.\nイ:\nChanging internals without changing external behavior is refactoring.\nエ:\nUnderstanding and then rebuilding the entire system describes reengineering, which goes beyond reverse engineering.\n\nMemory trick:\nReverse engineering: code first, design knowledge afterward.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q01.png"]
+    },
+    {
+      "number": 2,
+      "displayNumber": "13-2",
+      "optionMode": "labels-only",
+      "jp": "ソフトウェア開発の活動のうち、アジャイル開発においても重視されているリファクタリングはどれか。",
+      "romaji": "Sofutowea kaihatsu no katsudō no uchi, ajairu kaihatsu ni oite mo jūshi sarete iru rifakutaringu wa dore ka.",
+      "en": "Which software-development activity is refactoring, an activity also emphasized in agile development?",
+      "options": [
+        {"label":"ア","jp":"ソフトウェアの品質を高めるために、2人のプログラマが協力して、一つのプログラムをコーディングする。","romaji":"Sofutowea no hinshitsu o takameru tame ni, futari no purogurama ga kyōryoku shite, hitotsu no puroguramu o kōdingu suru.","en":"Two programmers cooperate to code one program in order to improve software quality."},
+        {"label":"イ","jp":"ソフトウェアの保守性を高めるために、外部仕様を変更することなく、プログラムの内部構造を変更する。","romaji":"Sofutowea no hoshusei o takameru tame ni, gaibu shiyō o henkō suru koto naku, puroguramu no naibu kōzō o henkō suru.","en":"Change a program's internal structure without changing its external specification in order to improve maintainability."},
+        {"label":"ウ","jp":"動作するソフトウェアを迅速に開発するために、テストケースを先に設定してから、プログラムをコーディングする。","romaji":"Dōsa suru sofutowea o jinsoku ni kaihatsu suru tame ni, tesuto kēsu o saki ni settei shite kara, puroguramu o kōdingu suru.","en":"Define test cases before coding in order to develop working software quickly."},
+        {"label":"エ","jp":"利用者からのフィードバックを得るために、提供予定のソフトウェアの試作品を早期に作成する。","romaji":"Riyōsha kara no fīdobakku o eru tame ni, teikyō yotei no sofutowea no shisakuhin o sōki ni sakusei suru.","en":"Create an early prototype of planned software to obtain user feedback."}
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nRefactoring cleans and reorganizes code while keeping what users see and receive exactly the same.\n\nTechnical breakdown:\nRefactoring improves internal design, readability, duplication, cohesion, and maintainability without changing externally observable behavior or specifications. Small verified transformations keep the program working while reducing future change cost.\n\nJapanese keywords to remember:\nリファクタリング = rifakutaringu = refactoring\n保守性 = hoshusei = maintainability\n外部仕様を変更することなく = gaibu shiyō o henkō suru koto naku = without changing external specifications\n\nWhy the best solution works:\nイ includes both defining conditions: internal restructuring and no change to external behavior, with maintainability as the goal.\n\nWrong answer analysis:\nア:\nTwo programmers coding together is pair programming.\nウ:\nWriting tests before production code is test-driven development.\nエ:\nCreating an early trial product for feedback is prototyping.\n\nMemory trick:\nRefactor changes the inside, not the outside.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q02.png"]
+    },
+    {
+      "number": 3,
+      "displayNumber": "13-3",
+      "optionMode": "labels-only",
+      "jp": "アジャイル開発手法のスクラムにおいて、開発チームの全員が1人ずつ“昨日やったこと”、“今日やること”、“障害になっていること”などを話し、全員でプロジェクトの状況を共有するイベントはどれか。",
+      "romaji": "Ajairu kaihatsu shuhō no sukuramu ni oite, kaihatsu chīmu no zen'in ga hitori zutsu 'kinō yatta koto', 'kyō yaru koto', 'shōgai ni natte iru koto' nado o hanashi, zen'in de purojekuto no jōkyō o kyōyū suru ibento wa dore ka.",
+      "en": "In Scrum, which event has every development-team member state what they did yesterday, what they will do today, and what is blocking them so everyone can share project status?",
+      "options": [
+        {"label":"ア","jp":"スプリントプランニング","romaji":"Supurinto puranningu","en":"Sprint planning"},
+        {"label":"イ","jp":"スプリントレビュー","romaji":"Supurinto rebyū","en":"Sprint review"},
+        {"label":"ウ","jp":"デイリースクラム","romaji":"Deirī sukuramu","en":"Daily Scrum"},
+        {"label":"エ","jp":"レトロスペクティブ","romaji":"Retorosupekutibu","en":"Retrospective"}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nThe team has a short daily check-in: what changed, what comes next, and what is stuck.\n\nTechnical breakdown:\nThe Daily Scrum is a short event held each working day for developers to inspect progress toward the Sprint Goal and adapt the next day's plan. The three prompts in the question are a familiar way to structure this status and impediment discussion.\n\nJapanese keywords to remember:\nデイリースクラム = deirī sukuramu = Daily Scrum\n障害になっていること = shōgai ni natte iru koto = impediments\n状況を共有する = jōkyō o kyōyū suru = share status\n\nWhy the best solution works:\nウ is the recurring daily event centered on progress, immediate plans, and blockers.\n\nWrong answer analysis:\nア:\nSprint planning selects and plans work for the upcoming sprint, not daily status.\nイ:\nSprint review inspects the completed increment with stakeholders near sprint end.\nエ:\nThe retrospective examines how the team worked and identifies process improvements after the sprint.\n\nMemory trick:\nYesterday, today, blocker = Daily Scrum.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q03.png"]
+    },
+    {
+      "number": 4,
+      "displayNumber": "13-4",
+      "optionMode": "labels-only",
+      "jp": "ローコード開発ツールを用いたソフトウェア開発の説明はどれか。",
+      "romaji": "Rō kōdo kaihatsu tsūru o mochiita sofutowea kaihatsu no setsumei wa dore ka.",
+      "en": "Which statement describes software development using a low-code development tool?",
+      "options": [
+        {"label":"ア","jp":"アプリケーションソフトウェアの開発基盤の上で、用意された部品やテンプレートをGUIを用いた操作で組み合わせたり、必要に応じて一部の処理のソースコードを記述したりすることによって、アプリケーションソフトウェアを作成する。","romaji":"Apurikēshon sofutowea no kaihatsu kiban no ue de, yōi sareta buhin ya tenpurēto o GUI o mochiita sōsa de kumiawasetari, hitsuyō ni ōjite ichibu no shori no sōsu kōdo o kijutsu shitari suru koto ni yotte, apurikēshon sofutowea o sakusei suru.","en":"On an application-development platform, combine prepared components and templates through a GUI and write source code for some processing when necessary to create an application."},
+        {"label":"イ","jp":"アプリケーションソフトウェアの開発基盤の上で、用意された部品やテンプレートをGUIを用いた操作で組み合わせるだけで、ソースコードを記述せずに、アプリケーションソフトウェアを作成する。","romaji":"Apurikēshon sofutowea no kaihatsu kiban no ue de, yōi sareta buhin ya tenpurēto o GUI o mochiita sōsa de kumiawaseru dake de, sōsu kōdo o kijutsu sezu ni, apurikēshon sofutowea o sakusei suru.","en":"On an application-development platform, create an application only by combining prepared components and templates through a GUI, without writing source code."},
+        {"label":"ウ","jp":"アプリケーションソフトウェアの定型的な枠組みを参照して、独自の処理のソースコードを記述することによって、アプリケーションソフトウェアを作成する。","romaji":"Apurikēshon sofutowea no teikeiteki na wakugumi o sanshō shite, dokuji no shori no sōsu kōdo o kijutsu suru koto ni yotte, apurikēshon sofutowea o sakusei suru.","en":"Create an application by referring to a standard application framework and writing source code for original processing."},
+        {"label":"エ","jp":"利用者がシステムを利用して行う作業を自動化ツールに代行させるために、利用者によるシステムの操作手順をツールに登録する。","romaji":"Riyōsha ga shisutemu o riyō shite okonau sagyō o jidōka tsūru ni daikō saseru tame ni, riyōsha ni yoru shisutemu no sōsa tejun o tsūru ni tōroku suru.","en":"Register a user's system-operation procedure in an automation tool so the tool can perform the user's work."}
+      ],
+      "correct_answer": "ア",
+      "explanation": "ELI5:\nLow-code builds most of an app with visual blocks but still allows a little code when the blocks are not enough.\n\nTechnical breakdown:\nA low-code platform accelerates development with GUI modeling, reusable components, templates, generated code, and managed services. Unlike no-code, it permits source code or scripts for custom logic and integrations when required.\n\nJapanese keywords to remember:\nローコード開発 = rō kōdo kaihatsu = low-code development\n部品やテンプレート = buhin ya tenpurēto = components and templates\n必要に応じて = hitsuyō ni ōjite = as necessary\n\nWhy the best solution works:\nア combines visual assembly with optional custom source code, exactly distinguishing low-code from both no-code and ordinary coded development.\n\nWrong answer analysis:\nイ:\nUsing only GUI components and writing no source code describes no-code development.\nウ:\nWriting original processing code against a framework describes conventional framework-based development.\nエ:\nRecording user operation procedures for automation describes RPA-style task automation, not application development.\n\nMemory trick:\nLow-code means little code allowed; no-code means none.\n\nCorrect answer: ア",
+      "imagePaths": ["public/questions/book1/ch13/set01/q04.png"]
+    },
+    {
+      "number": 5,
+      "displayNumber": "13-5",
+      "optionMode": "labels-only",
+      "jp": "XP（eXtreme Programming）において、プラクティスとして提唱されているものはどれか。",
+      "romaji": "XP (eXtreme Programming) ni oite, purakutisu to shite teishō sarete iru mono wa dore ka.",
+      "en": "Which practice is advocated by XP (eXtreme Programming)?",
+      "options": [
+        {"label":"ア","jp":"インスペクション","romaji":"Insupekushon","en":"Inspection"},
+        {"label":"イ","jp":"構造化設計","romaji":"Kōzōka sekkei","en":"Structured design"},
+        {"label":"ウ","jp":"ペアプログラミング","romaji":"Pea puroguramingu","en":"Pair programming"},
+        {"label":"エ","jp":"ユースケースの活用","romaji":"Yūsu kēsu no katsuyō","en":"Use of use cases"}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nIn pair programming, two developers work together at one computer: one writes while the other continuously reviews and thinks ahead.\n\nTechnical breakdown:\nPair programming is a core XP practice. The driver types and implements; the navigator reviews, detects defects, and considers design and next steps. The pair changes roles frequently, providing continuous feedback and shared knowledge.\n\nJapanese keywords to remember:\nペアプログラミング = pea puroguramingu = pair programming\nプラクティス = purakutisu = practice\n提唱されている = teishō sarete iru = is advocated\n\nWhy the best solution works:\nウ is explicitly associated with XP's rapid feedback, collective knowledge, and continuous code review.\n\nWrong answer analysis:\nア:\nInspection is a formal review technique but is not the XP practice requested here.\nイ:\nStructured design is a traditional function-oriented design method.\nエ:\nUse cases are a requirements and modeling technique commonly associated with UML and iterative methods, not a defining XP practice.\n\nMemory trick:\nXP pairs people and tests code early.\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q05.png"]
+    },
+    {
+      "number": 6,
+      "displayNumber": "13-6",
+      "optionMode": "labels-only",
+      "jp": "ソフトウェア開発において、構成管理に起因しない問題はどれか。",
+      "romaji": "Sofutowea kaihatsu ni oite, kōsei kanri ni kiin shinai mondai wa dore ka.",
+      "en": "Which problem in software development is not caused by configuration management?",
+      "options": [
+        {"label":"ア","jp":"開発者が定められた改版手続に従わずにプログラムを修正したので、今まで正しく動作していたプログラムが、不正な動作をするようになった。","romaji":"Kaihatsusha ga sadamerareta kaihan tetsuzuki ni shitagawazu ni puroguramu o shūsei shita node, ima made tadashiku dōsa shite ita puroguramu ga, fusei na dōsa o suru yō ni natta.","en":"A developer changed a program without following the prescribed revision procedure, causing a previously correct program to behave incorrectly."},
+        {"label":"イ","jp":"システムテストにおいて、単体テストレベルのバグが多発して、開発が予定どおりに進捗しない。","romaji":"Shisutemu tesuto ni oite, tantai tesuto reberu no bagu ga tahatsu shite, kaihatsu ga yotei dōri ni shinchoku shinai.","en":"During system testing, many unit-test-level bugs occur and development does not progress as scheduled."},
+        {"label":"ウ","jp":"仕様書、設計書及びプログラムの版数が対応付けられていないので、プログラム修正時にソースプログラムを解析しないと、修正すべきプログラムが特定できない。","romaji":"Shiyōsho, sekkeisho oyobi puroguramu no hansū ga taiō-zukerarete inai node, puroguramu shūseiji ni sōsu puroguramu o kaiseki shinai to, shūsei subeki puroguramu ga tokutei dekinai.","en":"Specification, design, and program versions are not associated, so the program to modify cannot be identified without analyzing source code."},
+        {"label":"エ","jp":"一つのプログラムから多数の派生プログラムが作られているが、派生元のプログラムの修正が全ての派生プログラムに反映されない。","romaji":"Hitotsu no puroguramu kara tasū no hasei puroguramu ga tsukurarete iru ga, haseimoto no puroguramu no shūsei ga subete no hasei puroguramu ni han'ei sarenai.","en":"Many derived programs were created from one program, but changes to the source program are not reflected in every derived program."}
+      ],
+      "correct_answer": "イ",
+      "explanation": "ELI5:\nConfiguration management keeps the right versions and changes organized. It cannot replace proper unit testing.\n\nTechnical breakdown:\nConfiguration management controls identification, versions, baselines, change procedures, status accounting, and consistency among related artifacts. Options ア, ウ, and エ describe failures in those controls. Unit-level defects surviving until system testing instead indicate insufficient unit testing or quality control, not a configuration-management cause.\n\nJapanese keywords to remember:\n構成管理 = kōsei kanri = configuration management\n版数 = hansū = version number\n単体テスト = tantai tesuto = unit testing\n\nWhy the best solution works:\nイ concerns defects that should have been found during unit testing; the issue is test quality and timing rather than artifact identity or version control.\n\nWrong answer analysis:\nア:\nIgnoring an established revision procedure is a change-control failure within configuration management.\nウ:\nFailure to associate specification, design, and program versions is a configuration-identification and traceability problem.\nエ:\nFailure to propagate and manage changes across derived versions is a version and change-management problem.\n\nMemory trick:\nConfiguration management tracks what changed; testing checks whether it works.\n\nCorrect answer: イ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q06.png"]
+    },
+    {
+      "number": 7,
+      "displayNumber": "13-7",
+      "optionMode": "labels-only",
+      "jp": "ソフトウェア開発プロジェクトで行う構成管理の対象項目として、適切なものはどれか。",
+      "romaji": "Sofutowea kaihatsu purojekuto de okonau kōsei kanri no taishō kōmoku to shite, tekisetsu na mono wa dore ka.",
+      "en": "Which is an appropriate configuration-management item in a software-development project?",
+      "options": [
+        {"label":"ア","jp":"開発作業の進捗状況","romaji":"Kaihatsu sagyō no shinchoku jōkyō","en":"Progress status of development work"},
+        {"label":"イ","jp":"成果物に対するレビューの実施結果","romaji":"Seikabutsu ni taisuru rebyū no jisshi kekka","en":"Results of reviews performed on deliverables"},
+        {"label":"ウ","jp":"プログラムのバージョン","romaji":"Puroguramu no bājon","en":"Program version"},
+        {"label":"エ","jp":"プロジェクト組織の編成","romaji":"Purojekuto soshiki no hensei","en":"Project organization structure"}
+      ],
+      "correct_answer": "ウ",
+      "explanation": "ELI5:\nConfiguration management makes sure everyone knows exactly which version of a program is the approved one.\n\nTechnical breakdown:\nA configuration item is an artifact placed under identification, version, baseline, and change control. Source programs and their versions are primary software configuration items. Progress, review performance, and team organization are managed through other project-management processes.\n\nJapanese keywords to remember:\n構成管理 = kōsei kanri = configuration management\n対象項目 = taishō kōmoku = managed item\nバージョン = bājon = version\n\nWhy the best solution works:\nウ is a concrete software artifact identity that must be versioned and controlled so builds and changes remain reproducible.\n\nWrong answer analysis:\nア:\nDevelopment progress is handled by schedule and progress management.\nイ:\nReview results belong mainly to quality assurance and review management, even though reports may themselves be retained as records.\nエ:\nProject organization structure belongs to organizational and resource management.\n\nMemory trick:\nConfiguration management answers: exactly which version?\n\nCorrect answer: ウ",
+      "imagePaths": ["public/questions/book1/ch13/set01/q07.png"]
+    }
+  ]
+}
