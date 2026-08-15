@@ -2466,3 +2466,189 @@ Batch outcome and next-content guardrail:
 - New content: 111 questions. Book 1: 210 total questions across Chapters 1–11.
 - Do not invent the next chapter structure or Book 2 content. Future content
   must use the factory source-intake and answer-key gates before authoring.
+
+## Phase 3J Book 1 Chapters 12–16 Batch Deployment, ELI5 Quality, and Live Verification Checkpoint
+
+Status:
+
+- **Book 1 Chapters 12–16: COMPLETE / PASSED / DEPLOYED / IMPORTED /
+  LIVE-VERIFIED / ELI5-QUALITY-APPROVED**.
+- Implementation branch: `feature/book1-ch12-ch16-batch`.
+- Previous checkpoint base: `10125ed` —
+  `docs: close Chapters 7 through 11 batch checkpoint`.
+- The Book Chapter Factory workflow governed source intake, answer lock,
+  chapter authoring, catalog integration, whole-batch QA, deployment, and
+  manual quality review.
+
+Batch structure and totals:
+
+- Chapter 12: 3 Practice Sets; `book1-ch12-set01` = 6 questions,
+  `book1-ch12-set02` = 9, and `book1-ch12-set03` = 10; 25 total; printed
+  12-1 through 12-25.
+- Chapter 13: 1 Practice Set; `book1-ch13-set01` = 7 questions; printed 13-1
+  through 13-7.
+- Chapter 14: 1 Practice Set; `book1-ch14-set01` = 17 questions; printed 14-1
+  through 14-17.
+- Chapter 15: 2 Practice Sets; `book1-ch15-set01` = 9 questions and
+  `book1-ch15-set02` = 10; 19 total; printed 15-1 through 15-19.
+- Chapter 16: 2 Practice Sets; `book1-ch16-set01` = 8 questions and
+  `book1-ch16-set02` = 7; 15 total; printed 16-1 through 16-15.
+- Whole batch: 5 chapters, 9 independent generic Practice Sets, 83 questions,
+  and 83 source PNGs.
+- All 83 source PNG SHA-256 hashes are unique; duplicate source hashes = 0.
+- Option modes: labels-only 83; structured-text 0.
+- Explicit option mappings passed 332/332.
+- Book 1 contained 210 questions before this batch. Chapters 12–16 added 83,
+  producing the current Book 1 total of **293**, derived from descendant
+  Practice Set counts rather than a manually stored counter.
+
+Generic Practice Set IDs:
+
+- `book1-ch12-set01`
+- `book1-ch12-set02`
+- `book1-ch12-set03`
+- `book1-ch13-set01`
+- `book1-ch14-set01`
+- `book1-ch15-set01`
+- `book1-ch15-set02`
+- `book1-ch16-set01`
+- `book1-ch16-set02`
+
+Git implementation and content-quality history:
+
+- `a13edf5` — `feat: add Book 1 chapter 12 practice sets`.
+- `ba5cdfe` — `feat: add Book 1 chapter 13 practice set`.
+- `4b9cf2b` — `feat: add Book 1 chapter 14 practice set`.
+- `72034a6` — `feat: add Book 1 chapter 15 practice sets`.
+- `1d6fab6` — `feat: add Book 1 chapter 16 practice sets`.
+- `5c6a5bd` — `feat: integrate Book 1 chapters 12 through 16`.
+- Full catalog integration SHA:
+  `5c6a5bdabffeebf02d3d18714b3722eb8ffe129e`.
+- Dedicated content-quality follow-up: `7a3fe48` —
+  `content: improve ELI5 explanations for chapters 12 through 16`.
+- Full content-quality SHA:
+  `7a3fe48a811154c65b5d9a193e2a5cc1ca0753e0`.
+
+Final local authoring and whole-batch QA:
+
+- All 9 new seeds validated; repository-wide seed validation passed 43/43 at
+  the integration checkpoint.
+- Questions, Japanese, Romaji, English, explanations, authoritative answers,
+  answer/explanation consistency, and display/internal numbering each passed
+  83/83.
+- Option mappings passed 332/332.
+- Source PNG count = 83; unique source hashes = 83; source duplicates = 0.
+- Placeholder and source-contamination audit passed.
+- Catalog integrity passed.
+- `node --check app.js` and `git diff --check` passed.
+- Chapters 1–11 behavior and content remained protected.
+- No chapter-specific renderer or controller was added.
+
+ELI5 quality issue, review, and correction:
+
+- Initial deployment was technically correct, but manual live review found the
+  new `ELI5:` sections too short to teach the concepts adequately.
+- A first automated expansion covered all 83 questions. Representative human
+  review rejected that pass because some explanations used repeated generic
+  templates, restated questions, echoed correct-answer wording, introduced
+  jargon too early, or did not sufficiently walk through calculations and
+  diagrams.
+- The representative first manual sample reviewed 10 questions: 5 PASS and
+  5 FAIL. The first automated expansion was therefore not accepted as
+  sufficient.
+- V2 reviewed all 83 questions and substantially rewrote 41. Known manual
+  failures were corrected, borderline cases were improved, boilerplate was
+  eliminated, and the duplicate/repeated-template audit passed.
+- Japanese, Romaji, English, options, mappings, and answers remained unchanged.
+  All non-ELI5 explanation sections also remained unchanged.
+- All 9 validators still passed, and all source PNGs remained unchanged.
+- Final human review initially scored 11/12 because question 16-1 still used
+  unexplained distractor jargon.
+- Question 16-1 then received one surgical ELI5 correction using the four-map
+  Enterprise Architecture model: business, data, application, technology, and
+  whole-company optimization.
+- Final manual and live review passed. The user explicitly confirmed that the
+  ELI5 looked good after the correction.
+
+Oracle deployment architecture and branch handling:
+
+- Oracle source repository: `/home/ubuntu/fe-quiz-src`.
+- Frontend root: `/var/www/html`.
+- API: FastAPI on `127.0.0.1:8010` behind the Nginx `/api/fe/` proxy.
+- Live Tailscale URL: `http://100.95.39.107/`.
+- The Oracle clone required and received a fetch ref for
+  `feature/book1-ch12-ch16-batch`. This Git configuration change did not alter
+  application architecture.
+- Deployment copied the updated `app.js` and the Chapter 12–16 image trees,
+  totaling 83 PNGs.
+- Deployed `app.js` was byte-identical to the repository file. All deployed
+  Chapter 12–16 image trees were byte-identical to repository sources, and the
+  deployed PNG count was 83.
+
+Oracle imports, API, and image verification:
+
+- All 9 generic sets imported successfully with counts 6 / 9 / 10 / 7 / 17 /
+  9 / 10 / 8 / 7, totaling 83 questions.
+- Direct FastAPI, Nginx proxy, and Tailscale-facing health checks returned
+  `{"ok":true,"database":true}`.
+- API verification passed for all 9 sets: counts, display numbers, and
+  authoritative answers were correct; total questions = 83;
+  `API VERIFICATION = PASS`.
+- Image HTTP verification passed: total = 83; bad = 0.
+
+ELI5 quality redeployment:
+
+- After content-quality commit `7a3fe48`, Oracle pulled the updated branch, all
+  9 seeds validated again, and all 9 sets were re-imported.
+- No `app.js` or PNG redeployment, backend or Nginx restart, schema change, or
+  importer change was required for the ELI5-only update.
+- Health remained `{"ok":true,"database":true}`.
+- API verification for question 16-1 proved `displayNumber = 16-1`,
+  `correct_answer = ウ`, the API served the expanded four-map Enterprise
+  Architecture ELI5, and the final line remained `Correct answer: ウ`.
+
+Manual live verification:
+
+- Book 1 displays the Chapters 12–16 additions and the descendant-derived total
+  of 293 questions.
+- All 9 new Practice Sets work.
+- Image rendering, Language Help, answer submission, and feedback/explanation
+  rendering work through the shared quiz flow.
+- The final improved ELI5 quality was manually accepted.
+- **BOOK 1 CHAPTERS 12–16 LIVE VERIFICATION AND ELI5 QUALITY: PASSED**.
+
+Architecture and guardrails retained:
+
+- One shared quiz engine and generic `exam_set_id` continue to drive every set.
+- Catalog integration remains declarative.
+- The source-image-first textbook workflow remains authoritative.
+- All 83 questions use labels-only mode; explicit Japanese labels
+  ア/イ/ウ/エ remain answer truth.
+- Language Help, explanation rendering, image/lightbox handling, and progress
+  GET/POST/DELETE remain generic.
+- Progress remains independent per set. Chapter and Book totals remain
+  descendant-derived.
+- No Book-specific API, Chapter-specific controller, schema redesign, backend
+  redesign, importer redesign, Nginx change, or systemd change was introduced.
+
+Reusable ELI5 quality guardrail:
+
+- Automated structural QA is not sufficient to certify teaching quality.
+- Future textbook batches retain automated explanation QA, followed by a
+  representative human ELI5 review before final deployment closure.
+- Generic boilerplate must be rejected even when sentence-count or depth checks
+  pass.
+- ELI5 teaching must build intuition before introducing jargon.
+- Calculation and diagram explanations must walk through the actual values and
+  relationships.
+- Human learner comprehension is the final quality gate.
+- This lesson complements rather than replaces
+  `docs/agents/BOOK_CHAPTER_FACTORY.md`.
+
+Batch outcome and next-content guardrail:
+
+- **Book 1 Chapters 12–16 batch is COMPLETE / PASSED / DEPLOYED / IMPORTED /
+  LIVE-VERIFIED / ELI5-QUALITY-APPROVED**.
+- Do not invent Chapter 17 structure. The next textbook chapter or batch must
+  begin with authoritative source intake before assuming Practice Set count,
+  question count, numbering, option mappings, or answer keys.
