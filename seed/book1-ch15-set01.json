@@ -1,0 +1,108 @@
+{
+  "exam_set":{"id":"book1-ch15-set01","title":"Practice Set 1","description":"Textbook Practice — Book 1, Chapter 15, Practice Set 1","question_count":9},
+  "questions":[
+    {
+      "number":1,"displayNumber":"15-1","optionMode":"labels-only",
+      "jp":"JIS Q 20000-1は、サービスマネジメントシステム（SMS）及びサービスのあらゆる場面でPDCA方法論の適用を要求している。SMSの計画（Plan）に含まれる活動はどれか。","romaji":"JIS Q 20000-1 wa, sābisu manejimento shisutemu (SMS) oyobi sābisu no arayuru bamen de PDCA hōhōron no tekiyō o yōkyū shite iru. SMS no keikaku (Plan) ni fukumareru katsudō wa dore ka.","en":"JIS Q 20000-1 requires PDCA throughout the SMS and services. Which activity belongs to SMS planning (Plan)?",
+      "options":[
+        {"label":"ア","jp":"あらかじめ定めた間隔でのマネジメントレビューの実施とその記録の維持","romaji":"Arakajime sadameta kankaku de no manejimento rebyū no jisshi to sono kiroku no iji","en":"Perform management reviews at planned intervals and retain their records."},
+        {"label":"イ","jp":"権限、責任及びプロセスにおける役割についての枠組みの作成","romaji":"Kengen, sekinin oyobi purosesu ni okeru yakuwari ni tsuite no wakugumi no sakusei","en":"Create a framework for authority, responsibility, and process roles."},
+        {"label":"ウ","jp":"資金及び予算の割当て及び管理の活動を通じた、SMSの導入及び運用","romaji":"Shikin oyobi yosan no wariate oyobi kanri no katsudō o tsūjita, SMS no dōnyū oyobi un'yō","en":"Implement and operate the SMS through funding and budget allocation and management."},
+        {"label":"エ","jp":"承認された改善についての計画の作成、改善の実施とその報告","romaji":"Shōnin sareta kaizen ni tsuite no keikaku no sakusei, kaizen no jisshi to sono hōkoku","en":"Plan, implement, and report approved improvements."}
+      ],"correct_answer":"イ",
+      "explanation":"ELI5:\nPlan decides who is responsible and how work will be governed before operation begins.\n\nTechnical breakdown:\nIn an SMS PDCA cycle, Plan establishes objectives, policies, processes, roles, responsibilities, and authority. Do operates the system, Check monitors and reviews it, and Act implements improvement. Creating the governance framework therefore belongs to Plan.\n\nJapanese keywords to remember:\n計画 = keikaku = plan\n権限・責任 = kengen sekinin = authority and responsibility\n枠組み = wakugumi = framework\n\nWhy the best solution works:\nイ defines organizational roles and accountability needed before SMS execution.\n\nWrong answer analysis:\nア:\nManagement review evaluates performance and belongs to Check.\nウ:\nImplementation and operation are Do activities.\nエ:\nExecuting approved improvements is Act.\n\nMemory trick:\nPlan defines roles; Do runs; Check reviews; Act improves.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch15/set01/q01.png"]
+    },
+    {
+      "number":2,"displayNumber":"15-2","optionMode":"labels-only",
+      "jp":"サービスマネジメントシステムにPDCA方法論を適用するとき、Actに該当するものはどれか。","romaji":"Sābisu manejimento shisutemu ni PDCA hōhōron o tekiyō suru toki, Act ni gaitō suru mono wa dore ka.","en":"When applying PDCA to an SMS, which activity corresponds to Act?",
+      "options":[
+        {"label":"ア","jp":"サービスの設計、移行、提供及び改善のためにサービスマネジメントシステムを導入し、運用する。","romaji":"Sābisu no sekkei, ikō, teikyō oyobi kaizen no tame ni sābisu manejimento shisutemu o dōnyū shi, un'yō suru.","en":"Implement and operate the SMS for service design, transition, delivery, and improvement."},
+        {"label":"イ","jp":"サービスマネジメントシステム及びサービスのパフォーマンスを継続的に改善するための処置を実施する。","romaji":"Sābisu manejimento shisutemu oyobi sābisu no pafōmansu o keizokuteki ni kaizen suru tame no shochi o jisshi suru.","en":"Take action to continually improve SMS and service performance."},
+        {"label":"ウ","jp":"サービスマネジメントシステムを確立し、文書化し、合意する。","romaji":"Sābisu manejimento shisutemu o kakuritsu shi, bunshoka shi, gōi suru.","en":"Establish, document, and agree the SMS."},
+        {"label":"エ","jp":"方針、目的、計画及びサービスの要求事項について、サービスマネジメントシステム及びサービスを監視、測定及びレビューし、それらの結果を報告する。","romaji":"Hōshin, mokuteki, keikaku oyobi sābisu no yōkyū jikō ni tsuite, sābisu manejimento shisutemu oyobi sābisu o kanshi, sokutei oyobi rebyū shi, sorera no kekka o hōkoku suru.","en":"Monitor, measure, and review the SMS and services against policies, objectives, plans, and requirements, and report results."}
+      ],"correct_answer":"イ",
+      "explanation":"ELI5:\nAct uses what was learned during checking to make the system and services better.\n\nTechnical breakdown:\nAct closes the PDCA loop by correcting problems, preventing recurrence, and continually improving performance. Establishing the system is Plan, operating it is Do, and monitoring it is Check.\n\nJapanese keywords to remember:\n継続的に改善 = keizokuteki ni kaizen = continually improve\n処置を実施する = shochi o jisshi suru = take action\nパフォーマンス = pafōmansu = performance\n\nWhy the best solution works:\nイ explicitly implements actions for continual improvement, the defining Act activity.\n\nWrong answer analysis:\nア:\nImplementation and operation correspond to Do.\nウ:\nEstablishing and agreeing the SMS belongs to Plan.\nエ:\nMonitoring, measurement, review, and reporting are Check.\n\nMemory trick:\nAct means improve from Check results.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch15/set01/q02.png"]
+    },
+    {
+      "number":3,"displayNumber":"15-3","optionMode":"labels-only",
+      "jp":"システムの移行方式の一つである一斉移行方式の特徴として、最も適切なものはどれか。","romaji":"Shisutemu no ikō hōshiki no hitotsu de aru issei ikō hōshiki no tokuchō to shite, mottomo tekisetsu na mono wa dore ka.","en":"Which characteristic best describes a direct cutover system migration?",
+      "options":[
+        {"label":"ア","jp":"新旧システム間を接続するアプリケーションが必要となる。","romaji":"Shinkyū shisutemu-kan o setsuzoku suru apurikēshon ga hitsuyō to naru.","en":"An application connecting the old and new systems is required."},
+        {"label":"イ","jp":"新旧システムを並行させて運用し、ある時点で新システムに移行する。","romaji":"Shinkyū shisutemu o heikō sasete un'yō shi, aru jiten de shin shisutemu ni ikō suru.","en":"Operate old and new systems in parallel, then switch at a certain point."},
+        {"label":"ウ","jp":"新システムへの移行時のトラブルの影響が大きい。","romaji":"Shin shisutemu e no ikōji no toraburu no eikyō ga ōkii.","en":"Problems during migration to the new system have a large impact."},
+        {"label":"エ","jp":"並行して稼働させるための運用コストが発生する。","romaji":"Heikō shite kadō saseru tame no un'yō kosuto ga hassei suru.","en":"Operating costs arise from running systems in parallel."}
+      ],"correct_answer":"ウ",
+      "explanation":"ELI5:\nDirect cutover turns the old system off and the new one on at once, so failure has no running backup.\n\nTechnical breakdown:\nA direct or big-bang migration changes all target operations at one scheduled point. It is quick and avoids prolonged dual operation, but concentrates risk: defects, missing data, or operational confusion can disrupt the whole service immediately.\n\nJapanese keywords to remember:\n一斉移行方式 = issei ikō hōshiki = direct cutover\n移行時 = ikōji = during migration\n影響が大きい = eikyō ga ōkii = impact is large\n\nWhy the best solution works:\nウ states the main disadvantage created by switching everything without a parallel fallback.\n\nWrong answer analysis:\nア:\nA connecting application is associated with coexistence or phased migration.\nイ:\nRunning both systems describes parallel migration.\nエ:\nParallel-operation cost belongs to the parallel method, not direct cutover.\n\nMemory trick:\nBig-bang switch = big impact if it fails.\n\nCorrect answer: ウ",
+      "imagePaths":["public/questions/book1/ch15/set01/q03.png"]
+    },
+    {
+      "number":4,"displayNumber":"15-4","optionMode":"labels-only",
+      "jp":"サービスマネジメントシステムにおけるサービスの可用性はどれか。","romaji":"Sābisu manejimento shisutemu ni okeru sābisu no kayōsei wa dore ka.","en":"Which choice defines service availability in a service management system?",
+      "options":[
+        {"label":"ア","jp":"あらかじめ合意された時点又は期間にわたって、要求された機能を実行するサービス又はサービスコンポーネントの能力","romaji":"Arakajime gōi sareta jiten mata wa kikan ni watatte, yōkyū sareta kinō o jikkō suru sābisu mata wa sābisu konpōnento no nōryoku","en":"The ability of a service or component to perform required functions at an agreed time or over an agreed period."},
+        {"label":"イ","jp":"計画した活動が実行され、計画した結果が達成された程度","romaji":"Keikaku shita katsudō ga jikkō sare, keikaku shita kekka ga tassei sareta teido","en":"The degree to which planned activities are executed and planned results achieved."},
+        {"label":"ウ","jp":"合意したレベルでサービスを継続的に提供するために、サービスに深刻な影響を及ぼす可能性のあるリスク及び事象を管理する能力","romaji":"Gōi shita reberu de sābisu o keizokuteki ni teikyō suru tame ni, sābisu ni shinkoku na eikyō o oyobosu kanōsei no aru risuku oyobi jishō o kanri suru nōryoku","en":"The ability to manage risks and events that could seriously affect continuous delivery at agreed levels."},
+        {"label":"エ","jp":"サービスの要求事項を満たし、サービスの設計、移行、提供及び改善のために、サービス提供者の活動及び資源を、指揮し、管理する、一連の能力及びプロセス","romaji":"Sābisu no yōkyū jikō o mitashi, sābisu no sekkei, ikō, teikyō oyobi kaizen no tame ni, sābisu teikyōsha no katsudō oyobi shigen o, shiki shi, kanri suru, ichiren no nōryoku oyobi purosesu","en":"Capabilities and processes for directing and controlling provider activities and resources for service design, transition, delivery, and improvement."}
+      ],"correct_answer":"ア",
+      "explanation":"ELI5:\nAvailability means the service is ready and able to do its job when users agreed they need it.\n\nTechnical breakdown:\nAvailability combines readiness and ability to perform required functions during agreed service time. It is commonly measured as available time divided by agreed service time, considering interruptions within the measurement scope.\n\nJapanese keywords to remember:\n可用性 = kayōsei = availability\n合意された期間 = gōi sareta kikan = agreed period\n要求された機能 = yōkyū sareta kinō = required function\n\nWhy the best solution works:\nア contains the decisive elements: required function plus agreed time.\n\nWrong answer analysis:\nイ:\nThis defines effectiveness.\nウ:\nThis describes service continuity management capability.\nエ:\nThis broadly defines service management.\n\nMemory trick:\nAvailable = works when agreed.\n\nCorrect answer: ア",
+      "imagePaths":["public/questions/book1/ch15/set01/q04.png"]
+    },
+    {
+      "number":5,"displayNumber":"15-5","optionMode":"labels-only",
+      "jp":"次の条件でITサービスを提供している。SLAを満たすことができる、1か月のサービス時間帯中の停止時間は最大何時間か。ここで、1か月の営業日数は30日とし、サービス時間帯中は、保守などのサービス計画停止は行わないものとする。SLAの条件：サービス時間帯は、営業日の午前8時から午後10時までとする。可用性を99.5％以上とする。","romaji":"Tsugi no jōken de IT sābisu o teikyō shite iru. SLA o mitasu koto ga dekiru, ikkagetsu no sābisu jikantai-chū no teishi jikan wa saidai nanjikan ka. Koko de, ikkagetsu no eigyō nissū wa sanjūnichi to shi, sābisu jikantai-chū wa, hoshu nado no sābisu keikaku teishi wa okonawanai mono to suru. SLA no jōken: sābisu jikantai wa, eigyōbi no gozen hachiji kara gogo jūji made to suru. Kayōsei o kyūjūkyū ten go pāsento ijō to suru.","en":"A service runs on 30 business days from 8:00 a.m. to 10:00 p.m., with no planned downtime during service hours. For availability of at least 99.5%, what is the maximum monthly downtime in hours?",
+      "options":[{"label":"ア","jp":"0.3","romaji":"Rei ten san","en":"0.3"},{"label":"イ","jp":"2.1","romaji":"Ni ten ichi","en":"2.1"},{"label":"ウ","jp":"3.0","romaji":"San ten rei","en":"3.0"},{"label":"エ","jp":"3.6","romaji":"San ten roku","en":"3.6"}],"correct_answer":"イ",
+      "explanation":"ELI5:\nFind all monthly service hours, then take the allowed unavailable percentage, 0.5%.\n\nTechnical breakdown:\nDaily service time = 22:00−8:00 = 14 hours. Monthly agreed service time = 14×30 = 420 hours. Required availability is 99.5%, so allowed downtime rate = 100%−99.5% = 0.5% = 0.005. Maximum downtime = 420×0.005 = 2.1 hours.\n\nJapanese keywords to remember:\n停止時間 = teishi jikan = downtime\nサービス時間帯 = sābisu jikantai = service hours\n可用性 = kayōsei = availability\n\nWhy the best solution works:\nイ is the exact allowed unavailable portion of agreed monthly service time.\n\nWrong answer analysis:\nア:\n0.3 does not use the 14-hour daily service window correctly.\nウ:\n3.0 exceeds the 0.5% allowance.\nエ:\n3.6 also violates the SLA threshold.\n\nMemory trick:\nAllowed downtime = service hours × (1−availability).\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch15/set01/q05.png"]
+    },
+    {
+      "number":6,"displayNumber":"15-6","optionMode":"labels-only",
+      "jp":"ITサービスマネジメントにおける“既知の誤り（既知のエラー）”の説明はどれか。","romaji":"IT sābisu manejimento ni okeru 'kichi no ayamari (kichi no erā)' no setsumei wa dore ka.","en":"Which statement describes a known error in IT service management?",
+      "options":[
+        {"label":"ア","jp":"根本原因が特定されている又は回避策が存在している問題","romaji":"Konpon gen'in ga tokutei sarete iru mata wa kaihisaku ga sonzai shite iru mondai","en":"A problem whose root cause is identified or for which a workaround exists."},
+        {"label":"イ","jp":"サービスデスクに問い合わせがあった新たなインシデント","romaji":"Sābisu desuku ni toiawase ga atta arata na inshidento","en":"A new incident reported to the service desk."},
+        {"label":"ウ","jp":"サービスマネジメント計画での矛盾や漏れ","romaji":"Sābisu manejimento keikaku de no mujun ya more","en":"A contradiction or omission in a service management plan."},
+        {"label":"エ","jp":"静的検査で検出したプログラムの誤り","romaji":"Seiteki kensa de kenshutsu shita puroguramu no ayamari","en":"A program error detected by static inspection."}
+      ],"correct_answer":"ア",
+      "explanation":"ELI5:\nA known error is a problem the support team understands enough to know its cause or a temporary way around it.\n\nTechnical breakdown:\nProblem management records a problem as a known error after analysis identifies the root cause and/or a workaround. This knowledge speeds incident restoration even before a permanent fix is deployed.\n\nJapanese keywords to remember:\n既知の誤り = kichi no ayamari = known error\n根本原因 = konpon gen'in = root cause\n回避策 = kaihisaku = workaround\n\nWhy the best solution works:\nア matches the service-management definition.\n\nWrong answer analysis:\nイ:\nA new incident has not yet become an analyzed known error.\nウ:\nA planning defect is not the defined problem-management record.\nエ:\nA code defect found by inspection is not automatically a known error in service management.\n\nMemory trick:\nKnown error = known cause or workaround.\n\nCorrect answer: ア",
+      "imagePaths":["public/questions/book1/ch15/set01/q06.png"]
+    },
+    {
+      "number":7,"displayNumber":"15-7","optionMode":"labels-only",
+      "jp":"ITサービスマネジメントの活動のうち、インシデント及びサービス要求管理として行うものはどれか。","romaji":"IT sābisu manejimento no katsudō no uchi, inshidento oyobi sābisu yōkyū kanri to shite okonau mono wa dore ka.","en":"Which activity belongs to incident and service request management?",
+      "options":[
+        {"label":"ア","jp":"サービスデスクに対する顧客満足度が合意したサービス目標を満たしているかどうかを評価し、改善の機会を特定するためにレビューする。","romaji":"Sābisu desuku ni taisuru kokyaku manzokudo ga gōi shita sābisu mokuhyō o mitashite iru ka dō ka o hyōka shi, kaizen no kikai o tokutei suru tame ni rebyū suru.","en":"Review service-desk customer satisfaction against agreed targets and identify improvement opportunities."},
+        {"label":"イ","jp":"ディスクの空き容量がしきい値に近づいたので、対策を検討する。","romaji":"Disuku no aki yōryō ga shikiichi ni chikazuita node, taisaku o kentō suru.","en":"Consider action because free disk capacity is approaching a threshold."},
+        {"label":"ウ","jp":"プログラムを変更した場合の影響度を調査する。","romaji":"Puroguramu o henkō shita baai no eikyōdo o chōsa suru.","en":"Investigate the impact of changing a program."},
+        {"label":"エ","jp":"利用者からの障害報告を受けて、既知の誤りに該当するかどうかを照合する。","romaji":"Riyōsha kara no shōgai hōkoku o ukete, kichi no ayamari ni gaitō suru ka dō ka o shōgō suru.","en":"Receive a user fault report and check whether it matches a known error."}
+      ],"correct_answer":"エ",
+      "explanation":"ELI5:\nWhen a user reports a failure, incident management searches known solutions so service can be restored quickly.\n\nTechnical breakdown:\nIncident management logs, categorizes, prioritizes, diagnoses, and resolves incidents. Matching symptoms against the known-error database can reveal a workaround or solution immediately.\n\nJapanese keywords to remember:\n障害報告 = shōgai hōkoku = fault report\n照合する = shōgō suru = match or compare\n既知の誤り = kichi no ayamari = known error\n\nWhy the best solution works:\nエ is a standard initial-diagnosis activity for an incoming incident.\n\nWrong answer analysis:\nア:\nCustomer-satisfaction review is service reporting and improvement.\nイ:\nMonitoring capacity thresholds is capacity management.\nウ:\nChange impact analysis is change management.\n\nMemory trick:\nIncident arrives → search known errors first.\n\nCorrect answer: エ",
+      "imagePaths":["public/questions/book1/ch15/set01/q07.png"]
+    },
+    {
+      "number":8,"displayNumber":"15-8","optionMode":"labels-only",
+      "jp":"サービスデスク組織の構造とその特徴のうち、ローカルサービスデスクのものはどれか。","romaji":"Sābisu desuku soshiki no kōzō to sono tokuchō no uchi, rōkaru sābisu desuku no mono wa dore ka.","en":"Which description is of a local service desk?",
+      "options":[
+        {"label":"ア","jp":"サービスデスクを1拠点又は少数の場所に集中することによって、サービス要員を効率的に配置したり、大量のコールに対応したりすることができる。","romaji":"Sābisu desuku o ichi kyoten mata wa shōsū no basho ni shūchū suru koto ni yotte, sābisu yōin o kōritsuteki ni haichi shitari, tairyō no kōru ni taiō shitari suru koto ga dekiru.","en":"Centralize desks at one or few sites for efficient staffing and high call volume."},
+        {"label":"イ","jp":"サービスデスクを利用者の近くに配置することによって、言語や文化が異なる利用者への対応、専門要員によるVIP対応などができる。","romaji":"Sābisu desuku o riyōsha no chikaku ni haichi suru koto ni yotte, gengo ya bunka ga kotonaru riyōsha e no taiō, senmon yōin ni yoru VIP taiō nado ga dekiru.","en":"Place desks near users to support local language/culture and specialized VIP service."},
+        {"label":"ウ","jp":"サービス要員が複数の地域や部門に分散していても、通信技術の利用によって単一のサービスデスクであるかのようにサービスが提供できる。","romaji":"Sābisu yōin ga fukusū no chiiki ya bumon ni bunsan shite ite mo, tsūshin gijutsu no riyō ni yotte tan'itsu no sābisu desuku de aru ka no yō ni sābisu ga teikyō dekiru.","en":"Use communications so distributed staff provide service as if they were one desk."},
+        {"label":"エ","jp":"分散拠点のサービス要員を含めた全員を中央で統括して管理することによって、統制のとれたサービスが提供できる。","romaji":"Bunsan kyoten no sābisu yōin o fukumeta zen'in o chūō de tōkatsu shite kanri suru koto ni yotte, tōsei no toreta sābisu ga teikyō dekiru.","en":"Centrally manage all staff including distributed sites to provide controlled service."}
+      ],"correct_answer":"イ",
+      "explanation":"ELI5:\nA local service desk sits close to its users and understands their language, culture, and special needs.\n\nTechnical breakdown:\nThe local model places support at or near each user community. It offers personal knowledge and local compatibility but can duplicate staff and tools across sites.\n\nJapanese keywords to remember:\nローカルサービスデスク = rōkaru sābisu desuku = local service desk\n利用者の近く = riyōsha no chikaku = near users\n言語や文化 = gengo ya bunka = language and culture\n\nWhy the best solution works:\nイ gives the defining proximity and localization benefits.\n\nWrong answer analysis:\nア:\nThis describes a centralized service desk.\nウ:\nThis describes a virtual service desk.\nエ:\nThis emphasizes centralized control rather than the local structure.\n\nMemory trick:\nLocal desk = local users, language, culture.\n\nCorrect answer: イ",
+      "imagePaths":["public/questions/book1/ch15/set01/q08.png"]
+    },
+    {
+      "number":9,"displayNumber":"15-9","optionMode":"labels-only",
+      "jp":"落雷によって発生する過電圧の被害から情報システムを守るための手段として、有効なものはどれか。","romaji":"Rakurui ni yotte hassei suru kaden'atsu no higai kara jōhō shisutemu o mamoru tame no shudan to shite, yūkō na mono wa dore ka.","en":"Which measure protects an information system from overvoltage caused by lightning?",
+      "options":[
+        {"label":"ア","jp":"サージ保護デバイス（SPD）を介して通信ケーブルとコンピュータを接続する。","romaji":"Sāji hogo debaisu (SPD) o kaishite tsūshin kēburu to konpyūta o setsuzoku suru.","en":"Connect the communication cable and computer through a surge protective device (SPD)."},
+        {"label":"イ","jp":"自家発電装置を設置する。","romaji":"Jika hatsuden sōchi o setchi suru.","en":"Install a private generator."},
+        {"label":"ウ","jp":"通信線を、経路が異なる2系統とする。","romaji":"Tsūshinsen o, keiro ga kotonaru nikeitō to suru.","en":"Use two communication lines with different routes."},
+        {"label":"エ","jp":"電源設備の制御回路をデジタル化する。","romaji":"Dengen setsubi no seigyo kairo o dejitaruka suru.","en":"Digitize the power-equipment control circuit."}
+      ],"correct_answer":"ア",
+      "explanation":"ELI5:\nAn SPD catches a sudden voltage spike and diverts it before it reaches sensitive equipment.\n\nTechnical breakdown:\nLightning can induce a transient surge through power or communication wiring. A surge protective device limits voltage and safely diverts surge current to protect connected hardware.\n\nJapanese keywords to remember:\n落雷 = rakurui = lightning strike\n過電圧 = kaden'atsu = overvoltage\nサージ保護デバイス = sāji hogo debaisu = surge protective device\n\nWhy the best solution works:\nア places the purpose-built surge protection in the incoming communication path.\n\nWrong answer analysis:\nイ:\nA generator supplies power during outages but does not clamp lightning surges.\nウ:\nRoute redundancy improves availability, not overvoltage protection.\nエ:\nDigitizing control circuits does not block surge energy.\n\nMemory trick:\nSurge threat → SPD.\n\nCorrect answer: ア",
+      "imagePaths":["public/questions/book1/ch15/set01/q09.png"]
+    }
+  ]
+}
